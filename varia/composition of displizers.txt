@@ -1,0 +1,30 @@
+Displizer f1 (displacer + colorizer):
+
+f1 = c1 * d1
+
+f1(i) = p => c1(i(p + disp1(p, i)))) = i1
+
+Displizer f2:
+ 
+f2 = c2 * d2
+
+f2(i) = p => c2(i(p + disp2(p, i))) = i2
+
+f2 * f1 = f2(f1)
+
+Composition of f1 and f2 (f1 applied first):
+
+(f2 * f1)(i) = p => c2(i1(p + disp2(p, i1))) = c2(c1(i(p + disp2(p, i1) + disp1(p + disp2(p, i1), i))))
+
+So, the composition of displizers is also displizer, but it's displacer function is dependent on i1, and then also on c1.
+But when f2 is "daltonist" (i. e. its displacer d2 is not dependent on i), i.e:
+
+f2(i) = p => c2(i(p + disp2(p))) = i2
+
+There:
+
+(f2 * f1)(i) = p => c2(i1(p + disp2(p))) = c2(c1(i(p + disp2(p) + disp1(p + disp2(p), i))))
+
+Now displacement is independent of c1 (and also c2, as earlier).
+
+
