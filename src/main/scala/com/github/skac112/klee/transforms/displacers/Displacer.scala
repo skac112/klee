@@ -1,10 +1,10 @@
 package com.github.skac112.klee.transforms.displacers
 
-import com.github.skac112.klee.{Img, ImgTrans}
+import com.github.skac112.klee._
 import com.github.skac112.vgutils.{Color, Point}
 
 object Displacer {
-  type DispColorChangeFun = (Color, Point) => Color
+  type DispColorChangeFun = (Point, Point, Img) => Color
 }
 
 /**
@@ -13,17 +13,19 @@ object Displacer {
   * determines value of a function (color) for given point and image.
   * CAUTION: Displacement vector is not equal to vector which transforms location of every point to a new
   * location along with its color. In such a model (which can be for example understood as an application of dynamical
-  * system to image for some time shift) the displacement vector is in a way an opposite of this first vector taken
+  * system to image for some time shift) the displacement vector is an opposite of this first vector taken
   * for given end point. For example: if a displacer transform for given point p1 translates it to point p2 = p1 +
   * transl, the displacement vector for point p2 (not p1) is equal to -transl. So, the displacement is a "lookup" vector
   * which is used to take a value from (combined with location of base point).
   */
 abstract class Displacer extends ImgTrans {
   def displacement(p: Point, img: Img): Point
-  def colorChangeFun(color: Color, displacement: Point): Color
+  def colorChangeFun(srcPt: Point, displacement: Point, image: Img): Color
 
-  override def apply(img: Img) = (p: Point) => {
-    val d = displacement(p, img)
-    colorChangeFun(img(p + d), d)
+  override def apply(img: Img) = new Img {
+    override def apply(p: Point) = {
+      val d = displacement(p, img)
+      colorChangeFun(p, d, img)
+    }
   }
 }

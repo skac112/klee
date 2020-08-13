@@ -20,9 +20,9 @@ case class BlackHole(c: Point,
     */
   private def rotDisplacement(p: Point) = cVec(p).rot(-pRot(p)) - cVec(p)
 
-  override def colorChangeFun(color: Color, displacement: Point): Color = colorChangeFunO match {
-    case Some(fun) => fun(color, displacement)
-    case None => color
+  override def colorChangeFun(srcPt: Point, displacement: Point, img: Img): Color = colorChangeFunO match {
+    case Some(fun) => fun(srcPt, displacement, img)
+    case None => img(srcPt + displacement)
   }
 
   def cDist(p: Point) = cVec(p).modulus

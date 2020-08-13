@@ -1,0 +1,14 @@
+**/target/
+**/varia/
+*.svg
+*.ensime
+*.classpath
+*.settings
+*.class
+.ensime
+.project
+.cache-main
+.ensime_cache
+.idea
+bin/
+

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: skac112:vgutils_2.12:0.1.2-SNAPSHOT:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/local/skac112/vgutils_2.12/0.1.2-SNAPSHOT/jars/vgutils_2.12.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.ivy2/local/skac112/vgutils_2.12/0.1.2-SNAPSHOT/docs/vgutils_2.12-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/local/skac112/vgutils_2.12/0.1.2-SNAPSHOT/srcs/vgutils_2.12-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

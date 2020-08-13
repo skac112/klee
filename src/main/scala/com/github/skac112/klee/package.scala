@@ -14,22 +14,33 @@ import scala.collection.Seq
 
 package object klee {
   val defWidth = 800
-  type Img = Point => Color
+//  type Img = Point => Color
   type ColTrans = Color => Color
   type ImgTrans = Img => Img
   type DrawingMaker[A] = cats.data.Writer[ImgTrans, A]
   val identity = (img: Img) => img
+  type Points = Seq[Point]
+  type Colors = Seq[Color]
 
-  def render(imgFun: Img, fileName: String, minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): Unit = {
+  def drawToFile(imgFun: Img, fileName: String, minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): Unit = {
     val (dx, dy) = stepsForRender(minX, maxX, minY, maxY, width, height)
     val act_width = if (width > 0) width else (floor((maxX - minX) / dx)).round.toInt + 1
     val act_height = if (height > 0) height else floor((maxY - minY) / dx).round.toInt + 1
     val img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
-    for (x <- 0 until act_width)
+    val points = for {
+      x <- 0 until act_width
+      y <- 0 until act_height
+    } yield Point(x, y)
+
+    val colors = imgFun.applyBatch(points)
+
+    for (x <- 0 until act_width) {
       for (y <- 0 until act_height) {
-        val color = imgFun(Point(minX + (x * dx), minY + (y * dy)))
-        img.setRGB(x, y, color.toInt)
+        val shift = x * act_height
+//        val color = imgFun(Point(minX + (x * dx), minY + (y * dy)))
+        img.setRGB(x, y, colors(shift + y).toInt)
       }
+    }
     ImageIO.write(img, "PNG", new java.io.File(fileName))
   }
 

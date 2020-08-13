@@ -1,0 +1,80 @@
+punkt p
+funkcje 
+f1
+f2
+obraz 
+i(p) - funkcja obrazu, kolor dla punktu p
+
+f1 i f2 są funkcjami i -> i działają poprzez 'lookup' z bieżącego punktu p do pewnego innego (p1 lub p2).
+f1: f1(i)(p) = i(p1), co odpowiada: p1 -> p lub p <- p1
+f2: f2(i)(p) = i(p2), co odpowiada: p2 -> p lub p <- p2
+
+Można to działanie rozumieć jako transformację współrzędnych:
+t1: t1(p1) = p, p1 -> p
+t2: t2(p2) = p, p2 -> p
+
+Transformacje odwrotne (tl od 't lookup'):
+t1^-1(f1) = tl1(f1): tl1(p) = p1, p <- p1
+t2^-1(f2) = tl2(f2): tl2(p) = p2, p <- p2
+
+Zwykłe złożenie f1 i f2:
+((f2 . f1)(i)) = f2(f1(i))
+
+Dla punktu p mamy:
+((f2 . f1)(i))(p) = f2(f1(i))(p) = f2(i(tl1(p)))(p)
+
+To złożenie nie uwzględnia dla f2 transformacji współrzędnych dokonanej przez f1.
+
+Odpowiada ono złożeniu lookupów:
+tl2 . tl1 = tl2(tl1(p))
+
+Złożenie "układowspółrzędnowe" uwzględnia f2 zmodyfikowane:
+(f2 .. f1)(i) = (f2' . f1)(i)
+
+tak aby uwzględniona była transformacja współrzędnych p1 -> p dokonywana przez f1
+
+Odpowiada to modyfikacji t2 i tl2:
+t2': p2' -> p' = t1(p2) -> t1(p); t1(p2) -> t1(t2(p))
+tl2': p' -> p2' = t1(p) -> t1(p2); t1(p) -> t1(tl2(p))
+
+Dla tl2' mamy więc funkcję:
+t1(p) -> t1(tl2(p))
+
+Aby uzyskać funkcję argumentu p, poddajemy argument funkcji po prawej stronie (p) działaniu f. odwrotnej do t1 czyli tl1:
+t1(tl1(p)) -> t1(tl2(tl1(p)))
+tl2': p -> t1 . tl2 . tl1 = t1 . tl2 . t1^-1 = tl1^-1 . tl2 . tl1
+
+Złożenie lookupów daje:
+tl2' . tl1 = tl1^-1 . tl2 . tl1 . tl1 = tl1^-1 . (tl2 . tl1 ) . tl1
+Wyrażenie w nawiasie jest pierwotnym złożeniem lookupów tl1 i tl2. 
+
+Analogicznie:
+f2 .. f1 = f2' . f1 = f1^-1 . (f2 . f1) . f1
+
+Ogólnie:
+f: p -> f(p)
+działanie funkcji g^-1 (przeniesienie strzałki):
+f': g^-1(p) -> g^-1(f(p))
+f': g^-1.p -> g^-1.f.p
+f': p -> g^-1.f.g.p
+
+Teraz złożenie:
+f'.g = g^-1.f.g.g.p = g^-1.f.g^2.p
+
+A teraz złożenie "układowspółrzędnowe" 3 funkcji:
+f3 .. f2 .. f1 = (f3 .. f2) .. f1 = f1^-1 . (f3 .. f2) . f1^2 = f1^-1 . f2^-1 . f3 . f2^2 . f1^2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

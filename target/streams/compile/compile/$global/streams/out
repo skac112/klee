@@ -1,7 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/media/windows/projekty/klee/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala:22:16: `abstract' modifier can be used only for classes; it should be omitted for abstract members[0m
-[0m[[0m[31merror[0m] [0m[0m  abstract def displacement(p: Point, img: Img): Point[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0m/media/windows/projekty/klee/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala:23:16: `abstract' modifier can be used only for classes; it should be omitted for abstract members[0m
-[0m[[0m[31merror[0m] [0m[0m  abstract def colorChangeFun(color: Color, displacement: Point): Color[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
