@@ -1,5 +1,6 @@
 package com.github.skac112.klee.dynsys
 
+import com.github.skac112.klee.PointMap
 import com.github.skac112.vgutils.Point
 
 /**
@@ -13,7 +14,7 @@ abstract class GenericMotionEqDynamicalSystem extends DynamicalSystem {
     * @param p
     * @return
     */
-  def motionEq(p: Point): Point
+  val motionEq: PointMap
   def h: Double
 
   /**
@@ -28,5 +29,12 @@ abstract class GenericMotionEqDynamicalSystem extends DynamicalSystem {
     val act_h = h * math.signum(time)
     val steps = math.round(time / act_h).toInt
     (0 until steps).foldLeft(point) {(p: Point, i: Int) => rungeKutta4(motionEq, p, act_h)}
+  }
+
+  override def timeMap(time: Double): PointMap = {
+    // for negative time actual h must be also negative
+    val act_h = h * math.signum(time)
+    val steps = math.round(time / act_h).toInt
+    (0 until steps).foldLeft(motionEq) {(eq, i: Int) => eq.rungeKutta4(act_h)}
   }
 }

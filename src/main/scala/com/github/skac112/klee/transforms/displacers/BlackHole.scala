@@ -8,9 +8,8 @@ case class BlackHole(c: Point,
                      rotation: Double,
                      rotationDecay: Double,
                      scaling: Double,
-                     scalingDecay: Double,
-                     colorChangeFunO: Option[DispColorChangeFun] = None) extends Displacer {
-  override def displacement(p: Point, img: Img) =
+                     scalingDecay: Double) extends Displacer {
+  override def displacement(p: Point) =
     // displacement is a composition of scale moving and rotation - all around point c
     rotDisplacement(p)
 //    rotDisplacement(p) + scalingDisplacement(p)
@@ -20,10 +19,10 @@ case class BlackHole(c: Point,
     */
   private def rotDisplacement(p: Point) = cVec(p).rot(-pRot(p)) - cVec(p)
 
-  override def colorChangeFun(srcPt: Point, displacement: Point, img: Img): Color = colorChangeFunO match {
-    case Some(fun) => fun(srcPt, displacement, img)
-    case None => img(srcPt + displacement)
-  }
+//  override def colorChangeFun(srcPt: Point, displacement: Point, img: Img): Color = colorChangeFunO match {
+//    case Some(fun) => fun(srcPt, displacement, img)
+//    case None => img(srcPt + displacement)
+//  }
 
   def cDist(p: Point) = cVec(p).modulus
 

@@ -8,7 +8,7 @@ object Img {
 trait Img extends ((Point) => Color) {
   /**
     * Base implementation just evaluates each point independently, but custom implementations
-    * could make various performance implementations.
+    * can make performance improvements.
     * @param points
     * @return
     */

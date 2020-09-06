@@ -19,13 +19,9 @@ object Displacer {
   * which is used to take a value from (combined with location of base point).
   */
 abstract class Displacer extends ImgTrans {
-  def displacement(p: Point, img: Img): Point
-  def colorChangeFun(srcPt: Point, displacement: Point, image: Img): Color
+  def displacement(p: Point): Point
 
   override def apply(img: Img) = new Img {
-    override def apply(p: Point) = {
-      val d = displacement(p, img)
-      colorChangeFun(p, d, img)
-    }
+    override def apply(p: Point) = img(p + displacement(p))
   }
 }

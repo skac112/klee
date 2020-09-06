@@ -17,7 +17,7 @@ trait LocalImgTrans extends ImgTrans {
 
     override def applyBatch(points: Points) = {
       // tymczasowo!!!
-      Seq[Color]()
+      points map apply _
 //      if (points.area containedIn area) {
 //        // all points if area of trans
 //        applyBatchInArea(img, points)
