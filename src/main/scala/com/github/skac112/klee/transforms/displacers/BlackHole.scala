@@ -9,9 +9,9 @@ case class BlackHole(c: Point,
                      rotationDecay: Double,
                      scaling: Double,
                      scalingDecay: Double) extends Displacer {
-  override def displacement(p: Point) =
+  override def displacement =
     // displacement is a composition of scale moving and rotation - all around point c
-    rotDisplacement(p)
+    rotDisplacement
 //    rotDisplacement(p) + scalingDisplacement(p)
 
   /**

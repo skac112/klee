@@ -1,6 +1,7 @@
 package com.github.skac112.klee.transforms.displacers
 
 import com.github.skac112.klee._
+import com.github.skac112.klee.dynsys.vectormaps.VectorMap
 import com.github.skac112.vgutils.{Color, Point}
 
 object Displacer {
@@ -19,7 +20,7 @@ object Displacer {
   * which is used to take a value from (combined with location of base point).
   */
 abstract class Displacer extends ImgTrans {
-  def displacement(p: Point): Point
+  def displacement: VectorMap
 
   override def apply(img: Img) = new Img {
     override def apply(p: Point) = img(p + displacement(p))

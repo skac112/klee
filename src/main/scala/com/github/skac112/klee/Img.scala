@@ -5,7 +5,7 @@ object Img {
   implicit def imgToImgTrans(img: Img): ImgTrans = (in: Img) => img
 }
 
-trait Img extends ((Point) => Color) {
+trait Img extends (Point => Color) {
   /**
     * Base implementation just evaluates each point independently, but custom implementations
     * can make performance improvements.

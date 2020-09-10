@@ -1,6 +1,6 @@
 package com.github.skac112.klee.dynsys
 
-import com.github.skac112.klee.PointMap
+import com.github.skac112.klee.dynsys.vectormaps.VectorMap
 import com.github.skac112.vgutils.Point
 
 import scala.collection.immutable
@@ -8,7 +8,7 @@ import scala.collection.immutable
 /**
   * PointMap in the form of a polynomial of two variables (x and y coordinates of a point).
   **/
-abstract class PolyMap extends PointMap {
+abstract class PolyMap extends VectorMap {
   /**
     * Coefficient for n-power of x or y has for each of output value (x or y) has index equal to n (1-st or second,
     * appropriatelly), i.e. outer indices span x powers increasingly, inner indices span y powers increasingly and each
@@ -22,13 +22,14 @@ abstract class PolyMap extends PointMap {
   def initCoeffs: Seq[Seq[Point]]
 
   /**
-    * Order is by default calculated as a highest sum of non-zero powers (and indices) of coeffs from every pair of
-    * indices. Overriding default implementation enables to force higher order than actual (in a polynomial sense).
+    * Order is by default calculated as a highest sum of non-zero powers (and indices) of coeffs from every
+    * pair of indices. Overriding default implementation enables to force higher order than actual (in a polynomial sense).
     * This can be helpful in some calculations to avoid over-truncation of order.
     * @return
     */
-  def order = ((initCoeffs.takeWhile (_ != Point(0.0, 0.0))) zipWithIndex) map { case (y_coeffs, idx) =>
-    idx + y_coeffs.lastIndexWhere(_ != Point(0.0, 0.0)) } max
+  def order =
+    (initCoeffs zipWithIndex) map { case (y_coeffs, idx) =>
+      idx + y_coeffs.lastIndexWhere(_ != Point(0.0, 0.0)) } max
 
   /**
     * Coefficients of polynomial with a triangular structure (flipped upper triangle matrix of size order + 1).

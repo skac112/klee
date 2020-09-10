@@ -27,7 +27,7 @@ package object dynsys {
     val k2 = fun(p + (k1 * .5)) * h
     val k3 = fun(p + (k2 * .5)) * h
     val k4 = fun(p + k3) * h
-    p + (k1 + (k2 * 2) + (k3 * 2) + k4) * f1_6
+    p + (k1 + (k2 * 2) + (k3 * 2) + k4)
   }
 
   private def binomialCoeff(n: Int, i: Int): Int = factorial(n) / factorial(i) / factorial(n - i)

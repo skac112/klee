@@ -32,7 +32,7 @@ package object klee {
       y <- 0 until act_height
     } yield Point(x, y)
 
-    val colors = imgFun.applyBatch(points)
+    val colors = imgFun.applyBatch(points map {p: Point => Point(minX + dx*p.x, minY + dy*p.y)})
 
     for (x <- 0 until act_width) {
       for (y <- 0 until act_height) {

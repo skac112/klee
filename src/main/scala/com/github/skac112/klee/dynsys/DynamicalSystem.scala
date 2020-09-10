@@ -1,6 +1,6 @@
 package com.github.skac112.klee.dynsys
 
-import com.github.skac112.klee.PointMap
+import com.github.skac112.klee.dynsys.vectormaps.VectorMap
 import com.github.skac112.vgutils.Point
 
 /**
@@ -13,5 +13,5 @@ trait DynamicalSystem extends ((Point, Double) => Point) {
     * @param time
     * @return
     */
-  def timeMap(time: Double): PointMap = (p: Point) => apply(p, time)
+  def timeMap(time: Double): VectorMap = (p: Point) => apply(p, time)
 }
