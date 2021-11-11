@@ -1,6 +1,8 @@
 package com.github.skac112.klee.transforms.displacers
 
 import com.github.skac112.klee._
+import com.github.skac112.klee.area.img.{ImgArea, WholeArea}
+import com.github.skac112.klee.area.pt.QuickPtArea
 import com.github.skac112.klee.dynsys.vectormaps.VectorMap
 import com.github.skac112.vgutils.{Color, Point}
 
@@ -19,10 +21,21 @@ object Displacer {
   * transl, the displacement vector for point p2 (not p1) is equal to -transl. So, the displacement is a "lookup" vector
   * which is used to take a value from (combined with location of base point).
   */
-abstract class Displacer extends ImgTrans {
+trait Displacer extends LocalImgTrans {
   def displacement: VectorMap
 
-  override def apply(img: Img) = new Img {
-    override def apply(p: Point) = img(p + displacement(p))
+  /**
+    * Default area is the whole area.
+    * @return
+    */
+  def area: ImgArea = WholeArea()
+
+  def applyInArea(img: Img, p: Point): Color = {
+    img(p + displacement(p))
+  }
+
+  override def applyBatchInArea(img: Img, points: Points): Colors = {
+    val disp_points = displacement.applyBatchArea(QuickPtArea(points, area))
+    img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2})
   }
 }

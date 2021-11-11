@@ -5,12 +5,12 @@ object Img {
   implicit def imgToImgTrans(img: Img): ImgTrans = (in: Img) => img
 }
 
-trait Img extends (Point => Color) {
+trait Img extends PtAreaBatchable[Color] {
   /**
     * Base implementation just evaluates each point independently, but custom implementations
     * can make performance improvements.
     * @param points
     * @return
     */
-  def applyBatch(points: Points): Colors = points map apply _
+//  def applyBatch(points: Points): Colors = points map apply _
 }

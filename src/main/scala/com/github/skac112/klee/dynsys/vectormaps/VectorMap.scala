@@ -1,5 +1,7 @@
 package com.github.skac112.klee.dynsys.vectormaps
 
+import com.github.skac112.klee.area.pt.PtArea
+import com.github.skac112.klee.{Colors, Points, PtAreaBatchable}
 import com.github.skac112.vgutils.Point
 import com.github.skac112.vgutils.transform.Linear
 
@@ -13,7 +15,7 @@ object VectorMap {
   }
 }
 
-trait VectorMap extends (Point => Point) {
+trait VectorMap extends PtAreaBatchable[Point] {
   lazy val f1_6 = 1.0 / 6
 
   /**
@@ -60,4 +62,21 @@ trait VectorMap extends (Point => Point) {
     * @return
     */
   def andThen(other: VectorMap): VectorMap = (p: Point) => other(this.apply(p))
+
+  /**
+    * Base implementation just evaluates each point independently, but custom implementations
+    * can make performance improvements.
+    *
+    * @param points
+    * @return
+    */
+  //  override def applyBatch(points: Points): Points = points map apply _
+
+  /**
+    * Base implementation just evaluates each point independently, but custom implementations
+    * can make performance improvements.
+    * @param points
+    * @return
+    */
+  def jacobiBatch(points: Points): Seq[Linear] = points map jacobi _
 }
