@@ -11,16 +11,16 @@ import com.github.skac112.vgutils.transform.linear._
 import scala.math._
 
 class Example2 {
-//  val lin = Rotation(1.4 * Pi) * UniScale(.8)
-  val lin = Rotation(1.4*Pi)
-//  val motion_eq = LocalLinear(lin, Point(.5, .5), 1.0) - VectorMap.identity
-  val vect_map = LocalLinear(lin, Point(.5, .5), 3.0)
+  val lin = Rotation(2*Pi) * UniScale(.9)
+//  val lin = Rotation(1.4*Pi)
+  val motion_eq = LocalLinear(lin, Point(.5, .5), 2.0) - VectorMap.identity
+//  val vect_map = LocalLinear(lin, Point(.5, .5), 3.0)
 //  val vect_map = VectorMap.from(lin)
-//  val dyn_sys = MotionEqDynamicalSystem(motion_eq, .1)
-//  val fun = DynSysDisplacer(dyn_sys, 0.1)
-  val fun = QuickDisplacer(vect_map - VectorMap.identity)
-  val src_img = Lines(0, 0, .05, .05, .01, Color.black, Color.white)
+  val dyn_sys = MotionEqDynamicalSystem(motion_eq, .02)
+  val fun = DynSysDisplacer(dyn_sys, 4.0)
+//  val fun = QuickDisplacer(vect_map - VectorMap.identity)
+  val src_img = Lines(0, 0, .05, .05, .005, Color.black, Color.white)
   val dst_img = fun(src_img)
-  val n = 150
+  val n = 300
   drawToFile(dst_img, s"example4.png", 0.0, 1.0, 0.0, 1.0, n, n)
 }

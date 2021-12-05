@@ -7,4 +7,5 @@ libraryDependencies += "skac112" %% "vgutils" % "0.1.3-SNAPSHOT"
 libraryDependencies += "skac112" %% "funnodes" % "0.0.3-SNAPSHOT"
 //libraryDependencies += "skac112" % "pixlouds" % "0.1.0-SNAPSHOT"
 libraryDependencies += "org.clojure" % "clojure" % "1.10.1"
+libraryDependencies += "org.scalanlp" %% "breeze" % "2.0.1-RC1"
 resolvers += Resolver.mavenLocal
