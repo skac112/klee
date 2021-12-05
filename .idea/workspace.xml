@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="244661e5-20ec-4d2c-9eaa-528c8d14e2f2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/ComplexMatrix.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/ComplexVector.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/package.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_7_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_7_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/klee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/klee.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example4.png" beforeDir="false" afterPath="$PROJECT_DIR$/example4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/examples/Example2.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/examples/Example2.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/dynsys/vectormaps/VectorMap.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/dynsys/vectormaps/VectorMap.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/package.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/package.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +64,11 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="1R3f7UlRnM7Nzr9QcmQkk0GPloD" />
   <component name="ProjectViewState">
@@ -98,6 +101,17 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Babashka" factoryName="BabashkaLocalRepl" activateToolWindowBeforeRun="false">
+      <setting name="displayName" value="" />
+      <setting name="bbPath" value="" />
+      <setting name="parameters" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <setting name="workingDir" value="" />
+      <setting name="focusEditor" value="false" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

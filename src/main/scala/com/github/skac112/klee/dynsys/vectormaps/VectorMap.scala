@@ -3,7 +3,7 @@ package com.github.skac112.klee.dynsys.vectormaps
 import com.github.skac112.klee.area.pt.PtArea
 import com.github.skac112.klee.{Colors, Points, PtAreaBatchable}
 import com.github.skac112.vgutils.Point
-import com.github.skac112.vgutils.transform.Linear
+import com.github.skac112.vgutils.transform.linear._
 
 object VectorMap {
   def from(fun: Point => Point) = new VectorMap {
