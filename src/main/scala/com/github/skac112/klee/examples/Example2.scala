@@ -1,10 +1,10 @@
 package com.github.skac112.klee.examples
 
 import com.github.skac112.klee.drawToFile
-import com.github.skac112.klee.dynsys.MotionEqDynamicalSystem
-import com.github.skac112.klee.dynsys.vectormaps.{LocalLinear, VectorMap}
+import com.github.skac112.klee.flows.MotionEqFlow
+import com.github.skac112.klee.flows.vectormaps.{LocalLinear, VectorMap}
 import com.github.skac112.klee.images.{Fill, Lines}
-import com.github.skac112.klee.transforms.displacers.{DynSysDisplacer, QuickDisplacer}
+import com.github.skac112.klee.transforms.displacers.{FlowDisplacer, QuickDisplacer}
 import com.github.skac112.vgutils._
 import com.github.skac112.vgutils.transform.linear._
 
@@ -16,8 +16,8 @@ class Example2 {
   val motion_eq = LocalLinear(lin, Point(.5, .5), 2.0) - VectorMap.identity
 //  val vect_map = LocalLinear(lin, Point(.5, .5), 3.0)
 //  val vect_map = VectorMap.from(lin)
-  val dyn_sys = MotionEqDynamicalSystem(motion_eq, .02)
-  val fun = DynSysDisplacer(dyn_sys, 4.0)
+  val dyn_sys = MotionEqFlow(motion_eq, .02)
+  val fun = FlowDisplacer(dyn_sys, 4.0)
 //  val fun = QuickDisplacer(vect_map - VectorMap.identity)
   val src_img = Lines(0, 0, .05, .05, .005, Color.black, Color.white)
   val dst_img = fun(src_img)

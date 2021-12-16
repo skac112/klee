@@ -1,6 +1,7 @@
 package com.github.skac112.klee.examples
 
-import com.github.skac112.klee.dynsys.{PolyMap, taylorExp}
+import com.github.skac112.klee.flows.taylorExp
+import com.github.skac112.klee.flows.vectormaps.PolyMap
 import com.github.skac112.vgutils.Point
 
 class PolyMapExample {

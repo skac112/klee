@@ -1,4 +1,4 @@
-package com.github.skac112.klee.dynsys.vectormaps
+package com.github.skac112.klee.flows.vectormaps
 
 import com.github.skac112.klee.area.pt.PtArea
 import com.github.skac112.klee.{Colors, Points, PtAreaBatchable}

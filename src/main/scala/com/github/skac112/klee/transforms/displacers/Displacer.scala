@@ -3,7 +3,7 @@ package com.github.skac112.klee.transforms.displacers
 import com.github.skac112.klee._
 import com.github.skac112.klee.area.img.{ImgArea, WholeArea}
 import com.github.skac112.klee.area.pt.QuickPtArea
-import com.github.skac112.klee.dynsys.vectormaps.VectorMap
+import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.vgutils.{Color, Point}
 
 object Displacer {

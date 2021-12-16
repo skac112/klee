@@ -12,5 +12,4 @@ trait Img extends PtAreaBatchable[Color] {
     * @param points
     * @return
     */
-//  def applyBatch(points: Points): Colors = points map apply _
 }

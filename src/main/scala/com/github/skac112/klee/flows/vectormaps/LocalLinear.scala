@@ -1,4 +1,4 @@
-package com.github.skac112.klee.dynsys.vectormaps
+package com.github.skac112.klee.flows.vectormaps
 
 import com.github.skac112.vgutils.Point
 import com.github.skac112.vgutils.transform.linear.GenericLinear

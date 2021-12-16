@@ -13,7 +13,7 @@ package object linalg2d {
     ComplexMatrix(linear.a, linear.b, linear.c, linear.d)
 
   /**
-    * Synthesizes 2d-matrix of a spiral node linear dynamical system. Eigenvalues  are complex conjugate and have form:
+    * Synthesizes 2-d matrix of a spiral node linear dynamical system. Eigenvalues  are complex conjugate and have form:
     * alfa + i*beta
     * where i is imaginary unit
     * Tau is an angle of large axis of "rotation ellipse". "Rotation ellipse" is an ellipse, a phase portrait of any
@@ -34,7 +34,7 @@ package object linalg2d {
     val rot1_mx = Rotation(tau)
     val a_r = if (axisRatio >= 1.0) axisRatio else 1.0 / axisRatio
     // matrix of non-uniform scaling realizing axisRatio
-    val axis_scale_mx = Scale(sqrt(a_r), 1.0/sqrt(a_r))
+    val axis_scale_mx = Scale(a_r, 1.0/a_r)
     // matrix of rotation by -tau
     val rot2_mx = Rotation(tau.complement)
     // matrix of uniform scaling realizing alfa

@@ -1,11 +1,12 @@
 package com.github.skac112.klee
 
+import com.github.skac112.klee.flows.vectormaps.{PolyMap, VectorMap}
 import com.github.skac112.vgutils._
 
 import scala.annotation.tailrec
 import scala.math._
 
-package object dynsys {
+package object flows {
   val f1_6 = 1.0 / 6.0
 
   /**
@@ -39,7 +40,7 @@ package object dynsys {
   }
 
   /**
-    * Calculates taylor expansion for given function around base point upo to a given order using
+    * Calculates taylor expansion for given function around base point up to a given order using
     * step parameter h.
     * @param fun
     * @param base
@@ -81,4 +82,6 @@ package object dynsys {
         col_w_idx map { case (deriv, row_idx) => deriv / factorial(row_idx) / factorial(col_idx)}}
     }
   }
+
+  implicit def pointFunToVectorMap(fun: ((Point) => Point)): VectorMap = (p: Point) => fun(p)
 }

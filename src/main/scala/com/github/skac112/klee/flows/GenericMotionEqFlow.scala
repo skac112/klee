@@ -1,14 +1,14 @@
-package com.github.skac112.klee.dynsys
+package com.github.skac112.klee.flows
 
-import com.github.skac112.klee.dynsys.vectormaps.VectorMap
+import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.vgutils.Point
 
 /**
-  * Dynamical system determined by it's motion equation, i.e. velocity vector field.
+  * FLow (continouous dynamical system) determined by it's motion equation, i.e. velocity vector field.
   * @param motionEq
   * @param h step parameter
   */
-abstract class GenericMotionEqDynamicalSystem extends DynamicalSystem {
+abstract class GenericMotionEqFlow extends Flow {
   /**
     * Gives velocity i.e. time derivative of a "moving" point for given point.
     * @param p
@@ -35,7 +35,6 @@ abstract class GenericMotionEqDynamicalSystem extends DynamicalSystem {
     // for negative time actual h must be also negative
     val act_h = h * math.signum(time)
     val steps = math.round(time / act_h).toInt
-    val p = Point(1.0, 1.0)
     val atomic_time_map: VectorMap = VectorMap.identity.rungeKutta4(motionEq, act_h)
     (0 until steps).foldLeft(VectorMap.identity) { case (time_map: VectorMap, i) =>
       time_map.andThen(atomic_time_map) }

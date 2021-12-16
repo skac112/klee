@@ -1,12 +1,9 @@
-package com.github.skac112.klee.dynsys
+package com.github.skac112.klee.flows.vectormaps
 
-import com.github.skac112.klee.dynsys.vectormaps.VectorMap
 import com.github.skac112.vgutils.Point
 
-import scala.collection.immutable
-
 /**
-  * PointMap in the form of a polynomial of two variables (x and y coordinates of a point).
+  * VectorMap in the form of a polynomial of two variables (x and y coordinates of a point).
   **/
 abstract class PolyMap extends VectorMap {
   /**
