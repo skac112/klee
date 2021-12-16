@@ -12,14 +12,14 @@ import com.github.skac112.vgutils._
   * @param width width of lines
   * @param color color of lines
   */
-case class Lines(
+case class Lines[T](
                   baseX: Double = 0,
                   baseY: Double = 0,
                   dx: Double,
                   dy: Double,
                   width: Double,
-                  lineColor: Color,
-                  backgroundColor: Color) extends Img {
+                  lineColor: T,
+                  backgroundColor: T) extends Img[T] {
   override def apply(p: Point) = {
     val half_width = .5 * width
     // number of line column where the point lies

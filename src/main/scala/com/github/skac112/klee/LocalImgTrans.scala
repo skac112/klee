@@ -7,18 +7,18 @@ import com.github.skac112.vgutils.{Color, Point}
 /**
   * ImgTrans which changes only a part of an image leaving the rest unmodified.
   */
-trait LocalImgTrans extends ImgTrans {
+trait LocalImgTrans[T] extends ImgTrans[T] {
   def area: ImgArea
 
-  def apply(img: Img) = new Img {
+  def apply(img: Img[T]) = new Img[T] {
     override def apply(p: Point) = if (area contains p) {
       applyInArea(img, p) }
     else {
       img(p)
     }
 
-    override def applyBatchArea(ptArea: PtArea): Seq[Color] = {
-      val (in, out, unknown, merge_fun) = ptArea.partByIntersect[Color](area)
+    override def applyBatchArea(ptArea: PtArea): Seq[T] = {
+      val (in, out, unknown, merge_fun) = ptArea.partByIntersect[T](area)
       // points transformed by this trans - inside trans area
       val in_colors = applyBatchInArea(img, in.points)
       // point taken from input image - outside trans area
@@ -35,6 +35,6 @@ trait LocalImgTrans extends ImgTrans {
     }
   }
 
-  def applyInArea(img: Img, p: Point): Color
-  def applyBatchInArea(img: Img, points: Points): Colors = points map { applyInArea(img, _) }
+  def applyInArea(img: Img[T], p: Point): T
+  def applyBatchInArea(img: Img[T], points: Points): Seq[T] = points map { applyInArea(img, _) }
 }

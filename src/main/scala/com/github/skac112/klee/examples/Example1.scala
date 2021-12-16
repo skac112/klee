@@ -1,10 +1,11 @@
 package com.github.skac112.klee.examples
 
-import com.github.skac112.klee.{Composition, Img, drawToFile}
+import com.github.skac112.klee.{Composition, Img, drawToFile, trivialColorFun}
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.areas.Ring
 import com.github.skac112.klee.transforms.displacers.BlackHole
 import com.github.skac112.vgutils.{Angle, Color, Point}
+
 import scala.math._
 
 class Example1 {
@@ -20,16 +21,16 @@ class Example1 {
       color1.l * proportion + color2.l * (1 - proportion))
 
     val c = Point(500, 500)
-    val rings = Composition((0 until 9) map {i: Int => Ring(c, 40 + i * 50, 60 + i * 50, Color.red(.7))})
+    val rings = Composition[Color]((0 until 9) map {i: Int => Ring(c, 40 + i * 50, 60 + i * 50, Color.red(.7))})
     val count = 5
 
 //    val ccf = (srcPt: Point, disp: Point, img: Img) => blendColors2(img(srcPt), img(srcPt + disp), .7)
     val r = 300.0
     val bhs = (0 until count).map {i =>
       val angle = Angle(2 * Pi * i / count)
-      BlackHole(c + new Point(r, angle), 10 * Pi, 0.05, 1.0, 0.02)
+      BlackHole[Color](c + new Point(r, angle), 10 * Pi, 0.05, 1.0, 0.02)
     }
 
     def fun = Composition(List(rings, Composition(bhs)))
-    drawToFile(fun(Fill(Color.yellow(.7))), "sample39.png", .0, 999.0, .0, 999.0, 1000, 1000)
+    drawToFile[Color](fun(Fill(Color.yellow(.7))), trivialColorFun, "sample39.png", .0, 999.0, .0, 999.0, 1000, 1000)
 }

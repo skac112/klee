@@ -4,11 +4,11 @@ import com.github.skac112.klee.transforms.displacers.Displacer.DispColorChangeFu
 import com.github.skac112.klee.{Img, ImgTrans}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 
-case class BlackHole(c: Point,
+case class BlackHole[T](c: Point,
                      rotation: Double,
                      rotationDecay: Double,
                      scaling: Double,
-                     scalingDecay: Double) extends Displacer {
+                     scalingDecay: Double) extends Displacer[T] {
   override def displacement =
     // displacement is a composition of scale moving and rotation - all around point c
     rotDisplacement

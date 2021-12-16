@@ -7,7 +7,7 @@ import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.vgutils.{Color, Point}
 
 object Displacer {
-  type DispColorChangeFun = (Point, Point, Img) => Color
+  type DispColorChangeFun[T] = (Point, Point, Img[T]) => T
 }
 
 /**
@@ -21,7 +21,7 @@ object Displacer {
   * transl, the displacement vector for point p2 (not p1) is equal to -transl. So, the displacement is a "lookup" vector
   * which is used to take a value from (combined with location of base point).
   */
-trait Displacer extends LocalImgTrans {
+trait Displacer[T] extends LocalImgTrans[T] {
   def displacement: VectorMap
 
   /**
@@ -30,11 +30,11 @@ trait Displacer extends LocalImgTrans {
     */
   def area: ImgArea = WholeArea()
 
-  def applyInArea(img: Img, p: Point): Color = {
+  def applyInArea(img: Img[T], p: Point): T = {
     img(p + displacement(p))
   }
 
-  override def applyBatchInArea(img: Img, points: Points): Colors = {
+  override def applyBatchInArea(img: Img[T], points: Points): Seq[T] = {
     val disp_points = displacement.applyBatchArea(QuickPtArea(points, area))
     img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2})
   }

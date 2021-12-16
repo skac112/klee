@@ -16,13 +16,15 @@ package object klee {
   val defWidth = 800
 //  type Img = Point => Color
   type ColTrans = Color => Color
-  type ImgTrans = Img => Img
-  type DrawingMaker[A] = cats.data.Writer[ImgTrans, A]
-  val identity = (img: Img) => img
+  type ImgTrans[T] = Img[T] => Img[T]
+//  type DrawingMaker[A] = cats.data.Writer[ImgTrans, A]
+  def identity[T] = (img: Img[T]) => img
   type Points = Seq[Point]
   type Colors = Seq[Color]
+  type ColorFun[T] = T => Color
+  def trivialColorFun: ColorFun[Color] = (c: Color) => c
 
-  def drawToFile(imgFun: Img, fileName: String, minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): Unit = {
+  def drawToFile[T](imgFun: Img[T], colorFun: ColorFun[T], fileName: String, minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): Unit = {
     val (dx, dy) = stepsForRender(minX, maxX, minY, maxY, width, height)
     val act_width = if (width > 0) width else (floor((maxX - minX) / dx)).round.toInt + 1
     val act_height = if (height > 0) height else floor((maxY - minY) / dx).round.toInt + 1
@@ -32,7 +34,7 @@ package object klee {
       y <- 0 until act_height
     } yield Point(x, y)
 
-    val colors = imgFun.applyBatch(points map {p: Point => Point(minX + dx*p.x, minY + dy*p.y)})
+    val colors = imgFun.applyBatch(points map {p: Point => Point(minX + dx*p.x, minY + dy*p.y)}) map colorFun
 
     for (x <- 0 until act_width) {
       for (y <- 0 until act_height) {
