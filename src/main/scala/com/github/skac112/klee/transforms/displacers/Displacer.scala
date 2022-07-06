@@ -5,9 +5,11 @@ import com.github.skac112.klee.area.img.{ImgArea, WholeArea}
 import com.github.skac112.klee.area.pt.QuickPtArea
 import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.vgutils.{Color, Point}
+import cats.Monad
+import cats.implicits._
 
 object Displacer {
-  type DispColorChangeFun[T] = (Point, Point, Img[T]) => T
+  type DispColorChangeFun[T, M[_]] = (Point, Point, Img[T, M]) => T
 }
 
 /**
@@ -21,8 +23,10 @@ object Displacer {
   * transl, the displacement vector for point p2 (not p1) is equal to -transl. So, the displacement is a "lookup" vector
   * which is used to take a value from (combined with location of base point).
   */
-trait Displacer[T] extends LocalImgTrans[T] {
-  def displacement: VectorMap
+trait Displacer[I, M[_]] extends LocalImgTrans[I, I, M] {
+  def displacement: VectorMap[M]
+  override implicit val ev: I <:< I = implicitly(ev: I <:< I)
+  override implicit val evSeq: Seq[I] <:< Seq[I] = implicitly(evSeq: Seq[I] <:< Seq[I])
 
   /**
     * Default area is the whole area.
@@ -30,12 +34,16 @@ trait Displacer[T] extends LocalImgTrans[T] {
     */
   def area: ImgArea = WholeArea()
 
-  def applyInArea(img: Img[T], p: Point): T = {
-    img(p + displacement(p))
-  }
+  override def applyInArea(img: Img[I, M], p: Point): M[I] = for {
+    disp <- displacement(p)
+    out <- img(p + disp)
+  } yield out
 
-  override def applyBatchInArea(img: Img[T], points: Points): Seq[T] = {
-    val disp_points = displacement.applyBatchArea(QuickPtArea(points, area))
-    img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2})
-  }
+  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = m.flatMap(
+    displacement.applyBatchArea(QuickPtArea(points, area)))(disp_points => img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2}))
+
+//  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = for {
+//    disp_points: Seq[Point] <- displacement.applyBatchArea(QuickPtArea(points, area))
+//    seq <- img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2})
+//  } yield seq
 }

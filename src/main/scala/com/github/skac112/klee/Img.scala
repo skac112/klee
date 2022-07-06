@@ -1,15 +1,21 @@
 package com.github.skac112.klee
-import com.github.skac112.vgutils._
 
-object Img {
-  implicit def imgToImgTrans[T](img: Img[T]): ImgTrans[T] = (in: Img[T]) => img
-}
+import com.github.skac112.klee.area.img.WholeArea
+import com.github.skac112.klee.area.pt
+import com.github.skac112.klee.area.pt.{PtArea, QuickPtArea}
+import com.github.skac112.vgutils.Point
+import cats.{Applicative, Monad}
+import cats.implicits._
 
-trait Img[T] extends PtAreaBatchable[T] {
+trait Img[O, M[_]] extends ((Point) => M[O]) {
+  implicit val m: Monad[M]
+
   /**
-    * Base implementation just evaluates each point independently, but custom implementations
-    * can make performance improvements.
+    * Base implementation just evaluates each point independently.
     * @param points
     * @return
     */
+  def applyBatchArea(ptArea: PtArea): M[Seq[O]] = (ptArea.points map apply).toList.sequence.widen[Seq[O]]
+
+  def applyBatch(pts: Points): M[Seq[O]] = applyBatchArea(pt.QuickPtArea(pts, WholeArea()))
 }

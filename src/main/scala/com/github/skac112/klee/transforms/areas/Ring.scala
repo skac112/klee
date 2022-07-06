@@ -1,19 +1,12 @@
 package com.github.skac112.klee.transforms.areas
 
-import com.github.skac112.klee.{Img, ImgTrans}
+import cats.Monad
+import com.github.skac112.klee.area.img.ImgArea
+import com.github.skac112.klee.{Img, ImgTrans, LocalImgTrans}
 import com.github.skac112.vgutils.{Color, Point}
 
-case class Ring[T](c: Point, rl: Double, rh: Double, color: T) extends ImgTrans[T] {
-  lazy val rl2 = rl*rl
-  lazy val rh2 = rh*rh
+case class Ring[I <: O, O, M[_]: Monad](c: Point, rLow: Double, rHigh: Double, color: I)(implicit evm: Monad[M]) extends LocalImgTrans[I, O, M] {
+  override def area: ImgArea = com.github.skac112.klee.area.img.Ring(c, rLow, rHigh)
+  override def applyInArea(img: Img[I, M], p: Point): M[O] = m.pure(color)
 
-  def apply(img: Img[T]) = (p: Point) => {
-    val mod2 = (p - c).modulus2
-    if (mod2 >= rl2 && mod2 <= rh2) {
-      color
-    }
-    else {
-      img(p)
-    }
-  }
 }

@@ -1,24 +1,28 @@
 package com.github.skac112.klee
 
+import cats.Monad
+import cats.data.Kleisli
 import com.github.skac112.vgutils.Point
+import com.github.skac112.klee.ImgTrans._
+import cats.implicits._
+import cats.Monad._
 
 object Composition {
-  def compose[T](elementFun: Int => ImgTrans[T], times: Int) = this((0 until times) map {i => elementFun(i)})
+  def compose[I, M[_]: Monad](elementFun: Int => ImgTrans.Simple[I, M], times: Int) =
+    this((0 until times) map {i => elementFun(i)})
 }
 
 /**
-  * Composition of ImgTrans. First ImgTrans in elements sequence is the innermost (applied first).
+  * Composition of ImgTrans-es. First ImgTrans in elements sequence is the innermost (applied first).
   * @param elements
   */
-case class Composition[T](elements: Seq[ImgTrans[T]]) extends ImgTrans[T] {
-  lazy val fun: ImgTrans[T] = elements.foldLeft(identity[T]) {(current, element) => current.andThen(element)}
+case class Composition[I, M[_]: Monad](elements: Seq[ImgTrans.Simple[I, M]]) extends ImgTrans.Simple[I, M] {
 
-  def apply(img: Img[T]) = fun(img)
+  lazy val fun: ImgTrans[I, I, M] = elements.reduce { (acc, element) => new ImgTrans[I, I, M] {
 
-//    new Img {
-//    override def apply(p: Point) = fun(img)(p)
-//    override def applyBatch(p: Points) =
-//  }
+      override def apply(img: Img[I, M]) = acc.andThen(element).apply(img)}
+  }
 
-  def this(element: ImgTrans[T], times: Int) = this(Seq.fill[ImgTrans[T]](times)(element))
+  def apply(img: Img[I, M]) = fun(img)
+  def this(element: ImgTrans.Simple[I, M], times: Int) = this(Seq.fill[ImgTrans.Simple[I, M]](times)(element))
 }

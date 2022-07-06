@@ -1,22 +1,34 @@
 package com.github.skac112.klee.flows.vectormaps
 
-import com.github.skac112.klee.area.pt.PtArea
-import com.github.skac112.klee.{Colors, Points, PtAreaBatchable}
+import cats.Monad
+import com.github.skac112.klee.{Colors, Img, Points}
 import com.github.skac112.vgutils.Point
 import com.github.skac112.vgutils.transform.linear._
+import cats.implicits._
 
 object VectorMap {
-  def from(fun: Point => Point) = new VectorMap {
-    override def apply(p: Point) = fun(p)
+  def from[M[_]: Monad](fun: Point => Point) = new VectorMap[M] {
+    override val m = implicitly[Monad[M]]
+    override def apply(p: Point) = m.pure(fun(p))
   }
 
-  def identity = new VectorMap {
-    override def apply(p: Point) = p
+  def identity[M[_]: Monad] = new VectorMap[M] {
+    override val m = implicitly[Monad[M]]
+    override def apply(p: Point) = m.pure(p)
+  }
+
+  implicit def toVectorMap[M[_]: Monad](fun: (Point) => M[Point]) = new VectorMap[M] {
+    override val m = implicitly[Monad[M]]
+    def apply(p: Point) = fun(p)
   }
 }
 
-trait VectorMap extends PtAreaBatchable[Point] {
+trait VectorMap[M[_]] extends Img[Point, M] {
   lazy val f1_6 = 1.0 / 6
+//  implicit val m: Monad[M]
+
+  def outerApply = apply _
+  lazy val outer = this
 
   /**
     * Transforms this vector map to a new vector map making one step of integration using given
@@ -24,44 +36,80 @@ trait VectorMap extends PtAreaBatchable[Point] {
     *
     * @param h
     */
-  def rungeKutta4(motionEq: VectorMap, h: Double): VectorMap = {
+  def rungeKutta4(motionEq: VectorMap[M], h: Double): VectorMap[M] = {
+    val dummy = VectorMap.identity[M] + VectorMap.identity[M]
     // caution: all operations in the body of method are performed on vectormaps (functions) rather than on a
     // points or numbers (implicitly k1 = motionEq).
-    val k2 = motionEq compose (identity + (motionEq * (.5 * h)))
-    val k3 = motionEq compose (identity + (k2 * (.5 * h)))
-    val k4 = motionEq compose (identity + (k3 * h))
-    this + (motionEq + (k2 * 2) + (k3 * 2) + k4) * h * f1_6
+    val k2: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (motionEq * (.5 * h)))
+    val k3: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (k2 * (.5 * h)))
+    val k4: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (k3 * h))
+    this + (motionEq + (k2 * 2.0) + (k3 * 2.0) + k4) * h * f1_6
   }
 
-  def identity: VectorMap = (p: Point) => p
+  def *(factor: Double): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
 
-  def *(factor: Double): VectorMap = (p: Point) => apply(p) * factor
+    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ * factor)
+  }
 
-  def /(factor: Double): VectorMap = (p: Point) => apply(p) / factor
+  def /(factor: Double): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
 
-  def +(otherPt: Point): VectorMap = (p: Point) => apply(p) + otherPt
+    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ / factor)
+  }
 
-  def -(otherPt: Point): VectorMap = (p: Point) => apply(p) - otherPt
+  def +(otherPt: Point): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
 
-  def +(other: VectorMap): VectorMap = (p: Point) => this.apply(p) + other(p)
+    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ + otherPt)
+  }
 
-  def -(other: VectorMap): VectorMap = (p: Point) => this.apply(p) - other(p)
+  def -(otherPt: Point): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
+
+    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ - otherPt)
+  }
+
+  def +(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
+
+    override def apply(p: Point) = m.flatMap(VectorMap.this(p))(p2 => m.map(otherMap(p))(p3 => p2 + p3))
+  }
+
+  def -(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
+
+    override def apply(p: Point) = m.flatMap(VectorMap.this(p))(p2 => m.map(otherMap(p))(p3 => p2 - p3))
+  }
+
+//  def -(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = VectorMap.this.m
+//    override def apply(p: Point): M[Point] = for {
+//      p1 <- outerApply(p)
+//      p2 <- otherMap(p)
+//    } yield p1 - p2
+//  }
 
   def jacobi(p: Point): Linear = ???
 
   /**
-    * This implementation is analogous to and hides base class (Function2) implementation.
+    * This implementation is analogous to and hides base class (Function2) implementation. The obvious difference is
+    * that functions' output is wrapped in a Monad M, so unwrapping is needed when composing. Other is applied first
+    * (is inner).
     * @param other
     * @return
     */
-  def compose(other: VectorMap): VectorMap = (p: Point) => this.apply(other(p))
+  def compose(other: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
+    override val m = VectorMap.this.m
+    override def apply(p: Point) = m.flatMap(other(p))(VectorMap.this.apply)
+  }
 
-  /**
+  /*
     * This implementation is analogous to and hides base class (Function2) implementation.
     * @param other
     * @return
     */
-  def andThen(other: VectorMap): VectorMap = (p: Point) => other(this.apply(p))
+//  def andThen(other: VectorMap[M]): VectorMap[M] = ???
 
   /**
     * Base implementation just evaluates each point independently, but custom implementations

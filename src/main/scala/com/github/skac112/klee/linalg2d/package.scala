@@ -2,7 +2,7 @@ package com.github.skac112.klee
 
 import breeze.math.Complex
 import com.github.skac112.vgutils.Angle
-import com.github.skac112.vgutils.transform.linear.{GenericLinear, Linear, Rotation, Scale, UniScale}
+import com.github.skac112.vgutils.transform.linear._
 
 import scala.math.sqrt
 

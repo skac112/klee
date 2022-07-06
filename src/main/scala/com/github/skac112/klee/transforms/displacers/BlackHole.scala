@@ -1,28 +1,26 @@
 package com.github.skac112.klee.transforms.displacers
 
+import cats.Monad
+import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.klee.transforms.displacers.Displacer.DispColorChangeFun
 import com.github.skac112.klee.{Img, ImgTrans}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 
-case class BlackHole[T](c: Point,
+case class BlackHole[I, M[_]: Monad](c: Point,
                      rotation: Double,
                      rotationDecay: Double,
                      scaling: Double,
-                     scalingDecay: Double) extends Displacer[T] {
-  override def displacement =
-    // displacement is a composition of scale moving and rotation - all around point c
-    rotDisplacement
-//    rotDisplacement(p) + scalingDisplacement(p)
+                     scalingDecay: Double) extends Displacer[I, M] {
+  override def displacement = new VectorMap[M] {
+    override val m = implicitly(Monad[M])
+
+    override def apply(p: Point) = m.pure(rotDisplacement(p))
+  }
 
   /**
     * Rotation displacement vector.
     */
   private def rotDisplacement(p: Point) = cVec(p).rot(-pRot(p)) - cVec(p)
-
-//  override def colorChangeFun(srcPt: Point, displacement: Point, img: Img): Color = colorChangeFunO match {
-//    case Some(fun) => fun(srcPt, displacement, img)
-//    case None => img(srcPt + displacement)
-//  }
 
   def cDist(p: Point) = cVec(p).modulus
 
@@ -41,4 +39,6 @@ case class BlackHole[T](c: Point,
     val disp_len = dist / (1 - (1 - scaling)*math.exp(-dist*scalingDecay)) - dist
     Point(disp_len, cVec(p).angle - pRot(p))
   }
+
+
 }

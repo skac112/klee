@@ -8,6 +8,7 @@ import javax.imageio._
 
 import cats.{Monad, Monoid}
 import cats.data.Writer
+import cats.implicits._
 
 import scala.annotation.tailrec
 import scala.collection.Seq
@@ -16,52 +17,65 @@ package object klee {
   val defWidth = 800
 //  type Img = Point => Color
   type ColTrans = Color => Color
-  type ImgTrans[T] = Img[T] => Img[T]
 //  type DrawingMaker[A] = cats.data.Writer[ImgTrans, A]
-  def identity[T] = (img: Img[T]) => img
+//  def identity[T] = (img: Img[T]) => img
   type Points = Seq[Point]
   type Colors = Seq[Color]
   type ColorFun[T] = T => Color
   def trivialColorFun: ColorFun[Color] = (c: Color) => c
 
-  def drawToFile[T](imgFun: Img[T], colorFun: ColorFun[T], fileName: String, minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): Unit = {
+  def drawToFile[I, M[_]: Monad](
+                     imgFun: Img[I, M],
+                     colorFun: ColorFun[I],
+                     fileName: String,
+                     minX: Double,
+                     maxX: Double,
+                     minY: Double,
+                     maxY: Double,
+                     width: Int = 0,
+                     height: Int = 0): M[Unit] = {
     val (dx, dy) = stepsForRender(minX, maxX, minY, maxY, width, height)
-    val act_width = if (width > 0) width else (floor((maxX - minX) / dx)).round.toInt + 1
+    val act_width = if (width > 0) width else floor((maxX - minX) / dx).round.toInt + 1
     val act_height = if (height > 0) height else floor((maxY - minY) / dx).round.toInt + 1
     val img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
+
     val points = for {
-      x <- 0 until act_width
-      y <- 0 until act_height
-    } yield Point(x, y)
+      x <- 0 to act_width
+      y <- 0 to act_height
+    } yield Point(minX + dx * x, minY + dy * y)
 
-    val colors = imgFun.applyBatch(points map {p: Point => Point(minX + dx*p.x, minY + dy*p.y)}) map colorFun
-
-    for (x <- 0 until act_width) {
-      for (y <- 0 until act_height) {
-        val shift = x * act_height
-//        val color = imgFun(Point(minX + (x * dx), minY + (y * dy)))
-        img.setRGB(x, y, colors(shift + y).toInt)
+    for {
+      colors <- imgFun.applyBatch(points) map (_ map colorFun)
+      _ = for (x <- 0 until act_width) {
+        for (y <- 0 until act_height) {
+          val shift1 = x * (act_height + 1)
+          val shift2 = (x + 1) * (act_height + 1)
+          // each pixel value is an average of colors of four nearest points from 'colors' sequence
+          img.setRGB(x, y, math.round(.25 * (colors(shift1 + y).toInt + colors(shift1 + y + 1).toInt +
+            colors(shift2 + y).toInt + colors(shift2 + y + 1).toInt)).toInt)
+        }
       }
-    }
-    ImageIO.write(img, "PNG", new java.io.File(fileName))
+      _ = ImageIO.write(img, "PNG", new java.io.File(fileName))
+      // yield-ed value is unused, .toList is used heree just to make compiler shut up :)
+    } yield colors.toList
   }
 
   private def stepsForRender(minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): (Double, Double) = {
     (width, height) match {
       case (0, 0) => {
-        val d = (maxX - minX) / (defWidth - 1)
+        val d = (maxX - minX) / defWidth
         (d, d)
       }
       case (0, height) => {
-        val d = (maxY - minY) / (height - 1)
+        val d = (maxY - minY) / height
         (d, d)
       }
       case (width, 0) => {
-        val d = (maxX - minX) / (width - 1)
+        val d = (maxX - minX) / width
         (d, d)
       }
       case (width, height) => {
-        ((maxX - minX) / (width - 1), (maxY - minY) / (height - 1))
+        ((maxX - minX) / width, (maxY - minY) / height)
       }
     }
   }

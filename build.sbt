@@ -1,11 +1,11 @@
 name := "klee"
-version := "0.1.1-SNAPSHOT"
+version := "0.1.0-SNAPSHOT"
 organization := "skac112"
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.8"
 exportJars := true
-libraryDependencies += "skac112" %% "vgutils" % "0.1.5-SNAPSHOT"
+libraryDependencies += "skac112" %% "vgutils" % "0.1.6-SNAPSHOT"
 libraryDependencies += "skac112" %% "funnodes" % "0.0.3-SNAPSHOT"
 //libraryDependencies += "skac112" % "pixlouds" % "0.1.0-SNAPSHOT"
-libraryDependencies += "org.clojure" % "clojure" % "1.10.1"
+//libraryDependencies += "org.clojure" % "clojure" % "1.10.1"
 libraryDependencies += "org.scalanlp" %% "breeze" % "2.0.1-RC1"
 resolvers += Resolver.mavenLocal

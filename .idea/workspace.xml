@@ -5,15 +5,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="244661e5-20ec-4d2c-9eaa-528c8d14e2f2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Circle.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Ring.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/hydra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hydra.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_clojure_clojure_1_10_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_clojure_core_specs_alpha_0_2_44_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_clojure_spec_alpha_0_2_176_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_7_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_reflect_2_12_7_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalactic_scalactic_2_12_3_0_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalactic_scalactic_2_12_3_0_1_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_cats_core_2_12_1_2_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_cats_core_2_12_1_2_0_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_cats_macros_2_12_1_2_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_cats_macros_2_12_1_2_0_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_machinist_2_12_0_6_4_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_machinist_2_12_0_6_4_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/klee-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/klee-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/klee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/klee.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/build.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project/build.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample1.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample10.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample11.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample12.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample13.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample14.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample15.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample16.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample17.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample17.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample18.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample18.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample19.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample2.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample20.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample3.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample4.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample5.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample6.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample7.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample8.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample9.png" beforeDir="false" afterPath="$PROJECT_DIR$/sample9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Batchable.scala" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Composition.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Composition.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Img.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Img.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/LocalImgTrans.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/LocalImgTrans.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Node.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Node.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/PtAreaBatchable.scala" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/examples/Example1.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/examples/Example1.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/examples/Example2.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/examples/Example2.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/flows/Flow.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/flows/Flow.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/flows/vectormaps/VectorMap.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/flows/vectormaps/VectorMap.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Fill.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Fill.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Lines.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Lines.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/package.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/linalg2d/package.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/package.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/package.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Circle.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Circle.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Ring.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Ring.scala" afterDir="false" />
@@ -21,8 +66,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/FlowDisplacer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/FlowDisplacer.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/QuickDisplacer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/QuickDisplacer.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displizers/Displizer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displizers/Displizer.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displizers/QuickDisplazer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displizers/QuickDisplazer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/varia/composition of displizers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/varia/composition of displizers.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,12 +153,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Babashka" factoryName="BabashkaLocalRepl" activateToolWindowBeforeRun="false">
       <setting name="displayName" value="" />
       <setting name="bbPath" value="" />
@@ -150,6 +188,12 @@
       <setting name="fixLineNumbers" value="false" />
       <setting name="focusEditor" value="false" />
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
