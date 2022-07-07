@@ -1,11 +1,13 @@
 package com.github.skac112.klee.flows.vectormaps
 
+import cats.Monad
 import com.github.skac112.vgutils.Point
 
 /**
   * VectorMap in the form of a polynomial of two variables (x and y coordinates of a point).
   **/
-abstract class PolyMap extends VectorMap {
+abstract class PolyMap[M[_]: Monad] extends VectorMap[M] {
+//  override val m = implicitly[Monad[M]]
   /**
     * Coefficient for n-power of x or y has for each of output value (x or y) has index equal to n (1-st or second,
     * appropriatelly), i.e. outer indices span x powers increasingly, inner indices span y powers increasingly and each
@@ -42,7 +44,7 @@ abstract class PolyMap extends VectorMap {
     */
   override def apply(p: Point) = {
     val y_horners = initCoeffs map { (y_coeffs: Seq[Point]) => horner1dim(p.y, y_coeffs) }
-    horner1dim(p.x, y_horners)
+    m.pure(horner1dim(p.x, y_horners))
   }
 
   /**

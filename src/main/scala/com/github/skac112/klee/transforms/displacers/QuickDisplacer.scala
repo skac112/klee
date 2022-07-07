@@ -8,7 +8,7 @@ import com.github.skac112.vgutils.{Color, Point}
 
 case class QuickDisplacer[T, M[_]: Monad](override val displacement: VectorMap[M],
                           override val area: ImgArea = WholeArea()) extends Displacer[T, M] {
-  override val m = implicitly(Monad[M])
+//  override val m = implicitly(Monad[M])
 
 }
 

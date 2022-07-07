@@ -23,10 +23,10 @@ object Displacer {
   * transl, the displacement vector for point p2 (not p1) is equal to -transl. So, the displacement is a "lookup" vector
   * which is used to take a value from (combined with location of base point).
   */
-trait Displacer[I, M[_]] extends LocalImgTrans[I, I, M] {
+abstract class Displacer[I, M[_]: Monad] extends LocalImgTrans[I, I, M] {
   def displacement: VectorMap[M]
-  override implicit val ev: I <:< I = implicitly(ev: I <:< I)
-  override implicit val evSeq: Seq[I] <:< Seq[I] = implicitly(evSeq: Seq[I] <:< Seq[I])
+//  override implicit val ev: I <:< I = implicitly(ev: I <:< I)
+//  override implicit val evSeq: Seq[I] <:< Seq[I] = implicitly(evSeq: Seq[I] <:< Seq[I])
 
   /**
     * Default area is the whole area.
@@ -39,7 +39,7 @@ trait Displacer[I, M[_]] extends LocalImgTrans[I, I, M] {
     out <- img(p + disp)
   } yield out
 
-  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = m.flatMap(
+  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = implicitly[Monad[M]].flatMap(
     displacement.applyBatchArea(QuickPtArea(points, area)))(disp_points => img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2}))
 
 //  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = for {

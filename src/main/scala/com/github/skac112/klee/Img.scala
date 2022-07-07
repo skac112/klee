@@ -7,7 +7,7 @@ import com.github.skac112.vgutils.Point
 import cats.{Applicative, Monad}
 import cats.implicits._
 
-trait Img[O, M[_]] extends ((Point) => M[O]) {
+trait Img[I, M[_]] extends ((Point) => M[I]) {
   implicit val m: Monad[M]
 
   /**
@@ -15,7 +15,7 @@ trait Img[O, M[_]] extends ((Point) => M[O]) {
     * @param points
     * @return
     */
-  def applyBatchArea(ptArea: PtArea): M[Seq[O]] = (ptArea.points map apply).toList.sequence.widen[Seq[O]]
+  def applyBatchArea(ptArea: PtArea): M[Seq[I]] = (ptArea.points map apply).toList.sequence.widen[Seq[I]]
 
-  def applyBatch(pts: Points): M[Seq[O]] = applyBatchArea(pt.QuickPtArea(pts, WholeArea()))
+  def applyBatch(pts: Points): M[Seq[I]] = applyBatchArea(pt.QuickPtArea(pts, WholeArea()))
 }

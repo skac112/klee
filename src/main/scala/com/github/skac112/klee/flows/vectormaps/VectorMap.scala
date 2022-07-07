@@ -5,6 +5,7 @@ import com.github.skac112.klee.{Colors, Img, Points}
 import com.github.skac112.vgutils.Point
 import com.github.skac112.vgutils.transform.linear._
 import cats.implicits._
+import com.github.skac112.klee.flows._
 
 object VectorMap {
   def from[M[_]: Monad](fun: Point => Point) = new VectorMap[M] {
@@ -12,23 +13,16 @@ object VectorMap {
     override def apply(p: Point) = m.pure(fun(p))
   }
 
-  def identity[M[_]: Monad] = new VectorMap[M] {
+  def identity[M[_]: Monad]: VectorMap[M] = new VectorMap[M] {
     override val m = implicitly[Monad[M]]
-    override def apply(p: Point) = m.pure(p)
-  }
-
-  implicit def toVectorMap[M[_]: Monad](fun: (Point) => M[Point]) = new VectorMap[M] {
-    override val m = implicitly[Monad[M]]
-    def apply(p: Point) = fun(p)
+    override def apply(p: Point): M[Point] = m.pure(p)
   }
 }
 
-trait VectorMap[M[_]] extends Img[Point, M] {
+abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
+  self =>
+  override val m = implicitly[Monad[M]]
   lazy val f1_6 = 1.0 / 6
-//  implicit val m: Monad[M]
-
-  def outerApply = apply _
-  lazy val outer = this
 
   /**
     * Transforms this vector map to a new vector map making one step of integration using given
@@ -37,49 +31,55 @@ trait VectorMap[M[_]] extends Img[Point, M] {
     * @param h
     */
   def rungeKutta4(motionEq: VectorMap[M], h: Double): VectorMap[M] = {
-    val dummy = VectorMap.identity[M] + VectorMap.identity[M]
     // caution: all operations in the body of method are performed on vectormaps (functions) rather than on a
     // points or numbers (implicitly k1 = motionEq).
-    val k2: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (motionEq * (.5 * h)))
-    val k3: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (k2 * (.5 * h)))
+    val k2: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (motionEq * .5 * h))
+    val k3: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (k2 * .5 * h))
     val k4: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (k3 * h))
     this + (motionEq + (k2 * 2.0) + (k3 * 2.0) + k4) * h * f1_6
   }
 
   def *(factor: Double): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
+    override val m = self.m
 
-    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ * factor)
+    override def apply(p: Point): M[Point] = for {
+      p2 <- self(p)
+    } yield p2 * factor
   }
+
+//  def *(factor: Double): VectorMap[M] = new VectorMap[M] {
+//    override val m = self.m
+//
+//    override def apply(p: Point): M[Point] = m.map(self(p))(_ * factor)
+//  }
 
   def /(factor: Double): VectorMap[M] = new VectorMap[M] {
     override val m = VectorMap.this.m
 
-    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ / factor)
+    override def apply(p: Point): M[Point] = m.map(self(p))(_ / factor)
   }
 
   def +(otherPt: Point): VectorMap[M] = new VectorMap[M] {
     override val m = VectorMap.this.m
 
-    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ + otherPt)
+    override def apply(p: Point): M[Point] = m.map(self(p))(_ + otherPt)
   }
 
   def -(otherPt: Point): VectorMap[M] = new VectorMap[M] {
     override val m = VectorMap.this.m
-
-    override def apply(p: Point): M[Point] = m.map(VectorMap.this(p))(_ - otherPt)
+    override def apply(p: Point): M[Point] = m.map(self(p))(_ - otherPt)
   }
 
   def +(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
     override val m = VectorMap.this.m
 
-    override def apply(p: Point) = m.flatMap(VectorMap.this(p))(p2 => m.map(otherMap(p))(p3 => p2 + p3))
+    override def apply(p: Point) = m.flatMap(self(p))(p2 => m.map(otherMap(p))(p3 => p2 + p3))
   }
 
   def -(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
     override val m = VectorMap.this.m
 
-    override def apply(p: Point) = m.flatMap(VectorMap.this(p))(p2 => m.map(otherMap(p))(p3 => p2 - p3))
+    override def apply(p: Point) = m.flatMap(self(p))(p2 => m.map(otherMap(p))(p3 => p2 - p3))
   }
 
 //  def -(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
@@ -100,8 +100,8 @@ trait VectorMap[M[_]] extends Img[Point, M] {
     * @return
     */
   def compose(other: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
-    override def apply(p: Point) = m.flatMap(other(p))(VectorMap.this.apply)
+    override val m = self.m
+    override def apply(p: Point) = m.flatMap(other(p))(self.apply)
   }
 
   /*
@@ -109,7 +109,10 @@ trait VectorMap[M[_]] extends Img[Point, M] {
     * @param other
     * @return
     */
-//  def andThen(other: VectorMap[M]): VectorMap[M] = ???
+  def andThen(other: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
+    override val m = self.m
+    override def apply(p: Point) = m.flatMap(self(p))(other.apply)
+  }
 
   /**
     * Base implementation just evaluates each point independently, but custom implementations

@@ -1,11 +1,12 @@
 package com.github.skac112.klee.examples
 
+import cats.Id
 import com.github.skac112.klee.flows.taylorExp
 import com.github.skac112.klee.flows.vectormaps.PolyMap
 import com.github.skac112.vgutils.Point
 
 class PolyMapExample {
-  val p = new PolyMap {
+  val p = new PolyMap[Id] {
     override val initCoeffs = Seq(
       Seq(Point(1, 1), Point(2, 0)),
       Seq(Point(0, 2), Point(-3, 1)),

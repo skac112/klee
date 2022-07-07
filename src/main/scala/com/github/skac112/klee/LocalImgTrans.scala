@@ -10,14 +10,14 @@ import com.github.skac112.vgutils._
 /**
   * ImgTrans which changes only a part of an image leaving the rest unmodified.
   */
-trait LocalImgTrans[I <: O, O, M[_]] extends ImgTrans[I, O, M] {
-  implicit val imgTransM: Monad[M] = m
+abstract class LocalImgTrans[I <: O, O, M[_]: Monad] extends ImgTrans[I, O, M] {
+  self =>
 //  implicit val ev: I <:< O
 //  implicit val evSeq: Seq[I] <:< Seq[O]
   def area: ImgArea
 
   def apply(img: Img[I, M]) = new Img[O, M] {
-    override val m = imgTransM
+    override val m = implicitly[Monad[M]]
     override def apply(p: Point) = if (area contains p) {
         applyInArea(img, p) }
       else {

@@ -7,8 +7,10 @@ import com.github.skac112.vgutils.Point
 /**
  * Flow (continuous dynamical system) representing points evolution in time: x -> f(x, t)
  **/
-trait Flow[M[_]] extends ((Point, Double) => M[Point]) {
-  implicit val m: Monad[M]
+abstract class Flow[M[_]: Monad] extends ((Point, Double) => M[Point]) {
+  self =>
+  val m = implicitly[Monad[M]]
+//  implicit val m: Monad[M]
   /**
     * Time map - map from point to point for given time. Default implementation just curries apply function
     * but descendant implementation can do improvements.
@@ -16,7 +18,7 @@ trait Flow[M[_]] extends ((Point, Double) => M[Point]) {
     * @return
     */
   def timeMap(time: Double): VectorMap[M] = new VectorMap[M] {
-    override implicit val m = Flow.this.m
-    override def apply(p: Point) = Flow.this.apply(p, time)
+    override implicit val m = self.m
+    override def apply(p: Point) = self.apply(p, time)
   }
 }

@@ -34,5 +34,5 @@ class Example1 {
     }
 
     def fun = Composition[Color, Id](List(rings, Composition(bhs)))
-    drawToFile[Color](fun(Fill(Color.yellow(.7))), trivialColorFun, "sample39.png", .0, 999.0, .0, 999.0, 1000, 1000)
+    drawToFile[Color, Id](fun(Fill(Color.yellow(.7))), trivialColorFun, "sample39.png", .0, 999.0, .0, 999.0, 1000, 1000)
 }

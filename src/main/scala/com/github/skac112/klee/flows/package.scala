@@ -1,7 +1,9 @@
 package com.github.skac112.klee
 
+import cats.Monad
 import com.github.skac112.klee.flows.vectormaps.{PolyMap, VectorMap}
 import com.github.skac112.vgutils._
+import cats.implicits._
 
 import scala.annotation.tailrec
 import scala.math._
@@ -23,13 +25,12 @@ package object flows {
     * @param h
     * @return
     */
-  def rungeKutta4(fun: Point => Point, p: Point, h: Double) = {
-    val k1 = fun(p) * h
-    val k2 = fun(p + (k1 * .5)) * h
-    val k3 = fun(p + (k2 * .5)) * h
-    val k4 = fun(p + k3) * h
-    p + (k1 + (k2 * 2) + (k3 * 2) + k4)
-  }
+  def rungeKutta4[M[_]: Monad](fun: Point => M[Point], p: Point, h: Double) = for {
+    k1 <- fun(p)
+    k2 <- fun(p + (k1 * h * .5))
+    k3 <- fun(p + (k2 * h * .5))
+    k4 <- fun(p + (k3 * h * .5))
+  } yield p + (k1 + (k2 * 2) + (k3 * 2) + k4) * f1_6
 
   private def binomialCoeff(n: Int, i: Int): Int = factorial(n) / factorial(i) / factorial(n - i)
 
@@ -48,9 +49,10 @@ package object flows {
     * @param h
     * @return
     */
-  def taylorExp(fun: Point => Point, base: Point, taylorOrder: Int, h: Double): PolyMap = new PolyMap {
+  def taylorExp[M[_]: Monad](fun: Point => Point, base: Point, taylorOrder: Int, h: Double): PolyMap[M] = new PolyMap[M] {
+    override val m = implicitly[Monad[M]]
     override val initCoeffs = calcTaylorCoeffs
-    override def apply(p: Point): Point = super.apply(p - base)
+    override def apply(p: Point) = super.apply(p - base)
     private lazy val funVals: Seq[Seq[Point]] = (0 to taylorOrder) map {i => { (0 to taylorOrder - i) map {j => fun(base + Point(i * h, j * h))}}}
 
     /**
@@ -83,5 +85,8 @@ package object flows {
     }
   }
 
-  implicit def pointFunToVectorMap(fun: ((Point) => Point)): VectorMap = (p: Point) => fun(p)
+  implicit def pointFunToVectorMap[M[_]: Monad](fun: ((Point) => Point)): VectorMap[M] = new VectorMap[M] {
+    override val m = implicitly(Monad[M])
+    override def apply(p: Point) = m.pure(fun(p))
+  }
 }
