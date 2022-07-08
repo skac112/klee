@@ -2,6 +2,7 @@ package com.github.skac112.klee.flows.vectormaps
 
 import cats.Monad
 import com.github.skac112.vgutils.Point
+import scala.language.postfixOps
 
 /**
   * VectorMap in the form of a polynomial of two variables (x and y coordinates of a point).

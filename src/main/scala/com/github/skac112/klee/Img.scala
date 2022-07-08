@@ -15,7 +15,7 @@ trait Img[I, M[_]] extends ((Point) => M[I]) {
     * @param points
     * @return
     */
-  def applyBatchArea(ptArea: PtArea): M[Seq[I]] = (ptArea.points map apply).toList.sequence.widen[Seq[I]]
+  def applyBatchArea(ptArea: PtArea): M[scala.collection.Seq[I]] = (ptArea.points map apply).toList.sequence.widen[scala.collection.Seq[I]]
 
-  def applyBatch(pts: Points): M[Seq[I]] = applyBatchArea(pt.QuickPtArea(pts, WholeArea()))
+  def applyBatch(pts: Points): M[scala.collection.Seq[I]] = applyBatchArea(pt.QuickPtArea(pts, WholeArea()))
 }

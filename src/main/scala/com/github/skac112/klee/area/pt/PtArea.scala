@@ -39,7 +39,7 @@ trait PtArea {
     * Fourth element of tuple is a merging function - it's application to three processed sequences of elements
     * returns sequence of all elements with proper order matching order of corresponding points in imgArea
     */
-  def partByIntersect[T](imgArea: ImgArea): (PtArea, PtArea, PtArea, (Seq[T], Seq[T], Seq[T]) => Seq[T]) =
+  def partByIntersect[T](imgArea: ImgArea): (PtArea, PtArea, PtArea, (scala.collection.Seq[T], scala.collection.Seq[T], scala.collection.Seq[T]) => scala.collection.Seq[T]) =
     area.containedIn(imgArea) match {
       // area of points inside a given area
       case Some(true) => partInside[T]
@@ -68,9 +68,9 @@ trait PtArea {
     // this method partitions points fully, i.e. no 'unknown' area is created, but it
     // degrades source image area (returning just two rectangular bounds) and is also
     // rather costly
-    val init_map = ((Seq[Point](), Seq[Int]()), (Seq[Point](), Seq[Int]()))
-    val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((Seq[Point], Seq[Int]), (Seq[Point], Seq[Int])) =
-      points.zipWithIndex.foldLeft(init_map) { (acc: ((Seq[Point], Seq[Int]), (Seq[Point], Seq[Int])), pts: (Point, Int)) => {
+    val init_map = ((scala.collection.Seq[Point](), scala.collection.Seq[Int]()), (scala.collection.Seq[Point](), scala.collection.Seq[Int]()))
+    val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])) =
+      points.zipWithIndex.foldLeft(init_map) { (acc: ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])), pts: (Point, Int)) => {
         if (imgArea contains pts._1) {
           ((acc._1._1 :+ pts._1, acc._1._2 :+ pts._2), acc._2)
         }
@@ -79,7 +79,7 @@ trait PtArea {
         }
       }
       }
-    val fun = ((inside: Seq[T], outside: Seq[T], unknown: Seq[T]) => {
+    val fun = ((inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => {
       // result - mutable sequence (for performance reasons)
       val res = new scala.collection.mutable.ArrayBuffer[T](points.size)
       // initialization of res - specific values doesn't matter now, it's only for preparing sequence of type
@@ -98,9 +98,9 @@ trait PtArea {
     (BoundsArea.forPts(in_pts), BoundsArea.forPts(out_pts), EmptyArea(), fun)
   }
 
-  def partInside[T]: (PtArea, PtArea, PtArea, (Seq[T], Seq[T], Seq[T]) => Seq[T]) =
-    (this, EmptyArea(), EmptyArea(), (inside: Seq[T], outside: Seq[T], unknown: Seq[T]) => inside)
+  def partInside[T]: (PtArea, PtArea, PtArea, (scala.collection.Seq[T], scala.collection.Seq[T], scala.collection.Seq[T]) => scala.collection.Seq[T]) =
+    (this, EmptyArea(), EmptyArea(), (inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => inside)
 
-  def partOutside[T]: (PtArea, PtArea, PtArea, (Seq[T], Seq[T], Seq[T]) => Seq[T]) =
-    (EmptyArea(), this, EmptyArea(), (inside: Seq[T], outside: Seq[T], unknown: Seq[T]) => outside)
+  def partOutside[T]: (PtArea, PtArea, PtArea, (scala.collection.Seq[T], scala.collection.Seq[T], scala.collection.Seq[T]) => scala.collection.Seq[T]) =
+    (EmptyArea(), this, EmptyArea(), (inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => outside)
 }

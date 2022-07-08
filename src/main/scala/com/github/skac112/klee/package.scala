@@ -51,8 +51,8 @@ package object klee {
           val shift1 = x * (act_height + 1)
           val shift2 = (x + 1) * (act_height + 1)
           // each pixel value is an average of colors of four nearest points from 'colors' sequence
-          img.setRGB(x, y, math.round(.25 * (colors(shift1 + y).toInt + colors(shift1 + y + 1).toInt +
-            colors(shift2 + y).toInt + colors(shift2 + y + 1).toInt)).toInt)
+          img.setRGB(x, y, (colors(shift1 + y) * .25 + (colors(shift1 + y + 1) * .25) +
+            (colors(shift2 + y) *.25) + (colors(shift2 + y + 1) * .25)).toInt)
         }
       }
       _ = ImageIO.write(img, "PNG", new java.io.File(fileName))

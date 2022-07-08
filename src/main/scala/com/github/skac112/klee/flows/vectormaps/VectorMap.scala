@@ -129,5 +129,5 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     * @param points
     * @return
     */
-  def jacobiBatch(points: Points): Seq[Linear] = points map jacobi _
+  def jacobiBatch(points: Points): scala.collection.Seq[Linear] = points map jacobi _
 }

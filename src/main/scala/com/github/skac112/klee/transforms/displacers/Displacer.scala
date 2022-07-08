@@ -39,7 +39,7 @@ abstract class Displacer[I, M[_]: Monad] extends LocalImgTrans[I, I, M] {
     out <- img(p + disp)
   } yield out
 
-  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = implicitly[Monad[M]].flatMap(
+  override def applyBatchInArea(img: Img[I, M], points: Points): M[scala.collection.Seq[I]] = implicitly[Monad[M]].flatMap(
     displacement.applyBatchArea(QuickPtArea(points, area)))(disp_points => img.applyBatch((points zip disp_points) map {pt_pair: (Point, Point) => pt_pair._1 + pt_pair._2}))
 
 //  override def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[I]] = for {

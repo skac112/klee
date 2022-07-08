@@ -10,7 +10,7 @@ import org.scalatest._
 import flatspec._
 import matchers._
 
-class CompositionTest extends AnyFlatSpec with should.Matchers {
+class CompositionSuite extends AnyFlatSpec with should.Matchers {
   "A Composition" should "be an actual composition, goddamn!" in {
     val src_img = Fill[Color, Id](Color.white)
     val red_circle = Circle[Color, Color, Id](Point(.4, .5), .25, Color.red(.7))

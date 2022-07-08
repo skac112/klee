@@ -24,7 +24,7 @@ abstract class LocalImgTrans[I <: O, O, M[_]: Monad] extends ImgTrans[I, O, M] {
         ImgTrans.widen[I, O, M](img(p))
       }
 
-    override def applyBatchArea(ptArea: PtArea): M[Seq[O]] = {
+    override def applyBatchArea(ptArea: PtArea): M[scala.collection.Seq[O]] = {
       val (in, out, unknown, merge_fun) = ptArea.partByIntersect[O](area)
       // points transformed by this trans - inside trans area
       for {
@@ -45,6 +45,6 @@ abstract class LocalImgTrans[I <: O, O, M[_]: Monad] extends ImgTrans[I, O, M] {
 
   def applyInArea(img: Img[I, M], p: Point): M[O]
 
-  def applyBatchInArea(img: Img[I, M], points: Points): M[Seq[O]] =
-    ImgTrans.widen[List[O], Seq[O], M]((points map { applyInArea(img, _) }).toList.sequence)
+  def applyBatchInArea(img: Img[I, M], points: Points): M[scala.collection.Seq[O]] =
+    ImgTrans.widen[List[O], scala.collection.Seq[O], M]((points map { applyInArea(img, _) }).toList.sequence)
 }

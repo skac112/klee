@@ -11,7 +11,7 @@ import org.scalatest._
 import flatspec._
 import matchers._
 
-class CircleTest extends AnyFlatSpec with should.Matchers {
+class CircleSuite extends AnyFlatSpec with should.Matchers {
 
   "A Circle" should "be an actual circle, goddamn!" in {
     val src_img = Fill[Color, Id](Color.white)

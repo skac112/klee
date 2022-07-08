@@ -11,6 +11,7 @@ object Main extends App {
   val src_img = Fill[Color, Id](Color.white)
   val red_circle = Circle[Color, Color, Id](Point(.4, .5), .25, Color.red(.7))
   val blue_circle = Circle[Color, Color, Id](Point(.6, .5), .25, Color.blue(.7))
+  // red_circle is inner (applied first)
   val comp = Composition(Seq(red_circle, blue_circle))
   val dst_img = comp(src_img)
   val n = 100
