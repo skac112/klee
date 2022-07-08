@@ -51,47 +51,52 @@ trait PtArea {
             case (Some(bounds), Some(img_bounds)) => {
               if (bounds.isOutsideOf(img_bounds)) {
                 partOutside[T]
-              } else {
+              } else if (bounds.isInside(img_bounds)) {
                 partInside[T]
               }
+              else {
+                partitionOneByOne[T](imgArea)
+              }
             }
-            case _ => {
-              // this method partitions points fully, i.e. no 'unknown' area is created, but it
-              // degrades source image area (returning just two rectangular bounds) and is also
-              // rather costly
-              val init_map = ((Seq[Point](), Seq[Int]()), (Seq[Point](), Seq[Int]()))
-              val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((Seq[Point], Seq[Int]), (Seq[Point], Seq[Int])) =
-                points.zipWithIndex.foldLeft(init_map) { (acc: ((Seq[Point], Seq[Int]), (Seq[Point], Seq[Int])), pts: (Point, Int)) => {
-                  if (imgArea contains pts._1) {
-                    ((acc._1._1 :+ pts._1, acc._1._2 :+ pts._2), acc._2)
-                  }
-                  else {
-                    (acc._1, (acc._2._1 :+ pts._1, acc._2._2 :+ pts._2))
-                  }
-                }
-                }
-              val fun = ((inside: Seq[T], outside: Seq[T], unknown: Seq[T]) => {
-                // result - mutable sequence (for performance reasons)
-                val res = new scala.collection.mutable.ArrayBuffer[T](points.size)
-                // initialization of res - specific values doesn't matter now, it's only for preparing sequence of type
-                // T of proper size (points.size = inside.size + outside.size)
-                res ++= inside ++= outside
-                // updating res by inserting elements from inside sequence
-                for (i <- 0 until in_pts_map.size) {
-                  res.update(in_pts_map(i), inside(i))
-                }
-                // updating res by inserting elements from outside sequence
-                for (i <- 0 until out_pts_map.size) {
-                  res.update(out_pts_map(i), outside(i))
-                }
-                res
-              })
-              (BoundsArea.forPts(in_pts), BoundsArea.forPts(out_pts), EmptyArea(), fun)
-            }
+            case _ => partitionOneByOne[T](imgArea)
           }
         }
       }
     }
+
+  private def partitionOneByOne[T](imgArea: ImgArea) = {
+    // this method partitions points fully, i.e. no 'unknown' area is created, but it
+    // degrades source image area (returning just two rectangular bounds) and is also
+    // rather costly
+    val init_map = ((Seq[Point](), Seq[Int]()), (Seq[Point](), Seq[Int]()))
+    val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((Seq[Point], Seq[Int]), (Seq[Point], Seq[Int])) =
+      points.zipWithIndex.foldLeft(init_map) { (acc: ((Seq[Point], Seq[Int]), (Seq[Point], Seq[Int])), pts: (Point, Int)) => {
+        if (imgArea contains pts._1) {
+          ((acc._1._1 :+ pts._1, acc._1._2 :+ pts._2), acc._2)
+        }
+        else {
+          (acc._1, (acc._2._1 :+ pts._1, acc._2._2 :+ pts._2))
+        }
+      }
+      }
+    val fun = ((inside: Seq[T], outside: Seq[T], unknown: Seq[T]) => {
+      // result - mutable sequence (for performance reasons)
+      val res = new scala.collection.mutable.ArrayBuffer[T](points.size)
+      // initialization of res - specific values doesn't matter now, it's only for preparing sequence of type
+      // T of proper size (points.size = inside.size + outside.size)
+      res ++= inside ++= outside
+      // updating res by inserting elements from inside sequence
+      for (i <- 0 until in_pts_map.size) {
+        res.update(in_pts_map(i), inside(i))
+      }
+      // updating res by inserting elements from outside sequence
+      for (i <- 0 until out_pts_map.size) {
+        res.update(out_pts_map(i), outside(i))
+      }
+      res
+    })
+    (BoundsArea.forPts(in_pts), BoundsArea.forPts(out_pts), EmptyArea(), fun)
+  }
 
   def partInside[T]: (PtArea, PtArea, PtArea, (Seq[T], Seq[T], Seq[T]) => Seq[T]) =
     (this, EmptyArea(), EmptyArea(), (inside: Seq[T], outside: Seq[T], unknown: Seq[T]) => inside)

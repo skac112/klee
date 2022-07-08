@@ -8,4 +8,6 @@ libraryDependencies += "skac112" %% "funnodes" % "0.0.3-SNAPSHOT"
 //libraryDependencies += "skac112" % "pixlouds" % "0.1.0-SNAPSHOT"
 //libraryDependencies += "org.clojure" % "clojure" % "1.10.1"
 libraryDependencies += "org.scalanlp" %% "breeze" % "2.0.1-RC1"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.12"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.12" % "test"
 resolvers += Resolver.mavenLocal
