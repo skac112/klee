@@ -4,7 +4,7 @@ import com.github.skac112.klee.Points
 import com.github.skac112.klee.area.img.ImgArea
 
 case class MultiPartArea(parts: scala.collection.Seq[PtArea]) extends PtArea {
-  override def points: Points = parts map { part => part.points } reduce { _ ++ _ }
+  lazy val points: Points = parts map { part => part.points } reduce { _ ++ _ }
 
   override def area: ImgArea = {
     val area_parts = parts map {part => part.area}

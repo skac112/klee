@@ -5,10 +5,10 @@ import com.github.skac112.vgutils._
 import scala.math._
 import java.awt.image._
 import javax.imageio._
-
 import cats.{Monad, Monoid}
 import cats.data.Writer
 import cats.implicits._
+import com.github.skac112.klee.area.pt.AxisGrid
 
 import scala.annotation.tailrec
 import scala.collection.Seq
@@ -44,15 +44,18 @@ package object klee {
       y <- 0 to act_height
     } yield Point(minX + dx * x, minY + dy * y)
 
+    val pts_area = AxisGrid(Point(minX -.5*dx, minY -.5*dy), act_width + 1, act_height + 1, dx, dy)
+
     for {
-      colors <- imgFun.applyBatch(points) map (_ map colorFun)
-      _ = for (x <- 0 until act_width) {
-        for (y <- 0 until act_height) {
-          val shift1 = x * (act_height + 1)
-          val shift2 = (x + 1) * (act_height + 1)
+//      colors <- imgFun.applyBatch(points) map (_ map colorFun)
+      colors <- imgFun.applyBatchArea(pts_area) map (_ map colorFun)
+      _ = for (y <- 0 until act_height) {
+        for (x <- 0 until act_width) {
+          val shift1 = y * (act_width + 1)
+          val shift2 = (y + 1) * (act_width + 1)
           // each pixel value is an average of colors of four nearest points from 'colors' sequence
-          img.setRGB(x, y, (colors(shift1 + y) * .25 + (colors(shift1 + y + 1) * .25) +
-            (colors(shift2 + y) *.25) + (colors(shift2 + y + 1) * .25)).toInt)
+          img.setRGB(x, y, (colors(shift1 + x) * .25 + (colors(shift1 + x + 1) * .25) +
+            (colors(shift2 + x) *.25) + (colors(shift2 + x + 1) * .25)).toInt)
         }
       }
       _ = ImageIO.write(img, "PNG", new java.io.File(fileName))

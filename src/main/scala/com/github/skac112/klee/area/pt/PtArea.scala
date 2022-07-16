@@ -46,6 +46,7 @@ trait PtArea {
       case _ => area.outsideOf(imgArea) match {
         // area of points outside a given area
         case Some(true) => partOutside[T]
+        // it can't be assured that area of points fully inside imgArea or fully outside imgArea
         case _ => {
           (area.bounds, imgArea.bounds) match {
             case (Some(bounds), Some(img_bounds)) => {

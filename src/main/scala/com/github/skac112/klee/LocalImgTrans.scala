@@ -17,7 +17,7 @@ abstract class LocalImgTrans[I <: O, O, M[_]: Monad] extends ImgTrans[I, O, M] {
   def area: ImgArea
 
   def apply(img: Img[I, M]) = new Img[O, M] {
-    override val m = implicitly[Monad[M]]
+    override val m: Monad[M] = implicitly[Monad[M]]
     override def apply(p: Point) = if (area contains p) {
         applyInArea(img, p) }
       else {
@@ -31,6 +31,7 @@ abstract class LocalImgTrans[I <: O, O, M[_]: Monad] extends ImgTrans[I, O, M] {
         in_colors <- applyBatchInArea(img, in.points)
         // point taken from input image - outside trans area
         out_colors <- img.applyBatchArea(out)
+//        out_colors <- { println(out_colors find (_ != Color.black)); out_colors}
         // colors for unknown area (colors themselves are 'known')
         unknown_colors <- (unknown.points map { p =>
           if (area contains p) {
