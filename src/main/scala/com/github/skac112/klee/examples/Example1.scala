@@ -1,8 +1,9 @@
 package com.github.skac112.klee.examples
 
 import cats.Id
+import com.github.skac112.klee.area.pt.AxisGrid
 import com.github.skac112.klee.{Composition, Img, drawToFile, trivialColorFun}
-import com.github.skac112.klee.images.Fill
+import com.github.skac112.klee.images.{Fill, Lines}
 import com.github.skac112.klee.transforms.areas.Ring
 import com.github.skac112.klee.transforms.displacers.BlackHole
 import com.github.skac112.vgutils.{Angle, Color, Point}
@@ -21,18 +22,20 @@ class Example1 {
       color1.s * proportion + color2.s * (1 - proportion),
       color1.l * proportion + color2.l * (1 - proportion))
 
-    val c = Point(500, 500)
-    val rings = Composition[Color, Id]((0 until 9) map {i: Int =>
-      Ring(c, 40 + i * 50, 60 + i * 50, Color.red(.7))})
+    val c = Point(.5, .5)
+    val rings = (0 until 9) map {i: Int =>
+      Ring[Color, Color, Id](c, .04 + i * .05, .06 + i * .05, Color.red(.7))
+    }
     val count = 5
-
 //    val ccf = (srcPt: Point, disp: Point, img: Img) => blendColors2(img(srcPt), img(srcPt + disp), .7)
-    val r = 300.0
-    val bhs = (0 until count).map {i =>
+    val r = .3
+    val bhs = (0 until count).map { i =>
       val angle = Angle(2 * Pi * i / count)
-      BlackHole[Color, Id](c + new Point(r, angle), 10 * Pi, 0.05, 1.0, 0.02)
+      BlackHole[Color, Id](c + new Point(r, angle), 3 * Pi, 30, 1.0, 0, .2)
     }
 
-    def fun = Composition[Color, Id](List(rings, Composition(bhs)))
-    drawToFile[Color, Id](fun(Fill(Color.yellow(.7))), trivialColorFun, "sample39.png", .0, 999.0, .0, 999.0, 1000, 1000)
+//    def init_img = Lines[Color, Id](0, 0, .05, 0.05, .01, Color.black, Color.white)
+
+    def fun = Composition[Color, Id](rings ++ bhs)
+    drawToFile[Color, Id](fun(Fill(Color.yellow(.7))), trivialColorFun, "example1_5.png", 0, 1, 0, 1, 400, 400)    
 }

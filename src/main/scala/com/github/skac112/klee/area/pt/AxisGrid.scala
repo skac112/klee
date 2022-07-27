@@ -6,9 +6,8 @@ import com.github.skac112.vgutils.{Bounds, Point}
 import scala.math._
 import cats.data.State
 
-//object AxisRect {
-//
-//}
+object AxisGrid {
+}
 
 /**
   * Point area of regular (rectangular) grid of points. Points form horizontal and vertical lines. ImgArea
@@ -82,10 +81,10 @@ case class AxisGrid(leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) ex
         _ <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(t_row >= 0, curr, 0, nx - 1, 0,
           t_row), ()) }
         // possible adding of left block (on the left of unknown area) with height of unknown area
-        res <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(l_col >= 0 && t_row + 1 <= b_row - 1, curr,
+        _ <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(l_col >= 0 && t_row + 1 <= b_row - 1, curr,
           0, l_col, t_row + 1, b_row - 1), ()) }
         // possible adding of right block (on the right of uknown area) with height of unknonw  area
-        res <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(r_col <= nx && t_row + 1 <= b_row - 1, curr,
+        _ <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(r_col <= nx && t_row + 1 <= b_row - 1, curr,
           r_col, nx - 1, t_row + 1, b_row - 1), ()) }
         // possible adding of bottom block (below unknown area) - rectangle of full point area width below given
         // imgBounds
@@ -100,18 +99,18 @@ case class AxisGrid(leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) ex
       // number of point rows of unknown area - and also of left and right block
       val unknown_rows = b_row - t_row - 1
       val unknown_area = AxisGrid(leftTop + Point((l_col + 1)*dx, (t_row + 1)*dy), unknown_cols, unknown_rows, dx, dy)
-
+      // number of point columns of left block of outside area
+      val left_cols = l_col + 1
+      // number of points (possibly 0) in left block of outside area
+      val left_pts_cnt = left_cols * unknown_rows
+      // number of point columns of right block of outside area
+      val right_cols = nx - r_col
+      // number of points (possibly 0) in right block of outside area
+      val right_pts_cnt = right_cols * unknown_rows
+      // number of points (possibly 0) in top block of outside area
+      val top_pts_cnt = nx * (t_row + 1)
+        
       val join_fun = (inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => {
-        // number of point columns of left block of outside area
-        val left_cols = l_col + 1
-        // number of points (possibly 0) in left block of outside area
-        val left_pts_cnt = left_cols * unknown_rows
-        // number of point columns of right block of outside area
-        val right_cols = nx - r_col
-        // number of points (possibly 0) in right block of outside area
-        val right_pts_cnt = right_cols * unknown_rows
-        // number of points (possibly 0) in top block of outside area
-        val top_pts_cnt = nx * (t_row + 1)
         // number of points (possibly 0) in left block of outside area
         // part of outside seq belonging to top block
         val top_pts = outside.slice(0, top_pts_cnt)

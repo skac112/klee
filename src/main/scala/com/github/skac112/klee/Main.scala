@@ -8,19 +8,12 @@ import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.vgutils.{Color, Point}
 
 object Main extends App {
-  val src_img = Fill[Color, Id](Color.white)
-  val circle = Circle[Color, Color, Id](Point(.5, .5), .25, Color.black)
-  val dst_img = circle(src_img)
-  val n = 100
-  drawToFile[Color, Id](dst_img, trivialColorFun, s"CircleTest.png", 0.0, 1.0, 0.0, 1.0, n, n)
+  new Example7
 //  val src_img = Fill[Color, Id](Color.white)
-//  val red_circle = Circle[Color, Color, Id](Point(.4, .5), .25, Color.red(.7))
-//  val blue_circle = Circle[Color, Color, Id](Point(.6, .5), .25, Color.blue(.7))
-//  // red_circle is inner (applied first)
-//  val comp = Composition(Seq(red_circle, blue_circle))
-//  val dst_img = comp(src_img)
+//  val circle = Circle[Color, Color, Id](Point(.5, .5), .25, Color.black)
+//  val dst_img = circle(src_img)
 //  val n = 100
-//  drawToFile[Color, Id](dst_img, trivialColorFun, s"CompositionTest.png", 0.0, 1.0, 0.0, 1.0, n, n)
+//  drawToFile[Color, Id](dst_img, trivialColorFun, s"CircleTest.png", 0.0, 1.0, 0.0, 1.0, n, n)
 
 //  new PolyMapExample
 //  new Example2

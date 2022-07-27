@@ -18,34 +18,37 @@ abstract class LocalImgTrans[I <: O, O, M[_]: Monad] extends ImgTrans[I, O, M] {
 
   def apply(img: Img[I, M]) = new Img[O, M] {
     override val m: Monad[M] = implicitly[Monad[M]]
-    override def apply(p: Point) = if (area contains p) {
-        applyInArea(img, p) }
-      else {
-        ImgTrans.widen[I, O, M](img(p))
-      }
 
-    override def applyBatchArea(ptArea: PtArea): M[scala.collection.Seq[O]] = {
-      val (in, out, unknown, merge_fun) = ptArea.partByIntersect[O](area)
-      // points transformed by this trans - inside trans area
-      for {
-        in_colors <- applyBatchInArea(img, in.points)
-        // point taken from input image - outside trans area
-        out_colors <- img.applyBatchArea(out)
-//        out_colors <- { println(out_colors find (_ != Color.black)); out_colors}
-        // colors for unknown area (colors themselves are 'known')
-        unknown_colors <- (unknown.points map { p =>
-          if (area contains p) {
-            applyInArea(img, p)
-          }
-          else {
-            ImgTrans.widen[I, O, M](img(p))
-          }}).toList.sequence
-      } yield merge_fun(in_colors, out_colors, unknown_colors)
+    override def apply(p: Point) = if (area contains p) {
+      applyInArea(img, p) }
+    else {
+      // point outside ImgTrans area - bypassing
+      ImgTrans.widen[I, O, M](img(p))
+    }
+
+    override def applyBatchArea(ptArea: PtArea): M[scala.collection.Seq[O]] = {    
+        val (in, out, unknown, merge_fun) = ptArea.partByIntersect[O](area)
+       
+        // points transformed by this trans - inside trans area
+        for {
+            in_colors <- applyBatchInArea(img, in.points)
+            // point taken from input image - outside trans area
+            out_colors <- img.applyBatchArea(out)                
+            // colors for unknown area (colors themselves are 'known')
+            unknown_colors <- (unknown.points map { p =>                 
+                if (area contains p) {
+                    applyInArea(img, p)
+                }
+                else {
+                    ImgTrans.widen[I, O, M](img(p))
+                }
+            }).toVector.sequence       
+        } yield merge_fun(in_colors, out_colors, unknown_colors)
     }
   }
 
   def applyInArea(img: Img[I, M], p: Point): M[O]
 
-  def applyBatchInArea(img: Img[I, M], points: Points): M[scala.collection.Seq[O]] =
-    ImgTrans.widen[List[O], scala.collection.Seq[O], M]((points map { applyInArea(img, _) }).toList.sequence)
+  def applyBatchInArea(img: Img[I, M], points: Points): M[scala.collection.Seq[O]] = 
+    ImgTrans.widen[scala.collection.immutable.Vector[O], scala.collection.Seq[O], M]((points map { applyInArea(img, _) }).toVector.sequence)
 }

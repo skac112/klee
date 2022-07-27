@@ -52,8 +52,6 @@ trait PtArea {
             case (Some(bounds), Some(img_bounds)) => {
               if (bounds.isOutsideOf(img_bounds)) {
                 partOutside[T]
-              } else if (bounds.isInside(img_bounds)) {
-                partInside[T]
               }
               else {
                 partitionOneByOne[T](imgArea)
@@ -69,33 +67,54 @@ trait PtArea {
     // this method partitions points fully, i.e. no 'unknown' area is created, but it
     // degrades source image area (returning just two rectangular bounds) and is also
     // rather costly
-    val init_map = ((scala.collection.Seq[Point](), scala.collection.Seq[Int]()), (scala.collection.Seq[Point](), scala.collection.Seq[Int]()))
-    val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])) =
-      points.zipWithIndex.foldLeft(init_map) { (acc: ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])), pts: (Point, Int)) => {
-        if (imgArea contains pts._1) {
-          ((acc._1._1 :+ pts._1, acc._1._2 :+ pts._2), acc._2)
+    val src_mask = points map { imgArea contains _ }
+    val ((in_pts, out_pts)) = points partition { imgArea contains _ }
+
+    val fun = (inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => {
+        var inside_idx = 0
+        var outside_idx = 0
+
+        src_mask map { if (_) {
+                inside_idx = inside_idx + 1
+                inside(inside_idx - 1)
+            } else {
+                outside_idx = outside_idx + 1
+                outside(outside_idx - 1)
+            }
         }
-        else {
-          (acc._1, (acc._2._1 :+ pts._1, acc._2._2 :+ pts._2))
-        }
-      }
-      }
-    val fun = ((inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => {
-      // result - mutable sequence (for performance reasons)
-      val res = new scala.collection.mutable.ArrayBuffer[T](points.size)
-      // initialization of res - specific values doesn't matter now, it's only for preparing sequence of type
-      // T of proper size (points.size = inside.size + outside.size)
-      res ++= inside ++= outside
-      // updating res by inserting elements from inside sequence
-      for (i <- 0 until in_pts_map.size) {
-        res.update(in_pts_map(i), inside(i))
-      }
-      // updating res by inserting elements from outside sequence
-      for (i <- 0 until out_pts_map.size) {
-        res.update(out_pts_map(i), outside(i))
-      }
-      res
-    })
+    }
+
+    // val init_map: ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])) =
+    //   ((new scala.collection.mutable.ArrayBuffer[Point](points.size), new scala.collection.mutable.ArrayBuffer[Int](points.size)), (new scala.collection.mutable.ArrayBuffer[Point](points.size), new scala.collection.mutable.ArrayBuffer[Int](points.size)))
+
+    // val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])) =
+    //   points.zipWithIndex.foldLeft(init_map) { (acc: ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])), pts: (Point, Int)) => {
+    //     if (imgArea contains pts._1) {          
+    //       ((acc._1._1 :+ pts._1, acc._1._2 :+ pts._2), acc._2)
+    //     }
+    //     else {
+    //       (acc._1, (acc._2._1 :+ pts._1, acc._2._2 :+ pts._2))
+    //     }
+    //   }
+    // }
+    
+    // val fun = (inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => {
+    //   // result - mutable sequence (for performance reasons)
+    //   val res = new scala.collection.mutable.ArrayBuffer[T](points.size)
+    //   // initialization of res - specific values doesn't matter now, it's only for preparing sequence of type
+    //   // T of proper size (res.size = inside.size + outside.size)
+    //   res ++= inside ++= outside
+    //   // updating res by inserting elements from inside sequence
+    //   for (i <- 0 until in_pts_map.size) {
+    //     res.update(in_pts_map(i), inside(i))
+    //   }
+    //   // updating res by inserting elements from outside sequence
+    //   for (i <- 0 until out_pts_map.size) {
+    //     res.update(out_pts_map(i), outside(i))
+    //   }
+    //   res
+    // }
+
     (BoundsArea.forPts(in_pts), BoundsArea.forPts(out_pts), EmptyArea(), fun)
   }
 

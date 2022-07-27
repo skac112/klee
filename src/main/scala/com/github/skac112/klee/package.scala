@@ -36,8 +36,8 @@ package object klee {
                      height: Int = 0): M[Unit] = {
     val (dx, dy) = stepsForRender(minX, maxX, minY, maxY, width, height)
     val act_width = if (width > 0) width else floor((maxX - minX) / dx).round.toInt + 1
-    val act_height = if (height > 0) height else floor((maxY - minY) / dx).round.toInt + 1
-    val img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
+    val act_height = if (height > 0) height else floor((maxY - minY) / dy).round.toInt + 1
+    val raster_img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
 
     val points = for {
       x <- 0 to act_width
@@ -47,19 +47,19 @@ package object klee {
     val pts_area = AxisGrid(Point(minX -.5*dx, minY -.5*dy), act_width + 1, act_height + 1, dx, dy)
 
     for {
-//      colors <- imgFun.applyBatch(points) map (_ map colorFun)
       colors <- imgFun.applyBatchArea(pts_area) map (_ map colorFun)
+    //   colors <- (pts_area.points map { p: Point => imgFun.apply(p).map(colorFun) }).toVector.sequence
       _ = for (y <- 0 until act_height) {
         for (x <- 0 until act_width) {
           val shift1 = y * (act_width + 1)
           val shift2 = (y + 1) * (act_width + 1)
           // each pixel value is an average of colors of four nearest points from 'colors' sequence
-          img.setRGB(x, y, (colors(shift1 + x) * .25 + (colors(shift1 + x + 1) * .25) +
+          raster_img.setRGB(x, y, (colors(shift1 + x) * .25 + (colors(shift1 + x + 1) * .25) +
             (colors(shift2 + x) *.25) + (colors(shift2 + x + 1) * .25)).toInt)
         }
       }
-      _ = ImageIO.write(img, "PNG", new java.io.File(fileName))
-      // yield-ed value is unused, .toList is used heree just to make compiler shut up :)
+      _ = ImageIO.write(raster_img, "PNG", new java.io.File(fileName))
+      // yield-ed value is unused, .toList is used here just to make compiler shut up :)
     } yield colors.toList
   }
 

@@ -25,7 +25,7 @@
     <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-collection-compat_2.13:2.2.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.scala-lang.modules:scala-xml_2.13:2.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.8:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.13.8:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.13.7:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalactic:scalactic_2.13:3.2.12:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalanlp:breeze-macros_2.13:2.0.1-RC1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalanlp:breeze_2.13:2.0.1-RC1:jar" level="project" />
