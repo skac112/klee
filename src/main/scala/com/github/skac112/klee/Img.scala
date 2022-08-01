@@ -9,6 +9,7 @@ import cats.implicits._
 
 trait Img[I, M[_]] extends ((Point) => M[I]) {
   implicit val m: Monad[M]
+  def air: Seq[Droplet[I, M]] = Seq()
 
   /**
     * Base implementation just evaluates each point independently.

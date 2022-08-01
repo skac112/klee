@@ -8,7 +8,7 @@ import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.vgutils.{Color, Point}
 
 object Main extends App {
-  new Example7
+  new Example12
 //  val src_img = Fill[Color, Id](Color.white)
 //  val circle = Circle[Color, Color, Id](Point(.5, .5), .25, Color.black)
 //  val dst_img = circle(src_img)

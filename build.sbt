@@ -5,6 +5,7 @@ scalaVersion := "2.13.8"
 exportJars := true
 libraryDependencies += "skac112" %% "vgutils" % "0.1.7-SNAPSHOT"
 libraryDependencies += "org.typelevel" %% "cats-core" % "2.8.0"
+libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
 //libraryDependencies += "skac112" %% "funnodes" % "0.0.3-SNAPSHOT"
 //libraryDependencies += "skac112" % "pixlouds" % "0.1.0-SNAPSHOT"
 //libraryDependencies += "org.clojure" % "clojure" % "1.10.1"

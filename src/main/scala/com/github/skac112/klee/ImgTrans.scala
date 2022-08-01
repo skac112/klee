@@ -6,12 +6,10 @@ import cats.implicits._
 
 object ImgTrans {
   implicit def imgToImgTrans[I, M[_] : Monad](img: Img[I, M]) = new ImgTrans[I, I, M] {
-//    override val m = implicitly[Monad[M]]
     override def apply(dummy: Img[I, M]) = img
   }
 
   def id[I, M[_]: Monad]: ImgTrans[I, I, M] = new ImgTrans[I, I, M] {
-//    override val m = implicitly[Monad[M]]
     override def apply(img: Img[I, M]) = img
   }
 
@@ -21,9 +19,13 @@ object ImgTrans {
 }
 
 abstract class ImgTrans[I, O, M[_]: Monad] extends (Img[I, M] => Img[O, M]) {
-//  implicit val m: Monad[M]
-//  lazy val k: Kleisli[M, Img[I, M], Img[O, M]] = Kleisli(this.apply)
-  //    def compose[OI <: Color, OO <: I](other: ImgTrans[OI, OO, M): ImgTrans[]
+    // override def apply(img: Img[I, M]): Img[O, M] = {
+    //     val land_trans = applyToLand(img)
+    //     val new_air = transAir(land_trans)
+    // }
+
+    // def applyToLand(img: Img[I, M]): Img[O, M]
+    // def (img: 
 
   /**
     * Widens type of output monad.
@@ -33,5 +35,5 @@ abstract class ImgTrans[I, O, M[_]: Monad] extends (Img[I, M] => Img[O, M]) {
     * @tparam M
     * @return
     */
-  def widen[W, M[_] : Monad](ma: M[O])(implicit ev: O <:< W): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
+  def widen[W](ma: M[O])(implicit ev: O <:< W): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
 }
