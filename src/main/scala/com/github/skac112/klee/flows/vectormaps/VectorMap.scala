@@ -1,7 +1,7 @@
 package com.github.skac112.klee.flows.vectormaps
 
 import cats.Monad
-import com.github.skac112.klee.{Colors, Img, Points}
+import com.github.skac112.klee.{RealColors, Img, Points}
 import com.github.skac112.vgutils.Point
 import com.github.skac112.vgutils.transform.linear._
 import cats.implicits._

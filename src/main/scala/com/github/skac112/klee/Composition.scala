@@ -16,7 +16,7 @@ object Composition {
   * Composition of ImgTrans-es. First ImgTrans in elements sequence is the innermost (applied first).
   * @param elements
   */
-case class Composition[I, M[_]: Monad](elements: Seq[ImgTrans.Simple[I, M]]) extends ImgTrans.Simple[I, M] {
+case class Composition[I, M[_]: Monad](elements: scala.collection.Seq[ImgTrans.Simple[I, M]]) extends ImgTrans.Simple[I, M] {
 
   lazy val fun: ImgTrans[I, I, M] = elements.reduce { (acc, element) => new ImgTrans[I, I, M] {
       override def apply(img: Img[I, M]) = acc.andThen(element).apply(img)}

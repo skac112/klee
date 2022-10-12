@@ -83,38 +83,6 @@ trait PtArea {
             }
         }
     }
-
-    // val init_map: ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])) =
-    //   ((new scala.collection.mutable.ArrayBuffer[Point](points.size), new scala.collection.mutable.ArrayBuffer[Int](points.size)), (new scala.collection.mutable.ArrayBuffer[Point](points.size), new scala.collection.mutable.ArrayBuffer[Int](points.size)))
-
-    // val ((in_pts, in_pts_map), (out_pts, out_pts_map)): ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])) =
-    //   points.zipWithIndex.foldLeft(init_map) { (acc: ((scala.collection.Seq[Point], scala.collection.Seq[Int]), (scala.collection.Seq[Point], scala.collection.Seq[Int])), pts: (Point, Int)) => {
-    //     if (imgArea contains pts._1) {          
-    //       ((acc._1._1 :+ pts._1, acc._1._2 :+ pts._2), acc._2)
-    //     }
-    //     else {
-    //       (acc._1, (acc._2._1 :+ pts._1, acc._2._2 :+ pts._2))
-    //     }
-    //   }
-    // }
-    
-    // val fun = (inside: scala.collection.Seq[T], outside: scala.collection.Seq[T], unknown: scala.collection.Seq[T]) => {
-    //   // result - mutable sequence (for performance reasons)
-    //   val res = new scala.collection.mutable.ArrayBuffer[T](points.size)
-    //   // initialization of res - specific values doesn't matter now, it's only for preparing sequence of type
-    //   // T of proper size (res.size = inside.size + outside.size)
-    //   res ++= inside ++= outside
-    //   // updating res by inserting elements from inside sequence
-    //   for (i <- 0 until in_pts_map.size) {
-    //     res.update(in_pts_map(i), inside(i))
-    //   }
-    //   // updating res by inserting elements from outside sequence
-    //   for (i <- 0 until out_pts_map.size) {
-    //     res.update(out_pts_map(i), outside(i))
-    //   }
-    //   res
-    // }
-
     (BoundsArea.forPts(in_pts), BoundsArea.forPts(out_pts), EmptyArea(), fun)
   }
 

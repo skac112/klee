@@ -21,6 +21,7 @@
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_2.13/1.0.4/scala-parallel-collections_2.13-1.0.4.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_2.13/2.0.1-RC1/breeze_2.13-2.0.1-RC1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.8.0/cats-kernel_2.13-2.8.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.13/2.0.1-RC1/breeze-macros_2.13-2.0.1-RC1.jar",
@@ -223,6 +224,23 @@
                             "name": "scalactic_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.chuusai",
+                    "name": "shapeless_2.13",
+                    "version": "2.3.3",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "shapeless_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3.jar"
+                        },
+                        {
+                            "name": "shapeless_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3-sources.jar"
                         }
                     ]
                 },

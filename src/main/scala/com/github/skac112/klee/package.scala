@@ -5,27 +5,29 @@ import com.github.skac112.vgutils._
 import scala.math._
 import java.awt.image._
 import javax.imageio._
-import cats.{Monad, Monoid}
+import cats._
 import cats.data.Writer
 import cats.implicits._
-import com.github.skac112.klee.area.pt.AxisGrid
+import com.github.skac112.klee.area.imgpt.AxisGrid
 
 import scala.annotation.tailrec
 import scala.collection.Seq
 
 package object klee {
   val defWidth = 800
-//  type Img = Point => Color
   type ColTrans = Color => Color
-//  type DrawingMaker[A] = cats.data.Writer[ImgTrans, A]
-//  def identity[T] = (img: Img[T]) => img
-  type Points = Seq[Point]
-  type Colors = Seq[Color]
+  type Values[+I] = scala.collection.Seq[I]
+  type Points = Values[Point]
+  type ImgPoints[I, M[_]] = Values[ImgPoint[I, M]]
+  type PureImgPoints[+I] = Values[PureImgPoint[I]]
+  type RealColors = scala.collection.Seq[Color]
   type ColorFun[T] = T => Color
   def trivialColorFun: ColorFun[Color] = (c: Color) => c
+  def seqMonad[T, M[_]: Monad](seqM: Values[M[T]]) = seqM.toVector.sequence
+  def unwrapPoints[I, M[_]: Monad](imgPoints: ImgPoints[I, M]) = seqMonad(imgPoints map { _.point })
 
   def drawToFile[I, M[_]: Monad](
-                     imgFun: Img[I, M],
+                     img: Img[I, M],
                      colorFun: ColorFun[I],
                      fileName: String,
                      minX: Double,
@@ -38,15 +40,11 @@ package object klee {
     val act_width = if (width > 0) width else floor((maxX - minX) / dx).round.toInt + 1
     val act_height = if (height > 0) height else floor((maxY - minY) / dy).round.toInt + 1
     val raster_img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
+    val leftTop = Point(minX -.5*dx, minY -.5*dy)
+    val pts_area = AxisGrid.forLand(img, leftTop, act_width + 1, act_height + 1, dx, dy)
 
-    val points = for {
-      x <- 0 to act_width
-      y <- 0 to act_height
-    } yield Point(minX + dx * x, minY + dy * y)
 
-    val pts_area = AxisGrid(Point(minX -.5*dx, minY -.5*dy), act_width + 1, act_height + 1, dx, dy)
-
-    (imgFun.applyBatchArea(pts_area) map (_ map colorFun)) map { colors => 
+    (img.applyBatchArea(pts_area) map (_ map { (ip: ImgPoint[I]) => colorFun(ip.color) })) map { colors =>
         for (y <- 0 until act_height) {
             for (x <- 0 until act_width) {
             val shift1 = y * (act_width + 1)
@@ -79,27 +77,4 @@ package object klee {
       }
     }
   }
-
-//  implicit val drawingMakerMonadInstance: Monad[DrawingMaker] = new Monad[DrawingMaker] {
-//    def pure[A](a: A): DrawingMaker[A] = Writer(Nil, a)
-//    def flatMap[A, B](fa: DrawingMaker[A])(f: A => DrawingMaker[B]): DrawingMaker[B] = {
-//      val new_writer = f(fa.value)
-//      Writer(fa.written ++ new_writer.written, new_writer.value)
-//    }
-//    override def map[A, B](fa: DrawingMaker[A])(f: A => B): DrawingMaker[B] = Writer(fa.written, f(fa.value))
-//    @tailrec
-//    def tailRecM[A, B](a: A)(f: A => DrawingMaker[Either[A, B]]): DrawingMaker[B] = {
-//      val new_w = f(a)
-//      val either_val = new_w.value
-//      either_val match {
-//        case Right(v) => Writer(new_w.written, v)
-//        case Left(v) => tailRecM(v)(f)
-//      }
-//    }
-//  }
-//
-//  implicit val ensembleMonoidInstance: Monoid[ImgTrans] = new Monoid[ImgTrans] {
-//    override def combine(ens1: Ensemble, ens2: Ensemble) = ens1 ++ ens2
-//    override def empty = Seq.empty[PosGraphic[Graphic]]
-//  }
 }

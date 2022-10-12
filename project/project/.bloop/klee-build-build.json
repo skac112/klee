@@ -18,13 +18,10 @@
         "classpath": [
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.5.2/sbt-1.5.2.jar",
             "/home/skac/.sbt/boot/scala-2.12.13/lib/scala-library.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.2/sbt-bloop-1.5.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.3/sbt-bloop-1.5.3.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/main_2.12/1.5.2/main_2.12-1.5.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/io_2.12/1.5.0/io_2.12-1.5.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.5.0/jna-5.5.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.5.0/jna-platform-5.5.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/code/gson/gson/2.7/gson-2.7.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/bloop-config_2.12/1.5.3/bloop-config_2.12-1.5.3.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/logic_2.12/1.5.2/logic_2.12-1.5.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/actions_2.12/1.5.2/actions_2.12-1.5.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.5.2/main-settings_2.12-1.5.2.jar",
@@ -46,6 +43,9 @@
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.5.3/compiler-interface-1.5.3.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/zinc-compile_2.12/1.5.3/zinc-compile_2.12-1.5.3.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/swoval/file-tree-views/2.1.6/file-tree-views-2.1.6.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.5.0/jna-5.5.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.5.0/jna-platform-5.5.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/plokhotnyuk/jsoniter-scala/jsoniter-scala-core_2.12/2.4.0/jsoniter-scala-core_2.12-2.4.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-relation_2.12/1.5.2/util-relation_2.12-1.5.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/completion_2.12/1.5.2/completion_2.12-1.5.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/task-system_2.12/1.5.2/task-system_2.12-1.5.2.jar",
@@ -212,68 +212,34 @@
                 {
                     "organization": "ch.epfl.scala",
                     "name": "sbt-bloop",
-                    "version": "1.5.2",
+                    "version": "1.5.3",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "sbt-bloop",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.2/sbt-bloop-1.5.2.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.3/sbt-bloop-1.5.3.jar"
                         },
                         {
                             "name": "sbt-bloop",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.2/sbt-bloop-1.5.2-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.3/sbt-bloop-1.5.3-sources.jar"
                         }
                     ]
                 },
                 {
-                    "organization": "com.google.code.gson",
-                    "name": "gson",
-                    "version": "2.7",
+                    "organization": "ch.epfl.scala",
+                    "name": "bloop-config_2.12",
+                    "version": "1.5.3",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "gson",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/code/gson/gson/2.7/gson-2.7.jar"
+                            "name": "bloop-config_2.12",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/bloop-config_2.12/1.5.3/bloop-config_2.12-1.5.3.jar"
                         },
                         {
-                            "name": "gson",
+                            "name": "bloop-config_2.12",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/code/gson/gson/2.7/gson-2.7-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.google.code.findbugs",
-                    "name": "jsr305",
-                    "version": "3.0.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "jsr305",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
-                        },
-                        {
-                            "name": "jsr305",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.scala-sbt",
-                    "name": "sbt",
-                    "version": "1.5.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "sbt",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.5.2/sbt-1.5.2.jar"
-                        },
-                        {
-                            "name": "sbt",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.5.2/sbt-1.5.2-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/bloop-config_2.12/1.5.3/bloop-config_2.12-1.5.3-sources.jar"
                         }
                     ]
                 },
@@ -291,6 +257,40 @@
                             "name": "scala-library",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.13/scala-library-2.12.13-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.github.plokhotnyuk.jsoniter-scala",
+                    "name": "jsoniter-scala-core_2.12",
+                    "version": "2.4.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jsoniter-scala-core_2.12",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/plokhotnyuk/jsoniter-scala/jsoniter-scala-core_2.12/2.4.0/jsoniter-scala-core_2.12-2.4.0.jar"
+                        },
+                        {
+                            "name": "jsoniter-scala-core_2.12",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/plokhotnyuk/jsoniter-scala/jsoniter-scala-core_2.12/2.4.0/jsoniter-scala-core_2.12-2.4.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-sbt",
+                    "name": "sbt",
+                    "version": "1.5.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "sbt",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.5.2/sbt-1.5.2.jar"
+                        },
+                        {
+                            "name": "sbt",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.5.2/sbt-1.5.2-sources.jar"
                         }
                     ]
                 },
@@ -325,40 +325,6 @@
                             "name": "io_2.12",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/io_2.12/1.5.0/io_2.12-1.5.0-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "net.java.dev.jna",
-                    "name": "jna",
-                    "version": "5.5.0",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "jna",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.5.0/jna-5.5.0.jar"
-                        },
-                        {
-                            "name": "jna",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.5.0/jna-5.5.0-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "net.java.dev.jna",
-                    "name": "jna-platform",
-                    "version": "5.5.0",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "jna-platform",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.5.0/jna-platform-5.5.0.jar"
-                        },
-                        {
-                            "name": "jna-platform",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.5.0/jna-platform-5.5.0-sources.jar"
                         }
                     ]
                 },
@@ -716,6 +682,40 @@
                             "name": "file-tree-views",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/swoval/file-tree-views/2.1.6/file-tree-views-2.1.6-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "net.java.dev.jna",
+                    "name": "jna",
+                    "version": "5.5.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jna",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.5.0/jna-5.5.0.jar"
+                        },
+                        {
+                            "name": "jna",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.5.0/jna-5.5.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "net.java.dev.jna",
+                    "name": "jna-platform",
+                    "version": "5.5.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jna-platform",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.5.0/jna-platform-5.5.0.jar"
+                        },
+                        {
+                            "name": "jna-platform",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.5.0/jna-platform-5.5.0-sources.jar"
                         }
                     ]
                 },

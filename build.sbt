@@ -12,6 +12,7 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" 
 libraryDependencies += "org.scalanlp" %% "breeze" % "2.0.1-RC1"
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.12"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.12" % "test"
+libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.3"
 resolvers += Resolver.mavenLocal
 //assembly / mainClass := Some("com.github.skac112.klee.Main$")
 autoScalaLibrary := false

@@ -7,8 +7,14 @@ import com.github.skac112.klee.Img
 import com.github.skac112.vgutils.Point
 import com.github.skac112.klee.LocalImgTrans
 
-abstract class Colorizer[I <: O, O,  M[_]: Monad] extends LocalImgTrans[I, O, M] {
+/**
+  * Colorizer - value of a point (it's "color" - though exact type is not necesarilly a color) depends only on a "color" of a point
+  * in input image, so the function in it's application area is wholly determined by the colorFun. 
+  */
+abstract class Colorizer[I,  M[_]: Monad] extends LocalImgTrans[I, M] {
   def area: ImgArea = WholeArea()
-  def colorFun: (I) => M[O]
-  override def applyInArea(img: Img[I, M], p: Point): M[O] = img(p).flatMap(colorFun)
+  def colorFun: (I) => M[I]
+  override def applyInArea(img: Img[I, M], p: Point): M[I] = img(p).flatMap(colorFun)
+
+//   override def applyToAir(img: Img[I,M]): Seq[Droplet[O,M]] = {
 }

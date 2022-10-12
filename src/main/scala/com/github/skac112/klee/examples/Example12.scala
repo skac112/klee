@@ -25,7 +25,7 @@ class Example12 {
   val rings = for {
     i <- 0 until 300
     a = math.abs(30 + 15 * rand.nextGaussian())
-    val r = 12/a
+    val r = 12.0/a
     b = math.abs(rand.nextGaussian() * .05)
     l_ch_r = rand.nextGaussian()
     h_ch_r = rand.nextGaussian()
@@ -44,8 +44,8 @@ class Example12 {
     ring = Ring[Color, Color, Id](Point(rand.nextDouble, rand.nextDouble), rr, 2*r, color_fun) 
   } yield ring
 
-  val bh = BlackHole[Color, Id](Point(.5, .5), 4 * Pi, 10.0, 1, 0, 1)
-//   val fun = Composition[Color, Id](rings.toList)
-  val fun = Composition[Color, Id](rings.toList ::: bh :: Nil)
-  drawToFile[Color, Id](fun(init_img), trivialColorFun, "example12_7.png", 0, 1, 0, 1, 1000, 1000)
+//   val bh = BlackHole[Color, Id](Point(.5, .5), 4 * Pi, 10.0, 1, 0, 1)
+  val fun = Composition[Color, Id](rings.toList)
+//   val fun = Composition[Color, Id](rings.toList ::: bh :: Nil)
+  drawToFile[Color, Id](fun(init_img), trivialColorFun, "example12_8.png", 0, 1, 0, 1, 1000, 1000)
 }
