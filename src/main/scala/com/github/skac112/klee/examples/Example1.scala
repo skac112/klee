@@ -24,7 +24,7 @@ class Example1 {
 
     val c = Point(.5, .5)
     val rings = (0 until 9) map {i: Int =>
-      Ring[Color, Color, Id](c, .04 + i * .05, .06 + i * .05, Color.red(.7))
+      Ring[Color, Id](c, .04 + i * .05, .06 + i * .05, Color.red(.7))
     }
     val count = 5
 //    val ccf = (srcPt: Point, disp: Point, img: Img) => blendColors2(img(srcPt), img(srcPt + disp), .7)

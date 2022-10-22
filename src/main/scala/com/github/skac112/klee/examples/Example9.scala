@@ -14,7 +14,7 @@ class Example9 {
   val c = Point(.5, .5)
   val init_img = Fill[Color, Id](Color.white)
   val r = .2
-  val circle = Circle[Color, Color, Id](c, .2, Color.red(.7))
+  val circle = Circle[Color, Id](c, .2, Color.red(.7))
   val bhc = 3
 
   val bhs = for {

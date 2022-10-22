@@ -41,11 +41,11 @@ class Example12 {
         color.addH(Angle(h_ch)).addL(l_ch).addS(s_ch)      
     }
 
-    ring = Ring[Color, Color, Id](Point(rand.nextDouble, rand.nextDouble), rr, 2*r, color_fun) 
+    ring = Ring[Color, Id](Point(rand.nextDouble, rand.nextDouble), rr, 2*r, color_fun)
   } yield ring
 
 //   val bh = BlackHole[Color, Id](Point(.5, .5), 4 * Pi, 10.0, 1, 0, 1)
   val fun = Composition[Color, Id](rings.toList)
 //   val fun = Composition[Color, Id](rings.toList ::: bh :: Nil)
-  drawToFile[Color, Id](fun(init_img), trivialColorFun, "example12_8.png", 0, 1, 0, 1, 1000, 1000)
+  drawToFile[Color, Id](fun(init_img), trivialColorFun, "example12_9.png", 0, 1, 0, 1, 1000, 1000)
 }

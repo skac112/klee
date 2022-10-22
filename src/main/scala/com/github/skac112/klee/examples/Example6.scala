@@ -21,7 +21,7 @@ class Example6 {
 //   }
 
   val rings = (0 until 5) map {i: Int =>
-    Ring[Color, Color, Id](c, .1 + .08*i, .13 + .09*i, Color(.2, .4 + .05*i, .6 - .02*i))
+    Ring[Color, Id](c, .1 + .08*i, .13 + .09*i, Color(.2, .4 + .05*i, .6 - .02*i))
   }
 
   
@@ -36,7 +36,7 @@ class Example6 {
         case 1 => 5 * Pi
         case 2 => 7 * Pi
     }    
-    com.github.skac112.klee.transforms.displizers.BlackHole[Color, Color, Id](c + new Point(r * (1.0 + i/10), angle), 3 * Pi, 10, colorDispFun, .7)
+    com.github.skac112.klee.transforms.displizers.BlackHole[Color, Id](c + new Point(r * (1.0 + i/10), angle), 3 * Pi, 10, colorDispFun, .7)
   }
 
   val comp = Composition(rings ++ bhs)

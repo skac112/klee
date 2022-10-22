@@ -15,12 +15,12 @@ import com.github.skac112.klee.transforms.areas.Circle
 class Example7 {
   val c = Point(.5, .5)
   val init_img = Fill[Color, Id](Color.white)
-  val big_circle = Circle[Color, Color, Id](c, .3, Color.red(.7))
+  val big_circle = Circle[Color, Id](c, .3, Color.red(.7))
   val cc = 4
   val r = .25
 
   val small_circles = (0 until cc) map {i => 
-    Circle[Color, Color, Id](c + Point.withAngle(Angle(i * 2.0 * Pi / cc), r + i / 30), .15, Color.black)
+    Circle[Color, Id](c + Point.withAngle(Angle(i * 2.0 * Pi / cc), r + i / 30), .15, Color.black)
   }
 
 //   val k = .1

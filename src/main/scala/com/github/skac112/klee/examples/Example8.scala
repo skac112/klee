@@ -14,7 +14,7 @@ class Example8 {
   val c = Point(.5, .5)
   val init_img = Fill[Color, Id](Color.white)
   val r = .2
-  val circle = Circle[Color, Color, Id](c, .2, Color.red(.7))
+  val circle = Circle[Color, Id](c, .2, Color.red(.7))
   val d = Point(r, 0)
   val bh1 = BlackHole[Color, Id](c + d, 5 * Pi, 10, 1.0, 0, .9) 
   val bh2 = BlackHole[Color, Id](c + (d.rot(120.deg)), 5 * Pi, 10, 1.0, 0, .9)

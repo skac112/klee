@@ -8,11 +8,12 @@ import com.github.skac112.vgutils.Point
 sealed trait ImgPoint[I, M[_]] {
   implicit val m: Monad[M]
   def point: M[Point]
-  def color: M[I]
+  def colorO: Option[M[I]]
+  def color = colorO.get
   def land: Boolean = true
 
   def bubbleUpMonad: M[PureImgPoint[I]] = for {
-    col <- color
+    col <- colorO.get
     pt <- point
   } yield new InstantPureImgPoint[I](pt, col, land)
 }
@@ -20,16 +21,17 @@ sealed trait ImgPoint[I, M[_]] {
 final case class LandImgPoint[I, M[_]: Monad](img: Img[I, M], purePoint: Point) extends ImgPoint[I, M] {
   override lazy val m = implicitly[Monad[M]]
   override lazy val point = m.pure(purePoint)
-  override lazy val color = img(purePoint)
+  override lazy val colorO = None
 }
 
-final case class LazyColorImgPoint[I, M[_]: Monad](purePoint: Point, colorFun: () => M[I], override val land: Boolean = true) extends ImgPoint[I, M] {
+final case class LazyColorImgPoint[I, M[_]: Monad](purePoint: Point, colorOFun: () => Option[M[I]], override val land: Boolean = true) extends ImgPoint[I, M] {
   override lazy val m = implicitly[Monad[M]]
   override lazy val point = m.pure(purePoint)
-  override lazy val color = colorFun()
+  override lazy val colorO = colorOFun()
 }
 
-final case class InstantImgPoint[I, M[_]: Monad](override val point: M[Point], color: M[I], override val land: Boolean = true) extends ImgPoint[I, M] {
+final case class InstantImgPoint[I, M[_]: Monad](override val point: M[Point], override val color: M[I], override val land: Boolean = true) extends ImgPoint[I, M] {
+  override val colorO = Some(color)
   override val m = implicitly[Monad[M]]
 }
 

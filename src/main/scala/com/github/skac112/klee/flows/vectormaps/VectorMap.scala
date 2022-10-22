@@ -1,10 +1,11 @@
 package com.github.skac112.klee.flows.vectormaps
 
 import cats.Monad
-import com.github.skac112.klee.{RealColors, Img, Points}
+import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, InstantPureImgPoint, Points, PureImgPoints, RealColors}
 import com.github.skac112.vgutils.Point
 import com.github.skac112.vgutils.transform.linear._
 import cats.implicits._
+import com.github.skac112.klee.area.imgpt.ImgPtArea
 import com.github.skac112.klee.flows._
 
 object VectorMap {
@@ -22,6 +23,7 @@ object VectorMap {
 abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
   self =>
   override val m = implicitly[Monad[M]]
+  lazy val invMap: VectorMap[M] = ???
   lazy val f1_6 = 1.0 / 6
 
   /**
@@ -130,4 +132,19 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     * @return
     */
   def jacobiBatch(points: Points): scala.collection.Seq[Linear] = points map jacobi _
+
+  /**
+    * Base implementation just evaluates each point independently.
+    *
+    * @param points
+    * @return
+    */
+  override def applyBatchArea(imgPtArea: ImgPtArea[Point, M]): M[PureImgPoints[Point]] = {
+    val disp_pts = for {
+      ip <- imgPtArea.imgPoints
+      // for air point, the inverted transformation is used
+      map = if (ip.land) this else invMap
+    } yield InstantImgPoint(ip.point, map.applyM(ip.color), ip.land)
+    (disp_pts map {ip: ImgPoint[Point, M] => ip.bubbleUpMonad}).toVector.sequence.widen
+  }
 }

@@ -9,7 +9,7 @@ import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.vgutils.Bounds
 
 object ImgPointArea {
-    type JoinFun[O, M[_]] = (ImgPoints[O, M], ImgPoints[O, M], ImgPoints[O, M]) => ImgPoints[O, M]
+    type JoinFun[O, M[_]] = (PureImgPoints[O], PureImgPoints[O], PureImgPoints[O]) => PureImgPoints[O]
     type PartFunRes[I, O, M[_]] = M[(ImgPtArea[I, M], ImgPtArea[I, M], ImgPtArea[I, M], JoinFun[O, M])]
 }
 
@@ -102,8 +102,8 @@ abstract class ImgPtArea[I, M[_]: Monad] {
   } yield (in_area, out_area, EmptyArea[I, M](), fun)
 
   def partInside[O]: ThisPartFunRes[O] = m.pure[ThisPureRes[O]]((this, EmptyArea[I, M](), EmptyArea[I, M](),
-    (inside: ImgPoints[O, M], outside: ImgPoints[O, M], unknown: ImgPoints[O, M]) => inside))
+    (inside: PureImgPoints[O], outside: PureImgPoints[O], unknown: PureImgPoints[O]) => inside))
 
   def partOutside[O]: ThisPartFunRes[O] = m.pure[ThisPureRes[O]]((EmptyArea[I, M](), this, EmptyArea[I, M](),
-    (inside: ImgPoints[O, M], outside: ImgPoints[O, M], unknown: ImgPoints[O, M]) => outside))
+    (inside: PureImgPoints[O], outside: PureImgPoints[O], unknown: PureImgPoints[O]) => outside))
 }

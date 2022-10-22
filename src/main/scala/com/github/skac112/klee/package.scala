@@ -41,10 +41,9 @@ package object klee {
     val act_height = if (height > 0) height else floor((maxY - minY) / dy).round.toInt + 1
     val raster_img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
     val leftTop = Point(minX -.5*dx, minY -.5*dy)
-    val pts_area = AxisGrid.forLand(img, leftTop, act_width + 1, act_height + 1, dx, dy)
+    val pts_area = AxisGrid.forLand[I, M](img, leftTop, act_width + 1, act_height + 1, dx, dy)
 
-
-    (img.applyBatchArea(pts_area) map (_ map { (ip: ImgPoint[I]) => colorFun(ip.color) })) map { colors =>
+    (img.applyBatchArea(pts_area) map (_ map { (ip: PureImgPoint[I]) => colorFun(ip.color) })) map { colors =>
         for (y <- 0 until act_height) {
             for (x <- 0 until act_width) {
             val shift1 = y * (act_width + 1)

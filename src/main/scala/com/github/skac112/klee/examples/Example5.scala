@@ -23,7 +23,7 @@ class Example5 {
   val bh = BlackHole[Color, Id](c - (p1 * .5), 20 * Pi, 17, 1.0, 0, 1)
 //  val p2 = p1 rot (120.0.deg)s
 //   val p3 = p1 rot (240.0.deg)  
-  val ring1 = Ring[Color, Color, Id](c + (p1 * .5), r - .5*w, r + .5*w, Color.blue(.7))
+  val ring1 = Ring[Color, Id](c + (p1 * .5), r - .5*w, r + .5*w, Color.blue(.7))
 //   val ring2 = Ring[Color, Color, Id](c + p2, r - .5*w, r + .5*w, Color.red(.7))
 //   val ring3 = Ring[Color, Color, Id](c + p3, r - .5*w, r + .5*w, Color.green(.7))
 

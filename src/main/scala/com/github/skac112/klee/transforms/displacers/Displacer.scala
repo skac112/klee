@@ -63,7 +63,6 @@ abstract class Displacer[I, M[_]: Monad] extends LocalImgTrans[I, M] {
     value <- img(pt)
   } yield value
 
-
   def applyToAirInArea(droplet: PureImgPoint[I]): M[PureImgPoint[I]] = for {
     invDisp <- invDisplacement(droplet.point)    
   } yield InstantPureImgPoint[I](droplet.point + invDisp, droplet.color)
@@ -72,20 +71,25 @@ abstract class Displacer[I, M[_]: Monad] extends LocalImgTrans[I, M] {
 
   override def applyToAir(img: Img[I, M]): M[PureImgPoints[I]] = for {
     air_pts <- img.air
-    img_pts <- applyToImgPtArea(img, QuickPtArea[I, M](air_pts, WholeArea()))
+    img_pts <- applyToImgPtArea(img, QuickPtArea[I, M](air_pts map { pip: PureImgPoint[I] =>
+      InstantImgPoint(m.pure(pip.point), m.pure(pip.color), false) }, WholeArea()))
   } yield img_pts
 
   override def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M]): M[PureImgPoints[I]] = {
-    val (disp_field, land)  = if (imgPoints.size > 0) {
-      if (imgPoints(0).land) (displacement, true) else (invDisplacement, false)
-    } else (displacement, true)
+    val pt_area = QuickPtArea[Point, M](imgPoints map { ip: ImgPoint[I, M] =>
+      InstantImgPoint(ip.point, ip.point, ip.land) }, area)
 
     for {
-      disps <- disp_field.applyBatchArea(QuickPtArea[Point, M](imgPoints map { (ip: ImgPoint[I, M]) =>
-        InstantImgPoint(ip.point, implicitly[Monad[M]].pure(ip.point), ip.land) }, area))
-      disp_pts = (imgPoints zip disps) map {pt_pair: (ImgPoint[I, M], PureImgPoint[Point]) =>
-        pt_pair._1.point + pt_pair._2.point}
-      colors <- img.applyBatch(disp_pts)
-    } yield (disp_pts zip colors) map { (kv: (Point, I)) => InstantPureImgPoint[I](kv._1, kv._2, land)}
+      disps <- displacement.applyBatchArea(pt_area)
+      disp_pts = for {
+        disp <- disps
+      } yield disp.point + disp.color
+      img_colors <- img.applyBatch(disp_pts)
+      new_m_ips = (imgPoints zip disp_pts zip img_colors) map { case ((ip, disp_p), img_col) => for {
+        ip_pt <- ip.point
+        ip_col <- ip.color
+      } yield InstantPureImgPoint(if (ip.land) ip_pt else disp_p, if (ip.land) img_col else ip_col, ip.land) }
+      new_ips <- new_m_ips.toVector.sequence
+    } yield new_ips
   }
 }

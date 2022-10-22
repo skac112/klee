@@ -34,7 +34,7 @@ class Example11 {
         color.addH(Angle(h_ch)).addL(l_ch).addS(s_ch)      
     }
 
-    radial = Radial[Color, Color, Id](Point(rand.nextDouble, rand.nextDouble), r, color_fun) 
+    radial = Radial[Color, Id](Point(rand.nextDouble, rand.nextDouble), r, color_fun)
   } yield radial
 
 //   val bh = BlackHole[Color, Id](Point(.5, .5), 6 * Pi, 10.0, 1, 0, 1)

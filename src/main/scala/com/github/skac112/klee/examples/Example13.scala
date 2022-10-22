@@ -26,6 +26,6 @@ class Example13 {
     color.addH(Angle(h_ch)).addS(s_ch).addL(l_ch)            
   }
 
-  val ring = Radial[Color, Color, Id](Point(.5, .5), r, color_fun) 
-  drawToFile[Color, Id](ring(init_img), trivialColorFun, "example13_7.png", 0, 1, 0, 1, 1000, 1000)
+  val ring = Radial[Color, Id](Point(.5, .5), r, color_fun)
+  drawToFile[Color, Id](ring(init_img), trivialColorFun, "example13_8.png", 0, 1, 0, 1, 1000, 1000)
 }

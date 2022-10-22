@@ -21,7 +21,7 @@ class Example10 {
     angle = Angle(i * 2 * Pi / rings_num)
     r = .25
     d = .15
-  } yield Ring[Color, Color, Id](c + Point.withAngle(angle, d), r -.03, r + .03, Color.hsla(angle, .8, .3, 1.0))  
+  } yield Ring[Color, Id](c + Point.withAngle(angle, d), r -.03, r + .03, Color.hsla(angle, .8, .3, 1.0))
 
   val bhs_num = 3
   val bhs = for {

@@ -11,8 +11,9 @@ import cats.implicits._
 object AxisGrid {
     def forLand[I, M[_]: Monad](img: Img[I, M], leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) = {
         val real_lt = leftTop + Point(.5*dx, .5*dy)          
-        val colorFunFun = (i: Int) => () => img(real_lt + Point((i % nx) * dx, (i / nx) * dy))
-        AxisGrid(leftTop, nx, ny, dx, dy, colorFunFun)
+//        val colorFunFun = (i: Int) => () => img(real_lt + Point((i % nx) * dx, (i / nx) * dy))
+        val colorFunFun = (i: Int) => () => None
+        AxisGrid[I, M](leftTop, nx, ny, dx, dy, colorFunFun)
     }
 
 //    def forAir[I, M[_]: Monad](air: )
@@ -30,7 +31,13 @@ object AxisGrid {
   * @param dx distance between consecutive columns
   * @param dy distance between consecutive rows
   */
-case class AxisGrid[I, M[_]: Monad](leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double, colorFunFun: Int => () => M[I]) extends ImgPtArea[I, M] {
+case class AxisGrid[I, M[_]: Monad](
+                                     leftTop: Point,
+                                     nx: Int,
+                                     ny: Int,
+                                     dx: Double,
+                                     dy: Double,
+                                     colorFunFun: Int => () => Option[M[I]]) extends ImgPtArea[I, M] {
   override lazy val imgPoints = {
     // coordinates of left top point (with offset from leftTop)
     val real_lt = leftTop + Point(.5*dx, .5*dy)    
@@ -44,7 +51,7 @@ case class AxisGrid[I, M[_]: Monad](leftTop: Point, nx: Int, ny: Int, dx: Double
 
   override lazy val area = AxisRect(leftTop, nx * dx, ny * dy)
 
-  def this(rect: AxisRect, dx: Double, dy: Double, colorFunFun: Int => () => M[I]) = this(rect.leftTop,
+  def this(rect: AxisRect, dx: Double, dy: Double, colorFunFun: Int => () => Option[M[I]]) = this(rect.leftTop,
     floor(rect.width / dx).toInt + 1, floor(rect.height / dy).toInt + 1, dx, dy, colorFunFun)
 
   override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O] = {

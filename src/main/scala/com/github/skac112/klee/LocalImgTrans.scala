@@ -38,6 +38,12 @@ abstract class LocalImgTrans[I, M[_]: Monad] extends ImgTrans[I, I, M] {
 //  protected def makeImgPoints(points: Points, colors: (Int) => () => M[I], land: Boolean = true): ImgPoints[I, M] =
 //    points.zipWithIndex map { kv => LazyImgPoint(kv._1, colors(kv._2), land) }
 
+  /**
+    * Applies this ImgTrans to given image area.
+    * @param img
+    * @param ptArea
+    * @return
+    */
   protected def applyToImgPtArea(img: Img[I, M], ptArea: ImgPtArea[I, M]): M[PureImgPoints[I]] = for {
     part <- ptArea.partByIntersect[I](area): M[(ImgPtArea[I, M], ImgPtArea[I, M], ImgPtArea[I, M], JoinFun[I, M])]
     in = part._1
@@ -46,20 +52,18 @@ abstract class LocalImgTrans[I, M[_]: Monad] extends ImgTrans[I, I, M] {
     join_fun = part._4
 //    (in, out, unknown, join_fun) <- ptArea.partByIntersect[I](area): M[(ImgPtArea[I, M], ImgPtArea[I, M], ImgPtArea[I, M], JoinFun[I])]
     // points transformed by this trans - inside trans area
-    in_colors = applyBatchInArea(img, in.imgPoints)
+    in_colors <- applyBatchInArea(img, in.imgPoints)
     // point taken from input image - outside trans area
-    out_colors = img.applyBatchArea(out)
+    out_colors <- img.applyBatchArea(out)
     // colors for unknown area (colors themselves are 'known')
-    unknown_colors = unknown.imgPoints.toVector.par map { (ip: ImgPoint[I, M]) => for {
+    unknown_colors <- (unknown.imgPoints.toVector.par map { (ip: ImgPoint[I, M]) => (for {
       pt <- ip.point
-      new_img_pt <- for {
-        pt <- ip.point
-        new_ip <- if (area contains pt) applyInArea(img, ip) else ip
-      } yield new_ip
-    }}
+      new_ip = if (area contains pt) applyInArea(img, ip) else img.applyToImgPt(ip)
+      pure_img_pt <- new_ip.bubbleUpMonad
+    } yield pure_img_pt)}).toVector.sequence
   } yield join_fun(in_colors, out_colors, unknown_colors)
 
-  def applyToAir(img: Img[I, M]): ImgPoints[I, M] = img.air
+  def applyToAir(img: Img[I, M]): M[PureImgPoints[I]] = img.air
 
   def applyInArea(img: Img[I, M], p: Point): M[I] = applyInArea(img, LandImgPoint(img, p)).color
 
@@ -68,6 +72,6 @@ abstract class LocalImgTrans[I, M[_]: Monad] extends ImgTrans[I, I, M] {
 //  def applyBatchInArea(img: Img[I, M], points: Points): M[scala.collection.Seq[O]] =
 //    ImgTrans.widen[scala.collection.immutable.Vector[O], scala.collection.Seq[O], M]((points.toVector.par map { applyInArea(img, _) }).toVector.sequence)
 
-  def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M]): ImgPoints[I, M] =
-    (imgPoints.par map { applyInArea(img, _) }).seq
+  def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M]): M[PureImgPoints[I]] =
+    (imgPoints.par map { applyInArea(img, _).bubbleUpMonad }).seq.toVector.sequence.widen
 }
