@@ -76,4 +76,19 @@ package object klee {
       }
     }
   }
+
+  def oppositeHLColor(color: Color): Color = {
+    val new_h = color.h + Pi
+    val new_l = 1.0 - color.l
+//    val new_l = color.l match {
+//      case col if (col <= .25) => 1.0 - 2.0*col
+//      case col if (col <= .5) => 2.0*col
+//      case col if (col <= .75) => 2.0*col - 1.0
+//      case col => -2.0*col + 2.0
+//    }
+    Color.hsla(new_h, color.s, new_l, color.a)
+  }
+
+  def blendColors(color1: Color, color2: Color, proportion: Double) = (color1 * proportion) + (color2 *
+    (1.0 - proportion))
 }

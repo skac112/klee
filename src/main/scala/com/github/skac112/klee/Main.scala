@@ -9,24 +9,25 @@ import com.github.skac112.vgutils.{Color, Point}
 import com.github.skac112.klee.painters.Painter1
 import com.github.skac112.klee.painters.Painter
 
-object Main extends App {    
+object Main extends App {
+     new Example16
 //    val pp = Painter1.Painter1Params(0, 0, 0, 0, 0, 0, 0, 0, 0)
 //    val rp = Painter.RenderParams(0, 1, 0, 1, 1000, 1000)
 //    val p = new Painter1(pp, rp)
 //    p.paint()
-     new Example12
-//   var end = false
 
+//   var end = false
+//
 //   val t1 = new Thread(new Runnable {
 //     def run: Unit = {
 //       scala.io.StdIn.readChar()
-//       println("koniec")    
+//       println("koniec")
 //       Main.synchronized(
 //         Main.end = true
 //       )
 //     }
 //   })
-
+//
 //   t1.start
 //   var i = 0
 //   do {

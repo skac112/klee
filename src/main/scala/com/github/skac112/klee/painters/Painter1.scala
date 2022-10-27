@@ -27,10 +27,9 @@ object Painter1 {
 
 import Painter1._
 
-final case class Painter1(params: Painter1Params, renderParams: Painter.RenderParams) extends Painter[Painter1Params, Color, Id](params, renderParams) {
+final case class Painter1(params: Painter1Params, renderParams: Painter.RenderParams) extends Painter[Painter1Params, Id](params, renderParams) {
   override def img: Img[Color, Id] = Fill[Color, Id](Color.white)
 
-  
 //   val ver = 1.0
 //   val rand = new scala.util.Random(randSeed)
 //   val init_img = Fill[Color, Id](Color.hsla(Angle(Pi), .7, .5))
