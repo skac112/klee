@@ -11,12 +11,12 @@ case class Ring[I, M[_]: Monad](
                                  rLow: Double,
                                  rHigh: Double,
                                  color: I,
-                                 applyForAir: Boolean = true) extends LocalImgTrans[I, M] {
+                                 applyToAir: Boolean = true) extends LocalImgTrans[I, M] {
   lazy val rLow2 = rLow*rLow
   lazy val rHigh2 = rHigh*rHigh
   override def area: ImgArea = com.github.skac112.klee.area.img.Ring(c, rLow, rHigh)
 //  override def applyInArea(img: Img[I, M], p: Point): M[O] = implicitly[Monad[M]].pure(color)
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M]): ImgPoint[I, M] = if (applyForAir || ip.land) {
+  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M]): ImgPoint[I, M] = if (applyToAir || ip.land) {
       InstantImgPoint(ip.point, valueM(img, ip.point), ip.land)
     } else {
     ip
