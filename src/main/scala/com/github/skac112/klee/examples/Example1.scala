@@ -2,11 +2,11 @@ package com.github.skac112.klee.examples
 
 import cats.Id
 import com.github.skac112.klee.area.pt.AxisGrid
-import com.github.skac112.klee.{Composition, Img, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{Composition, Img, drawToFileOld, trivialColorFun}
 import com.github.skac112.klee.images.{Fill, Lines}
 import com.github.skac112.klee.transforms.areas.Ring
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.vgutils.{Angle, Color, Point}
+import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point}
 
 import scala.math._
 
@@ -17,7 +17,7 @@ class Example1 {
       b_col1 + b_col2
     }
 
-    def blendColors2(color1: Color, color2: Color, proportion: Double = .5): Color = Color.hsla(
+    def blendColors2(color1: Color, color2: Color, proportion: Double = .5): Color = ColorVector.hsla(
       color1.h + color2.h,
       color1.s * proportion + color2.s * (1 - proportion),
       color1.l * proportion + color2.l * (1 - proportion))
@@ -37,5 +37,5 @@ class Example1 {
 //    def init_img = Lines[Color, Id](0, 0, .05, 0.05, .01, Color.black, Color.white)
 
     def fun = Composition[Color, Id](rings ++ bhs)
-    drawToFile[Color, Id](fun(Fill(Color.yellow(.7))), trivialColorFun, "example1_5.png", 0, 1, 0, 1, 400, 400)    
+    drawToFileOld[Color, Id](fun(Fill(Color.yellow(.7))), trivialColorFun, "example1_5.png", 0, 1, 0, 1, 400, 400)
 }

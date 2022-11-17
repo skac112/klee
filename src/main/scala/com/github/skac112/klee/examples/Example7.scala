@@ -4,7 +4,7 @@ import cats.Id
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.areas.Ring
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Composition, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{Composition, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
 import scala.math._
@@ -36,5 +36,5 @@ class Example7 {
   } yield BlackHole[Color, Id](c + Point.withAngle(Angle(angle), rbh), rot, 15.0, 1, 0, .2)
   
   val comp = Composition(big_circle :: small_circles.toList ::: bhs.toList)
-  drawToFile[Color, Id](comp(init_img), trivialColorFun, "example7_25.png", 0, 1, 0, 1, 1500, 1500)
+  drawToFileOld[Color, Id](comp(init_img), trivialColorFun, "example7_26.png", 0, 1, 0, 1, 1500, 1500)
 }

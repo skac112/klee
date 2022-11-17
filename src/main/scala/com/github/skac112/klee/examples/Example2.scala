@@ -1,7 +1,7 @@
 package com.github.skac112.klee.examples
 
 import cats.Id
-import com.github.skac112.klee.{drawToFile, trivialColorFun}
+import com.github.skac112.klee.{drawToFileOld, trivialColorFun}
 import com.github.skac112.klee.flows.MotionEqFlow
 import com.github.skac112.klee.flows.vectormaps.{LocalLinear, VectorMap}
 import com.github.skac112.klee.images.{Fill, Lines}
@@ -21,5 +21,5 @@ class Example2 {
   val src_img = Lines[Color, Id](0, 0, .05, .05, .005, Color.black, Color.white)
   val dst_img = fun(src_img)
   val n = 300
-  drawToFile[Color, Id](dst_img, trivialColorFun, s"example2_1.png", 0.0, 1.0, 0.0, 1.0, n, n)
+  drawToFileOld[Color, Id](dst_img, trivialColorFun, s"example2_1.png", 0.0, 1.0, 0.0, 1.0, n, n)
 }

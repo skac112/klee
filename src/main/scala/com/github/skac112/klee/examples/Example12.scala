@@ -4,7 +4,7 @@ import cats.Id
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Composition, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{Composition, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
 import scala.math._
@@ -13,7 +13,7 @@ import com.github.skac112.klee.transforms.gradients.Radial
 
 class Example12 {
   val rand = new scala.util.Random(11)
-  val init_img = Fill[Color, Id](Color.hsla(Angle(Pi), .7, .5))
+  val init_img = Fill[Color, Id](ColorVector.hsla(Angle(Pi), .7, .5))
 
 //   val color_fun = (d: Double, color: Color) => {
 //     val a = 10
@@ -38,7 +38,7 @@ class Example12 {
         val l_ch = k/8*l_ch_r
         val h_ch = k/.5*h_ch_r        
         val s_ch = k/6*s_ch_r            
-        color.addH(Angle(h_ch)).addL(l_ch).addS(s_ch)      
+        color.addH(Angle(h_ch)).addL(l_ch).addS(s_ch).toColor()
     }
 
     ring = Ring[Color, Id](Point(rand.nextDouble, rand.nextDouble), rr, 2*r, color_fun)
@@ -47,5 +47,5 @@ class Example12 {
 //   val bh = BlackHole[Color, Id](Point(.5, .5), 4 * Pi, 10.0, 1, 0, 1)
   val fun = Composition[Color, Id](rings.toList)
 //   val fun = Composition[Color, Id](rings.toList ::: bh :: Nil)
-  drawToFile[Color, Id](fun(init_img), trivialColorFun, "example12_9.png", 0, 1, 0, 1, 1000, 1000)
+  drawToFileOld[Color, Id](fun(init_img), trivialColorFun, "example12_9.png", 0, 1, 0, 1, 1000, 1000)
 }

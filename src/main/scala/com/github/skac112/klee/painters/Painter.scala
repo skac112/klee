@@ -1,26 +1,28 @@
 package com.github.skac112.klee.painters
 
 import cats.implicits._
-import com.github.skac112.klee.{ColorFun, Img, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{ColorFun, Img, drawToFile, drawToFileOld, trivialColorFun}
 import cats.Monad
-import com.github.skac112.vgutils.Color
+import com.github.skac112.vgutils.{Bounds, Color, ColorVector}
 import shapeless._
 import shapeless.ops._
 import shapeless.ops.product.ToMap
 import shapeless.syntax.std.product._
+
 import scala.sys.process._
-import java.nio.file.{Paths, Files}
+import java.nio.file.{Files, Paths}
 import java.nio.charset.StandardCharsets
 
 object Painter {
-    case class RenderParams(minX: Double, maxX: Double, minY: Double, maxY: Double, nx: Int, ny: Int)    
+    case class RenderParams(bounds: Bounds, nx: Int, ny: Int)
 }
 
 import Painter._
 
-abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: RenderParams)(implicit toMap: ToMap.Aux[P, Symbol, Any])  {
+abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: RenderParams)
+                                                 (implicit toMap: ToMap.Aux[P, Symbol, Any])  {
   import Painter._
-  def img: Img[Color, M]
+  def img: Img[ColorVector, M]
 
   def paint(): M[Unit] = {
     val file_name_base = fileNameBase
@@ -51,13 +53,9 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
 
   private def makeImgFile(): M[Unit] = {
     for {
-      _ <- drawToFile[Color, M](img,
-        trivialColorFun,
+      _ <- drawToFile[M](img,
         s"$dir/$fileNameBase.png",
-        renderParams.minX,
-        renderParams.maxX,
-        renderParams.minY,
-        renderParams.maxY,
+        renderParams.bounds,
         renderParams.nx,
         renderParams.ny)
     } yield None
@@ -79,8 +77,8 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
      |<ul>$paramsString</ul>
      |<h3>Render parameters</h3>
      |<ul>
-     |<li>X range: &lt;${renderParams.minX}; ${renderParams.maxX}&gt;</li>
-     |<li>Y range: &lt;${renderParams.minY}; ${renderParams.maxY}&gt;</li>
+     |<li>X range: &lt;${renderParams.bounds.tl.x}; ${renderParams.bounds.br.x}&gt;</li>
+     |<li>Y range: &lt;${renderParams.bounds.tl.y}; ${renderParams.bounds.br.y}&gt;</li>
      |<li>nx: ${renderParams.nx}, ny: ${renderParams.ny}</li>
      |</ul>
      |<img src="$fileNameBase.png">

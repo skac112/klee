@@ -18,6 +18,6 @@ class CompositionSuite extends AnyFlatSpec with should.Matchers {
     val comp = Composition(Seq(red_circle, blue_circle))
     val dst_img = comp(src_img)
     val n = 100
-    drawToFile[Color, Id](dst_img, trivialColorFun, s"CompositionTest.png", 0.0, 1.0, 0.0, 1.0, n, n)
+    drawToFileOld[Color, Id](dst_img, trivialColorFun, s"CompositionTest.png", 0.0, 1.0, 0.0, 1.0, n, n)
   }
 }

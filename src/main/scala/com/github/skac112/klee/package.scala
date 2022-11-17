@@ -23,10 +23,11 @@ package object klee {
   type RealColors = scala.collection.Seq[Color]
   type ColorFun[T] = T => Color
   def trivialColorFun: ColorFun[Color] = (c: Color) => c
+  def defColorFun: ColorFun[ColorVector] = (cv: ColorVector) => cv.toColor()
   def seqMonad[T, M[_]: Monad](seqM: Values[M[T]]) = seqM.toVector.sequence
   def unwrapPoints[I, M[_]: Monad](imgPoints: ImgPoints[I, M]) = seqMonad(imgPoints map { _.point })
 
-  def drawToFile[I, M[_]: Monad](
+  def drawToFileOld[I, M[_]: Monad](
                      img: Img[I, M],
                      colorFun: ColorFun[I],
                      fileName: String,
@@ -57,6 +58,53 @@ package object klee {
     }
   }
 
+  def drawToFile[M[_]: Monad](img: Img[ColorVector, M],
+                              fileName: String,
+                              bounds: Bounds,
+                              pixelSizeX: Int,
+                              pixelSizeY: Int,
+                              airForceFactor: Double = 1.0,
+                              colorFun: ColorFun[ColorVector] = defColorFun): M[Unit] = {
+    val dx = bounds.w / pixelSizeX
+    val dy = bounds.h / pixelSizeY
+    val raster_img = new BufferedImage(pixelSizeX, pixelSizeY, BufferedImage.TYPE_INT_ARGB)
+    val axisGridLeftTop = bounds.tl - Point(.5*dx, .5*dy)
+    val pts_area = AxisGrid.forLand[ColorVector, M](img, axisGridLeftTop, pixelSizeX + 1, pixelSizeY + 1, dx, dy)
+    val air_col_factor = airForceFactor / (dx * dy)
+
+    for {
+      land_colors <- img.applyBatchArea(pts_area)
+      air_colors <- img.air
+    } yield {
+      for (y <- 0 until pixelSizeY) {
+        for (x <- 0 until pixelSizeX) {
+          val shift1 = y * (pixelSizeX + 1)
+          val shift2 = (y + 1) * (pixelSizeX + 1)
+          // each pixel value is an average of colors of four nearest points from 'colors' sequence
+          val land_cv = (land_colors(shift1 + x).color  + land_colors(shift1 + x + 1).color +
+            land_colors(shift2 + x).color + land_colors(shift2 + x + 1).color) * .25
+
+          val air_cv = airColorForPixel(air_colors, bounds.tl, x, y, dx, dy)
+          raster_img.setRGB(x, y, colorFun(land_cv + (air_cv * air_col_factor)).toInt)
+        }
+      }
+      ImageIO.write(raster_img, "PNG", new java.io.File(fileName))
+    }
+  }
+
+  private def pixelBounds(imgTopLeft: Point, x: Int, y: Int, dx: Double, dy: Double) = Bounds(imgTopLeft +
+    Point(x * dx, y * dy), imgTopLeft + Point((x + 1) * dx, (y + 1) * dy))
+
+  private def airColorForPixel(
+                                air: PureImgPoints[ColorVector],
+                                imgTopLeft: Point,
+                                x: Int,
+                                y: Int,
+                                dx: Double,
+                                dy: Double): ColorVector = (air filter { pt: PureImgPoint[ColorVector] =>
+    pixelBounds(imgTopLeft, x, y, dx, dy).hitTest(pt.point) }).foldLeft (ColorVector(0, 0, 0))
+    {(acc, pt) => acc + pt.color}
+
   private def stepsForRender(minX: Double, maxX: Double, minY: Double, maxY: Double, width: Int = 0, height: Int = 0): (Double, Double) = {
     (width, height) match {
       case (0, 0) => {
@@ -86,9 +134,9 @@ package object klee {
 //      case col if (col <= .75) => 2.0*col - 1.0
 //      case col => -2.0*col + 2.0
 //    }
-    Color.hsla(new_h, color.s, new_l, color.a)
+    ColorVector.hsla(new_h, color.s, new_l, color.a).toColor()
   }
 
-  def blendColors(color1: Color, color2: Color, proportion: Double) = (color1 * proportion) + (color2 *
+  def blendColors(color1: ColorVector, color2: ColorVector, proportion: Double): ColorVector = (color1 * proportion) + (color2 *
     (1.0 - proportion))
 }

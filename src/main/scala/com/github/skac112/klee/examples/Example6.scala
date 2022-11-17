@@ -4,7 +4,7 @@ import cats.Id
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.areas.Ring
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Composition, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{Composition, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import scala.math._
 import com.github.skac112.klee.images.Lines
@@ -25,7 +25,7 @@ class Example6 {
   }
 
   
-  val colorDispFun = (c: Color, p: Point) => c.addH(p.modulus*5 + p.angle*.1)
+  val colorDispFun = (c: Color, p: Point) => c.addH(p.modulus*5 + p.angle*.1).toColor()
   val count = 3
   val r = .4
 
@@ -40,6 +40,6 @@ class Example6 {
   }
 
   val comp = Composition(rings ++ bhs)
-  drawToFile[Color, Id](init_img, trivialColorFun, "example7_1.png", 0, 1, 0, 1, 1500, 1500)
+  drawToFileOld[Color, Id](init_img, trivialColorFun, "example7_1.png", 0, 1, 0, 1, 1500, 1500)
 //   drawToFile[Color, Id](comp(init_img), trivialColorFun, "example7_1.png", 0, 1, 0, 1, 1000, 1000)
 }

@@ -3,8 +3,8 @@ package com.github.skac112.klee.examples
 import cats.Id
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.gradients.{Radial, Ring}
-import com.github.skac112.klee.{Composition, blendColors, drawToFile, oppositeHLColor, trivialColorFun}
-import com.github.skac112.vgutils.{Angle, Color, Point}
+import com.github.skac112.klee.{Composition, blendColors, drawToFileOld, oppositeHLColor, trivialColorFun}
+import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point}
 
 import scala.math._
 
@@ -25,7 +25,7 @@ class Example16 {
 
   println(getClass.getName)
   val rand = new scala.util.Random(2)
-  val init_img = Fill[Color, Id](Color.hsla(Angle(Pi), .7, .8))
+  val init_img = Fill[Color, Id](ColorVector.hsla(Angle(Pi), .7, .8))
 
 //   val color_fun = (d: Double, color: Color) => {
 //     val a = 10
@@ -50,7 +50,7 @@ class Example16 {
 //         val k = b/(d*d*a*a + b)
         val k = b / (b + d*d*a*a + .3*d*d*d*a*a*a*(1 + math.sin(d*a*a)))
         val second_color = addToColor(color, r_add, g_add, b_add)
-        blendColors(second_color, color, k)
+        blendColors(second_color, color, k).toColor()
 //        second_color
     }
 
@@ -60,5 +60,5 @@ class Example16 {
 
   val fun = Composition[Color, Id](elements.toList)
 //   val fun = Composition[Color, Id](rings.toList ::: bh :: Nil)
-  drawToFile[Color, Id](fun(init_img), trivialColorFun, "example16_4.png", 0, 1, 0, 1, 1000, 1000)
+  drawToFileOld[Color, Id](fun(init_img), trivialColorFun, "example16_4.png", 0, 1, 0, 1, 1000, 1000)
 }

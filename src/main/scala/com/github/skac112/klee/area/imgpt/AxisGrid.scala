@@ -25,7 +25,7 @@ object AxisGrid {
   * actual range of points. This solution made tiling easier. One can also imagine this grid as a grid of size (nx * ny)
   * (horizontally / vertically) rectangles width sides of length dx and dy with point placed in a center of each
   * rectangle.
-  * @param leftTop left top coordinate of image area (not left-top point which has offset of (.5*dx, .5*dy)
+  * @param leftTop left top coordinate of image area (not left-top point which has offset of (.5*dx, .5*dy) from leftTop
   * @param nx number of columns of points
   * @param ny number of rows of points
   * @param dx distance between consecutive columns

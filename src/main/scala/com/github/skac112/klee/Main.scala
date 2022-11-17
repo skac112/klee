@@ -5,31 +5,28 @@ import com.github.skac112.klee.examples._
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.linalg2d.spiral
 import com.github.skac112.klee.transforms.areas.Circle
-import com.github.skac112.vgutils.{Color, Point}
+import com.github.skac112.vgutils.{Bounds, Color, Point}
 import com.github.skac112.klee.painters.Painter1
 import com.github.skac112.klee.painters.Painter
 import com.github.skac112.klee.painters.Painter.RenderParams
 import com.github.skac112.klee.painters.Painter1.Painter1Params
 
 object Main extends App {
-//     val params = Painter1Params(randSeed = 2,
-//          numElems = 300,
-//          aBase = 10.0,
-//          aSpan = 40.0,
-//          colorDisperse = .8)
-//
-//     val render_params = RenderParams(
-//          minX = 0,
-//          maxX = 1.0,
-//          minY = 0,
-//          maxY = 1.0,
-//          nx = 1000,
-//          ny = 1000)
-//
-//     val painter = new Painter1(params, render_params)
-//     painter.paint()
+     val params = Painter1Params(randSeed = 2,
+          numElems = 500,
+          aBase = 10.0,
+          aSpan = 40.0,
+          colorDisperse = .8)
 
-     new Example7
+     val render_params = RenderParams(
+          Bounds(Point(0, 0), Point(1, 1)),
+          nx = 1000,
+          ny = 1000)
+
+     val painter = new Painter1(params, render_params)
+     painter.paint()
+
+//     new Example7
 //    val pp = Painter1.Painter1Params(0, 0, 0, 0, 0, 0, 0, 0, 0)
 //    val rp = Painter.RenderParams(0, 1, 0, 1, 1000, 1000)
 //    val p = new Painter1(pp, rp)

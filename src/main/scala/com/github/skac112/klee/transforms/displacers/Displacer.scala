@@ -63,9 +63,9 @@ abstract class Displacer[I, M[_]: Monad] extends LocalImgTrans[I, M] {
     value <- img(pt)
   } yield value
 
-  def applyToAirInArea(droplet: PureImgPoint[I]): M[PureImgPoint[I]] = for {
-    invDisp <- invDisplacement(droplet.point)    
-  } yield InstantPureImgPoint[I](droplet.point + invDisp, droplet.color)
+//   def applyToAirInArea(droplet: PureImgPoint[I]): M[PureImgPoint[I]] = for {
+//     invDisp <- invDisplacement(droplet.point)    
+//   } yield InstantPureImgPoint[I](droplet.point + invDisp, droplet.color)
 
   def invDisplacement: VectorMap[M] = ???
 

@@ -4,7 +4,7 @@ import cats.Id
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Composition, Img, blendColors, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{Composition, Img, blendColors, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
 
@@ -23,10 +23,11 @@ object Painter1 {
 
 import Painter1._
 
-final case class Painter1(params: Painter1Params, renderParams: Painter.RenderParams) extends Painter[Painter1Params, Id](params, renderParams) {
+final case class Painter1(params: Painter1Params, renderParams: Painter.RenderParams) extends
+  Painter[Painter1Params, Id](params, renderParams) {
   override lazy val img = fun(initImg)
 
-  lazy val initImg = Fill[Color, Id](Color.hsla(Angle(Pi), .7, .8))
+  lazy val initImg = Fill[ColorVector, Id](ColorVector.hsla(Angle(Pi), .7, .8))
 
   lazy val fun = {
     val elements = for {
@@ -41,21 +42,21 @@ final case class Painter1(params: Painter1Params, renderParams: Painter.RenderPa
       r_add = min(1, max(-1, params.colorDisperse*rand.nextGaussian()))
       g_add = min(1, max(-1, params.colorDisperse*rand.nextGaussian()))
       b_add = min(1, max(-1, params.colorDisperse*rand.nextGaussian()))
-      color_fun = (d: Double, color: Color) => {
+      color_fun = (d: Double, color: ColorVector) => {
         //         val k = b/(d*d*a*a + b)
         val k = b / (b + d*d*a*a + .3*d*d*d*a*a*a*(1 + math.sin(d*a*a)))
         val second_color = addToColor(color, r_add, g_add, b_add)
         blendColors(second_color, color, k)
       }
 
-      element = Radial[Color, Id](Point(rand.nextDouble, rand.nextDouble), r, color_fun)
+      element = Radial[ColorVector, Id](Point(rand.nextDouble, rand.nextDouble), r, color_fun)
       //    element = Radial[Color, Id](Point(.5, .5), r, color_fun)
     } yield element
 
-    Composition[Color, Id](elements.toList)
+    Composition[ColorVector, Id](elements.toList)
   }
 
-  def addToColor(color: Color, rAdd: Double, gAdd: Double, bAdd: Double) = {
+  def addToColor(color: ColorVector, rAdd: Double, gAdd: Double, bAdd: Double) = {
     def addPart(part: Double, add: Double): Double = part + add match {
       case value if (value < 0) => -value - floor(abs(value))
       //      case value if (value < 0) => 0

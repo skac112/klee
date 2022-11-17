@@ -4,7 +4,7 @@ import cats.Id
 import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Composition, drawToFile, trivialColorFun}
+import com.github.skac112.klee.{Composition, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
 
@@ -19,5 +19,5 @@ class Example8 {
   val bh1 = BlackHole[Color, Id](c + d, 5 * Pi, 10, 1.0, 0, .9) 
   val bh2 = BlackHole[Color, Id](c + (d.rot(120.deg)), 5 * Pi, 10, 1.0, 0, .9)
   val bh3 = BlackHole[Color, Id](c + (d.rot(240.deg)), 5 * Pi, 10, 1.0, 0, .9)   
-  drawToFile[Color, Id](bh3(bh2(bh1(circle(init_img)))), trivialColorFun, "example8_5.png", 0, 1, 0, 1, 1500, 1500)
+  drawToFileOld[Color, Id](bh3(bh2(bh1(circle(init_img)))), trivialColorFun, "example8_5.png", 0, 1, 0, 1, 1500, 1500)
 }

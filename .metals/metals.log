@@ -6831,3 +6831,591 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 3543 out of bounds fo
 2022.08.23 21:20:06 INFO  time: Imported build in 0.2s
 2022.08.23 21:20:06 WARN  sql closed: select * from dismissed_notification where id = ? and when_expires > ? limit 1;
 2022.08.23 21:20:06 WARN  sql closed: insert into dismissed_notification values (?, ?, ?);
+2022.11.01 11:24:07 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.01 11:24:08 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.01 11:24:08 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.72.2.
+2022.11.01 11:24:10 INFO  time: initialize in 2.36s
+2022.11.01 11:24:12 INFO  Attempting to connect to the build server...
+2022.11.01 11:24:12 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.01 11:24:12 INFO  skipping build import with status 'Installed'
+2022.11.01 11:24:15 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.01 11:24:16 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/LocalImgTrans.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.01 11:24:19 INFO  time: code lens generation in 6.25s
+Exception in thread "pool-3-thread-1" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:195)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Exception in thread "pool-3-thread-2" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:195)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Nov 01, 2022 11:24:19 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4
+2022.11.01 11:24:19 INFO  Attempting to connect to the build server...
+2022.11.01 11:24:19 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.01 11:24:19 INFO  Attempting to connect to the build server...
+2022.11.01 11:24:19 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.01 11:24:19 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.01 11:24:19 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.01 11:24:21 INFO  time: Connected to build server in 9.07s
+2022.11.01 11:24:21 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.01 11:24:21 INFO  time: Imported build in 0.14s
+2022.11.01 11:24:25 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.01 11:24:25 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.01 11:24:25 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.01 11:24:25 INFO  time: indexed workspace in 4.38s
+2022.11.01 11:24:26 INFO  compiling klee (74 scala sources)
+2022.11.01 11:24:39 WARN  11 deprecations (since 2.10.0)
+2022.11.01 11:24:39 WARN  14 deprecations (since 2.13.3)
+2022.11.01 11:24:39 WARN  25 deprecations in total; re-run with -deprecation for details
+2022.11.01 11:24:39 WARN  4 feature warnings; re-run with -feature for details
+2022.11.01 11:24:39 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:24:39 INFO  time: compiled klee-test in 0.44s
+2022.11.01 11:24:39 INFO  time: compiled klee in 13s
+2022.11.01 11:25:34 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:25:34 INFO  time: compiled klee-test in 0.28s
+2022.11.01 11:25:34 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:25:34 INFO  time: compiled klee-test in 0.18s
+2022.11.01 11:25:35 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:25:35 INFO  time: compiled klee-test in 0.33s
+2022.11.01 11:25:35 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:25:35 INFO  time: compiled klee-test in 0.25s
+2022.11.01 11:25:43 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:25:43 INFO  time: compiled klee-test in 0.24s
+2022.11.01 11:25:43 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:25:43 INFO  time: compiled klee-test in 0.23s
+2022.11.01 11:26:09 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:26:09 INFO  time: compiled klee-test in 0.31s
+2022.11.01 11:26:09 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:26:09 INFO  time: compiled klee-test in 0.22s
+2022.11.01 11:26:17 INFO  compiling klee (1 scala source)
+2022.11.01 11:26:17 INFO  time: compiled klee in 0.52s
+2022.11.01 11:26:25 INFO  Deduplicating compilation of klee from bsp client 'Metals 0.11.9' (since 2m 9.187s)
+2022.11.01 11:26:25 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:26:25 INFO  time: compiled klee-test in 0.29s
+2022.11.01 11:26:59 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:26:59 INFO  time: compiled klee-test in 0.28s
+2022.11.01 11:28:05 INFO  Disconnecting from Bloop session...
+2022.11.01 11:28:05 INFO  Shut down connection with build server.
+2022.11.01 11:28:05 INFO  Shut down connection with build server.
+2022.11.01 11:28:05 INFO  Shut down connection with build server.
+2022.11.01 11:28:05 INFO  Attempting to connect to the build server...
+2022.11.01 11:28:05 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.01 11:28:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.01 11:28:05 INFO  Attempting to connect to the build server...
+2022.11.01 11:28:05 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.01 11:28:05 INFO  Attempting to connect to the build server...
+2022.11.01 11:28:05 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.01 11:28:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.01 11:28:06 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.01 11:28:06 INFO  time: Connected to build server in 0.17s
+2022.11.01 11:28:06 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.01 11:28:08 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.01 11:28:08 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.01 11:28:08 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.01 11:28:08 INFO  time: indexed workspace in 2.03s
+2022.11.01 11:28:08 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:28:09 INFO  time: compiled klee-test in 1.42s
+2022.11.01 11:28:28 INFO  compiling klee-test (3 scala sources)
+2022.11.01 11:28:28 INFO  time: compiled klee-test in 0.22s
+2022.11.01 11:28:32 INFO  compiling klee (1 scala source)
+2022.11.01 11:28:32 INFO  time: compiled klee in 0.32s
+Nov 01, 2022 11:28:34 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 212
+2022.11.01 12:05:24 INFO  shutting down Metals
+2022.11.01 12:05:24 INFO  Shut down connection with build server.
+2022.11.01 12:05:24 INFO  Shut down connection with build server.
+2022.11.01 12:05:24 INFO  Shut down connection with build server.
+2022.11.02 19:46:52 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.02 19:46:52 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.02 19:46:52 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.72.2.
+2022.11.02 19:46:54 INFO  time: initialize in 1.82s
+2022.11.02 19:46:56 INFO  Attempting to connect to the build server...
+2022.11.02 19:46:56 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.02 19:46:56 INFO  skipping build import with status 'Installed'
+2022.11.02 19:46:56 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.02 19:46:56 INFO  Attempting to connect to the build server...
+2022.11.02 19:46:56 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.02 19:46:56 INFO  Attempting to connect to the build server...
+2022.11.02 19:46:56 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.02 19:46:56 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.02 19:46:56 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.02 19:46:56 INFO  time: Connected to build server in 0.46s
+2022.11.02 19:46:56 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.02 19:46:59 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/Main.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.02 19:47:01 INFO  time: code lens generation in 5s
+2022.11.02 19:47:03 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/Main.scala. Using presentation compiler with project's scala-library version: 2.13.8
+2022.11.02 19:47:04 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.02 19:47:04 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.02 19:47:04 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.02 19:47:04 INFO  time: indexed workspace in 8.28s
+2022.11.02 19:47:05 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:47:05 INFO  time: compiled klee-test in 96ms
+Nov 02, 2022 7:47:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+Nov 02, 2022 7:47:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 17
+Nov 02, 2022 7:47:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 19
+2022.11.02 19:47:05 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:47:06 INFO  time: compiled klee-test in 0.41s
+2022.11.02 19:47:06 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:47:06 INFO  time: compiled klee-test in 0.25s
+2022.11.02 19:47:22 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:47:22 INFO  time: compiled klee-test in 0.19s
+2022.11.02 19:47:24 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:47:24 INFO  time: compiled klee-test in 0.26s
+2022.11.02 19:47:24 INFO  Deduplicating compilation of klee from bsp client 'Metals 0.11.9' (since 28.447s)
+2022.11.02 19:47:24 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:47:24 INFO  time: compiled klee-test in 0.16s
+2022.11.02 19:48:56 INFO  compiling klee-test (3 scala sources)
+2022.11.02 19:48:56 INFO  time: compiled klee-test in 0.23s
+2022.11.02 19:49:11 INFO  shutting down Metals
+2022.11.02 19:49:11 INFO  Shut down connection with build server.
+2022.11.02 19:49:11 INFO  Shut down connection with build server.
+2022.11.02 19:49:11 INFO  Shut down connection with build server.
+2022.11.06 14:57:53 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.06 14:57:53 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.06 14:57:53 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.73.0.
+2022.11.06 14:57:55 INFO  time: initialize in 1.89s
+2022.11.06 14:57:57 INFO  Attempting to connect to the build server...
+2022.11.06 14:57:57 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.06 14:57:57 INFO  skipping build import with status 'Installed'
+2022.11.06 14:58:00 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.06 14:58:00 INFO  Attempting to connect to the build server...
+2022.11.06 14:58:00 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.06 14:58:00 INFO  Attempting to connect to the build server...
+2022.11.06 14:58:00 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.06 14:58:00 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.06 14:58:01 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.06 14:58:01 INFO  time: Connected to build server in 4.1s
+2022.11.06 14:58:01 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.06 14:58:01 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/ImgPoint.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.06 14:58:01 INFO  time: code lens generation in 3.88s
+2022.11.06 14:58:01 INFO  time: Imported build in 0.19s
+2022.11.06 14:58:05 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.06 14:58:05 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.06 14:58:05 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.06 14:58:05 INFO  time: indexed workspace in 3.71s
+2022.11.06 14:58:06 INFO  compiling klee (74 scala sources)
+2022.11.06 14:58:19 WARN  11 deprecations (since 2.10.0)
+2022.11.06 14:58:19 WARN  14 deprecations (since 2.13.3)
+2022.11.06 14:58:19 WARN  25 deprecations in total; re-run with -deprecation for details
+2022.11.06 14:58:19 WARN  4 feature warnings; re-run with -feature for details
+2022.11.06 14:58:19 INFO  compiling klee-test (3 scala sources)
+2022.11.06 14:58:19 INFO  time: compiled klee in 13s
+2022.11.06 14:58:19 INFO  time: compiled klee-test in 0.38s
+2022.11.06 14:58:46 INFO  shutting down Metals
+2022.11.06 14:58:46 INFO  Shut down connection with build server.
+2022.11.06 14:58:46 INFO  Shut down connection with build server.
+2022.11.06 14:58:46 INFO  Shut down connection with build server.
+2022.11.17 09:33:36 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.17 09:33:37 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.17 09:33:37 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.73.1.
+2022.11.17 09:33:39 INFO  time: initialize in 2.07s
+2022.11.17 09:33:41 INFO  Attempting to connect to the build server...
+2022.11.17 09:33:41 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:33:45 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/ImgPoint.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.17 09:33:45 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:33:45 INFO  Attempting to connect to the build server...
+2022.11.17 09:33:45 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:33:45 INFO  Attempting to connect to the build server...
+2022.11.17 09:33:45 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:33:45 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:33:45 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:33:45 INFO  time: Connected to build server in 4.73s
+2022.11.17 09:33:45 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.17 09:33:46 INFO  time: Imported build in 0.2s
+2022.11.17 09:33:48 INFO  time: code lens generation in 6.98s
+2022.11.17 09:33:50 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/ImgPoint.scala. Using presentation compiler with project's scala-library version: 3.2.0
+Nov 17, 2022 9:33:51 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3
+2022.11.17 09:33:51 INFO  running '/usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -Xss2M -jar /tmp/metals6504511871751926218/sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2022.11.17 09:33:51 WARN  no build target for: /home/skac/Documents/projekty/klee/project/project/metals.sbt
+2022.11.17 09:33:51 INFO  skipping build import with status 'Started'
+2022.11.17 09:33:51 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:33:51 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:33:51 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:33:51 INFO  time: indexed workspace in 6.57s
+2022.11.17 09:33:54 INFO  compiling klee (21 scala sources)
+2022.11.17 09:33:54 INFO  no build target found for /home/skac/Documents/projekty/klee/project/project/metals.sbt. Using presentation compiler with project's scala-library version: 2.13.8
+2022.11.17 09:33:56 INFO  [info] welcome to sbt 1.5.2 (Ubuntu Java 11.0.17)
+2022.11.17 09:34:01 INFO  [info] loading global plugins from /home/skac/.sbt/1.0/plugins
+2022.11.17 09:34:11 INFO  [info] loading settings for project klee-build-build-build from metals.sbt ...
+2022.11.17 09:34:11 INFO  [info] loading project definition from /home/skac/Documents/projekty/klee/project/project/project
+2022.11.17 09:34:12 INFO  time: compiled klee in 18s
+2022.11.17 09:34:12 INFO  compiling klee (21 scala sources)
+2022.11.17 09:34:15 INFO  [info] loading settings for project klee-build-build from metals.sbt ...
+2022.11.17 09:34:15 INFO  [info] loading project definition from /home/skac/Documents/projekty/klee/project/project
+2022.11.17 09:34:16 INFO  time: compiled klee in 3.38s
+2022.11.17 09:34:18 INFO  [success] Generated .bloop/klee-build-build.json
+2022.11.17 09:34:18 INFO  [success] Total time: 3 s, completed Nov 17, 2022, 9:34:18 AM
+2022.11.17 09:34:18 INFO  [info] loading settings for project klee-build from metals.sbt,plugins.sbt ...
+2022.11.17 09:34:18 INFO  [info] loading project definition from /home/skac/Documents/projekty/klee/project
+2022.11.17 09:34:20 INFO  [success] Generated .bloop/klee-build.json
+2022.11.17 09:34:20 INFO  [success] Total time: 1 s, completed Nov 17, 2022, 9:34:20 AM
+2022.11.17 09:34:23 ERROR /home/skac/Documents/projekty/klee/build.sbt:21: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+2022.11.17 09:34:23 ERROR assemblyMergeStrategy in assembly := {
+2022.11.17 09:34:23 ERROR                       ^
+2022.11.17 09:34:23 INFO  [info] loading settings for project klee from build.sbt ...
+2022.11.17 09:34:23 INFO  [info] set current project to klee (in build file:/home/skac/Documents/projekty/klee/)
+2022.11.17 09:34:23 INFO  [success] Generated .bloop/klee-test.json
+2022.11.17 09:34:23 INFO  [success] Generated .bloop/klee.json
+2022.11.17 09:34:23 INFO  [success] Total time: 0 s, completed Nov 17, 2022, 9:34:23 AM
+2022.11.17 09:34:24 INFO  time: ran 'sbt bloopInstall' in 33s
+2022.11.17 09:34:24 INFO  compiling klee (74 scala sources)
+2022.11.17 09:34:24 INFO  Disconnecting from Bloop session...
+2022.11.17 09:34:24 INFO  Shut down connection with build server.
+2022.11.17 09:34:24 INFO  Shut down connection with build server.
+2022.11.17 09:34:24 INFO  Shut down connection with build server.
+Nov 17, 2022 9:34:24 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint notify
+INFO: Failed to send notification message.
+org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.nio.channels.AsynchronousCloseException
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.notify(RemoteEndpoint.java:126)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.sendCancelNotification(RemoteEndpoint.java:180)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint$1.cancel(RemoteEndpoint.java:150)
+	at scala.meta.internal.metals.BuildServerConnection.$anonfun$register$2(BuildServerConnection.scala:321)
+	at scala.runtime.java8.JFunction0$mcZ$sp.apply(JFunction0$mcZ$sp.scala:17)
+	at scala.util.Try$.apply(Try.scala:210)
+	at scala.meta.internal.metals.BuildServerConnection.$anonfun$register$1(BuildServerConnection.scala:321)
+	at scala.meta.internal.metals.Cancelable$$anon$1.cancel(Cancelable.scala:18)
+	at scala.meta.internal.metals.Cancelable$.$anonfun$cancelAll$1(Cancelable.scala:29)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at scala.meta.internal.metals.Cancelable$.cancelAll(Cancelable.scala:28)
+	at scala.meta.internal.metals.MutableCancelable.cancel(MutableCancelable.scala:25)
+	at scala.meta.internal.metals.BuildServerConnection.cancel(BuildServerConnection.scala:258)
+	at scala.meta.internal.metals.BuildServerConnection.$anonfun$shutdown$1(BuildServerConnection.scala:122)
+	at scala.meta.internal.metals.BuildServerConnection.$anonfun$shutdown$1$adapted(BuildServerConnection.scala:115)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:467)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.nio.channels.AsynchronousCloseException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:202)
+	at java.base/sun.nio.ch.SinkChannelImpl.endWrite(SinkChannelImpl.java:241)
+	at java.base/sun.nio.ch.SinkChannelImpl.write(SinkChannelImpl.java:259)
+	at java.base/java.nio.channels.Channels.writeFullyImpl(Channels.java:74)
+	at java.base/java.nio.channels.Channels.writeFully(Channels.java:94)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:172)
+	at java.base/java.io.OutputStream.write(OutputStream.java:122)
+	at java.base/java.nio.channels.Channels$1.write(Channels.java:152)
+	at scala.meta.internal.metals.ClosableOutputStream.write(ClosableOutputStream.scala:26)
+	at java.base/java.io.FilterOutputStream.write(FilterOutputStream.java:137)
+	at java.base/java.io.FilterOutputStream.write(FilterOutputStream.java:108)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:67)
+	... 19 more
+
+2022.11.17 09:34:24 INFO  Cancelling compilation on Bloop server
+2022.11.17 09:34:24 INFO  Attempting to connect to the build server...
+2022.11.17 09:34:24 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:34:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:34:24 INFO  Attempting to connect to the build server...
+2022.11.17 09:34:24 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:34:24 INFO  Attempting to connect to the build server...
+2022.11.17 09:34:24 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:34:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:34:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:34:24 INFO  time: Connected to build server in 0.26s
+2022.11.17 09:34:24 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.17 09:34:27 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:34:27 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:34:27 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:34:27 INFO  time: indexed workspace in 2.38s
+2022.11.17 09:34:27 INFO  compiling klee (74 scala sources)
+2022.11.17 09:34:41 WARN  11 deprecations (since 2.10.0)
+2022.11.17 09:34:41 WARN  14 deprecations (since 2.13.3)
+2022.11.17 09:34:41 WARN  25 deprecations in total; re-run with -deprecation for details
+2022.11.17 09:34:41 WARN  4 feature warnings; re-run with -feature for details
+2022.11.17 09:34:41 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:34:41 INFO  time: compiled klee in 14s
+2022.11.17 09:34:41 INFO  time: compiled klee-test in 0.37s
+2022.11.17 09:35:54 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:35:54 INFO  time: compiled klee-test in 0.19s
+2022.11.17 09:35:56 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:35:56 INFO  time: compiled klee-test in 0.17s
+2022.11.17 09:35:56 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:35:56 INFO  time: compiled klee-test in 0.15s
+2022.11.17 09:35:59 INFO  compilation cancelled
+2022.11.17 09:35:59 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:35:59 INFO  time: compiled klee-test in 0.17s
+2022.11.17 09:35:59 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:35:59 INFO  time: compiled klee-test in 0.14s
+2022.11.17 09:35:59 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:36:00 INFO  time: compiled klee-test in 0.15s
+2022.11.17 09:36:16 INFO  Disconnecting from Bloop session...
+2022.11.17 09:36:16 INFO  Shut down connection with build server.
+2022.11.17 09:36:16 INFO  Shut down connection with build server.
+2022.11.17 09:36:16 INFO  Shut down connection with build server.
+2022.11.17 09:36:16 INFO  Attempting to connect to the build server...
+2022.11.17 09:36:16 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:36:16 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:36:16 INFO  Attempting to connect to the build server...
+2022.11.17 09:36:16 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:36:16 INFO  Attempting to connect to the build server...
+2022.11.17 09:36:16 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:36:16 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:36:16 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:36:16 INFO  time: Connected to build server in 0.15s
+2022.11.17 09:36:16 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.17 09:36:18 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:36:18 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:36:18 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:36:18 INFO  time: indexed workspace in 1.58s
+2022.11.17 09:36:18 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:36:19 INFO  time: compiled klee-test in 1.56s
+2022.11.17 09:36:24 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:36:24 INFO  time: compiled klee-test in 0.18s
+2022.11.17 09:38:47 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.17 09:38:47 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.17 09:38:47 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.73.1.
+2022.11.17 09:38:52 INFO  time: initialize in 4.99s
+2022.11.17 09:38:54 INFO  Attempting to connect to the build server...
+2022.11.17 09:38:54 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:38:54 INFO  skipping build import with status 'Installed'
+2022.11.17 09:38:58 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/ImgPoint.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.17 09:38:58 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:38:58 INFO  Attempting to connect to the build server...
+2022.11.17 09:38:58 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:38:58 INFO  Attempting to connect to the build server...
+2022.11.17 09:38:58 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 09:38:58 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:38:59 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 09:38:59 INFO  time: Connected to build server in 4.73s
+2022.11.17 09:38:59 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.17 09:38:59 INFO  time: Imported build in 0.22s
+2022.11.17 09:39:02 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/ImgPoint.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.17 09:39:05 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:39:05 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:39:05 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 09:39:05 INFO  time: indexed workspace in 6.08s
+2022.11.17 09:39:08 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:12 INFO  time: compiled klee-test in 4.01s
+Exception in thread "pool-5-thread-1" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$onCompilerJobQueue$1(CompilerAccess.scala:195)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Nov 17, 2022 9:39:34 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 29
+2022.11.17 09:39:34 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:36 INFO  time: compiled klee-test in 1.45s
+2022.11.17 09:39:36 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:37 INFO  time: compiled klee-test in 1.02s
+2022.11.17 09:39:37 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:37 INFO  time: compiled klee-test in 0.58s
+2022.11.17 09:39:38 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:38 INFO  time: compiled klee-test in 0.67s
+2022.11.17 09:39:41 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:41 INFO  time: compiled klee-test in 0.64s
+2022.11.17 09:39:41 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:39:42 INFO  time: compiled klee-test in 0.45s
+2022.11.17 09:43:39 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:43:39 INFO  time: compiled klee-test in 0.34s
+2022.11.17 09:43:41 INFO  compiling klee-test (3 scala sources)
+2022.11.17 09:43:41 INFO  time: compiled klee-test in 0.35s
+2022.11.17 09:44:06 INFO  compiling klee (1 scala source)
+2022.11.17 09:44:08 INFO  time: compiled klee in 1.72s
+2022.11.17 09:45:02 INFO  shutting down Metals
+2022.11.17 09:45:02 INFO  Shut down connection with build server.
+2022.11.17 09:45:02 INFO  Shut down connection with build server.
+2022.11.17 09:45:02 INFO  Shut down connection with build server.
+2022.11.17 10:07:47 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.17 10:07:48 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.17 10:07:48 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.73.1.
+2022.11.17 10:07:49 INFO  time: initialize in 1.62s
+2022.11.17 10:07:51 INFO  Attempting to connect to the build server...
+2022.11.17 10:07:51 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 10:07:51 INFO  skipping build import with status 'Installed'
+2022.11.17 10:07:51 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 10:07:51 INFO  Attempting to connect to the build server...
+2022.11.17 10:07:51 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 10:07:51 INFO  Attempting to connect to the build server...
+2022.11.17 10:07:51 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 10:07:51 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 10:07:51 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 10:07:51 INFO  time: Connected to build server in 0.51s
+2022.11.17 10:07:51 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.17 10:07:52 INFO  time: Imported build in 0.17s
+2022.11.17 10:07:55 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/Main.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.17 10:07:57 INFO  time: code lens generation in 5.42s
+2022.11.17 10:08:00 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 10:08:00 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 10:08:00 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 10:08:00 INFO  time: indexed workspace in 8.52s
+2022.11.17 10:08:01 INFO  compiling klee-test (3 scala sources)
+2022.11.17 10:08:03 INFO  time: compiled klee-test in 1.87s
+2022.11.17 10:09:46 INFO  compiling klee (1 scala source)
+2022.11.17 10:09:46 WARN  2 feature warnings; re-run with -feature for details
+2022.11.17 10:09:46 INFO  time: compiled klee in 0.97s
+2022.11.17 10:11:15 INFO  compiling klee (1 scala source)
+2022.11.17 10:11:15 WARN  2 feature warnings; re-run with -feature for details
+2022.11.17 10:11:15 INFO  time: compiled klee in 0.78s
+2022.11.17 10:12:36 INFO  compiling klee (1 scala source)
+2022.11.17 10:12:36 INFO  time: compiled klee in 0.87s
+2022.11.17 10:15:39 INFO  compiling klee (1 scala source)
+2022.11.17 10:15:39 INFO  time: compiled klee in 0.6s
+Nov 17, 2022 10:16:10 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 530
+2022.11.17 10:18:26 INFO  compiling klee-test (3 scala sources)
+2022.11.17 10:18:26 INFO  time: compiled klee-test in 0.28s
+2022.11.17 10:20:48 INFO  compiling klee-test (3 scala sources)
+2022.11.17 10:20:48 INFO  time: compiled klee-test in 0.26s
+2022.11.17 10:22:47 INFO  compiling klee (1 scala source)
+2022.11.17 10:22:48 INFO  time: compiled klee in 1.33s
+2022.11.17 10:22:48 INFO  compiling klee (3 scala sources)
+2022.11.17 10:22:48 INFO  time: compiled klee in 0.64s
+Nov 17, 2022 10:23:41 AM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+Nov 17, 2022 10:25:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 795
+Nov 17, 2022 10:25:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 793
+something's wrong: no file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/DispVisualizer.scala in com.github.skac112.klee.transforms.displacers.Displacer[<error>,<error>]RangePosition(file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/DispVisualizer.scala, 338, 338, 360)
+something's wrong: no file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/DispVisualizer.scala in com.github.skac112.klee.transforms.displacers.Displacer[<error>,<error>]RangePosition(file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/DispVisualizer.scala, 338, 338, 353)
+something's wrong: no file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/DispVisualizer.scala in com.github.skac112.klee.transforms.displacers.Displacer[<error>,<error>]RangePosition(file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/DispVisualizer.scala, 338, 338, 363)
+2022.11.17 10:26:45 INFO  compiling klee (1 scala source)
+2022.11.17 10:26:45 INFO  time: compiled klee in 91ms
+2022.11.17 10:26:53 INFO  compiling klee (1 scala source)
+2022.11.17 10:26:53 INFO  time: compiled klee in 92ms
+2022.11.17 10:27:13 INFO  compiling klee (1 scala source)
+2022.11.17 10:27:13 INFO  time: compiled klee in 0.15s
+Nov 17, 2022 10:27:32 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Nov 17, 2022 10:27:37 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2022.11.17 10:32:46 INFO  compiling klee (1 scala source)
+2022.11.17 10:32:46 INFO  time: compiled klee in 0.18s
+2022.11.17 10:32:46 INFO  compiling klee (1 scala source)
+2022.11.17 10:32:46 INFO  time: compiled klee in 0.39s
+2022.11.17 10:32:46 INFO  compiling klee (1 scala source)
+2022.11.17 10:32:46 INFO  time: compiled klee in 82ms
+2022.11.17 10:33:20 INFO  compiling klee (1 scala source)
+2022.11.17 10:33:20 INFO  time: compiled klee in 65ms
+2022.11.17 10:33:31 INFO  compiling klee (1 scala source)
+2022.11.17 10:33:31 INFO  time: compiled klee in 74ms
+something's wrong: no file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/AirIterator.scala in com.github.skac112.klee.ImgTrans[I,<error>,<error>]RangePosition(file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/AirIterator.scala, 436, 436, 477)
+something's wrong: no file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/AirIterator.scala in com.github.skac112.klee.ImgTrans[I,I,<error>]RangePosition(file:///home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/AirIterator.scala, 436, 436, 485)
+2022.11.17 10:48:43 INFO  compiling klee (1 scala source)
+2022.11.17 10:48:43 INFO  time: compiled klee in 0.66s
+2022.11.17 10:49:51 INFO  compiling klee (1 scala source)
+2022.11.17 10:49:51 INFO  time: compiled klee in 0.67s
+2022.11.17 10:56:23 INFO  compiling klee (1 scala source)
+2022.11.17 10:56:23 INFO  time: compiled klee in 0.6s
+2022.11.17 10:56:36 INFO  compiling klee (1 scala source)
+2022.11.17 10:56:36 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.11.17 10:56:36 INFO  time: compiled klee in 0.8s
+2022.11.17 10:57:56 INFO  shutting down Metals
+2022.11.17 10:57:56 INFO  Shut down connection with build server.
+2022.11.17 10:57:56 INFO  Shut down connection with build server.
+2022.11.17 10:57:56 INFO  Shut down connection with build server.
+2022.11.17 11:17:57 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.17 11:17:58 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.17 11:17:58 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.73.1.
+2022.11.17 11:17:59 INFO  time: initialize in 1.7s
+2022.11.17 11:18:01 INFO  Attempting to connect to the build server...
+2022.11.17 11:18:01 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 11:18:01 INFO  skipping build import with status 'Installed'
+2022.11.17 11:18:05 INFO  no build target found for /home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/flows/package.scala. Using presentation compiler with project's scala-library version: 3.2.0
+2022.11.17 11:18:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 11:18:05 INFO  Attempting to connect to the build server...
+2022.11.17 11:18:05 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 11:18:05 INFO  Attempting to connect to the build server...
+2022.11.17 11:18:05 INFO  Bloop uses /usr/lib/jvm/java-11-openjdk-amd64 defined at /home/skac/.bloop/bloop.json
+2022.11.17 11:18:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 11:18:06 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/project/.metals/bsp.trace.json or /home/skac/.cache/metals/bsp.trace.json
+2022.11.17 11:18:06 INFO  time: Connected to build server in 4.82s
+2022.11.17 11:18:06 INFO  Connected to Build server: Bloop v1.5.4
+2022.11.17 11:18:06 INFO  time: Imported build in 0.24s
+2022.11.17 11:18:08 INFO  time: code lens generation in 6.08s
+2022.11.17 11:18:11 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 11:18:11 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 11:18:11 WARN  Could not find java sources in /usr/lib/jvm/src.zip, /usr/lib/jvm/lib/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/src.zip, /usr/lib/jvm/java-11-openjdk-amd64/lib/src.zip. Java symbols will not be available.
+2022.11.17 11:18:11 INFO  time: indexed workspace in 5.27s
+Nov 17, 2022 11:18:14 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "build/taskFinish",
+  "params": {
+    "taskId": {
+      "id": "1"
+    },
+    "eventTime": 1668680293019,
+    "message": "Compiled \u0027klee\u0027",
+    "status": 1,
+    "dataKind": "compile-report",
+    "data": {
+      "target": {
+        "uri": "file:/home/skac/Documents/projekty/klee/?id\u003dklee"
+      },
+      "errors": 0,
+      "warnings": 0,
+      "isNoOp": true,
+      "isLastCycle": true,
+      "clientDir": "file:///home/skac/Documents/projekty/klee/.bloop/klee/bloop-bsp-clients-classes/classes-Metals-n2qoJW1hQOGvnReajLQmdw\u003d\u003d/",
+      "analysisOut": "file:///home/skac/Documents/projekty/klee/.bloop/klee/klee-analysis.bin"
+    }
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.NullPointerException
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$3(Compilers.scala:251)
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$3$adapted(Compilers.scala:249)
+	at scala.Option.foreach(Option.scala:437)
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$2(Compilers.scala:249)
+	at scala.meta.internal.metals.Compilers.$anonfun$didCompile$2$adapted(Compilers.scala:248)
+	at scala.collection.mutable.HashSet$Node.foreach(HashSet.scala:435)
+	at scala.collection.mutable.HashSet.foreach(HashSet.scala:361)
+	at scala.meta.internal.metals.Compilers.didCompile(Compilers.scala:248)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$updateWorkspaceDirectory$14(MetalsLanguageServer.scala:456)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$updateWorkspaceDirectory$14$adapted(MetalsLanguageServer.scala:454)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.$anonfun$buildTaskFinish$2(ForwardingMetalsBuildClient.scala:160)
+	at scala.Option.foreach(Option.scala:437)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.$anonfun$buildTaskFinish$1(ForwardingMetalsBuildClient.scala:157)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.$anonfun$buildTaskFinish$1$adapted(ForwardingMetalsBuildClient.scala:156)
+	at scala.Option.foreach(Option.scala:437)
+	at scala.meta.internal.metals.clients.language.ForwardingMetalsBuildClient.buildTaskFinish(ForwardingMetalsBuildClient.scala:156)
+	... 16 more
+
+2022.11.17 11:18:14 INFO  compiling klee-test (3 scala sources)
+2022.11.17 11:18:16 INFO  time: compiled klee-test in 1.93s
+2022.11.17 11:19:59 INFO  compiling klee (1 scala source)
+2022.11.17 11:20:03 INFO  time: compiled klee in 3.63s
+2022.11.17 11:20:17 INFO  compiling klee (1 scala source)
+2022.11.17 11:20:17 INFO  time: compiled klee in 0.64s
+2022.11.17 11:20:30 INFO  compiling klee (1 scala source)
+2022.11.17 11:20:32 INFO  time: compiled klee in 1.96s
+2022.11.17 11:22:12 INFO  shutting down Metals
+2022.11.17 11:22:12 INFO  Shut down connection with build server.
+2022.11.17 11:22:12 INFO  Shut down connection with build server.
+2022.11.17 11:22:12 INFO  Shut down connection with build server.
+2022.11.17 11:22:26 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/skac/Documents/projekty/klee/.metals/lsp.trace.json or /home/skac/.cache/metals/lsp.trace.json
+2022.11.17 11:22:27 INFO  logging to file /home/skac/Documents/projekty/klee/.metals/metals.log
+2022.11.17 11:22:27 INFO  Started: Metals version 0.11.9 in workspace '/home/skac/Documents/projekty/klee' for client Visual Studio Code 1.73.1.

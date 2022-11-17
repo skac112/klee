@@ -55,7 +55,7 @@
     <orderEntry type="library" name="sbt: org.typelevel:spire-util_2.13:0.17.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:spire_2.13:0.17.0:jar" level="project" />
     <orderEntry type="library" name="sbt: pl.edu.icm:JLargeArrays:1.5:jar" level="project" />
-    <orderEntry type="library" name="sbt: skac112:vgutils_2.13:0.1.7-SNAPSHOT:jar" level="project" />
+    <orderEntry type="library" name="sbt: skac112:vgutils_2.13:0.1.8-SNAPSHOT:jar" level="project" />
     <orderEntry type="module-library">
       <library name="sbt: unmanaged-jars">
         <CLASSES>

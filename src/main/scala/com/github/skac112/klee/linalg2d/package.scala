@@ -13,12 +13,12 @@ package object linalg2d {
     ComplexMatrix(linear.a, linear.b, linear.c, linear.d)
 
   /**
-    * Synthesizes 2-d matrix of a spiral node linear dynamical system. Eigenvalues  are complex conjugate and have form:
+    * Synthesizes 2-d matrix of a spiral node linear dynamical system. Eigenvalues  are comlex conjugate and have form:
     * alfa + i*beta
     * where i is imaginary unit
     * Tau is an angle of large axis of "rotation ellipse". "Rotation ellipse" is an ellipse, a phase portrait of any
     * nonzero point of dynamical system with eigenvalues being purely imaginary with absolute values equal to modulus of
-    * each of (by definition equal) eigenvalues given (specified by alfa and beta parameters).
+    * each of (by definition equal) eigenvalues given (determined by alfa and beta parameters).
     * lambda1 = alfa + i*beta
     * lambda2 = alfa - i*beta
     * @param alfa
