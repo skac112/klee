@@ -139,4 +139,20 @@ package object klee {
 
   def blendColors(color1: ColorVector, color2: ColorVector, proportion: Double): ColorVector = (color1 * proportion) + (color2 *
     (1.0 - proportion))
+
+  /**
+    * Returns value from normal distribution modfied by imposing minimum and maximum values.
+    * @param rand
+    * @param min
+    * @param max
+    * @param mean
+    * @param stretch
+    * @return
+    */
+  def nextGaussBounded(rand: scala.util.Random,
+                       min: Double,
+                       max: Double,
+                       mean: Double = 0.0,
+                       stretch: Double = 1.0) = math.min(max,
+    math.max(min, rand.nextGaussian() * stretch + mean))
 }

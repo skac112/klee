@@ -9,6 +9,7 @@ import com.github.skac112.vgutils.{Angle, Color, Point}
 
 case class BlackHole[I, M[_]: Monad](
   c: Point,
+
   rotation: Double,
   rotationDecay: Double,
   scaling: Double,

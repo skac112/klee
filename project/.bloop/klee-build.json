@@ -20,7 +20,7 @@
             "/home/skac/.sbt/boot/scala-2.12.13/lib/scala-library.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.4/sbt-bloop-1.5.4.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/sbt-assembly_2.12_1.0/1.2.0/sbt-assembly-1.2.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2021.3.0/sbt-structure-extractor-2021.3.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2022.3.1/sbt-structure-extractor-2022.3.1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jetbrains/scala/sbt-idea-shell_2.12_1.0/2021.1.0/sbt-idea-shell-2021.1.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jetbrains/scala/sbt-idea-compiler-indices_2.12_1.0/1.0.13/sbt-idea-compiler-indices-1.0.13.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/main_2.12/1.5.2/main_2.12-1.5.2.jar",
@@ -272,12 +272,12 @@
                 {
                     "organization": "org.jetbrains.scala",
                     "name": "sbt-structure-extractor",
-                    "version": "2021.3.0",
+                    "version": "2022.3.1",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "sbt-structure-extractor",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2021.3.0/sbt-structure-extractor-2021.3.0.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2022.3.1/sbt-structure-extractor-2022.3.1.jar"
                         }
                     ]
                 },

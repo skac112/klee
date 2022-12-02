@@ -7,7 +7,6 @@ import com.github.skac112.klee.transforms.displacers.BlackHole
 import com.github.skac112.klee.{Composition, Img, blendColors, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
-
 import scala.math._
 import com.github.skac112.klee.transforms.gradients.Ring
 import com.github.skac112.klee.transforms.gradients.Radial

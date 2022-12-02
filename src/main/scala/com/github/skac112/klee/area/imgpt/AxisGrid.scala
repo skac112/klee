@@ -11,8 +11,8 @@ import cats.implicits._
 object AxisGrid {
     def forLand[I, M[_]: Monad](img: Img[I, M], leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) = {
         val real_lt = leftTop + Point(.5*dx, .5*dy)          
-//        val colorFunFun = (i: Int) => () => img(real_lt + Point((i % nx) * dx, (i / nx) * dy))
-        val colorFunFun = (i: Int) => () => None
+        val colorFunFun = (i: Int) => () => Some(img(real_lt + Point((i % nx) * dx, (i / nx) * dy)))
+//        val colorFunFun = (i: Int) => () => None
         AxisGrid[I, M](leftTop, nx, ny, dx, dy, colorFunFun)
     }
 
