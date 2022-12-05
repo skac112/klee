@@ -8,6 +8,18 @@ import com.github.skac112.klee.area.img.ImgArea
 
 import scala.math._
 
+/**
+  * Transformation operates in a ring area around given circle. "Color" (i. e. value of an I type) in this circle
+  * depends on a current color and distance from circle to given point.
+  * @param c
+  * @param r
+  * @param areaWidth with of ring
+  * @param radialColorFun
+  * @param applyToAir
+  * @param monad$M$0
+  * @tparam I
+  * @tparam M
+  */
 case class Ring[I,  M[_]: Monad](
                                   c: Point,
                                   r: Double,

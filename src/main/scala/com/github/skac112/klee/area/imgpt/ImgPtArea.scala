@@ -97,6 +97,7 @@ abstract class ImgPtArea[I, M[_]: Monad] {
         outside(outside_idx - 1)
       }}
     }
+
     in_area <- BoundsArea.forImgPts[I, M](in_pts)
     out_area <- BoundsArea.forImgPts[I, M](out_pts)
   } yield (in_area, out_area, EmptyArea[I, M](), fun)

@@ -1,7 +1,7 @@
 package com.github.skac112.klee.transforms.displacers
 
 import cats.Monad
-import com.github.skac112.klee.area.img.{ImgArea, Rect}
+import com.github.skac112.klee.area.img.{Circle, ImgArea, Rect}
 import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.klee.transforms.displacers.Finger._
 import com.github.skac112.vgutils.Point
@@ -94,15 +94,16 @@ case class Finger[I, M[_]: Monad](from: Point,
   lazy val frontTreshDist = treshDistance(frontDecayType, frontDecayFactor)
   lazy val backTreshDist = treshDistance(backDecayType, backDecayFactor)
 
-  println(frontTreshDist)
-  println(backTreshDist)
-  println(to + (frontVersor * (frontTreshDist - backTreshDist) * .5))
-  println(frontTreshDist + backTreshDist)
-
   override lazy val area: ImgArea = Rect(to + (frontVersor * (frontTreshDist - backTreshDist) * .5),
     frontTreshDist + backTreshDist, 2*treshDistance(sideDecayType, sideDecayFactor), frontVector.angle)
 
+//  override lazy val area: ImgArea = Circle(to, .45)
+
+  println(area)
+
   override lazy val displacement: VectorMap[M] = new VectorMap[M] {
+
+//    override def apply(p: Point) = m.pure(Point(0, 0))
 
     override def apply(p: Point) = m.pure({
       // relative vector - vector from "to" point to point "p"

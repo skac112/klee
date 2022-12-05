@@ -7,6 +7,17 @@ import com.github.skac112.vgutils.Point
 import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.klee.area.img.Circle
 
+/**
+  * Transformation operates in a circle area. "Color" (i. e. value of an I type) of point in this circle depends on
+  * a current color and modulus of vector from center of circle to given point.
+  * @param c
+  * @param r
+  * @param radialColorFun
+  * @param applyToAir
+  * @param monad$M$0
+  * @tparam I
+  * @tparam M
+  */
 case class Radial[I,  M[_]: Monad](
                                     c: Point,
                                     r: Double,

@@ -79,16 +79,39 @@ abstract class Displacer[I, M[_]: Monad] extends LocalImgTrans[I, M] {
     val pt_area = QuickPtArea[Point, M](imgPoints map { ip: ImgPoint[I, M] =>
       InstantImgPoint(ip.point, ip.point, ip.land) }, area)
 
+    // sequence of boolean's signalling that appropriate imgPoint is land-point or air-point.
+    val land_air_mask = imgPoints map { _.land }
+    var land_idx = 0
+    var air_idx = 0
+
     for {
       disps <- displacement.applyBatchArea(pt_area)
+
       disp_pts = for {
         disp <- disps
       } yield disp.point + disp.color
-      img_colors <- img.applyBatch(disp_pts)
-      new_m_ips = (imgPoints zip disp_pts zip img_colors) map { case ((ip, disp_p), img_col) => for {
-        ip_pt <- ip.point
-        ip_col <- ip.color
-      } yield InstantPureImgPoint(if (ip.land) ip_pt else disp_p, if (ip.land) img_col else ip_col, ip.land) }
+
+      new_m_ips = (land_air_mask zip (0 until land_air_mask.length)) map { case (is_land, idx) =>
+        if (is_land) {
+          for {
+            // for land points new point is the same as old
+            pt <- imgPoints(idx).point
+            // for land point new color is taken from displaced land point
+            color <- img(disp_pts(idx))
+          } yield InstantPureImgPoint(pt, color, true)
+        } else {
+          for {
+            // for air points new point is displaced by vector from inverse displacement
+            // and new color is the same as old
+            color <- imgPoints(idx).color
+          } yield InstantPureImgPoint(disp_pts(idx), color, false)
+        }
+      }
+
+//      new_m_ips = (imgPoints zip disp_pts zip img_colors) map { case ((ip, disp_p), img_col) => for {
+//        ip_pt <- ip.point
+//        ip_col <- ip.color
+//      } yield InstantPureImgPoint(if (ip.land) ip_pt else disp_p, if (ip.land) img_col else ip_col, ip.land) }
       new_ips <- new_m_ips.toVector.sequence
     } yield new_ips
   }

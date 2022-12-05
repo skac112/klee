@@ -6,6 +6,17 @@ import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, LocalImgTrans}
 import com.github.skac112.klee.area.img.{Circle, ImgArea}
 import com.github.skac112.vgutils.{Angle, Point}
 
+/**
+  * Transformation operates in a circle area. "Color" (i. e. value of an I type) in this circle depends on a current
+  * color and angle of vector from center of circle to given point.
+  * @param c
+  * @param r
+  * @param angleColorFun
+  * @param applyToAir
+  * @param monad$M$0
+  * @tparam I
+  * @tparam M
+  */
 case class Angular[I,  M[_]: Monad](
                                      c: Point,
                                      r: Double,

@@ -21,7 +21,7 @@ sealed trait ImgPoint[I, M[_]] {
 final case class LandImgPoint[I, M[_]: Monad](img: Img[I, M], purePoint: Point) extends ImgPoint[I, M] {
   override lazy val m = implicitly[Monad[M]]
   override lazy val point = m.pure(purePoint)
-  override lazy val colorO = None
+  override lazy val colorO = Some(img(purePoint))
 }
 
 final case class LazyColorImgPoint[I, M[_]: Monad](purePoint: Point, colorOFun: () => Option[M[I]], override val land: Boolean = true) extends ImgPoint[I, M] {

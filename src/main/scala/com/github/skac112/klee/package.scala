@@ -155,4 +155,11 @@ package object klee {
                        mean: Double = 0.0,
                        stretch: Double = 1.0) = math.min(max,
     math.max(min, rand.nextGaussian() * stretch + mean))
+
+  def nextDoubleRange(rand: scala.util.Random,
+                      min: Double,
+                      max: Double) = {
+    val d = rand.nextDouble()
+    min * (1 - d) + max * d
+  }
 }

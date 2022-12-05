@@ -5,37 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="244661e5-20ec-4d2c-9eaa-528c8d14e2f2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Rect.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/Painter2.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paintrunners/InterruptibleRunner.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paintrunners/PaintRunner1.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paintrunners/PaintRunner3.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Rect.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/HalfPlane.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/BlackHoles.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/FingerComb.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/FingerSun.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/GradientSky.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paintrunners/FingerSunPaintRunner.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/HalfPlane.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/HalfPlane.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/package.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/klee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/klee.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.bloop/klee-build.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/.bloop/klee-build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/ImgPoint.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/ImgPoint.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/Main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/imgpt/AxisGrid.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/imgpt/AxisGrid.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/imgpt/ImgPtArea.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/imgpt/ImgPtArea.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/package.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/package.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/Painter1.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters/Painter1.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-10-30_08:00:05_e875078.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-10-30_08:00:05_e875078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-11_02:58:56_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-11_02:58:56_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:26:24_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:26:24_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:30:06_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:30:06_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:31:53_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:31:53_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:39:50_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:39:50_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:41:15_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:41:15_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:44:28_7b78ffb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/paints/com.github.skac112.klee.painters.Painter1_22-11-17_09:44:28_7b78ffb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/BlackHole.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/BlackHole.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Rect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/areas/Rect.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Finger.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Finger.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Angular.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Angular.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Polar.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Polar.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Radial.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Radial.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Ring.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/gradients/Ring.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,11 +93,12 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ToolWindowDebug.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/skac/Documents/projekty/atman&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/skac/Documents/projekty/klee/src/main/scala/com/github/skac112/klee/painters&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/painters" />
       <recent name="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -116,10 +109,11 @@
       <recent name="com.github.skac112.klee.dynsys.vectormaps" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.skac112.klee.area.img" />
+      <recent name="com.github.skac112.klee.transforms.areas" />
       <recent name="com.github.skac112.klee.painters" />
       <recent name="com.github.skac112.klee.examples" />
       <recent name="com.github.skac112.klee.transforms.gradients" />
-      <recent name="com.github.skac112.klee.area.imgpt" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
