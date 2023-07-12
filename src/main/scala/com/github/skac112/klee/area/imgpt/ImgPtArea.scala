@@ -71,7 +71,9 @@ abstract class ImgPtArea[I, M[_]: Monad] {
                 partitionOneByOne(imgArea)
               }
             }
-            case _ => partitionOneByOne(imgArea)
+            case _ => {
+              partitionOneByOne(imgArea)
+            }
           }
         }
       }

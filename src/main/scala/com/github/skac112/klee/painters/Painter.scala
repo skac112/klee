@@ -44,7 +44,7 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
     import java.util.Calendar;
     import java.text.SimpleDateFormat;
 
-    val form = new SimpleDateFormat("yy-MM-dd_hh:mm:ss");
+    val form = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     val temp = Calendar.getInstance();
     form.format(temp.getTime());
   }
@@ -71,7 +71,7 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
     val html = s"""<!doctype html><html><head><title>Run of klee library's painter</title></head><body>
      |<h1>Run of <strong>$clName</strong> painter</h1>
      |<p>
-     |Time: <strong>$dateTimeStr</strong>Git hash: $gitHash
+     |Time: <strong>$dateTimeStr</strong> Git hash: $gitHash
      |</p>
      |<h2>Painter parameters</h2>
      |<ul>$paramsString</ul>

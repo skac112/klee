@@ -56,8 +56,8 @@ case class AxisGrid[I, M[_]: Monad](
 
   override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O] = {
     imgArea.bounds match {
-      case Some(b) => partByIntersectFromBounds(b)
-      case None => super.partByIntersect(imgArea)
+      case Some(b) if (imgArea.bounds.get.boundsType != Symbol("INF_BOUNDS")) => partByIntersectFromBounds(b)
+      case _ => super.partByIntersect(imgArea)
     }
   } 
 

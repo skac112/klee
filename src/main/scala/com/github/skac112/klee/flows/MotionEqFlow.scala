@@ -4,5 +4,5 @@ import cats.Monad
 import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.vgutils.Point
 
-case class MotionEqFlow[M[_]: Monad](override val motionEq: VectorMap[M], override val h: Double) extends GenericMotionEqFlow {
+case class MotionEqFlow[M[_]](override val motionEq: VectorMap[M], override val h: Double) extends GenericMotionEqFlow[M] {
 }

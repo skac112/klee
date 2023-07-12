@@ -43,7 +43,7 @@ abstract class PolyMap[M[_]: Monad] extends VectorMap[M] {
     * @param p
     * @return
     */
-  override def apply(p: Point) = {
+  override def apply(p: Point)(implicit m: Monad[M]) = {
     val y_horners = initCoeffs map { (y_coeffs: Seq[Point]) => horner1dim(p.y, y_coeffs) }
     m.pure(horner1dim(p.x, y_horners))
   }

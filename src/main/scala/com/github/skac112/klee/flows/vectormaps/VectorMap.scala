@@ -10,19 +10,19 @@ import com.github.skac112.klee.flows._
 
 object VectorMap {
   def from[M[_]: Monad](fun: Point => Point) = new VectorMap[M] {
-    override val m = implicitly[Monad[M]]
-    override def apply(p: Point) = m.pure(fun(p))
+//    override val m = implicitly[Monad[M]]
+    override def apply(p: Point)(implicit m: Monad[M]) = m.pure(fun(p))
   }
 
-  def identity[M[_]: Monad]: VectorMap[M] = new VectorMap[M] {
-    override val m = implicitly[Monad[M]]
-    override def apply(p: Point): M[Point] = m.pure(p)
+  def identity[M[_]]: VectorMap[M] = new VectorMap[M] {
+//    override val m = implicitly[Monad[M]]
+    override def apply(p: Point)(implicit m: Monad[M]): M[Point] = m.pure(p)
   }
 }
 
-abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
+abstract class VectorMap[M[_]] extends Img[Point, M] {
   self =>
-  override val m = implicitly[Monad[M]]
+//  override val m = implicitly[Monad[M]]
   lazy val invMap: VectorMap[M] = ???
   lazy val f1_6 = 1.0 / 6
 
@@ -32,7 +32,7 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     *
     * @param h
     */
-  def rungeKutta4(motionEq: VectorMap[M], h: Double): VectorMap[M] = {
+  def rungeKutta4(motionEq: VectorMap[M], h: Double)(implicit m: Monad[M]): VectorMap[M] = {
     // caution: all operations in the body of method are performed on vectormaps (functions) rather than on a
     // points or numbers (implicitly k1 = motionEq).
     val k2: VectorMap[M] = motionEq compose (VectorMap.identity[M] + (motionEq * .5 * h))
@@ -41,10 +41,10 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     this + (motionEq + (k2 * 2.0) + (k3 * 2.0) + k4) * h * f1_6
   }
 
-  def *(factor: Double): VectorMap[M] = new VectorMap[M] {
-    override val m = self.m
+  def *(factor: Double)(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = self.m
 
-    override def apply(p: Point): M[Point] = for {
+    override def apply(p: Point)(implicit m: Monad[M]): M[Point] = for {
       p2 <- self(p)
     } yield p2 * factor
   }
@@ -55,33 +55,33 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
 //    override def apply(p: Point): M[Point] = m.map(self(p))(_ * factor)
 //  }
 
-  def /(factor: Double): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
+  def /(factor: Double)(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = VectorMap.this.m
 
-    override def apply(p: Point): M[Point] = m.map(self(p))(_ / factor)
+    override def apply(p: Point)(implicit m: Monad[M]): M[Point] = m.map(self(p))(_ / factor)
   }
 
-  def +(otherPt: Point): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
+  def +(otherPt: Point)(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = VectorMap.this.m
 
-    override def apply(p: Point): M[Point] = m.map(self(p))(_ + otherPt)
+    override def apply(p: Point)(implicit m: Monad[M]): M[Point] = m.map(self(p))(_ + otherPt)
   }
 
-  def -(otherPt: Point): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
-    override def apply(p: Point): M[Point] = m.map(self(p))(_ - otherPt)
+  def -(otherPt: Point)(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = VectorMap.this.m
+    override def apply(p: Point)(implicit m: Monad[M]): M[Point] = m.map(self(p))(_ - otherPt)
   }
 
-  def +(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
+  def +(otherMap: VectorMap[M])(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = VectorMap.this.m
 
-    override def apply(p: Point) = m.flatMap(self(p))(p2 => m.map(otherMap(p))(p3 => p2 + p3))
+    override def apply(p: Point)(implicit m: Monad[M]) = m.flatMap(self(p))(p2 => m.map(otherMap(p))(p3 => p2 + p3))
   }
 
-  def -(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
-    override val m = VectorMap.this.m
+  def -(otherMap: VectorMap[M])(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = VectorMap.this.m
 
-    override def apply(p: Point) = m.flatMap(self(p))(p2 => m.map(otherMap(p))(p3 => p2 - p3))
+    override def apply(p: Point)(implicit m: Monad[M]) = m.flatMap(self(p))(p2 => m.map(otherMap(p))(p3 => p2 - p3))
   }
 
 //  def -(otherMap: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
@@ -101,9 +101,9 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     * @param other
     * @return
     */
-  def compose(other: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
-    override val m = self.m
-    override def apply(p: Point) = m.flatMap(other(p))(self.apply)
+  def compose(other: VectorMap[M])(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = self.m
+    override def apply(p: Point)(implicit m: Monad[M]) = m.flatMap(other(p))(self.apply)
   }
 
   /*
@@ -111,9 +111,9 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     * @param other
     * @return
     */
-  def andThen(other: VectorMap[M]): VectorMap[M] = new VectorMap[M] {
-    override val m = self.m
-    override def apply(p: Point) = m.flatMap(self(p))(other.apply)
+  def andThen(other: VectorMap[M])(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
+//    override val m = self.m
+    override def apply(p: Point)(implicit m: Monad[M]) = m.flatMap(self(p))(other.apply)
   }
 
   /**
@@ -139,7 +139,7 @@ abstract class VectorMap[M[_]: Monad] extends Img[Point, M] {
     * @param points
     * @return
     */
-  override def applyBatchArea(imgPtArea: ImgPtArea[Point, M]): M[PureImgPoints[Point]] = {
+  override def applyBatchArea(imgPtArea: ImgPtArea[Point, M])(implicit m: Monad[M]): M[PureImgPoints[Point]] = {
     val disp_pts = for {
       ip <- imgPtArea.imgPoints
       // for air point, the inverted transformation is used

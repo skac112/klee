@@ -2,8 +2,9 @@ package com.github.skac112.klee.examples
 
 import cats.Id
 import com.github.skac112.klee.area.pt.AxisGrid
-import com.github.skac112.klee.{Composition, Img, drawToFileOld, trivialColorFun}
+import com.github.skac112.klee.{Img, drawToFileOld, trivialColorFun}
 import com.github.skac112.klee.images.{Fill, Lines}
+import com.github.skac112.klee.transcomb.Composition
 import com.github.skac112.klee.transforms.areas.Ring
 import com.github.skac112.klee.transforms.displacers.BlackHole
 import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point}

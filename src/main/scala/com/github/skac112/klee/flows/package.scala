@@ -25,7 +25,7 @@ package object flows {
     * @param h
     * @return
     */
-  def rungeKutta4[M[_]: Monad](fun: Point => M[Point], p: Point, h: Double) = for {
+  def rungeKutta4[M[_]: Monad](fun: VectorMap[M], p: Point, h: Double) = for {
     k1 <- fun(p)
     k2 <- fun(p + (k1 * h * .5))
     k3 <- fun(p + (k2 * h * .5))
@@ -49,10 +49,10 @@ package object flows {
     * @param h
     * @return
     */
-  def taylorExp[M[_]: Monad](fun: Point => Point, base: Point, taylorOrder: Int, h: Double): PolyMap[M] = new PolyMap[M] {
-    override val m = implicitly[Monad[M]]
+  def taylorExp[M[_]](fun: Point => Point, base: Point, taylorOrder: Int, h: Double)(implicit m: Monad[M]): PolyMap[M] = new PolyMap[M] {
+//    override val m = implicitly[Monad[M]]
     override val initCoeffs = calcTaylorCoeffs
-    override def apply(p: Point) = super.apply(p - base)
+    override def apply(p: Point)(implicit m: Monad[M]) = super.apply(p - base)
     private lazy val funVals: Seq[Seq[Point]] = (0 to taylorOrder) map {i => { (0 to taylorOrder - i) map {j => fun(base + Point(i * h, j * h))}}}
 
     /**
@@ -86,7 +86,7 @@ package object flows {
   }
 
   implicit def pointFunToVectorMap[M[_]: Monad](fun: ((Point) => Point)): VectorMap[M] = new VectorMap[M] {
-    override val m = implicitly(Monad[M])
-    override def apply(p: Point) = m.pure(fun(p))
+//    override val m = implicitly(Monad[M])
+    override def apply(p: Point)(implicit m: Monad[M]) = m.pure(fun(p))
   }
 }

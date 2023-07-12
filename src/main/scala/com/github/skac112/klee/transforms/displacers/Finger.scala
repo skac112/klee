@@ -21,7 +21,7 @@ object Finger {
   }
 }
 
-case class Finger[I, M[_]: Monad](from: Point,
+case class Finger[I, M[_]](from: Point,
                                   to: Point,
                                   frontDecayFactor: Double,
                                   backDecayFactor: Double,
@@ -94,18 +94,15 @@ case class Finger[I, M[_]: Monad](from: Point,
   lazy val frontTreshDist = treshDistance(frontDecayType, frontDecayFactor)
   lazy val backTreshDist = treshDistance(backDecayType, backDecayFactor)
 
-  override lazy val area: ImgArea = Rect(to + (frontVersor * (frontTreshDist - backTreshDist) * .5),
+  override def area(implicit m: Monad[M]): ImgArea = Rect(to + (frontVersor * (frontTreshDist - backTreshDist) * .5),
     frontTreshDist + backTreshDist, 2*treshDistance(sideDecayType, sideDecayFactor), frontVector.angle)
 
 //  override lazy val area: ImgArea = Circle(to, .45)
-
-  println(area)
-
-  override lazy val displacement: VectorMap[M] = new VectorMap[M] {
+  override def displacement(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
 
 //    override def apply(p: Point) = m.pure(Point(0, 0))
 
-    override def apply(p: Point) = m.pure({
+    override def apply(p: Point)(implicit m: Monad[M]) = m.pure({
       // relative vector - vector from "to" point to point "p"
       val relVec = p - to
       val main_coord = relVec * frontVersor

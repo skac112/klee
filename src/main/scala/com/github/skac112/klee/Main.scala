@@ -14,34 +14,13 @@ import com.github.skac112.klee.painters.Painter1.Painter1Params
 import com.github.skac112.klee.paintrunners._
 
 object Main extends App {
-
-//    val params = BlackHoles.Params(10)
-//
-//    val render_params = RenderParams(
-//        Bounds(Point(-.5, -.5), Point(.5, .5)),
-//        nx = 500,
-//        ny = 500)
-//
-//    val painter = new BlackHoles(params, render_params)
-//    painter.paint()
-
-    val params = FingerSunParams(numFinger = 40)
+    val params = FingerSunParams(numFinger = 150)
 
     val render_params = RenderParams(
         Bounds(Point(-.5, -.5), Point(.5, .5)),
-        nx = 500,
-        ny = 500)
+        nx = 1000,
+        ny = 1000)
 
     val painter = new FingerSun(params, render_params)
     painter.paint()
-
-//    val params = FingerCombParams(10, .3, 5)
-//
-//    val render_params = RenderParams(
-//        Bounds(Point(-.5, -.5), Point(.5, .5)),
-//        nx = 500,
-//        ny = 500)
-//
-//    val painter = new FingerComb(params, render_params)
-//    painter.paint()
 }

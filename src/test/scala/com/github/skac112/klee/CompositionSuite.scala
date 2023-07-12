@@ -2,6 +2,7 @@ package com.github.skac112.klee
 
 import cats.Id
 import com.github.skac112.klee.images.Fill
+import com.github.skac112.klee.transcomb.Composition
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.vgutils.{Color, Point}
 

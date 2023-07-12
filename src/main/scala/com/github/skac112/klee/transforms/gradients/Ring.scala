@@ -20,21 +20,21 @@ import scala.math._
   * @tparam I
   * @tparam M
   */
-case class Ring[I,  M[_]: Monad](
+case class Ring[I,  M[_]](
                                   c: Point,
                                   r: Double,
                                   areaWidth: Double,
                                   radialColorFun: (Double, I) => M[I],
                                   applyToAir: Boolean = false) extends LocalImgTrans[I, M] {
-  def area: ImgArea = com.github.skac112.klee.area.img.Ring(c, max(r - .5*areaWidth, 0.0), r + .5*areaWidth)
+  def area(implicit m: Monad[M]): ImgArea = com.github.skac112.klee.area.img.Ring(c, max(r - .5*areaWidth, 0.0), r + .5*areaWidth)
   
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M]): ImgPoint[I, M] = if (applyToAir || ip.land) {
+  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, newColorM(img, ip.point), ip.land)
   } else {
     ip
   }
 
-  def newColorM(img: Img[I, M], ptM: M[Point]) = for {
+  def newColorM(img: Img[I, M], ptM: M[Point])(implicit m: Monad[M]) = for {
     pt <- ptM
     color <- img.apply(pt)
     d = abs((pt - c).modulus - r)

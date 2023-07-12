@@ -2,8 +2,9 @@ package com.github.skac112.klee.examples
 
 import cats.Id
 import com.github.skac112.klee.images.Fill
+import com.github.skac112.klee.transcomb.Composition
 import com.github.skac112.klee.transforms.gradients.{Angular, Radial}
-import com.github.skac112.klee.{Composition, drawToFileOld, trivialColorFun}
+import com.github.skac112.klee.{drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point}
 
 import scala.math._

@@ -10,7 +10,7 @@ import com.github.skac112.vgutils.Point
   * @param motionEq
   * @param h step parameter
   */
-abstract class GenericMotionEqFlow[M[_]: Monad] extends Flow[M] {
+abstract class GenericMotionEqFlow[M[_]] extends Flow[M] {
   /**
     * Gives velocity i.e. time derivative of a "moving" point for given point.
     * @param p
@@ -26,7 +26,7 @@ abstract class GenericMotionEqFlow[M[_]: Monad] extends Flow[M] {
     * @param time
     * @return
     */
-  override def apply(point: Point, time: Double): M[Point] = {
+  override def apply(point: Point, time: Double)(implicit m: Monad[M]): M[Point] = {
     // for negative time actual h must be also negative
     val act_h = h * math.signum(time)
     val steps = math.round(time / act_h).toInt
@@ -34,7 +34,7 @@ abstract class GenericMotionEqFlow[M[_]: Monad] extends Flow[M] {
     (0 until steps).foldLeft(zero_move) { (p: M[Point], i: Int) => p.flatMap(rungeKutta4(motionEq, _, act_h)) }
   }
 
-  override def timeMap(time: Double): VectorMap[M] = {
+  override def timeMap(time: Double)(implicit m: Monad[M]): VectorMap[M] = {
     // for negative time actual h must be also negative
     val act_h = h * math.signum(time)
     val steps = math.round(time / act_h).toInt

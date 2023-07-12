@@ -1,21 +1,22 @@
 package com.github.skac112.klee.painters
 
 import cats.Id
-import com.github.skac112.klee.{Composition, nextGaussBounded}
+import com.github.skac112.klee.nextGaussBounded
 import com.github.skac112.klee.images.Fill
+import com.github.skac112.klee.transcomb.{Composition, MultiLocalMixer}
 import com.github.skac112.klee.transforms.areas.Circle
-import com.github.skac112.klee.transforms.displacers.Finger
+import com.github.skac112.klee.transforms.displacers.{BlackHole, Finger}
 import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point, ori}
 
 import scala.math.Pi
 
 object FingerSun {
   final case class FingerSunParams(numFinger: Int = 20,
-                                   circleRadius: Double = .25,
-                                   averageLen: Double = .1,
+                                   circleRadius: Double = .1,
+                                   averageLen: Double = .2,
                                    frontDecayFactor: Double = .9,
                                    backDecayFactor: Double = 5,
-                                   sideDecayFactorFactor: Double = 10,
+                                   sideDecayFactorFactor: Double = 15,
                                    randSeed: Int = 0)
 }
 
@@ -32,12 +33,12 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
   lazy val fun = {
     val circle = Circle[ColorVector, Id](ori, params.circleRadius, Color.black)
 
-    val fingers = (0 until params.numFinger) map {i =>
+    val fingers_seq = (0 until params.numFinger) map {i =>
       val angle = Angle(rand.nextDouble() * 2*Pi)
       val from = Point.withAngle(angle, params.circleRadius)
 
-      val to = Point.withAngle(angle, params.circleRadius + nextGaussBounded(rand, .3*params.averageLen,
-        1.5*params.averageLen, params.averageLen, .4*params.averageLen))
+      val to = Point.withAngle(angle, params.circleRadius + nextGaussBounded(rand, .1*params.averageLen,
+        2.5*params.averageLen, params.averageLen, 1.5*params.averageLen))
 
       Finger[ColorVector, Id](
         from,
@@ -50,6 +51,20 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
         Finger.DECAY_GAUSS)
     }
 
-    Composition[ColorVector, Id](circle :: fingers.toList ::: Nil)
+    val fingers = MultiLocalMixer[ColorVector, Id](
+      fingers_seq,
+      (color1, color2) => if (color1.l > color2.l) color2 else color1)
+
+    val bhc = 8
+    val rbh = .4
+    val bhs = for {
+      i <- 0 until bhc
+      angle = i * 2.0 * Pi / bhc + 1
+      rot1 = 3*Pi
+      rot = if (i % 2 == 1) rot1 else -rot1
+    } yield BlackHole[ColorVector, Id](Point.withAngle(Angle(angle), rbh), rot, 30.0, 1, 0, .2)
+
+    val list = circle :: fingers :: bhs.toList
+    Composition[ColorVector, Id](list)
   }
 }

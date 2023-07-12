@@ -13,7 +13,7 @@ import com.github.skac112.vgutils._
   * @param width width of lines
   * @param color color of lines
   */
-case class Lines[I, M[_]: Monad](
+case class Lines[I, M[_]](
                   baseX: Double = 0,
                   baseY: Double = 0,
                   dx: Double,
@@ -21,8 +21,8 @@ case class Lines[I, M[_]: Monad](
                   width: Double,
                   lineColor: I,
                   backgroundColor: I) extends Img[I, M] {
-  override val m = implicitly[Monad[M]]
-  override def apply(p: Point) = {
+//  override val m = implicitly[Monad[M]]
+  override def apply(p: Point)(implicit m: Monad[M]) = {
     val half_width = .5 * width
     // number of line column where the point lies
     val x_col = (p.x/dx).floor.toInt

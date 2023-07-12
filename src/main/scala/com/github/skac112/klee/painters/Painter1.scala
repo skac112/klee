@@ -2,9 +2,10 @@ package com.github.skac112.klee.painters
 
 import cats.Id
 import com.github.skac112.klee.images.Fill
+import com.github.skac112.klee.transcomb.Composition
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Composition, Img, blendColors, drawToFileOld, trivialColorFun}
+import com.github.skac112.klee.{Img, blendColors, drawToFileOld, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
 import scala.math._
