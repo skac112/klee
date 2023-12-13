@@ -21,15 +21,43 @@ object Finger {
   }
 }
 
+/**
+  * Displacer emulating point-to-point local translation of part of image. One can imagine image made of some elastic
+  * material. Then one can touch an image with finger (hence the name) in "from" point and move it to the "to" point.
+  * Due to size of "finger" (determined by decay factors and type) some neighbourhood of "from" point is moved
+  * accordingly. Due to method of how every displacer work, a basic displacement is defined for "to" point and is a
+  * vector from "to" point to "from" point. This is the maximum displacement. Notions "front", "back" and "side"
+  * relate to point to and vector of maximum displacement. Line connecting "to" and "from" point displacement
+  * is divided into two rays staring in "to" point. One ray goes through "from" point - it is the front ray, the other
+  * ray is back ray. Displacement for points on front ray decays according to front decay starting from "to" point.
+  * Accordingly, displacement for point on back ray decay according to back decay starting from "to" point. Front and
+  * back decay define together main decay. For points outside line connecting points "from" and "two" (main decay line)
+  * a side decay is needed to calculate total decay and then displacement. Side decay is calculated from distance of
+  * given point from main decay line. Total decay is calculated as a multiplication of main decay and side decay.
+  * Front decay has upper limit which being exceeded, gives a no one-to-one function. It is so because there is a
+  * "squeezing" on a main ray. A "singularity" is created when, moving from "to" point on a front ray a displacement
+  * decays faster than distance on a ray.
+  * @param from
+  * @param to
+  * @param frontDecayFactor
+  * @param backDecayFactor
+  * @param sideDecayFactor
+  * @param frontDecayType
+  * @param backDecayType
+  * @param sideDecayType
+  * @param dispThreshold
+  * @tparam I
+  * @tparam M
+  */
 case class Finger[I, M[_]](from: Point,
-                                  to: Point,
-                                  frontDecayFactor: Double,
-                                  backDecayFactor: Double,
-                                  sideDecayFactor: Double,
-                                  frontDecayType: Symbol,
-                                  backDecayType: Symbol,
-                                  sideDecayType: Symbol,
-                                  dispThreshold: Double = .0001)
+                           to: Point,
+                           frontDecayFactor: Double,
+                           backDecayFactor: Double,
+                           sideDecayFactor: Double,
+                           frontDecayType: Symbol,
+                           backDecayType: Symbol,
+                           sideDecayType: Symbol,
+                           dispThreshold: Double = .0001)
   extends Displacer[I, M] {
   // front vector
   lazy val frontVector = from - to

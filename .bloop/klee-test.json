@@ -17,14 +17,15 @@
         "classpath": [
             "/home/skac/Documents/projekty/klee/.bloop/klee/scala-2.13/classes",
             "/home/skac/Documents/projekty/klee/lib/pixlouds-0.1.0-SNAPSHOT.jar",
-            "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.8-SNAPSHOT/jars/vgutils_2.13.jar",
+            "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/jars/vgutils_2.13.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.8.0/cats-core_2.13-2.8.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_2.13/1.0.4/scala-parallel-collections_2.13-1.0.4.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_2.13/2.0.1-RC1/breeze_2.13-2.0.1-RC1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.2.12/scalatest_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.8.0/cats-kernel_2.13-2.8.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.13/2.0.1-RC1/breeze-macros_2.13-2.0.1-RC1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/blas/2.2.1/blas-2.2.1.jar",
@@ -50,6 +51,9 @@
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_2.13/3.2.12/scalatest-matchers-core_2.13-3.2.12.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_2.13/3.2.12/scalatest-shouldmatchers_2.13-3.2.12.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_2.13/3.2.12/scalatest-mustmatchers_2.13-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/pl/edu/icm/JLargeArrays/1.5/JLargeArrays-1.5.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-macros_2.13/0.17.0/spire-macros_2.13-0.17.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-platform_2.13/0.17.0/spire-platform_2.13-0.17.0.jar",
@@ -57,7 +61,9 @@
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.13/2.2.0/scala-collection-compat_2.13-2.2.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/algebra_2.13/2.0.1/algebra_2.13-2.0.1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.12/scalatest-compatible-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.13/2.1.0/scala-xml_2.13-2.1.0.jar"
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.13/2.1.0/scala-xml_2.13-2.1.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0.jar"
         ],
         "out": "/home/skac/Documents/projekty/klee/.bloop/klee",
         "classesDir": "/home/skac/Documents/projekty/klee/.bloop/klee/scala-2.13/test-classes",
@@ -154,16 +160,16 @@
                 {
                     "organization": "skac112",
                     "name": "vgutils_2.13",
-                    "version": "0.1.8-SNAPSHOT",
+                    "version": "0.1.9-SNAPSHOT",
                     "configurations": "compile",
                     "artifacts": [
                         {
                             "name": "vgutils_2.13",
                             "checksum": {
                                 "type": "sha1",
-                                "digest": "a078a079e1fa5cc186f51ded5c40175eedefc372"
+                                "digest": "6bd570026461d2d56183b2baf31aea2ab83f3bc2"
                             },
-                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.8-SNAPSHOT/jars/vgutils_2.13.jar"
+                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/jars/vgutils_2.13.jar"
                         },
                         {
                             "name": "vgutils_2.13",
@@ -172,16 +178,16 @@
                                 "type": "sha1",
                                 "digest": "435d780948935d6cbdd8eee7d2ffa6154a7548a7"
                             },
-                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.8-SNAPSHOT/docs/vgutils_2.13-javadoc.jar"
+                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/docs/vgutils_2.13-javadoc.jar"
                         },
                         {
                             "name": "vgutils_2.13",
                             "classifier": "sources",
                             "checksum": {
                                 "type": "sha1",
-                                "digest": "dbd76088c67e5795eb8436b7c4c8062ab00f7081"
+                                "digest": "369e664bce59df5064c2d6497da8f93cbd757602"
                             },
-                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.8-SNAPSHOT/srcs/vgutils_2.13-sources.jar"
+                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/srcs/vgutils_2.13-sources.jar"
                         }
                     ]
                 },
@@ -276,44 +282,66 @@
                 {
                     "organization": "com.chuusai",
                     "name": "shapeless_2.13",
-                    "version": "2.3.3",
+                    "version": "2.3.10",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "shapeless_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10.jar"
                         },
                         {
                             "name": "shapeless_2.13",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10-sources.jar"
                         },
                         {
                             "name": "shapeless_2.13",
                             "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.3/shapeless_2.13-2.3.3-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10-javadoc.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "upickle_2.13",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "upickle_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2.jar"
+                        },
+                        {
+                            "name": "upickle_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2-sources.jar"
+                        },
+                        {
+                            "name": "upickle_2.13",
+                            "classifier": "javadoc",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2-javadoc.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scala-lang",
                     "name": "scala-library",
-                    "version": "2.13.8",
+                    "version": "2.13.11",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "scala-library",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11.jar"
                         },
                         {
                             "name": "scala-library",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11-sources.jar"
                         },
                         {
                             "name": "scala-library",
                             "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11-javadoc.jar"
                         }
                     ]
                 },
@@ -577,6 +605,72 @@
                     ]
                 },
                 {
+                    "organization": "com.lihaoyi",
+                    "name": "ujson_2.13",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "ujson_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2.jar"
+                        },
+                        {
+                            "name": "ujson_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2-sources.jar"
+                        },
+                        {
+                            "name": "ujson_2.13",
+                            "classifier": "javadoc",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2-javadoc.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "upack_2.13",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "upack_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2.jar"
+                        },
+                        {
+                            "name": "upack_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2-sources.jar"
+                        },
+                        {
+                            "name": "upack_2.13",
+                            "classifier": "javadoc",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2-javadoc.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "upickle-implicits_2.13",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "upickle-implicits_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2.jar"
+                        },
+                        {
+                            "name": "upickle-implicits_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2-sources.jar"
+                        },
+                        {
+                            "name": "upickle-implicits_2.13",
+                            "classifier": "javadoc",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2-javadoc.jar"
+                        }
+                    ]
+                },
+                {
                     "organization": "pl.edu.icm",
                     "name": "JLargeArrays",
                     "version": "1.5",
@@ -709,24 +803,46 @@
                     ]
                 },
                 {
-                    "organization": "org.scala-lang",
-                    "name": "scala-library",
-                    "version": "2.13.8",
-                    "configurations": "optional",
+                    "organization": "com.lihaoyi",
+                    "name": "upickle-core_2.13",
+                    "version": "3.1.2",
+                    "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scala-library",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar"
+                            "name": "upickle-core_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2.jar"
                         },
                         {
-                            "name": "scala-library",
+                            "name": "upickle-core_2.13",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2-sources.jar"
                         },
                         {
-                            "name": "scala-library",
+                            "name": "upickle-core_2.13",
                             "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2-javadoc.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "geny_2.13",
+                    "version": "1.0.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "geny_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0.jar"
+                        },
+                        {
+                            "name": "geny_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0-sources.jar"
+                        },
+                        {
+                            "name": "geny_2.13",
+                            "classifier": "javadoc",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0-javadoc.jar"
                         }
                     ]
                 },
