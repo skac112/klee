@@ -145,6 +145,6 @@ abstract class VectorMap[M[_]] extends Img[Point, M] {
       // for air point, the inverted transformation is used
       map = if (ip.land) this else invMap
     } yield InstantImgPoint(ip.point, map.applyM(ip.color), ip.land)
-    (disp_pts map {ip: ImgPoint[Point, M] => ip.bubbleUpMonad}).toVector.sequence.widen
+    (disp_pts map {(ip: ImgPoint[Point, M]) => ip.bubbleUpMonad}).toVector.sequence.widen
   }
 }

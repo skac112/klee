@@ -54,25 +54,26 @@ abstract class ImgPtArea[I, M[_]: Monad] {
     * returns sequence of all elements with proper order matching order of corresponding points in imgArea
     */
   def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O] =
+    println("partByIntersect")
     area.containedIn(imgArea) match {
       // area of points inside a given area
-      case Some(true) => partInside
+      case Some(true) => println("partInside"); partInside
       case _ => area.outsideOf(imgArea) match {
         // area of points outside a given area
-        case Some(true) => partOutside
+        case Some(true) => println("part outside"); partOutside
         // it can't be assured that area of points fully inside imgArea or fully outside imgArea
         case _ => {
           (area.bounds, imgArea.bounds) match {
             case (Some(bounds), Some(img_bounds)) => {
               if (bounds.isOutsideOf(img_bounds)) {
-                partOutside
+                println("partOutside 2"); partOutside
               }
               else {
-                partitionOneByOne(imgArea)
+                println("partition one by one"); partitionOneByOne(imgArea)
               }
             }
             case _ => {
-              partitionOneByOne(imgArea)
+              println("partition one by one 2"); partitionOneByOne(imgArea)
             }
           }
         }

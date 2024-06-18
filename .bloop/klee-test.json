@@ -6,28 +6,27 @@
         "workspaceDir": "/home/skac/Documents/projekty/klee",
         "sources": [
             "/home/skac/Documents/projekty/klee/src/test/scala",
-            "/home/skac/Documents/projekty/klee/src/test/scala-2.13",
-            "/home/skac/Documents/projekty/klee/src/test/scala-2",
+            "/home/skac/Documents/projekty/klee/src/test/scala-3",
+            "/home/skac/Documents/projekty/klee/src/test/scala-3",
             "/home/skac/Documents/projekty/klee/src/test/java",
-            "/home/skac/Documents/projekty/klee/target/scala-2.13/src_managed/test"
+            "/home/skac/Documents/projekty/klee/target/scala-3.3.0/src_managed/test"
         ],
         "dependencies": [
             "klee"
         ],
         "classpath": [
-            "/home/skac/Documents/projekty/klee/.bloop/klee/scala-2.13/classes",
+            "/home/skac/Documents/projekty/klee/.bloop/klee/scala-3/classes",
             "/home/skac/Documents/projekty/klee/lib/pixlouds-0.1.0-SNAPSHOT.jar",
-            "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/jars/vgutils_2.13.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.8.0/cats-core_2.13-2.8.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_2.13/1.0.4/scala-parallel-collections_2.13-1.0.4.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_2.13/2.0.1-RC1/breeze_2.13-2.0.1-RC1.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.2.12/scalatest_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.8.0/cats-kernel_2.13-2.8.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.13/2.0.1-RC1/breeze-macros_2.13-2.0.1-RC1.jar",
+            "/home/skac/.ivy2/local/skac112/vgutils_3/3.0.0-SNAPSHOT/jars/vgutils_3.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.8.0/cats-core_3-2.8.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_3/2.0.1-RC1/breeze_3-2.0.1-RC1.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_3/3.2.12/scalactic_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_3/3.2.12/scalatest_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_3/3.1.2/upickle_3-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.0/scala3-library_3-3.3.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.8.0/cats-kernel_3-2.8.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_3/2.0.1-RC1/breeze-macros_3-2.0.1-RC1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/blas/2.2.1/blas-2.2.1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/lapack/2.2.1/lapack-2.2.1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/arpack/2.2.1/arpack-2.2.1.jar",
@@ -37,23 +36,23 @@
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-math3/3.5/commons-math3-3.5.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire_2.13/0.17.0/spire_2.13-0.17.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.7/scala-reflect-2.13.7.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_2.13/3.2.12/scalatest-core_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_2.13/3.2.12/scalatest-featurespec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_2.13/3.2.12/scalatest-flatspec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_2.13/3.2.12/scalatest-freespec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.13/3.2.12/scalatest-funsuite_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_2.13/3.2.12/scalatest-funspec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_2.13/3.2.12/scalatest-propspec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_2.13/3.2.12/scalatest-refspec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_2.13/3.2.12/scalatest-wordspec_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_2.13/3.2.12/scalatest-diagrams_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_2.13/3.2.12/scalatest-matchers-core_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_2.13/3.2.12/scalatest-shouldmatchers_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_2.13/3.2.12/scalatest-mustmatchers_2.13-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_3/3.2.12/scalatest-core_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_3/3.2.12/scalatest-featurespec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_3/3.2.12/scalatest-flatspec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_3/3.2.12/scalatest-freespec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_3/3.2.12/scalatest-funsuite_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_3/3.2.12/scalatest-funspec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_3/3.2.12/scalatest-propspec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_3/3.2.12/scalatest-refspec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_3/3.2.12/scalatest-wordspec_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_3/3.2.12/scalatest-diagrams_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_3/3.2.12/scalatest-matchers-core_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_3/3.2.12/scalatest-shouldmatchers_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_3/3.2.12/scalatest-mustmatchers_3-3.2.12.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_3/3.1.2/ujson_3-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_3/3.1.2/upack_3-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/3.1.2/upickle-implicits_3-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/pl/edu/icm/JLargeArrays/1.5/JLargeArrays-1.5.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-macros_2.13/0.17.0/spire-macros_2.13-0.17.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-platform_2.13/0.17.0/spire-platform_2.13-0.17.0.jar",
@@ -61,29 +60,67 @@
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.13/2.2.0/scala-collection-compat_2.13-2.2.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/algebra_2.13/2.0.1/algebra_2.13-2.0.1.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.12/scalatest-compatible-3.2.12.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.13/2.1.0/scala-xml_2.13-2.1.0.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0.jar"
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_3/2.1.0/scala-xml_3-2.1.0.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/3.1.2/upickle-core_3-3.1.2.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.1.1/cats-kernel_2.13-2.1.1.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_3/1.0.0/geny_3-1.0.0.jar"
         ],
         "out": "/home/skac/Documents/projekty/klee/.bloop/klee",
-        "classesDir": "/home/skac/Documents/projekty/klee/.bloop/klee/scala-2.13/test-classes",
+        "classesDir": "/home/skac/Documents/projekty/klee/.bloop/klee/scala-3/test-classes",
         "resources": [
             "/home/skac/Documents/projekty/klee/src/test/resources",
-            "/home/skac/Documents/projekty/klee/target/scala-2.13/resource_managed/test"
+            "/home/skac/Documents/projekty/klee/target/scala-3.3.0/resource_managed/test"
         ],
         "scala": {
             "organization": "org.scala-lang",
             "name": "scala-compiler",
-            "version": "2.13.8",
+            "version": "3.3.0",
             "options": [
                 
             ],
             "jars": [
-                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar",
-                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.8/scala-compiler-2.13.8.jar",
-                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.8/scala-reflect-2.13.8.jar",
-                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline/3.21.0/jline-3.21.0.jar",
-                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.9.0/jna-5.9.0.jar"
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.0/scala3-library_3-3.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-compiler_3/3.3.0/scala3-compiler_3-3.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-interfaces/3.3.0/scala3-interfaces-3.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/tasty-core_3/3.3.0/tasty-core_3-3.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-asm/9.4.0-scala-1/scala-asm-9.4.0-scala-1.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.3.5/compiler-interface-1.3.5.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-reader/3.19.0/jline-reader-3.19.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-terminal/3.19.0/jline-terminal-3.19.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline-terminal-jna/3.19.0/jline-terminal-jna-3.19.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.7.0/protobuf-java-3.7.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.3.0/util-interface-1.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/java/dev/jna/jna/5.3.1/jna-5.3.1.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scaladoc_3/3.3.0/scaladoc_3-3.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-tasty-inspector_3/3.3.0/scala3-tasty-inspector_3-3.3.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark/0.42.12/flexmark-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-html-parser/0.42.12/flexmark-html-parser-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-anchorlink/0.42.12/flexmark-ext-anchorlink-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-autolink/0.42.12/flexmark-ext-autolink-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-emoji/0.42.12/flexmark-ext-emoji-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-gfm-strikethrough/0.42.12/flexmark-ext-gfm-strikethrough-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-gfm-tables/0.42.12/flexmark-ext-gfm-tables-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-gfm-tasklist/0.42.12/flexmark-ext-gfm-tasklist-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-wikilink/0.42.12/flexmark-ext-wikilink-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-yaml-front-matter/0.42.12/flexmark-ext-yaml-front-matter-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/nl/big-o/liqp/0.8.2/liqp-0.8.2.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jsoup/jsoup/1.14.3/jsoup-1.14.3.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.13.3/jackson-dataformat-yaml-2.13.3.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-util/0.42.12/flexmark-util-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-formatter/0.42.12/flexmark-formatter-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/nibor/autolink/autolink/0.6.0/autolink-0.6.0.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-jira-converter/0.42.12/flexmark-jira-converter-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.13.3/jackson-annotations-2.13.3.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.13.3/jackson-core-2.13.3.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.13.3/jackson-databind-2.13.3.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.12.1/jackson-datatype-jsr310-2.12.1.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ua/co/k/strftime4j/1.0.5/strftime4j-1.0.5.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/yaml/snakeyaml/1.30/snakeyaml-1.30.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-tables/0.42.12/flexmark-ext-tables-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-ins/0.42.12/flexmark-ext-ins-0.42.12.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/vladsch/flexmark/flexmark-ext-superscript/0.42.12/flexmark-ext-superscript-0.42.12.jar"
             ],
             "setup": {
                 "order": "mixed",
@@ -146,7 +183,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/usr/lib/jvm/java-11-openjdk-amd64",
+                "home": "/home/skac/.cache/coursier/arc/https/github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.11%252B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.11_9.tar.gz/jdk-17.0.11+9",
                 "options": [
                     "-Duser.dir=/home/skac/Documents/projekty/klee"
                 ]
@@ -159,233 +196,162 @@
             "modules": [
                 {
                     "organization": "skac112",
-                    "name": "vgutils_2.13",
-                    "version": "0.1.9-SNAPSHOT",
+                    "name": "vgutils_3",
+                    "version": "3.0.0-SNAPSHOT",
                     "configurations": "compile",
                     "artifacts": [
                         {
-                            "name": "vgutils_2.13",
+                            "name": "vgutils_3",
                             "checksum": {
                                 "type": "sha1",
-                                "digest": "6bd570026461d2d56183b2baf31aea2ab83f3bc2"
+                                "digest": "ca70ca6071de6d1935c23b9bcf8b21581feadd8b"
                             },
-                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/jars/vgutils_2.13.jar"
+                            "path": "/home/skac/.ivy2/local/skac112/vgutils_3/3.0.0-SNAPSHOT/jars/vgutils_3.jar"
                         },
                         {
-                            "name": "vgutils_2.13",
-                            "classifier": "javadoc",
-                            "checksum": {
-                                "type": "sha1",
-                                "digest": "435d780948935d6cbdd8eee7d2ffa6154a7548a7"
-                            },
-                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/docs/vgutils_2.13-javadoc.jar"
-                        },
-                        {
-                            "name": "vgutils_2.13",
+                            "name": "vgutils_3",
                             "classifier": "sources",
                             "checksum": {
                                 "type": "sha1",
-                                "digest": "369e664bce59df5064c2d6497da8f93cbd757602"
+                                "digest": "c8bb593fd43e7b4e3d056e7fde4e64fc9cadbd91"
                             },
-                            "path": "/home/skac/.ivy2/local/skac112/vgutils_2.13/0.1.9-SNAPSHOT/srcs/vgutils_2.13-sources.jar"
+                            "path": "/home/skac/.ivy2/local/skac112/vgutils_3/3.0.0-SNAPSHOT/srcs/vgutils_3-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.typelevel",
-                    "name": "cats-core_2.13",
+                    "name": "cats-core_3",
                     "version": "2.8.0",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "cats-core_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.8.0/cats-core_2.13-2.8.0.jar"
+                            "name": "cats-core_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.8.0/cats-core_3-2.8.0.jar"
                         },
                         {
-                            "name": "cats-core_2.13",
+                            "name": "cats-core_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.8.0/cats-core_2.13-2.8.0-sources.jar"
-                        },
-                        {
-                            "name": "cats-core_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_2.13/2.8.0/cats-core_2.13-2.8.0-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-core_3/2.8.0/cats-core_3-2.8.0-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scala-lang.modules",
-                    "name": "scala-parallel-collections_2.13",
+                    "name": "scala-parallel-collections_3",
                     "version": "1.0.4",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scala-parallel-collections_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_2.13/1.0.4/scala-parallel-collections_2.13-1.0.4.jar"
+                            "name": "scala-parallel-collections_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4.jar"
                         },
                         {
-                            "name": "scala-parallel-collections_2.13",
+                            "name": "scala-parallel-collections_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_2.13/1.0.4/scala-parallel-collections_2.13-1.0.4-sources.jar"
-                        },
-                        {
-                            "name": "scala-parallel-collections_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_2.13/1.0.4/scala-parallel-collections_2.13-1.0.4-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parallel-collections_3/1.0.4/scala-parallel-collections_3-1.0.4-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalanlp",
-                    "name": "breeze_2.13",
+                    "name": "breeze_3",
                     "version": "2.0.1-RC1",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "breeze_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_2.13/2.0.1-RC1/breeze_2.13-2.0.1-RC1.jar"
+                            "name": "breeze_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_3/2.0.1-RC1/breeze_3-2.0.1-RC1.jar"
                         },
                         {
-                            "name": "breeze_2.13",
+                            "name": "breeze_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_2.13/2.0.1-RC1/breeze_2.13-2.0.1-RC1-sources.jar"
-                        },
-                        {
-                            "name": "breeze_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_2.13/2.0.1-RC1/breeze_2.13-2.0.1-RC1-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze_3/2.0.1-RC1/breeze_3-2.0.1-RC1-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalactic",
-                    "name": "scalactic_2.13",
+                    "name": "scalactic_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalactic_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12.jar"
+                            "name": "scalactic_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_3/3.2.12/scalactic_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalactic_2.13",
+                            "name": "scalactic_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalactic_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.13/3.2.12/scalactic_2.13-3.2.12-javadoc.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.chuusai",
-                    "name": "shapeless_2.13",
-                    "version": "2.3.10",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "shapeless_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10.jar"
-                        },
-                        {
-                            "name": "shapeless_2.13",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10-sources.jar"
-                        },
-                        {
-                            "name": "shapeless_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/chuusai/shapeless_2.13/2.3.10/shapeless_2.13-2.3.10-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_3/3.2.12/scalactic_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "com.lihaoyi",
-                    "name": "upickle_2.13",
+                    "name": "upickle_3",
                     "version": "3.1.2",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "upickle_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2.jar"
+                            "name": "upickle_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_3/3.1.2/upickle_3-3.1.2.jar"
                         },
                         {
-                            "name": "upickle_2.13",
+                            "name": "upickle_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2-sources.jar"
-                        },
-                        {
-                            "name": "upickle_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_2.13/3.1.2/upickle_2.13-3.1.2-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle_3/3.1.2/upickle_3-3.1.2-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scala-lang",
-                    "name": "scala-library",
-                    "version": "2.13.11",
+                    "name": "scala3-library_3",
+                    "version": "3.3.0",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scala-library",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11.jar"
+                            "name": "scala3-library_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.0/scala3-library_3-3.3.0.jar"
                         },
                         {
-                            "name": "scala-library",
+                            "name": "scala3-library_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11-sources.jar"
-                        },
-                        {
-                            "name": "scala-library",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.11/scala-library-2.13.11-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.0/scala3-library_3-3.3.0-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.typelevel",
-                    "name": "cats-kernel_2.13",
+                    "name": "cats-kernel_3",
                     "version": "2.8.0",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "cats-kernel_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.8.0/cats-kernel_2.13-2.8.0.jar"
+                            "name": "cats-kernel_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.8.0/cats-kernel_3-2.8.0.jar"
                         },
                         {
-                            "name": "cats-kernel_2.13",
+                            "name": "cats-kernel_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.8.0/cats-kernel_2.13-2.8.0-sources.jar"
-                        },
-                        {
-                            "name": "cats-kernel_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.8.0/cats-kernel_2.13-2.8.0-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_3/2.8.0/cats-kernel_3-2.8.0-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalanlp",
-                    "name": "breeze-macros_2.13",
+                    "name": "breeze-macros_3",
                     "version": "2.0.1-RC1",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "breeze-macros_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.13/2.0.1-RC1/breeze-macros_2.13-2.0.1-RC1.jar"
+                            "name": "breeze-macros_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_3/2.0.1-RC1/breeze-macros_3-2.0.1-RC1.jar"
                         },
                         {
-                            "name": "breeze-macros_2.13",
+                            "name": "breeze-macros_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.13/2.0.1-RC1/breeze-macros_2.13-2.0.1-RC1-sources.jar"
-                        },
-                        {
-                            "name": "breeze-macros_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_2.13/2.0.1-RC1/breeze-macros_2.13-2.0.1-RC1-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalanlp/breeze-macros_3/2.0.1-RC1/breeze-macros_3-2.0.1-RC1-sources.jar"
                         }
                     ]
                 },
@@ -403,11 +369,6 @@
                             "name": "blas",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/blas/2.2.1/blas-2.2.1-sources.jar"
-                        },
-                        {
-                            "name": "blas",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/blas/2.2.1/blas-2.2.1-javadoc.jar"
                         }
                     ]
                 },
@@ -425,11 +386,6 @@
                             "name": "lapack",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/lapack/2.2.1/lapack-2.2.1-sources.jar"
-                        },
-                        {
-                            "name": "lapack",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/lapack/2.2.1/lapack-2.2.1-javadoc.jar"
                         }
                     ]
                 },
@@ -447,11 +403,6 @@
                             "name": "arpack",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/arpack/2.2.1/arpack-2.2.1-sources.jar"
-                        },
-                        {
-                            "name": "arpack",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/dev/ludovic/netlib/arpack/2.2.1/arpack-2.2.1-javadoc.jar"
                         }
                     ]
                 },
@@ -464,11 +415,6 @@
                         {
                             "name": "arpack_combined_all",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/sourceforge/f2j/arpack_combined_all/0.1/arpack_combined_all-0.1.jar"
-                        },
-                        {
-                            "name": "arpack_combined_all",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/sourceforge/f2j/arpack_combined_all/0.1/arpack_combined_all-0.1-javadoc.jar"
                         }
                     ]
                 },
@@ -486,11 +432,6 @@
                             "name": "opencsv",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3-sources.jar"
-                        },
-                        {
-                            "name": "opencsv",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3-javadoc.jar"
                         }
                     ]
                 },
@@ -508,11 +449,6 @@
                             "name": "JTransforms",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/wendykierp/JTransforms/3.1/JTransforms-3.1-sources.jar"
-                        },
-                        {
-                            "name": "JTransforms",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/wendykierp/JTransforms/3.1/JTransforms-3.1-javadoc.jar"
                         }
                     ]
                 },
@@ -530,11 +466,6 @@
                             "name": "commons-math3",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-math3/3.5/commons-math3-3.5-sources.jar"
-                        },
-                        {
-                            "name": "commons-math3",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-math3/3.5/commons-math3-3.5-javadoc.jar"
                         }
                     ]
                 },
@@ -552,11 +483,6 @@
                             "name": "slf4j-api",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5-sources.jar"
-                        },
-                        {
-                            "name": "slf4j-api",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5-javadoc.jar"
                         }
                     ]
                 },
@@ -574,99 +500,74 @@
                             "name": "spire_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire_2.13/0.17.0/spire_2.13-0.17.0-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "ujson_3",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "ujson_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_3/3.1.2/ujson_3-3.1.2.jar"
                         },
                         {
-                            "name": "spire_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire_2.13/0.17.0/spire_2.13-0.17.0-javadoc.jar"
+                            "name": "ujson_3",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_3/3.1.2/ujson_3-3.1.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "upack_3",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "upack_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_3/3.1.2/upack_3-3.1.2.jar"
+                        },
+                        {
+                            "name": "upack_3",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_3/3.1.2/upack_3-3.1.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.lihaoyi",
+                    "name": "upickle-implicits_3",
+                    "version": "3.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "upickle-implicits_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/3.1.2/upickle-implicits_3-3.1.2.jar"
+                        },
+                        {
+                            "name": "upickle-implicits_3",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_3/3.1.2/upickle-implicits_3-3.1.2-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scala-lang",
-                    "name": "scala-reflect",
-                    "version": "2.13.7",
+                    "name": "scala-library",
+                    "version": "2.13.10",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scala-reflect",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.7/scala-reflect-2.13.7.jar"
+                            "name": "scala-library",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar"
                         },
                         {
-                            "name": "scala-reflect",
+                            "name": "scala-library",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.7/scala-reflect-2.13.7-sources.jar"
-                        },
-                        {
-                            "name": "scala-reflect",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.7/scala-reflect-2.13.7-javadoc.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.lihaoyi",
-                    "name": "ujson_2.13",
-                    "version": "3.1.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "ujson_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2.jar"
-                        },
-                        {
-                            "name": "ujson_2.13",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2-sources.jar"
-                        },
-                        {
-                            "name": "ujson_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/3.1.2/ujson_2.13-3.1.2-javadoc.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.lihaoyi",
-                    "name": "upack_2.13",
-                    "version": "3.1.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "upack_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2.jar"
-                        },
-                        {
-                            "name": "upack_2.13",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2-sources.jar"
-                        },
-                        {
-                            "name": "upack_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/3.1.2/upack_2.13-3.1.2-javadoc.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.lihaoyi",
-                    "name": "upickle-implicits_2.13",
-                    "version": "3.1.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "upickle-implicits_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2.jar"
-                        },
-                        {
-                            "name": "upickle-implicits_2.13",
-                            "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2-sources.jar"
-                        },
-                        {
-                            "name": "upickle-implicits_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/3.1.2/upickle-implicits_2.13-3.1.2-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10-sources.jar"
                         }
                     ]
                 },
@@ -684,11 +585,6 @@
                             "name": "JLargeArrays",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/pl/edu/icm/JLargeArrays/1.5/JLargeArrays-1.5-sources.jar"
-                        },
-                        {
-                            "name": "JLargeArrays",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/pl/edu/icm/JLargeArrays/1.5/JLargeArrays-1.5-javadoc.jar"
                         }
                     ]
                 },
@@ -706,11 +602,6 @@
                             "name": "spire-macros_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-macros_2.13/0.17.0/spire-macros_2.13-0.17.0-sources.jar"
-                        },
-                        {
-                            "name": "spire-macros_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-macros_2.13/0.17.0/spire-macros_2.13-0.17.0-javadoc.jar"
                         }
                     ]
                 },
@@ -728,11 +619,6 @@
                             "name": "spire-platform_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-platform_2.13/0.17.0/spire-platform_2.13-0.17.0-sources.jar"
-                        },
-                        {
-                            "name": "spire-platform_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-platform_2.13/0.17.0/spire-platform_2.13-0.17.0-javadoc.jar"
                         }
                     ]
                 },
@@ -750,11 +636,6 @@
                             "name": "spire-util_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-util_2.13/0.17.0/spire-util_2.13-0.17.0-sources.jar"
-                        },
-                        {
-                            "name": "spire-util_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/spire-util_2.13/0.17.0/spire-util_2.13-0.17.0-javadoc.jar"
                         }
                     ]
                 },
@@ -772,11 +653,6 @@
                             "name": "scala-collection-compat_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.13/2.2.0/scala-collection-compat_2.13-2.2.0-sources.jar"
-                        },
-                        {
-                            "name": "scala-collection-compat_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.13/2.2.0/scala-collection-compat_2.13-2.2.0-javadoc.jar"
                         }
                     ]
                 },
@@ -794,363 +670,295 @@
                             "name": "algebra_2.13",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/algebra_2.13/2.0.1/algebra_2.13-2.0.1-sources.jar"
-                        },
-                        {
-                            "name": "algebra_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/algebra_2.13/2.0.1/algebra_2.13-2.0.1-javadoc.jar"
                         }
                     ]
                 },
                 {
                     "organization": "com.lihaoyi",
-                    "name": "upickle-core_2.13",
+                    "name": "upickle-core_3",
                     "version": "3.1.2",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "upickle-core_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2.jar"
+                            "name": "upickle-core_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/3.1.2/upickle-core_3-3.1.2.jar"
                         },
                         {
-                            "name": "upickle-core_2.13",
+                            "name": "upickle-core_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_3/3.1.2/upickle-core_3-3.1.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.typelevel",
+                    "name": "cats-kernel_2.13",
+                    "version": "2.1.1",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "cats-kernel_2.13",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.1.1/cats-kernel_2.13-2.1.1.jar"
                         },
                         {
-                            "name": "upickle-core_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/3.1.2/upickle-core_2.13-3.1.2-javadoc.jar"
+                            "name": "cats-kernel_2.13",
+                            "classifier": "sources",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-kernel_2.13/2.1.1/cats-kernel_2.13-2.1.1-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "com.lihaoyi",
-                    "name": "geny_2.13",
+                    "name": "geny_3",
                     "version": "1.0.0",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "geny_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0.jar"
+                            "name": "geny_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_3/1.0.0/geny_3-1.0.0.jar"
                         },
                         {
-                            "name": "geny_2.13",
+                            "name": "geny_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0-sources.jar"
-                        },
-                        {
-                            "name": "geny_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_2.13/1.0.0/geny_2.13-1.0.0-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/geny_3/1.0.0/geny_3-1.0.0-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest_2.13",
+                    "name": "scalatest_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.2.12/scalatest_2.13-3.2.12.jar"
+                            "name": "scalatest_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_3/3.2.12/scalatest_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest_2.13",
+                            "name": "scalatest_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.2.12/scalatest_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_2.13/3.2.12/scalatest_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest_3/3.2.12/scalatest_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-core_2.13",
+                    "name": "scalatest-core_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-core_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_2.13/3.2.12/scalatest-core_2.13-3.2.12.jar"
+                            "name": "scalatest-core_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_3/3.2.12/scalatest-core_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-core_2.13",
+                            "name": "scalatest-core_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_2.13/3.2.12/scalatest-core_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-core_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_2.13/3.2.12/scalatest-core_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-core_3/3.2.12/scalatest-core_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-featurespec_2.13",
+                    "name": "scalatest-featurespec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-featurespec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_2.13/3.2.12/scalatest-featurespec_2.13-3.2.12.jar"
+                            "name": "scalatest-featurespec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_3/3.2.12/scalatest-featurespec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-featurespec_2.13",
+                            "name": "scalatest-featurespec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_2.13/3.2.12/scalatest-featurespec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-featurespec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_2.13/3.2.12/scalatest-featurespec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-featurespec_3/3.2.12/scalatest-featurespec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-flatspec_2.13",
+                    "name": "scalatest-flatspec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-flatspec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_2.13/3.2.12/scalatest-flatspec_2.13-3.2.12.jar"
+                            "name": "scalatest-flatspec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_3/3.2.12/scalatest-flatspec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-flatspec_2.13",
+                            "name": "scalatest-flatspec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_2.13/3.2.12/scalatest-flatspec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-flatspec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_2.13/3.2.12/scalatest-flatspec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-flatspec_3/3.2.12/scalatest-flatspec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-freespec_2.13",
+                    "name": "scalatest-freespec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-freespec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_2.13/3.2.12/scalatest-freespec_2.13-3.2.12.jar"
+                            "name": "scalatest-freespec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_3/3.2.12/scalatest-freespec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-freespec_2.13",
+                            "name": "scalatest-freespec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_2.13/3.2.12/scalatest-freespec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-freespec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_2.13/3.2.12/scalatest-freespec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-freespec_3/3.2.12/scalatest-freespec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-funsuite_2.13",
+                    "name": "scalatest-funsuite_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-funsuite_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.13/3.2.12/scalatest-funsuite_2.13-3.2.12.jar"
+                            "name": "scalatest-funsuite_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_3/3.2.12/scalatest-funsuite_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-funsuite_2.13",
+                            "name": "scalatest-funsuite_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.13/3.2.12/scalatest-funsuite_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-funsuite_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_2.13/3.2.12/scalatest-funsuite_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funsuite_3/3.2.12/scalatest-funsuite_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-funspec_2.13",
+                    "name": "scalatest-funspec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-funspec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_2.13/3.2.12/scalatest-funspec_2.13-3.2.12.jar"
+                            "name": "scalatest-funspec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_3/3.2.12/scalatest-funspec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-funspec_2.13",
+                            "name": "scalatest-funspec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_2.13/3.2.12/scalatest-funspec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-funspec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_2.13/3.2.12/scalatest-funspec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-funspec_3/3.2.12/scalatest-funspec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-propspec_2.13",
+                    "name": "scalatest-propspec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-propspec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_2.13/3.2.12/scalatest-propspec_2.13-3.2.12.jar"
+                            "name": "scalatest-propspec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_3/3.2.12/scalatest-propspec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-propspec_2.13",
+                            "name": "scalatest-propspec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_2.13/3.2.12/scalatest-propspec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-propspec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_2.13/3.2.12/scalatest-propspec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-propspec_3/3.2.12/scalatest-propspec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-refspec_2.13",
+                    "name": "scalatest-refspec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-refspec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_2.13/3.2.12/scalatest-refspec_2.13-3.2.12.jar"
+                            "name": "scalatest-refspec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_3/3.2.12/scalatest-refspec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-refspec_2.13",
+                            "name": "scalatest-refspec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_2.13/3.2.12/scalatest-refspec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-refspec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_2.13/3.2.12/scalatest-refspec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-refspec_3/3.2.12/scalatest-refspec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-wordspec_2.13",
+                    "name": "scalatest-wordspec_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-wordspec_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_2.13/3.2.12/scalatest-wordspec_2.13-3.2.12.jar"
+                            "name": "scalatest-wordspec_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_3/3.2.12/scalatest-wordspec_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-wordspec_2.13",
+                            "name": "scalatest-wordspec_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_2.13/3.2.12/scalatest-wordspec_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-wordspec_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_2.13/3.2.12/scalatest-wordspec_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-wordspec_3/3.2.12/scalatest-wordspec_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-diagrams_2.13",
+                    "name": "scalatest-diagrams_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-diagrams_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_2.13/3.2.12/scalatest-diagrams_2.13-3.2.12.jar"
+                            "name": "scalatest-diagrams_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_3/3.2.12/scalatest-diagrams_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-diagrams_2.13",
+                            "name": "scalatest-diagrams_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_2.13/3.2.12/scalatest-diagrams_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-diagrams_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_2.13/3.2.12/scalatest-diagrams_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-diagrams_3/3.2.12/scalatest-diagrams_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-matchers-core_2.13",
+                    "name": "scalatest-matchers-core_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-matchers-core_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_2.13/3.2.12/scalatest-matchers-core_2.13-3.2.12.jar"
+                            "name": "scalatest-matchers-core_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_3/3.2.12/scalatest-matchers-core_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-matchers-core_2.13",
+                            "name": "scalatest-matchers-core_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_2.13/3.2.12/scalatest-matchers-core_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-matchers-core_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_2.13/3.2.12/scalatest-matchers-core_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-matchers-core_3/3.2.12/scalatest-matchers-core_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-shouldmatchers_2.13",
+                    "name": "scalatest-shouldmatchers_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-shouldmatchers_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_2.13/3.2.12/scalatest-shouldmatchers_2.13-3.2.12.jar"
+                            "name": "scalatest-shouldmatchers_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_3/3.2.12/scalatest-shouldmatchers_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-shouldmatchers_2.13",
+                            "name": "scalatest-shouldmatchers_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_2.13/3.2.12/scalatest-shouldmatchers_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-shouldmatchers_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_2.13/3.2.12/scalatest-shouldmatchers_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-shouldmatchers_3/3.2.12/scalatest-shouldmatchers_3-3.2.12-sources.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scalatest",
-                    "name": "scalatest-mustmatchers_2.13",
+                    "name": "scalatest-mustmatchers_3",
                     "version": "3.2.12",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scalatest-mustmatchers_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_2.13/3.2.12/scalatest-mustmatchers_2.13-3.2.12.jar"
+                            "name": "scalatest-mustmatchers_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_3/3.2.12/scalatest-mustmatchers_3-3.2.12.jar"
                         },
                         {
-                            "name": "scalatest-mustmatchers_2.13",
+                            "name": "scalatest-mustmatchers_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_2.13/3.2.12/scalatest-mustmatchers_2.13-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-mustmatchers_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_2.13/3.2.12/scalatest-mustmatchers_2.13-3.2.12-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-mustmatchers_3/3.2.12/scalatest-mustmatchers_3-3.2.12-sources.jar"
                         }
                     ]
                 },
@@ -1168,33 +976,23 @@
                             "name": "scalatest-compatible",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.12/scalatest-compatible-3.2.12-sources.jar"
-                        },
-                        {
-                            "name": "scalatest-compatible",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalatest/scalatest-compatible/3.2.12/scalatest-compatible-3.2.12-javadoc.jar"
                         }
                     ]
                 },
                 {
                     "organization": "org.scala-lang.modules",
-                    "name": "scala-xml_2.13",
+                    "name": "scala-xml_3",
                     "version": "2.1.0",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "scala-xml_2.13",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.13/2.1.0/scala-xml_2.13-2.1.0.jar"
+                            "name": "scala-xml_3",
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_3/2.1.0/scala-xml_3-2.1.0.jar"
                         },
                         {
-                            "name": "scala-xml_2.13",
+                            "name": "scala-xml_3",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.13/2.1.0/scala-xml_2.13-2.1.0-sources.jar"
-                        },
-                        {
-                            "name": "scala-xml_2.13",
-                            "classifier": "javadoc",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.13/2.1.0/scala-xml_2.13-2.1.0-javadoc.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_3/2.1.0/scala-xml_3-2.1.0-sources.jar"
                         }
                     ]
                 }

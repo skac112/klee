@@ -10,7 +10,5 @@ import com.github.skac112.vgutils.ColorVector
   * of points of subsequent application of trans to initial points. 
   */
 final case class AirIterator[I, M[_]: Monad](imgTrans: ImgTrans[I, I, M], pts: Points) {
-    def drawToFile() {
-        
-    }
+//    def drawToFile(): Unit =
 }

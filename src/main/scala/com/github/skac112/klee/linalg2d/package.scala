@@ -3,13 +3,13 @@ package com.github.skac112.klee
 import breeze.math.Complex
 import com.github.skac112.vgutils.Angle
 import com.github.skac112.vgutils.transform.linear._
-
+import com.github.skac112.vgutils.given
 import scala.math.sqrt
 
 package object linalg2d {
-  implicit def doubleToComplex(d: Double) = Complex(d, .0)
+  given doubleToComplex: Conversion[Double, Complex] = (d: Double) => Complex(d, .0)
 
-  implicit def genericLinearToComplexMatrix(linear: GenericLinear) =
+  given genericLinearToComplexMatrix: Conversion[GenericLinear, ComplexMatrix] = (linear: GenericLinear) =>
     ComplexMatrix(linear.a, linear.b, linear.c, linear.d)
 
   /**

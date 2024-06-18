@@ -21,9 +21,7 @@ abstract class LocalImgTrans[I, M[_]] extends ImgTrans.Simple[I, M] {
 
 //  lazy val m: Monad[M] = implicitly[Monad[M]]
 
-  def apply(img: Img[I, M])(implicit m: Monad[M]) = new Img[I, M] {
-//    val m: Monad[M] = implicitly[Monad[M]]
-
+  override def apply(img: Img[I, M])(implicit m: Monad[M]) = new Img[I, M] {
     override def apply(p: Point)(implicit m: Monad[M]) = if (area contains p) {
       applyInArea(img, p)(m) }
     else {
@@ -45,6 +43,7 @@ abstract class LocalImgTrans[I, M[_]] extends ImgTrans.Simple[I, M] {
     * @return
     */
   protected def applyToImgPtArea(img: Img[I, M], ptArea: ImgPtArea[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] =
+    println("applyToImgPtArea")
     for {
       part <- ptArea.partByIntersect[I](area): M[(ImgPtArea[I, M], ImgPtArea[I, M], ImgPtArea[I, M], JoinFun[I, M])]
       in = part._1

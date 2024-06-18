@@ -1,17 +1,13 @@
 package com.github.skac112.klee.painters
 
 import cats.implicits._
-import com.github.skac112.klee.{ColorFun, Img, drawToFile, drawToFileOld, trivialColorFun}
+import com.github.skac112.klee.{ColorFun, Img, drawToFile, trivialColorFun}
 import cats.Monad
 import com.github.skac112.vgutils.{Bounds, Color, ColorVector}
-import shapeless._
-import shapeless.ops._
-import shapeless.ops.product.ToMap
-import shapeless.syntax.std.product._
-
 import scala.sys.process._
 import java.nio.file.{Files, Paths}
 import java.nio.charset.StandardCharsets
+import scala.deriving.Mirror
 
 object Painter {
     case class RenderParams(bounds: Bounds, nx: Int, ny: Int)
@@ -19,8 +15,7 @@ object Painter {
 
 import Painter._
 
-abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: RenderParams)
-                                                 (implicit toMap: ToMap.Aux[P, Symbol, Any])  {
+abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: RenderParams)(using mirror: Mirror.ProductOf[P]):
   import Painter._
   def img: Img[ColorVector, M]
 
@@ -38,7 +33,9 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
 //    println(git_hash.length())
 //  }
 
-  lazy val paramsString = params.toMap[Symbol, Any] map { case (k, v) => s"<li>${k.name}: <strong>$v</strong></li>" } reduce {_ + _}
+  private lazy val paramTypes = Tuple.fromProductTyped(params)
+  private lazy val paramNames = paramTypes.productElementNames
+  private lazy val paramString = (paramTypes.productIterator zip paramNames).map { case (k, v) => s"<li>$k: <strong>$v</strong></li>" } reduce {_ + _}
 
   private lazy val dateTimeStr: String = {
     import java.util.Calendar;
@@ -74,7 +71,7 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
      |Time: <strong>$dateTimeStr</strong> Git hash: $gitHash
      |</p>
      |<h2>Painter parameters</h2>
-     |<ul>$paramsString</ul>
+     |<ul>$paramString</ul>
      |<h3>Render parameters</h3>
      |<ul>
      |<li>X range: &lt;${renderParams.bounds.tl.x}; ${renderParams.bounds.br.x}&gt;</li>
@@ -86,4 +83,3 @@ abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: Rende
 
     Files.write(Paths.get(s"$dir/$fileNameBase.html"), html.getBytes(StandardCharsets.UTF_8))
   }
-}

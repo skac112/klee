@@ -4,8 +4,8 @@ import cats.Monad
 import cats.data.Kleisli
 import cats.implicits._
 
-object ImgTrans {
-  implicit def imgToImgTrans[I, M[_] : Monad](img: Img[I, M]) = new ImgTrans[I, I, M] {
+object ImgTrans:
+  given imgToImgTrans[I, M[_] : Monad]: Conversion[Img[I, M], ImgTrans[I, I, M]] = (img: Img[I, M]) => new ImgTrans[I, I, M] {
     override def apply(dummy: Img[I, M])(implicit m: Monad[M]) = img
   }
 
@@ -21,10 +21,8 @@ object ImgTrans {
   type Simple[I, M[_]] = ImgTrans[I, I, M]
 
   def widen[N, W, M[_]: Monad](ma: M[N])(implicit ev: N <:< W): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
-}
 
-abstract class ImgTrans[I, O, M[_]] {
-
+abstract class ImgTrans[I, O, M[_]]:
   def apply(img: Img[I, M])(implicit m: Monad[M]): Img[O, M]
   /**
     * Widens type of output monad.
@@ -35,4 +33,3 @@ abstract class ImgTrans[I, O, M[_]] {
     * @return
     */
   def widen[W](ma: M[O])(implicit ev: O <:< W, m: Monad[M]): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
-}

@@ -9,6 +9,7 @@ import cats._
 import cats.data.Writer
 import cats.implicits._
 import com.github.skac112.klee.area.imgpt.AxisGrid
+import com.github.skac112.vgutils.given
 
 import scala.annotation.tailrec
 import scala.collection.Seq
@@ -27,37 +28,6 @@ package object klee {
   def seqMonad[T, M[_]: Monad](seqM: Values[M[T]]) = seqM.toVector.sequence
   def unwrapPoints[I, M[_]: Monad](imgPoints: ImgPoints[I, M]) = seqMonad(imgPoints map { _.point })
 
-  def drawToFileOld[I, M[_]: Monad](
-                     img: Img[I, M],
-                     colorFun: ColorFun[I],
-                     fileName: String,
-                     minX: Double,
-                     maxX: Double,
-                     minY: Double,
-                     maxY: Double,
-                     width: Int = 0,
-                     height: Int = 0): M[Unit] = {
-    val (dx, dy) = stepsForRender(minX, maxX, minY, maxY, width, height)
-    val act_width = if (width > 0) width else floor((maxX - minX) / dx).round.toInt + 1
-    val act_height = if (height > 0) height else floor((maxY - minY) / dy).round.toInt + 1
-    val raster_img = new BufferedImage(act_width, act_height, BufferedImage.TYPE_INT_ARGB)
-    val leftTop = Point(minX -.5*dx, minY -.5*dy)
-    val pts_area = AxisGrid.forLand[I, M](img, leftTop, act_width + 1, act_height + 1, dx, dy)
-
-    (img.applyBatchArea(pts_area) map (_ map { (ip: PureImgPoint[I]) => colorFun(ip.color) })) map { colors =>
-        for (y <- 0 until act_height) {
-            for (x <- 0 until act_width) {
-            val shift1 = y * (act_width + 1)
-            val shift2 = (y + 1) * (act_width + 1)
-            // each pixel value is an average of colors of four nearest points from 'colors' sequence
-            raster_img.setRGB(x, y, (colors(shift1 + x) * .25 + (colors(shift1 + x + 1) * .25) +
-                (colors(shift2 + x) *.25) + (colors(shift2 + x + 1) * .25)).toInt)
-            }
-        }
-        ImageIO.write(raster_img, "PNG", new java.io.File(fileName))    
-    }
-  }
-
   def drawToFile[M[_]: Monad](img: Img[ColorVector, M],
                               fileName: String,
                               bounds: Bounds,
@@ -71,7 +41,7 @@ package object klee {
     val axisGridLeftTop = bounds.tl - Point(.5*dx, .5*dy)
     val pts_area = AxisGrid.forLand[ColorVector, M](img, axisGridLeftTop, pixelSizeX + 1, pixelSizeY + 1, dx, dy)
     val air_col_factor = airForceFactor / (dx * dy)
-
+    
     for {
       land_colors <- img.applyBatchArea(pts_area)
       air_colors <- img.air
@@ -101,7 +71,7 @@ package object klee {
                                 x: Int,
                                 y: Int,
                                 dx: Double,
-                                dy: Double): ColorVector = (air filter { pt: PureImgPoint[ColorVector] =>
+                                dy: Double): ColorVector = (air filter { (pt: PureImgPoint[ColorVector]) =>
     pixelBounds(imgTopLeft, x, y, dx, dy).hitTest(pt.point) }).foldLeft (ColorVector(0, 0, 0))
     {(acc, pt) => acc + pt.color}
 

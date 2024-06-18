@@ -1,7 +1,8 @@
 package com.github.skac112.klee.area.img
 
 import breeze.numerics.abs
-import com.github.skac112.vgutils._
+import com.github.skac112.vgutils.*
+import com.github.skac112.vgutils.given
 import com.github.skac112.vgutils.transform.PivotRot
 
 import scala.math.Pi

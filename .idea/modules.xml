@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee.iml" filepath="$PROJECT_DIR$/.idea/modules/klee.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee-build.iml" filepath="$PROJECT_DIR$/.idea/modules/klee-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee.klee-build.iml" filepath="$PROJECT_DIR$/.idea/modules/klee.klee-build.iml" />
     </modules>
   </component>
 </project>

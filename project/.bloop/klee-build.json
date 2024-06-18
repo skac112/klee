@@ -18,7 +18,7 @@
         "classpath": [
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.5.2/sbt-1.5.2.jar",
             "/home/skac/.sbt/boot/scala-2.12.13/lib/scala-library.jar",
-            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.13/sbt-bloop-1.5.13.jar",
+            "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.17/sbt-bloop-1.5.17.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/sbt-assembly_2.12_1.0/1.2.0/sbt-assembly-1.2.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/main_2.12/1.5.2/main_2.12-1.5.2.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/io_2.12/1.5.0/io_2.12-1.5.0.jar",
@@ -235,7 +235,7 @@
             },
             "classpath": [
                 "/home/skac/Documents/projekty/klee/project/.bloop/klee-build/scala-2.12/sbt-1.0/classes",
-                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.13/sbt-bloop-1.5.13.jar",
+                "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.17/sbt-bloop-1.5.17.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/sbt-assembly_2.12_1.0/1.2.0/sbt-assembly-1.2.0.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/bloop-config_2.12/1.5.5/bloop-config_2.12-1.5.5.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalactic/scalactic_2.12/3.0.8/scalactic_2.12-3.0.8.jar",
@@ -269,17 +269,17 @@
                 {
                     "organization": "ch.epfl.scala",
                     "name": "sbt-bloop",
-                    "version": "1.5.13",
+                    "version": "1.5.17",
                     "configurations": "default",
                     "artifacts": [
                         {
                             "name": "sbt-bloop",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.13/sbt-bloop-1.5.13.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.17/sbt-bloop-1.5.17.jar"
                         },
                         {
                             "name": "sbt-bloop",
                             "classifier": "sources",
-                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.13/sbt-bloop-1.5.13-sources.jar"
+                            "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.17/sbt-bloop-1.5.17-sources.jar"
                         }
                     ]
                 },

@@ -10,6 +10,11 @@ import cats.Monad
 import cats.implicits._
 import scala.math._
 
+/**
+  * Emulates pixel (raster) image.
+  * @tparam I
+  * @tparam M
+  */
 trait PixelImg[I, M[_]] extends LocalImgTrans[I, M] {
   def width: Int
   def height: Int

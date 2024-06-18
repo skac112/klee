@@ -7,6 +7,7 @@ import com.github.skac112.klee.transforms.areas.{Circle, HalfPlane, Rect}
 import com.github.skac112.klee.transforms.displacers.Finger
 import com.github.skac112.klee.{nextDoubleRange, nextGaussBounded}
 import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point, ori}
+import com.github.skac112.vgutils.given
 
 import scala.math.Pi
 

@@ -6,6 +6,7 @@ import com.github.skac112.klee.transcomb.Composition
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.BlackHole
 import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point, ori}
+import com.github.skac112.vgutils.given
 
 import scala.math.Pi
 

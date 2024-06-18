@@ -22,14 +22,14 @@ case class MultiPartArea[I, M[_]: Monad](parts: ImgPtAreas[I, M]) extends ImgPtA
 
   override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O]  = for {
     parts_inters <- (parts map { _.partByIntersect[O](imgArea) }).toVector.sequence
-    val inside_pts = MultiPartArea(parts_inters map { _._1})
-    val outside_pts = MultiPartArea(parts_inters map { _._2})
-    val unknown_pts = MultiPartArea(parts_inters map { _._3})
+    inside_pts = MultiPartArea(parts_inters map { _._1})
+    outside_pts = MultiPartArea(parts_inters map { _._2})
+    unknown_pts = MultiPartArea(parts_inters map { _._3})
 
-    val borders = parts_inters.scanLeft((0, 0, 0)) { case (acc, part_inter) => { (acc._1 + part_inter._1.imgPoints.size,
+    borders = parts_inters.scanLeft((0, 0, 0)) { case (acc, part_inter) => { (acc._1 + part_inter._1.imgPoints.size,
       acc._2 + part_inter._2.imgPoints.size, acc._3 + part_inter._3.imgPoints.size) }}
 
-    val join_fun = (inside: PureImgPoints[O], outside: PureImgPoints[O], unknown: PureImgPoints[O]) => {
+    join_fun = (inside: PureImgPoints[O], outside: PureImgPoints[O], unknown: PureImgPoints[O]) => {
         ((parts_inters zip borders) map { case ((inside_part, outside_part, unknown_part, part_join_fun), (inside_border, outside_border, unknown_border)) => {
           part_join_fun(
             inside.slice(inside_border, inside_border + inside_part.imgPoints.size),

@@ -25,12 +25,12 @@ case class AxisGrid(leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) ex
   override lazy val points = {
     // coordinates of left top point (with offset from leftTop)
     val real_lt = leftTop + Point(.5*dx, .5*dy)
-    (0 until nx*ny) map { i: Int => real_lt + Point((i % nx) * dx, (i / nx) * dy) }
+    (0 until nx*ny) map { (i: Int) => real_lt + Point((i % nx) * dx, (i / nx) * dy) }
   }
 
-  def pointRow(rowNum: Int): Seq[Point] = points.slice(rowNum * nx, (rowNum * nx) + 1)
+  def pointRow(rowNum: Int): scala.collection.Seq[Point] = points.slice(rowNum * nx, (rowNum * nx) + 1)
 
-  def pointCol(colNum: Int): Seq[Point] = (0 until ny) map { row: Int => points(row * nx + colNum) }
+  def pointCol(colNum: Int): Seq[Point] = (0 until ny) map { (row: Int) => points(row * nx + colNum) }
 
   override lazy val area = AxisRect(leftTop, nx * dx, ny * dy)
 
@@ -78,17 +78,17 @@ case class AxisGrid(leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) ex
       // - bottom block - below unknown area spanning all axis grid (this) width
       lazy val out_blocks_creation = for {
         // possible adding of top block (above unknown area) - rectangle of full point area width above given imgBounds
-        _ <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(t_row >= 0, curr, 0, nx - 1, 0,
+        _ <- State[scala.collection.Seq[PtArea], Unit] { (curr: scala.collection.Seq[PtArea]) => (addBlockIf(t_row >= 0, curr, 0, nx - 1, 0,
           t_row), ()) }
         // possible adding of left block (on the left of unknown area) with height of unknown area
-        _ <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(l_col >= 0 && t_row + 1 <= b_row - 1, curr,
+        _ <- State[scala.collection.Seq[PtArea], Unit] { (curr: scala.collection.Seq[PtArea]) => (addBlockIf(l_col >= 0 && t_row + 1 <= b_row - 1, curr,
           0, l_col, t_row + 1, b_row - 1), ()) }
         // possible adding of right block (on the right of uknown area) with height of unknonw  area
-        _ <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(r_col <= nx && t_row + 1 <= b_row - 1, curr,
+        _ <- State[scala.collection.Seq[PtArea], Unit] { (curr: scala.collection.Seq[PtArea]) => (addBlockIf(r_col <= nx && t_row + 1 <= b_row - 1, curr,
           r_col, nx - 1, t_row + 1, b_row - 1), ()) }
         // possible adding of bottom block (below unknown area) - rectangle of full point area width below given
         // imgBounds
-        res <- State[scala.collection.Seq[PtArea], Unit] { curr: scala.collection.Seq[PtArea] => (addBlockIf(b_row < ny, curr, 0, nx - 1, b_row,
+        res <- State[scala.collection.Seq[PtArea], Unit] { (curr: scala.collection.Seq[PtArea]) => (addBlockIf(b_row < ny, curr, 0, nx - 1, b_row,
           ny - 1), ()) }
       } yield res
 
@@ -118,7 +118,7 @@ case class AxisGrid(leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) ex
         val bottom_pts = outside.slice(top_pts_cnt + left_pts_cnt + right_pts_cnt, outside.size)
         // points belonging to left block (of outside area), unknown area and right block (of outside area) have to be
         // treated row by row - 3 corresponding rows (horizontal lines of points) are concatenated
-        val middle_pts = (0 until unknown_rows) map { row: Int =>
+        val middle_pts = (0 until unknown_rows) map { (row: Int) =>
           outside.slice(top_pts_cnt + row * left_cols, top_pts_cnt + (row + 1) * left_cols) ++
           unknown.slice(row * unknown_cols, (row + 1) * unknown_cols) ++
           outside.slice(top_pts_cnt + left_pts_cnt + row * right_cols, top_pts_cnt + left_pts_cnt + (row + 1) * right_cols)} reduce { _ ++ _ }

@@ -23,9 +23,10 @@ abstract class InterruptibleRunner[M[_]: Monad] extends PaintRunner {
 
    t1.start
    var i = 0
-   do {
+   while
      println(s"Running No. $i")
      paints(i).apply()
      i = i + 1
-   } while (synchronized(!end))
+     synchronized(!end)
+   do ()
 }

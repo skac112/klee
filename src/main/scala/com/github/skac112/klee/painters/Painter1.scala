@@ -5,12 +5,13 @@ import com.github.skac112.klee.images.Fill
 import com.github.skac112.klee.transcomb.Composition
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.BlackHole
-import com.github.skac112.klee.{Img, blendColors, drawToFileOld, trivialColorFun}
+import com.github.skac112.klee.{Img, blendColors, trivialColorFun}
 import com.github.skac112.vgutils.{Angle, Color, Point}
 import com.github.skac112.vgutils._
 import scala.math._
 import com.github.skac112.klee.transforms.gradients.Ring
 import com.github.skac112.klee.transforms.gradients.Radial
+import com.github.skac112.vgutils.given
 
 object Painter1 {
   final case class Painter1Params(

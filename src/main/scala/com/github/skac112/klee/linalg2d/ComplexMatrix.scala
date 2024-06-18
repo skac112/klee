@@ -31,7 +31,7 @@ case class ComplexMatrix(a: Complex, b: Complex, c: Complex, d: Complex) extends
     */
   lazy val inv = ComplexMatrix(d, -b, -c, a) / det
 
-  lazy val real = Linear(a.re, b.re, c.re, d.re)
+  lazy val real = Linear(a.re(), b.re(), c.re(), d.re())
 
   def apply(v: ComplexVector) = ComplexVector(a*v.x + b*v.y, c*v.x + d*v.y)
 }

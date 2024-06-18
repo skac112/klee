@@ -1,12 +1,14 @@
 package com.github.skac112.klee.area.imgpt
 
-import com.github.skac112.klee._
+import com.github.skac112.klee.*
 import com.github.skac112.klee.area.img.{AxisRect, ImgArea}
 import com.github.skac112.vgutils.{Bounds, Point}
-import scala.math._
+
+import scala.math.*
 import cats.data.State
-import cats._
-import cats.implicits._
+import cats.*
+import cats.implicits.*
+import com.github.skac112.vgutils.Bounds.BoundsType
 
 object AxisGrid {
     def forLand[I, M[_]: Monad](img: Img[I, M], leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) = {
@@ -41,13 +43,13 @@ case class AxisGrid[I, M[_]: Monad](
   override lazy val imgPoints = {
     // coordinates of left top point (with offset from leftTop)
     val real_lt = leftTop + Point(.5*dx, .5*dy)    
-    (0 until nx*ny) map { i: Int => LazyColorImgPoint(real_lt + Point((i % nx) * dx, (i / nx) * dy),
+    (0 until nx*ny) map { (i: Int) => LazyColorImgPoint(real_lt + Point((i % nx) * dx, (i / nx) * dy),
       colorFunFun(i)) }
   }
 
   def pointRow(rowNum: Int): ImgPoints[I, M] = imgPoints.slice(rowNum * nx, (rowNum * nx) + 1)
 
-  def pointCol(colNum: Int): ImgPoints[I, M] = (0 until ny) map { row: Int => imgPoints(row * nx + colNum) }
+  def pointCol(colNum: Int): ImgPoints[I, M] = (0 until ny) map { (row: Int) => imgPoints(row * nx + colNum) }
 
   override lazy val area = AxisRect(leftTop, nx * dx, ny * dy)
 
@@ -56,7 +58,7 @@ case class AxisGrid[I, M[_]: Monad](
 
   override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O] = {
     imgArea.bounds match {
-      case Some(b) if (imgArea.bounds.get.boundsType != Symbol("INF_BOUNDS")) => partByIntersectFromBounds(b)
+      case Some(b) if (imgArea.bounds.get.boundsType != BoundsType.InfBounds) => partByIntersectFromBounds(b)
       case _ => super.partByIntersect(imgArea)
     }
   } 
@@ -143,7 +145,7 @@ case class AxisGrid[I, M[_]: Monad](
         val bottom_pts = outside.slice(top_pts_cnt + left_pts_cnt + right_pts_cnt, outside.size)
         // points belonging to left block (of outside area), unknown area and right block (of outside area) have to be
         // treated row by row - 3 corresponding rows (horizontal lines of points) are concatenated
-        val middle_pts = (0 until unknown_rows) map { row: Int =>
+        val middle_pts = (0 until unknown_rows) map { (row: Int) =>
           outside.slice(top_pts_cnt + row * left_cols, top_pts_cnt + (row + 1) * left_cols) ++
           unknown.slice(row * unknown_cols, (row + 1) * unknown_cols) ++
           outside.slice(top_pts_cnt + left_pts_cnt + row * right_cols, top_pts_cnt + left_pts_cnt + (row + 1) * right_cols)} reduce { _ ++ _ }

@@ -74,12 +74,12 @@ abstract class Displacer[I, M[_]] extends LocalImgTrans[I, M] {
 
   override def applyToAir(img: Img[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] = for {
     air_pts <- img.air
-    img_pts <- applyToImgPtArea(img, QuickPtArea[I, M](air_pts map { pip: PureImgPoint[I] =>
+    img_pts <- applyToImgPtArea(img, QuickPtArea[I, M](air_pts map { (pip: PureImgPoint[I]) =>
       InstantImgPoint(m.pure(pip.point), m.pure(pip.color), false) }, WholeArea()))
   } yield img_pts
 
   override def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] = {
-    val pt_area = QuickPtArea[Point, M](imgPoints map { ip: ImgPoint[I, M] =>
+    val pt_area = QuickPtArea[Point, M](imgPoints map { (ip: ImgPoint[I, M]) =>
       InstantImgPoint(ip.point, ip.point, ip.land) }, area)
 
     // sequence of boolean's signalling that appropriate imgPoint is land-point or air-point.
@@ -94,7 +94,7 @@ abstract class Displacer[I, M[_]] extends LocalImgTrans[I, M] {
         disp <- disps
       } yield disp.point + disp.color
 
-      new_m_ips = (land_air_mask zip (0 until land_air_mask.length)) map { case (is_land, idx) =>
+      new_m_ips = land_air_mask.zipWithIndex map { case (is_land, idx) =>
 //      new_m_ips = ((land_air_mask zip (0 until land_air_mask.length)).par) map { case (is_land, idx) =>
         if (is_land) {
           for {

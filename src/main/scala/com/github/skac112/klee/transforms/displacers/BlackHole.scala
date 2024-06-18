@@ -5,7 +5,7 @@ import com.github.skac112.klee.area.img.{Circle, WholeArea}
 import com.github.skac112.klee.flows.vectormaps.VectorMap
 import com.github.skac112.klee.transforms.displacers.Displacer.DispColorChangeFun
 import com.github.skac112.klee.{Img, ImgTrans}
-import com.github.skac112.vgutils.{Angle, Color, Point}
+import com.github.skac112.vgutils.{*, given}
 
 case class BlackHole[I, M[_]](
   c: Point,

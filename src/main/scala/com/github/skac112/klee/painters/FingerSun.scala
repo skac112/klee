@@ -7,6 +7,7 @@ import com.github.skac112.klee.transcomb.{Composition, MultiLocalMixer}
 import com.github.skac112.klee.transforms.areas.Circle
 import com.github.skac112.klee.transforms.displacers.{BlackHole, Finger}
 import com.github.skac112.vgutils.{Angle, Color, ColorVector, Point, ori}
+import com.github.skac112.vgutils.given
 
 import scala.math.Pi
 
@@ -55,6 +56,8 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
       fingers_seq,
       (color1, color2) => if (color1.l > color2.l) color2 else color1)
 
+    println(fingers.area.bounds)
+
     val bhc = 8
     val rbh = .4
     val bhs = for {
@@ -62,9 +65,10 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
       angle = i * 2.0 * Pi / bhc + 1
       rot1 = 3*Pi
       rot = if (i % 2 == 1) rot1 else -rot1
-    } yield BlackHole[ColorVector, Id](Point.withAngle(Angle(angle), rbh), rot, 30.0, 1, 0, .2)
+    } yield BlackHole[ColorVector, Id](Point.withAngle(Angle(angle), rbh), rot, 30.0, 1, 0, .1)
 
-    val list = circle :: fingers :: bhs.toList
-    Composition[ColorVector, Id](list)
+//    val elem_tfs = circle :: fingers :: bhs.toList
+    val elem_tfs = Seq(circle, fingers)
+    Composition[ColorVector, Id](elem_tfs)
   }
 }
