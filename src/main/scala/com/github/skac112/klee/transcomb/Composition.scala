@@ -7,7 +7,7 @@ object Composition {
 
   case class Params[I, M[_]](elements: scala.collection.Seq[ImgTrans.Simple[I, M]])
 
-  def compose[I, M[_]: Monad](elementFun: Int => ImgTrans.Simple[I, M], times: Int) =
+  def compose[I, M[_]: Monad](elementFun: Int => ImgTrans.Simple[I, M], times: Int): Composition[I, M] =
     this((0 until times) map {i => elementFun(i)})
 }
 
@@ -18,9 +18,9 @@ object Composition {
 case class Composition[I, M[_]](elements: scala.collection.Seq[ImgTrans.Simple[I, M]]) extends ImgTrans.Simple[I, M] {
 
   lazy val fun: ImgTrans[I, I, M] = elements.reduce { (acc, element) => new ImgTrans[I, I, M] {
-      override def apply(img: Img[I, M])(implicit m: Monad[M]) = element(acc(img))}}
+      override def apply(img: Img[I, M])(implicit m: Monad[M]): Img[I, M] = element(acc(img))}}
 
-  def apply(img: Img[I, M])(implicit m: Monad[M]) = fun(img)
+  def apply(img: Img[I, M])(implicit m: Monad[M]): Img[I, M] = fun(img)
   def this(element: ImgTrans.Simple[I, M], times: Int) = this(Seq.fill[ImgTrans.Simple[I, M]](times)(element))
 }
 
