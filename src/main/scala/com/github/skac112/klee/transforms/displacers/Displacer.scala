@@ -50,7 +50,7 @@ abstract class Displacer[I, M[_]] extends LocalImgTrans[I, M] {
     val dpM = ptSumM(ip.point, dispM)
 
     if (ip.land) {
-      InstantImgPoint(ip.point, imgForPtM(img, dpM), true)
+      InstantImgPoint(ip.point, imgForPtM(img, dpM))
     } else {
       InstantImgPoint(dpM, ip.color, false)
     }

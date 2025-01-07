@@ -9,18 +9,20 @@ import com.github.skac112.vgutils.Point
 object Bundle:
 //  type BlendFun[I, M[_]] = (I, I) => M[I]
   type BlendFun[I, M[_]] = (I, Double, I, Double) => M[I]
-  type BundleFun[I, M[_]] = Point => (M[Point], I, BlendFun[I, M])
+//  type BundleFun[I, M[_]] = Point => (M[Point], I, BlendFun[I, M])
 
 import Bundle._
 
-trait Bundle[I, M[_]](width: Int, height: Int) extends LocalImgTrans[I, M]:
-  def bundleFun: BundleFun[I, M]
+trait Bundle[I, M[_]: Monad](width: Int, height: Int) extends LocalImgTrans[I, M]:
+  def bundle(pt: Point)(using m: Monad[M]): (M[Point], I, Double, BlendFun[I, M])
 
-  override def area(implicit m: Monad[M]): ImgArea = ???
+  override def apply(img: Img[I, M])(using m: Monad[M]): Img[I, M] = ???
+  
+  override def area(using m: Monad[M]): ImgArea = ???
 
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = ???
+  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(using m: Monad[M]): ImgPoint[I, M] = ???
 
-  override def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] = ???
+  override def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M])(using m: Monad[M]): M[PureImgPoints[I]] = ???
   //  lazy val bitMap: Seq[Seq[I]] = createBitmap
 
 //  def createBitmap: Seq[Seq[I]] =
