@@ -29,12 +29,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="sbt: skac112:vgutils_3:3.0.0-SNAPSHOT:jar" level="project" />
+    <orderEntry type="library" name="sbt: skac112:gauguin_3:0.1.0-SNAPSHOT:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:cats-core_3:2.12.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-parallel-collections_3:1.0.4:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalanlp:breeze_3:2.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalactic:scalactic_3:3.2.18:jar" level="project" />
     <orderEntry type="library" name="sbt: com.lihaoyi:upickle_3:3.3.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.4.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.3.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.vividsolutions:jts:1.13:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_3:2.12.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalanlp:breeze-macros_3:2.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: dev.ludovic.netlib:blas:3.0.1:jar" level="project" />
@@ -50,7 +52,7 @@
     <orderEntry type="library" name="sbt: com.lihaoyi:ujson_3:3.3.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.lihaoyi:upack_3:3.3.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.lihaoyi:upickle-implicits_3:3.3.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.12:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.15:jar" level="project" />
     <orderEntry type="library" name="sbt: pl.edu.icm:JLargeArrays:1.5:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:spire-macros_3:0.18.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:spire-platform_3:0.18.0:jar" level="project" />

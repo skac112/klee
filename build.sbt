@@ -4,6 +4,7 @@ organization := "skac112"
 scalaVersion := "3.4.0"
 exportJars := true
 libraryDependencies += "skac112" %% "vgutils" % "3.0.0-SNAPSHOT"
+libraryDependencies += "skac112" %% "gauguin" % "0.1.0-SNAPSHOT"
 libraryDependencies += "org.typelevel" %% "cats-core" % "2.12.0"
 libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
 //libraryDependencies += "skac112" %% "funnodes" % "0.0.3-SNAPSHOT"

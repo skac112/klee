@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="244661e5-20ec-4d2c-9eaa-528c8d14e2f2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Raster.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/klee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/klee.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/LocalImgTrans.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/LocalImgTrans.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Fill.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Fill.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/Raster.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/images/MutableRaster.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/bundles/Bundle.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/bundles/Bundle.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/bundles/SectionBundle.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/bundles/SectionBundle.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/displacers/Displacer.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +87,7 @@
     &quot;ToolWindowDebug.ShowToolbar&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/skac/Documents/projekty/electron/viget_electron/src/main/scala/com/github/skac112/vigetelectron/controls/VigetSettings.scala&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/skac/Documents/projekty_obce/aparapi&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>

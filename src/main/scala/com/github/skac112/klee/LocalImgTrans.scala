@@ -17,20 +17,20 @@ import com.github.skac112.klee.area.imgpt.ImgPtArea
   */
 abstract class LocalImgTrans[I, M[_]] extends ImgTrans.Simple[I, M] {
   self =>
-  def area(implicit m: Monad[M]): ImgArea
+  def area(using m: Monad[M]): ImgArea
 
 //  lazy val m: Monad[M] = implicitly[Monad[M]]
 
-  override def apply(img: Img[I, M])(implicit m: Monad[M]) = new Img[I, M] {
-    override def apply(p: Point)(implicit m: Monad[M]) = if (area contains p) {
-      applyInArea(img, p)(m) }
+  override def apply(img: Img[I, M])(using m: Monad[M]) = new Img[I, M] {
+    override def apply(p: Point)(using m: Monad[M]) = if (area contains p) {
+      applyInArea(img, p) }
     else {
       // point outside ImgTrans area - bypassing
       img(p)
     }
 
-    override def applyBatchArea(ptArea: ImgPtArea[I, M])(implicit m: Monad[M]) = applyToImgPtArea(img, ptArea)
-    override def air(implicit m: Monad[M]) = applyToAir(img)
+    override def applyBatchArea(ptArea: ImgPtArea[I, M])(using m: Monad[M]) = applyToImgPtArea(img, ptArea)
+    override def air(using m: Monad[M]) = applyToAir(img)
   }
 
 //  protected def makeImgPoints(points: Points, colors: (Int) => () => M[I], land: Boolean = true): ImgPoints[I, M] =
@@ -42,7 +42,7 @@ abstract class LocalImgTrans[I, M[_]] extends ImgTrans.Simple[I, M] {
     * @param ptArea
     * @return
     */
-  protected def applyToImgPtArea(img: Img[I, M], ptArea: ImgPtArea[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] =
+  protected def applyToImgPtArea(img: Img[I, M], ptArea: ImgPtArea[I, M])(using m: Monad[M]): M[PureImgPoints[I]] =
     println("applyToImgPtArea")
     for {
       part <- ptArea.partByIntersect[I](area): M[(ImgPtArea[I, M], ImgPtArea[I, M], ImgPtArea[I, M], JoinFun[I, M])]
@@ -63,15 +63,15 @@ abstract class LocalImgTrans[I, M[_]] extends ImgTrans.Simple[I, M] {
       } yield pure_img_pt)}).toVector.sequence
     } yield join_fun(in_colors, out_colors, unknown_colors)
 
-  def applyToAir(img: Img[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] = img.air
+  def applyToAir(img: Img[I, M])(using m: Monad[M]): M[PureImgPoints[I]] = img.air
 
-  def applyInArea(img: Img[I, M], p: Point)(implicit m: Monad[M]): M[I] = applyInArea(img, LandImgPoint(img, p)).color
+  def applyInArea(img: Img[I, M], p: Point)(using m: Monad[M]): M[I] = applyInArea(img, LandImgPoint(img, p)).color
 
-  def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M]
+  def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(using m: Monad[M]): ImgPoint[I, M]
 
 //  def applyBatchInArea(img: Img[I, M], points: Points): M[scala.collection.Seq[O]] =
 //    ImgTrans.widen[scala.collection.immutable.Vector[O], scala.collection.Seq[O], M]((points.toVector.par map { applyInArea(img, _) }).toVector.sequence)
 
-  def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] =
+  def applyBatchInArea(img: Img[I, M], imgPoints: ImgPoints[I, M])(using m: Monad[M]): M[PureImgPoints[I]] =
     (imgPoints.par map { applyInArea(img, _).bubbleUpMonad }).seq.toVector.sequence.widen
 }
