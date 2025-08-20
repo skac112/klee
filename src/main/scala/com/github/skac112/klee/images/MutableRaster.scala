@@ -14,9 +14,9 @@ import MutableRaster.*
 case class MutableRaster[M[_]: Monad](
                                        width: Int,
                                        height: Int,
-                                       initImg: Img[ColorVector, M],
+                                       initImg: Img[M],
                                        interpolation: Interpolation = Interpolation.Bilinear)
-  extends Img[ColorVector, M]:
+  extends Img[M]:
 
   override def apply(p: Point)(using m: Monad[M]): M[ColorVector] = interpolation match {
     case Interpolation.Nearest => pixel(p.x.floor.toInt, p.y.floor.toInt)
@@ -66,17 +66,33 @@ case class MutableRaster[M[_]: Monad](
     val (px1, py1) = (p.x.floor.toInt, p.y.floor.toInt)
     val (px2, py2) = (px1 + 1, py1 + 1)
     val (dx, dy) = (p.x - px1, p.y - py1)
-    val (c11, c21) = (pixel(px1, py1), pixel(px2, py1))
-    val (c12, c22) = (pixel(px1, py2), pixel(px2, py2))
-    c11 * (1 - dx) * (1 - dy) + c21 * dx * (1 - dy) + c12 * (1 - dx) * dy + c22 * dx * dy
+    val (c11m, c21m) = (pixel(px1, py1), pixel(px2, py1))
+    val (c12m, c22m) = (pixel(px1, py2), pixel(px2, py2))
+    for {
+      c11 <- c11m
+      c21 <- c21m
+      c12 <- c12m
+      c22 <- c22m
+    } yield {
+      c11 * (1 - dx) * (1 - dy) + c21 * dx * (1 - dy) + c12 * (1 - dx) * dy + c22 * dx * dy
+    }
 
   private def bicubicInterpolation(p: Point): M[ColorVector] =
     val px1 = math.max(if p.x.frac >= 0.5 then p.x.floor.toInt else p.x.floor.toInt - 1, 0)
     val px2 = math.min(px1 + 1, width - 1)
     val py1 = math.max(if p.y.frac >= 0.5 then p.y.floor.toInt else p.y.floor.toInt - 1, 0)
     val py2 = math.min(py1 + 1, height - 1)
-    val (c11, c21) = (pixel(px1, py1), pixel(px2, py1))
-    val (c12, c22) = (pixel(px1, py2), pixel(px2, py2))
+    val (c11m, c21m) = (pixel(px1, py1), pixel(px2, py1))
+    val (c12m, c22m) = (pixel(px1, py2), pixel(px2, py2))
     val (dx, dy) = (math.max(p.x - px1 - .5, .0), math.max(p.y - py1 - .5, .0))
     // dummy temporary result
-    ColorVector.hsla(.0, .0, .0, .0)
+    for {
+      c11 <- c11m
+      c21 <- c21m
+      c12 <- c12m
+      c22 <- c22m
+    } yield {
+      // temporary dummy result
+      ColorVector.hsla(.0, .0, .0, .0)
+    }
+

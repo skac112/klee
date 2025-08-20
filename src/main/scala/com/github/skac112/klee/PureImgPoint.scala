@@ -1,14 +1,14 @@
 package com.github.skac112.klee
 
-import cats._
+import cats.*
 import cats.Monad
-import cats.implicits._
-import com.github.skac112.vgutils.Point
+import cats.implicits.*
+import com.github.skac112.vgutils.{ColorVector, Point}
 
-sealed trait PureImgPoint[+I] {
+sealed trait PureImgPoint {
   def point: Point
-  def color: I
+  def color: ColorVector
   def land: Boolean = false
 }
 
-final case class InstantPureImgPoint[+I](override val point: Point, color: I, override val land: Boolean = true) extends PureImgPoint[I]
+final case class InstantPureImgPoint(override val point: Point, color: ColorVector, override val land: Boolean = true) extends PureImgPoint

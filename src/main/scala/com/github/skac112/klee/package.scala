@@ -17,18 +17,18 @@ import scala.collection.Seq
 package object klee {
   val defWidth = 800
   type ColTrans = Color => Color
-  type Values[+I] = scala.collection.Seq[I]
+  type Values[+T] = scala.collection.Seq[T]
   type Points = Values[Point]
-  type ImgPoints[I, M[_]] = Values[ImgPoint[I, M]]
-  type PureImgPoints[+I] = Values[PureImgPoint[I]]
+  type ImgPoints[M[_]] = Values[ImgPoint[M]]
+  type PureImgPoints = Values[PureImgPoint]
   type RealColors = scala.collection.Seq[Color]
   type ColorFun[T] = T => Color
   def trivialColorFun: ColorFun[Color] = (c: Color) => c
   def defColorFun: ColorFun[ColorVector] = (cv: ColorVector) => cv.toColor()
   def seqMonad[T, M[_]: Monad](seqM: Values[M[T]]) = seqM.toVector.sequence
-  def unwrapPoints[I, M[_]: Monad](imgPoints: ImgPoints[I, M]) = seqMonad(imgPoints map { _.point })
+  def unwrapPoints[M[_]: Monad](imgPoints: ImgPoints[M]) = seqMonad(imgPoints map { _.point })
 
-  def drawToFile[M[_]: Monad](img: Img[ColorVector, M],
+  def drawToFile[M[_]: Monad](img: Img[M],
                               fileName: String,
                               bounds: Bounds,
                               pixelSizeX: Int,
@@ -39,7 +39,7 @@ package object klee {
     val dy = bounds.h / pixelSizeY
     val raster_img = new BufferedImage(pixelSizeX, pixelSizeY, BufferedImage.TYPE_INT_ARGB)
     val axisGridLeftTop = bounds.tl - Point(.5*dx, .5*dy)
-    val pts_area = AxisGrid.forLand[ColorVector, M](img, axisGridLeftTop, pixelSizeX + 1, pixelSizeY + 1, dx, dy)
+    val pts_area = AxisGrid.forLand[M](img, axisGridLeftTop, pixelSizeX + 1, pixelSizeY + 1, dx, dy)
     val air_col_factor = airForceFactor / (dx * dy)
     
     for {
@@ -66,12 +66,12 @@ package object klee {
     Point(x * dx, y * dy), imgTopLeft + Point((x + 1) * dx, (y + 1) * dy))
 
   private def airColorForPixel(
-                                air: PureImgPoints[ColorVector],
+                                air: PureImgPoints,
                                 imgTopLeft: Point,
                                 x: Int,
                                 y: Int,
                                 dx: Double,
-                                dy: Double): ColorVector = (air filter { (pt: PureImgPoint[ColorVector]) =>
+                                dy: Double): ColorVector = (air filter { (pt: PureImgPoint) =>
     pixelBounds(imgTopLeft, x, y, dx, dy).hitTest(pt.point) }).foldLeft (ColorVector(0, 0, 0))
     {(acc, pt) => acc + pt.color}
 

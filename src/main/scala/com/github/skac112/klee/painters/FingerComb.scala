@@ -25,10 +25,10 @@ case class FingerComb(params: FingerCombParams, renderParams: Painter.RenderPara
 
   lazy val rand = new scala.util.Random(params.randSeed)
   override lazy val img = fun(initImg)
-  lazy val initImg = Fill[ColorVector, Id](Color.white)
+  lazy val initImg = Fill[Id](Color.white)
 
   lazy val fun = {
-    val half_plane = HalfPlane[ColorVector, Id](ori, .5*Pi, Color.red(.7))
+    val half_plane = HalfPlane[Id](ori, .5*Pi, Color.red(.7))
 //    val half_plane = Rect[ColorVector, Id](Point(0, 1), 10, 2, Color.red(.7))
 
     val fingers = (0 until params.numFinger) map {i =>
@@ -37,7 +37,7 @@ case class FingerComb(params: FingerCombParams, renderParams: Painter.RenderPara
 //      val to = Point(from.x, -params.averageLen * nextGaussBounded(rand, .3, 1.5, 1, .4))
       val to = Point(from.x, -params.averageLen)
 
-      Finger[ColorVector, Id](
+      Finger[Id](
         from,
         to,
         0.5,
@@ -48,6 +48,6 @@ case class FingerComb(params: FingerCombParams, renderParams: Painter.RenderPara
         Finger.DECAY_GAUSS)
     }
 
-    Composition[ColorVector, Id](half_plane :: fingers.toList ::: Nil)
+    Composition[Id](half_plane :: fingers.toList ::: Nil)
   }
 }

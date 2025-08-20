@@ -7,12 +7,12 @@ import com.github.skac112.klee.{Points, PureImgPoints}
 import com.github.skac112.klee.area.img.ImgArea
 
 object MultiPartArea {
-  type ImgPtAreas[I, M[_]] = scala.collection.Seq[ImgPtArea[I, M]]
+  type ImgPtAreas[M[_]] = scala.collection.Seq[ImgPtArea[M]]
 }
 
 import MultiPartArea._
 
-case class MultiPartArea[I, M[_]: Monad](parts: ImgPtAreas[I, M]) extends ImgPtArea[I, M] {
+case class MultiPartArea[M[_]: Monad](parts: ImgPtAreas[M]) extends ImgPtArea[M] {
   lazy val imgPoints = parts map { part => part.imgPoints } reduce { _ ++ _ }
 
   override def area: ImgArea = {
@@ -20,8 +20,8 @@ case class MultiPartArea[I, M[_]: Monad](parts: ImgPtAreas[I, M]) extends ImgPtA
     com.github.skac112.klee.area.img.MultiPartArea(area_parts.toSet)
   }
 
-  override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O]  = for {
-    parts_inters <- (parts map { _.partByIntersect[O](imgArea) }).toVector.sequence
+  override def partByIntersect(imgArea: ImgArea): ThisPartFunRes  = for {
+    parts_inters <- (parts map { _.partByIntersect(imgArea) }).toVector.sequence
     inside_pts = MultiPartArea(parts_inters map { _._1})
     outside_pts = MultiPartArea(parts_inters map { _._2})
     unknown_pts = MultiPartArea(parts_inters map { _._3})
@@ -29,7 +29,7 @@ case class MultiPartArea[I, M[_]: Monad](parts: ImgPtAreas[I, M]) extends ImgPtA
     borders = parts_inters.scanLeft((0, 0, 0)) { case (acc, part_inter) => { (acc._1 + part_inter._1.imgPoints.size,
       acc._2 + part_inter._2.imgPoints.size, acc._3 + part_inter._3.imgPoints.size) }}
 
-    join_fun = (inside: PureImgPoints[O], outside: PureImgPoints[O], unknown: PureImgPoints[O]) => {
+    join_fun = (inside: PureImgPoints, outside: PureImgPoints, unknown: PureImgPoints) => {
         ((parts_inters zip borders) map { case ((inside_part, outside_part, unknown_part, part_join_fun), (inside_border, outside_border, unknown_border)) => {
           part_join_fun(
             inside.slice(inside_border, inside_border + inside_part.imgPoints.size),

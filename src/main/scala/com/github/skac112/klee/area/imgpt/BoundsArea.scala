@@ -6,7 +6,7 @@ import com.github.skac112.klee._
 import com.github.skac112.vgutils.Bounds
 
 object BoundsArea {
-  def forImgPts[I, M[_]: Monad](imgPoints: ImgPoints[I, M]) = for {
+  def forImgPts[M[_]: Monad](imgPoints: ImgPoints[M]) = for {
     pts <- unwrapPoints(imgPoints)
   } yield BoundsArea(Bounds.forPts(pts.toSet), imgPoints)
 }
@@ -16,6 +16,6 @@ object BoundsArea {
   * @param givenBounds
   * @param imgPoints
   */
-case class BoundsArea[I, M[_]: Monad](givenBounds: Bounds, override val imgPoints: ImgPoints[I, M]) extends ImgPtArea[I, M] {
+case class BoundsArea[M[_]: Monad](givenBounds: Bounds, override val imgPoints: ImgPoints[M]) extends ImgPtArea[M] {
   override def area = com.github.skac112.klee.area.img.BoundsArea(givenBounds)
 }

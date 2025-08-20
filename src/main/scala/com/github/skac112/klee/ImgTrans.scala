@@ -2,15 +2,16 @@ package com.github.skac112.klee
 
 import cats.Monad
 import cats.data.Kleisli
-import cats.implicits._
+import cats.implicits.*
+import com.github.skac112.vgutils.ColorVector
 
 object ImgTrans:
-  given imgToImgTrans[I, M[_] : Monad]: Conversion[Img[I, M], ImgTrans[I, I, M]] = (img: Img[I, M]) => new ImgTrans[I, I, M] {
-    override def apply(dummy: Img[I, M])(implicit m: Monad[M]) = img
+  given imgToImgTrans[M[_] : Monad]: Conversion[Img[M], ImgTrans[M]] = (img: Img[M]) => new ImgTrans[M] {
+    override def apply(dummy: Img[M])(implicit m: Monad[M]) = img
   }
 
-  def id[I, M[_]: Monad]: ImgTrans[I, I, M] = new ImgTrans[I, I, M] {
-    override def apply(img: Img[I, M])(implicit m: Monad[M]) = img
+  def id[M[_]: Monad]: ImgTrans[M] = new ImgTrans[M] {
+    override def apply(img: Img[M])(implicit m: Monad[M]) = img
   }
 
   /**
@@ -18,12 +19,12 @@ object ImgTrans:
     * @tparam I
     * @tparam M
     */
-  type Simple[I, M[_]] = ImgTrans[I, I, M]
+  type Simple[M[_]] = ImgTrans[M]
 
   def widen[N, W, M[_]: Monad](ma: M[N])(implicit ev: N <:< W): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
 
-abstract class ImgTrans[I, O, M[_]]:
-  def apply(img: Img[I, M])(implicit m: Monad[M]): Img[O, M]
+abstract class ImgTrans[M[_]]:
+  def apply(img: Img[M])(implicit m: Monad[M]): Img[M]
   /**
     * Widens type of output monad.
     * @param ma
@@ -32,4 +33,4 @@ abstract class ImgTrans[I, O, M[_]]:
     * @tparam M
     * @return
     */
-  def widen[W](ma: M[O])(implicit ev: O <:< W, m: Monad[M]): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
+  def widen[W](ma: M[ColorVector])(implicit ev: ColorVector <:< W, m: Monad[M]): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))

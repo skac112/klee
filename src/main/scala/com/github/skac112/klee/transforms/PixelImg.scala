@@ -15,17 +15,17 @@ import scala.math._
   * @tparam I
   * @tparam M
   */
-trait PixelImg[I, M[_]] extends LocalImgTrans[I, M] {
+trait PixelImg[M[_]] extends LocalImgTrans[M] {
   def width: Int
   def height: Int
-  def pixelValue(x: Int, y: Int): M[I]
+  def pixelValue(x: Int, y: Int): M
   
   override def area(implicit m: Monad[M]) = AxisRect(Point(0, 0), width, height)
 
-  def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = 
+  def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] =
     InstantImgPoint(ip.point, newColorM(ip.point), ip.land)
 
-  def newColorM(ptM: M[Point])(implicit m: Monad[M]): M[I] = for {
+  def newColorM(ptM: M[Point])(implicit m: Monad[M]): M = for {
     pt <- ptM
     pixel_val <- pixelValue(floor(pt.x).toInt, floor(pt.y).toInt)
   } yield pixel_val

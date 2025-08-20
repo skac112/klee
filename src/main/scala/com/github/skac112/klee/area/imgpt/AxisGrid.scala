@@ -2,7 +2,7 @@ package com.github.skac112.klee.area.imgpt
 
 import com.github.skac112.klee.*
 import com.github.skac112.klee.area.img.{AxisRect, ImgArea}
-import com.github.skac112.vgutils.{Bounds, Point}
+import com.github.skac112.vgutils.{Bounds, ColorVector, Point}
 
 import scala.math.*
 import cats.data.State
@@ -11,14 +11,14 @@ import cats.implicits.*
 import com.github.skac112.vgutils.Bounds.BoundsType
 
 object AxisGrid {
-    def forLand[I, M[_]: Monad](img: Img[I, M], leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) = {
+    def forLand[M[_]: Monad](img: Img[M], leftTop: Point, nx: Int, ny: Int, dx: Double, dy: Double) = {
         val real_lt = leftTop + Point(.5*dx, .5*dy)          
         val colorFunFun = (i: Int) => () => Some(img(real_lt + Point((i % nx) * dx, (i / nx) * dy)))
 //        val colorFunFun = (i: Int) => () => None
-        AxisGrid[I, M](leftTop, nx, ny, dx, dy, colorFunFun)
+        AxisGrid[M](leftTop, nx, ny, dx, dy, colorFunFun)
     }
 
-//    def forAir[I, M[_]: Monad](air: )
+//    def forAir[M[_]: Monad](air: )
 }
 
 /**
@@ -33,13 +33,13 @@ object AxisGrid {
   * @param dx distance between consecutive columns
   * @param dy distance between consecutive rows
   */
-case class AxisGrid[I, M[_]: Monad](
+case class AxisGrid[M[_]: Monad](
                                      leftTop: Point,
                                      nx: Int,
                                      ny: Int,
                                      dx: Double,
                                      dy: Double,
-                                     colorFunFun: Int => () => Option[M[I]]) extends ImgPtArea[I, M] {
+                                     colorFunFun: Int => () => Option[M[ColorVector]]) extends ImgPtArea[M] {
   override lazy val imgPoints = {
     // coordinates of left top point (with offset from leftTop)
     val real_lt = leftTop + Point(.5*dx, .5*dy)    
@@ -47,24 +47,24 @@ case class AxisGrid[I, M[_]: Monad](
       colorFunFun(i)) }
   }
 
-  def pointRow(rowNum: Int): ImgPoints[I, M] = imgPoints.slice(rowNum * nx, (rowNum * nx) + 1)
+  def pointRow(rowNum: Int): ImgPoints[M] = imgPoints.slice(rowNum * nx, (rowNum * nx) + 1)
 
-  def pointCol(colNum: Int): ImgPoints[I, M] = (0 until ny) map { (row: Int) => imgPoints(row * nx + colNum) }
+  def pointCol(colNum: Int): ImgPoints[M] = (0 until ny) map { (row: Int) => imgPoints(row * nx + colNum) }
 
   override lazy val area = AxisRect(leftTop, nx * dx, ny * dy)
 
-  def this(rect: AxisRect, dx: Double, dy: Double, colorFunFun: Int => () => Option[M[I]]) = this(rect.leftTop,
+  def this(rect: AxisRect, dx: Double, dy: Double, colorFunFun: Int => () => Option[M[ColorVector]]) = this(rect.leftTop,
     floor(rect.width / dx).toInt + 1, floor(rect.height / dy).toInt + 1, dx, dy, colorFunFun)
 
-  override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes[O] = {
+  override def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes = {
     imgArea.bounds match {
       case Some(b) if (imgArea.bounds.get.boundsType != BoundsType.InfBounds) => partByIntersectFromBounds(b)
       case _ => super.partByIntersect(imgArea)
     }
   } 
 
-  private def partByIntersectFromBounds[O](imgBounds: Bounds): ThisPartFunRes[O] = {
-    type ImgPtAreas = scala.collection.Seq[ImgPtArea[I, M]]
+  private def partByIntersectFromBounds(imgBounds: Bounds): ThisPartFunRes = {
+    type ImgPtAreas = scala.collection.Seq[ImgPtArea[M]]
 
     def addBlockIf(
                     cond: => Boolean,
@@ -72,7 +72,7 @@ case class AxisGrid[I, M[_]: Monad](
                     lCol: Int,
                     rCol: Int,
                     tRow: Int,
-                    bRow: Int): scala.collection.Seq[ImgPtArea[I, M]] = if (cond) {
+                    bRow: Int): scala.collection.Seq[ImgPtArea[M]] = if (cond) {
       val new_block = AxisGrid(leftTop + Point(lCol*dx, tRow*dy), rCol - lCol + 1, bRow - tRow + 1, dx, dy, colorFunFun)
       curr :+ new_block
     } else {
@@ -119,7 +119,7 @@ case class AxisGrid[I, M[_]: Monad](
           ny - 1), ()) }
       } yield res
 
-      val out_blocks: ImgPtAreas = out_blocks_creation.runS(scala.collection.Seq[ImgPtArea[I, M]]()).value
+      val out_blocks: ImgPtAreas = out_blocks_creation.runS(scala.collection.Seq[ImgPtArea[M]]()).value
       val out_area = MultiPartArea(out_blocks)
       // number of point columns of unknown area - and also of left and right block
       val unknown_cols =  r_col - l_col - 1
@@ -137,7 +137,7 @@ case class AxisGrid[I, M[_]: Monad](
       // number of points (possibly 0) in top block of outside area
       val top_pts_cnt = nx * (t_row + 1)
         
-      val join_fun = (inside: PureImgPoints[O], outside: PureImgPoints[O], unknown: PureImgPoints[O]) => {
+      val join_fun = (inside: PureImgPoints, outside: PureImgPoints, unknown: PureImgPoints) => {
         // number of points (possibly 0) in left block of outside area
         // part of outside seq belonging to top block
         val top_pts = outside.slice(0, top_pts_cnt)
@@ -153,7 +153,7 @@ case class AxisGrid[I, M[_]: Monad](
         top_pts ++ middle_pts ++ bottom_pts
       }
 
-      m.pure((EmptyArea[I, M](), out_area, unknown_area, join_fun))
+      m.pure((EmptyArea[M](), out_area, unknown_area, join_fun))
     }
   }
 }

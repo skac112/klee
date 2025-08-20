@@ -49,7 +49,7 @@ object Finger {
   * @tparam I
   * @tparam M
   */
-case class Finger[I, M[_]](from: Point,
+case class Finger[M[_]](from: Point,
                            to: Point,
                            frontDecayFactor: Double,
                            backDecayFactor: Double,
@@ -58,7 +58,7 @@ case class Finger[I, M[_]](from: Point,
                            backDecayType: Symbol,
                            sideDecayType: Symbol,
                            dispThreshold: Double = .0001)
-  extends Displacer[I, M] {
+  extends Displacer[M] {
   // front vector
   lazy val frontVector = from - to
 

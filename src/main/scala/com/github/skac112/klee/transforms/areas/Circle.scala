@@ -6,13 +6,13 @@ import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.klee.{Img, ImgPoint, ImgTrans, InstantImgPoint, LocalImgTrans}
 import com.github.skac112.vgutils.{Color, Point}
 
-case class Circle[I, M[_]](
+case class Circle[M[_]](
                                    c: Point,
                                    r: Double,
                                    color: I,
-                                   applyToAir: Boolean = false) extends LocalImgTrans[I, M] {
+                                   applyToAir: Boolean = false) extends LocalImgTrans[M] {
   override def area(implicit m: Monad[M]): ImgArea = com.github.skac112.klee.area.img.Circle(c, r)
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = if (applyToAir || ip.land) {
+  override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, valueM(img, ip.point), ip.land)
   } else {
     ip
@@ -20,7 +20,7 @@ case class Circle[I, M[_]](
 
   lazy val r2 = r*r
 
-  protected def valueM(img: Img[I, M], ptM: M[Point])(implicit m: Monad[M]): M[I] = for {
+  protected def valueM(img: Img[M], ptM: M[Point])(implicit m: Monad[M]): M = for {
     pt <- ptM
     mod2 = (pt - c).modulus2
     value <- if (mod2 <= r2) m.pure(color) else img(pt)

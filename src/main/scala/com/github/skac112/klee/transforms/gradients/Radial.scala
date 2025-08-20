@@ -18,20 +18,20 @@ import com.github.skac112.klee.area.img.Circle
   * @tparam I
   * @tparam M
   */
-case class Radial[I,  M[_]](
+case class Radial[ M[_]](
                                     c: Point,
                                     r: Double,
-                                    radialColorFun: (Double, I) => M[I],
-                                    applyToAir: Boolean = false) extends LocalImgTrans[I, M] {
+                                    radialColorFun: (Double, I) => M,
+                                    applyToAir: Boolean = false) extends LocalImgTrans[M] {
   override def area(implicit m: Monad[M]): ImgArea = Circle(c, r)
 
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = if (applyToAir || ip.land) {
+  override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, newColorM(img, ip.point), ip.land)
   } else {
     ip
   }
 
-  def newColorM(img: Img[I, M], ptM: M[Point])(implicit m: Monad[M]) = for {
+  def newColorM(img: Img[M], ptM: M[Point])(implicit m: Monad[M]) = for {
     pt <- ptM
     color <- img.apply(pt)
     d = (pt - c).modulus

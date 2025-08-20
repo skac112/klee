@@ -9,7 +9,7 @@ import com.github.skac112.vgutils.transform.PivotRot
 
 import scala.math.{abs, exp, log, max, sqrt}
 
-case class ExpandingRing[I, M[_]](center: Point,
+case class ExpandingRing[M[_]](center: Point,
                                   maxDispRadius: Point,
                                   maxDisp: Double,
                                   frontDecayFactor: Double,
@@ -17,7 +17,7 @@ case class ExpandingRing[I, M[_]](center: Point,
                                   frontDecayType: Symbol,
                                   backDecayType: Symbol,
                                   dispThreshold: Double = .0001)
-extends Displacer[I, M] {
+extends Displacer[M] {
   override def displacement(implicit m: Monad[M]): VectorMap[M] = ???
 
   // // reciprocal of front vector modulus

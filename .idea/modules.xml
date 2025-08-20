@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee.iml" filepath="$PROJECT_DIR$/.idea/modules/klee.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee.klee-build.iml" filepath="$PROJECT_DIR$/.idea/modules/klee.klee-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee/klee.klee-build~1.iml" filepath="$PROJECT_DIR$/.idea/modules/klee/klee.klee-build~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee/klee.main.iml" filepath="$PROJECT_DIR$/.idea/modules/klee/klee.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/klee/klee.test.iml" filepath="$PROJECT_DIR$/.idea/modules/klee/klee.test.iml" />
     </modules>
   </component>
 </project>

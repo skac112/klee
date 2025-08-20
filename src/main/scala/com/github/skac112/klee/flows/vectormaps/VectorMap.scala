@@ -1,12 +1,12 @@
 package com.github.skac112.klee.flows.vectormaps
 
 import cats.Monad
-import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, InstantPureImgPoint, Points, PureImgPoints, RealColors}
-import com.github.skac112.vgutils.Point
-import com.github.skac112.vgutils.transform.linear._
-import cats.implicits._
+import com.github.skac112.klee.{Img, ImgPoint, ImgPoints, InstantImgPoint, InstantPureImgPoint, Points, PureImgPoints, RealColors, Values}
+import com.github.skac112.vgutils.{ColorVector, Point}
+import com.github.skac112.vgutils.transform.linear.*
+import cats.implicits.*
 import com.github.skac112.klee.area.imgpt.ImgPtArea
-import com.github.skac112.klee.flows._
+import com.github.skac112.klee.flows.*
 
 object VectorMap {
   def from[M[_]: Monad](fun: Point => Point) = new VectorMap[M] {
@@ -20,11 +20,13 @@ object VectorMap {
   }
 }
 
-abstract class VectorMap[M[_]] extends Img[Point, M] {
+abstract class VectorMap[M[_]] {
   self =>
 //  override val m = implicitly[Monad[M]]
   lazy val invMap: VectorMap[M] = ???
   lazy val f1_6 = 1.0 / 6
+
+  def apply(p: Point)(implicit m: Monad[M]): M[Point]
 
   /**
     * Transforms this vector map to a new vector map making one step of integration using given
@@ -44,7 +46,7 @@ abstract class VectorMap[M[_]] extends Img[Point, M] {
   def *(factor: Double)(implicit m: Monad[M]): VectorMap[M] = new VectorMap[M] {
 //    override val m = self.m
 
-    override def apply(p: Point)(implicit m: Monad[M]): M[Point] = for {
+    def apply(p: Point)(implicit m: Monad[M]): M[Point] = for {
       p2 <- self(p)
     } yield p2 * factor
   }
@@ -139,12 +141,17 @@ abstract class VectorMap[M[_]] extends Img[Point, M] {
     * @param points
     * @return
     */
-  override def applyBatchArea(imgPtArea: ImgPtArea[Point, M])(implicit m: Monad[M]): M[PureImgPoints[Point]] = {
-    val disp_pts = for {
-      ip <- imgPtArea.imgPoints
+  override def applyBatchArea(imgPts: ImgPoints[M])(implicit m: Monad[M]): Values[M[Point]] = imgPts map { (ip: ImgPoint[M]) =>
+    if (ip.land) {
+      applyM(ip.point)
+    } else {
       // for air point, the inverted transformation is used
-      map = if (ip.land) this else invMap
-    } yield InstantImgPoint(ip.point, map.applyM(ip.color), ip.land)
-    (disp_pts map {(ip: ImgPoint[Point, M]) => ip.bubbleUpMonad}).toVector.sequence.widen
+      invMap.applyM(ip.point)
+    }
   }
+
+  private def applyM(ptM: M[Point])(implicit m: Monad[M]): M[Point] = for {
+    pt <- ptM
+    value <- apply(pt)
+  } yield value
 }

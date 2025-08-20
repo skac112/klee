@@ -3,32 +3,31 @@ package com.github.skac112.klee
 import com.github.skac112.klee.area.img.WholeArea
 import com.github.skac112.klee.area.imgpt
 import com.github.skac112.klee.area.pt.{PtArea, QuickPtArea}
-import com.github.skac112.vgutils.Point
+import com.github.skac112.vgutils.{ColorVector, Point}
 import cats.{Applicative, Monad}
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.area.imgpt.ImgPtArea
 
-trait Img[I, M[_]] {
-  def apply(p: Point)(implicit m: Monad[M]): M[I]
-//  implicit val m: Monad[M]
-  def air(implicit m: Monad[M]): M[PureImgPoints[I]] = m.pure(Seq())
+trait Img[M[_]] {
+  def apply(p: Point)(implicit m: Monad[M]): M[ColorVector]
+  def air(implicit m: Monad[M]): M[PureImgPoints] = m.pure(Seq())
 
   /**
     * Base implementation just evaluates each point independently.
     * @param points
     * @return
     */
-  def applyBatchArea(imgPtArea: ImgPtArea[I, M])(implicit m: Monad[M]): M[PureImgPoints[I]] = {
+  def applyBatchArea(imgPtArea: ImgPtArea[M])(implicit m: Monad[M]): M[PureImgPoints] = {
     val trans_img_pts = imgPtArea.imgPoints map applyToImgPt
     (trans_img_pts map { _.bubbleUpMonad}).toVector.sequence.widen
   }
 
-  //  def applyBatchArea(imgPtArea: ImgPtArea[I, M]): ImgPoints[I, M] = imgPtArea.imgPoints
+  //  def applyBatchArea(imgPtArea: ImgPtArea[M]): ImgPoints[M] = imgPtArea.imgPoints
 
-//  def applyBatch(pts: Points): M[scala.collection.Seq[I]] =
-//    ImgTrans.widen[scala.collection.immutable.Vector[I], scala.collection.Seq[I], M]((pts map apply).toVector.sequence)
+//  def applyBatch(pts: Points): M[scala.collection.Seq] =
+//    ImgTrans.widen[scala.collection.immutable.Vector, scala.collection.Seq, M]((pts map apply).toVector.sequence)
 
-  def applyBatch(pts: Points)(implicit m: Monad[M]): M[Values[I]] = for {
+  def applyBatch(pts: Points)(implicit m: Monad[M]): M[Values[ColorVector]] = for {
     img_points <- applyBatchArea(imgpt.QuickPtArea(pts.map(LandImgPoint(this, _)), WholeArea()))
   } yield img_points map { _.color }
 
@@ -37,7 +36,7 @@ trait Img[I, M[_]] {
     value <- apply(pt)
   } yield value
 
-  def applyToImgPt(ip: ImgPoint[I, M])(implicit m: Monad[M]) = if (ip.land) {
+  def applyToImgPt(ip: ImgPoint[M])(implicit m: Monad[M]) = if (ip.land) {
     InstantImgPoint(ip.point, applyM(ip.point), true)
   } else {
     ip

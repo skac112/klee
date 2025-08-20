@@ -15,13 +15,13 @@ import com.github.skac112.vgutils.Point
   * @tparam I
   * @tparam M
   */
-case class LocalMixer[I, M[_]](
-                                       baseTrans: LocalImgTrans[I, M],
-                                       mixingFun: (I, I) => M[I]) extends LocalImgTrans[I, M] {
+case class LocalMixer[M[_]](
+                                       baseTrans: LocalImgTrans[M],
+                                       mixingFun: (I, I) => M) extends LocalImgTrans[M] {
 
   override def area(implicit m: Monad[M]) = baseTrans.area
 
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = if (ip.land) {
+  override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (ip.land) {
       val color_m = for {
         trans_color <- baseTrans.applyInArea(img, ip).color
         img_color <- img.applyM(ip.point)

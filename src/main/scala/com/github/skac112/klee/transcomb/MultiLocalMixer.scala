@@ -9,14 +9,14 @@ import cats.Id
 import cats.implicits._
 import scala.language.postfixOps
 
-case class MultiLocalMixer[I, M[_]](
-                                             localTransforms: Seq[LocalImgTrans[I, M]],
-                                             mixingFun: (I, I) => M[I]) extends LocalImgTrans[I, M] {
+case class MultiLocalMixer[M[_]](
+                                             localTransforms: Seq[LocalImgTrans[M]],
+                                             mixingFun: (I, I) => M) extends LocalImgTrans[M] {
   override def area(implicit m: Monad[M]) = MultiPartArea(localTransforms map (_.area) toSet)
   
 //override def area = WholeArea()
 
-  override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = {
+  override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = {
     val color_m = for {
       pt <- ip.point
       color <- colorMFor(img, localTransforms, pt)
@@ -24,7 +24,7 @@ case class MultiLocalMixer[I, M[_]](
     InstantImgPoint(ip.point, color_m)
   }
 
-  private def colorMFor(img: Img[I, M], transforms: Seq[LocalImgTrans[I, M]], pt: Point)(implicit m: Monad[M]): M[I] =
+  private def colorMFor(img: Img[M], transforms: Seq[LocalImgTrans[M]], pt: Point)(implicit m: Monad[M]): M =
     transforms.foldLeft(img(pt))((color_m, transform) => if (transform.area.contains(pt)) { 
       // point in area of current local transform - mixing
       for {

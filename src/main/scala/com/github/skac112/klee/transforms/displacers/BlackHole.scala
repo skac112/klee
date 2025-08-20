@@ -7,18 +7,17 @@ import com.github.skac112.klee.transforms.displacers.Displacer.DispColorChangeFu
 import com.github.skac112.klee.{Img, ImgTrans}
 import com.github.skac112.vgutils.{*, given}
 
-case class BlackHole[I, M[_]](
+case class BlackHole[M[_]](
   c: Point,
   rotation: Double,
   rotationDecay: Double,
   scaling: Double,
   scalingDecay: Double,
-  areaRadius: Double = 0.0) extends Displacer[I, M] {
+  areaRadius: Double = 0.0) extends Displacer[ColorVector, M] {
 
   override def area(implicit m: Monad[M]) = if (areaRadius != 0) Circle(c, areaRadius) else WholeArea()
 
   override def displacement(implicit m: Monad[M]) = new VectorMap[M] {
-//    override val m = implicitly(Monad[M])
     override def apply(p: Point)(implicit m: Monad[M]) = m.pure(rotDisplacement(p))
   }
 

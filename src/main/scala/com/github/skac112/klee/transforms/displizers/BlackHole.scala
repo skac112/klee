@@ -8,15 +8,15 @@ import com.github.skac112.klee.area.img.WholeArea
 
 import scala.collection.immutable.VectorMap
 
-final case class BlackHole[I, M[_]](
+final case class BlackHole[M[_]](
   c: Point,
   rotation: Double,
   rotationDecay: Double,
-  override val colorDispFun: (I, Point) => M[I],
-  areaRadius: Double = .0) extends Displizer[I, M] {
-    def dispBh(implicit m: Monad[M]) = com.github.skac112.klee.transforms.displacers.BlackHole[I, M](c, rotation, rotationDecay, 1.0, 0.0, areaRadius)
+  override val colorDispFun: (I, Point) => M,
+  areaRadius: Double = .0) extends Displizer[M] {
+    def dispBh(implicit m: Monad[M]) = com.github.skac112.klee.transforms.displacers.BlackHole[M](c, rotation, rotationDecay, 1.0, 0.0, areaRadius)
     override def area(implicit m: Monad[M]) = dispBh.area
     override def displacement(implicit m: Monad[M]) = dispBh.displacement
 
-    override def applyInArea(img: Img[I, M], ip: ImgPoint[I, M])(implicit m: Monad[M]): ImgPoint[I, M] = ???
+    override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = ???
 }

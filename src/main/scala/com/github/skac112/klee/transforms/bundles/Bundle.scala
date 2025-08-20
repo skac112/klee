@@ -36,9 +36,9 @@ trait Bundle[M[_]: Monad](rasterXResolution: Int,
 //  override def applyInArea(img: Img[ColorVector, M], ip: ImgPoint[ColorVector, M])(using m: Monad[M]): ImgPoint[ColorVector, M] = ???
 
 //  override def applyBatchInArea(img: Img[ColorVector, M], imgPoints: ImgPoints[ColorVector, M])(using m: Monad[M]): M[PureImgPoints[ColorVector]] = ???
-  //  lazy val bitMap: Seq[Seq[I]] = createBitmap
+  //  lazy val bitMap: Seq[Seq] = createBitmap
 
-//  def createBitmap: Seq[Seq[I]] =
+//  def createBitmap: Seq[Seq] =
 
 
-//  override def pixelValue(x: Int, y: Int): M[I] = ???
+//  override def pixelValue(x: Int, y: Int): M = ???
