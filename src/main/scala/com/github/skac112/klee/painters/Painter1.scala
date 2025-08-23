@@ -28,7 +28,7 @@ final case class Painter1(params: Painter1Params, renderParams: Painter.RenderPa
   Painter[Painter1Params, Id](params, renderParams) {
   override lazy val img = fun(initImg)
 
-  lazy val initImg = Fill[ColorVector, Id](ColorVector.hsla(Angle(Pi), .7, .8))
+  lazy val initImg = Fill[Id](ColorVector.hsla(Angle(Pi), .7, .8))
 
   lazy val fun = {
     val elements = for {
@@ -50,11 +50,11 @@ final case class Painter1(params: Painter1Params, renderParams: Painter.RenderPa
         blendColors(second_color, color, k)
       }
 
-      element = Radial[ColorVector, Id](Point(rand.nextDouble, rand.nextDouble), r, color_fun)
+      element = Radial[Id](Point(rand.nextDouble, rand.nextDouble), r, color_fun)
       //    element = Radial[Color, Id](Point(.5, .5), r, color_fun)
     } yield element
 
-    Composition[ColorVector, Id](elements.toList)
+    Composition[Id](elements.toList)
   }
 
   def addToColor(color: ColorVector, rAdd: Double, gAdd: Double, bAdd: Double) = {

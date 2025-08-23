@@ -1,7 +1,7 @@
 name := "klee"
 version := "0.1.0-SNAPSHOT"
 organization := "skac112"
-scalaVersion := "3.4.0"
+scalaVersion := "3.3.5"
 exportJars := true
 libraryDependencies += "skac112" %% "vgutils" % "3.0.0-SNAPSHOT"
 libraryDependencies += "skac112" %% "gauguin" % "0.1.0-SNAPSHOT"

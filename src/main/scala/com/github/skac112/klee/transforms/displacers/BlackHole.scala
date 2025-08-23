@@ -13,12 +13,12 @@ case class BlackHole[M[_]](
   rotationDecay: Double,
   scaling: Double,
   scalingDecay: Double,
-  areaRadius: Double = 0.0) extends Displacer[ColorVector, M] {
+  areaRadius: Double = 0.0) extends Displacer[M] {
 
-  override def area(implicit m: Monad[M]) = if (areaRadius != 0) Circle(c, areaRadius) else WholeArea()
+  override def area(using m: Monad[M]) = if (areaRadius != 0) Circle(c, areaRadius) else WholeArea()
 
-  override def displacement(implicit m: Monad[M]) = new VectorMap[M] {
-    override def apply(p: Point)(implicit m: Monad[M]) = m.pure(rotDisplacement(p))
+  override def displacement(using m: Monad[M]) = new VectorMap[M] {
+    override def apply(p: Point)(using m: Monad[M]) = m.pure(rotDisplacement(p))
   }
 
   /**

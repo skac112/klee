@@ -17,7 +17,7 @@ import Painter._
 
 abstract class Painter[P <: Product, M[_]: Monad](params: P, renderParams: RenderParams)(using mirror: Mirror.ProductOf[P]):
   import Painter._
-  def img: Img[ColorVector, M]
+  def img: Img[M]
 
   def paint(): M[Unit] = {
     val file_name_base = fileNameBase

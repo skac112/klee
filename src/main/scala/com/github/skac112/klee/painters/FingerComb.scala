@@ -29,7 +29,7 @@ case class FingerComb(params: FingerCombParams, renderParams: Painter.RenderPara
 
   lazy val fun = {
     val half_plane = HalfPlane[Id](ori, .5*Pi, Color.red(.7))
-//    val half_plane = Rect[ColorVector, Id](Point(0, 1), 10, 2, Color.red(.7))
+//    val half_plane = Rect[Id](Point(0, 1), 10, 2, Color.red(.7))
 
     val fingers = (0 until params.numFinger) map {i =>
 //      val from = Point(-0.259, 0)

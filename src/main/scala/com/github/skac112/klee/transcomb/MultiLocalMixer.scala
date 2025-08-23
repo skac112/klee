@@ -1,17 +1,18 @@
 package com.github.skac112.klee.transcomb
 
 import cats.Monad
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, LocalImgTrans}
 import com.github.skac112.klee.area.img.{MultiPartArea, WholeArea}
-import com.github.skac112.vgutils.Point
+import com.github.skac112.vgutils.{ColorVector, Point}
 import cats.Id
-import cats.implicits._
+import cats.implicits.*
+
 import scala.language.postfixOps
 
 case class MultiLocalMixer[M[_]](
                                              localTransforms: Seq[LocalImgTrans[M]],
-                                             mixingFun: (I, I) => M) extends LocalImgTrans[M] {
+                                             mixingFun: (ColorVector, ColorVector) => M[ColorVector]) extends LocalImgTrans[M] {
   override def area(implicit m: Monad[M]) = MultiPartArea(localTransforms map (_.area) toSet)
   
 //override def area = WholeArea()
@@ -24,7 +25,7 @@ case class MultiLocalMixer[M[_]](
     InstantImgPoint(ip.point, color_m)
   }
 
-  private def colorMFor(img: Img[M], transforms: Seq[LocalImgTrans[M]], pt: Point)(implicit m: Monad[M]): M =
+  private def colorMFor(img: Img[M], transforms: Seq[LocalImgTrans[M]], pt: Point)(implicit m: Monad[M]): M[ColorVector] =
     transforms.foldLeft(img(pt))((color_m, transform) => if (transform.area.contains(pt)) { 
       // point in area of current local transform - mixing
       for {

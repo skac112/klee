@@ -13,7 +13,7 @@ import scala.collection.parallel.CollectionConverters.IterableIsParallelizable
 import scala.collection.parallel.immutable.ParVector
 
 object Displacer {
-  type DispColorChangeFun[T, M[_]] = (Point, Point, Img[T, M]) => T
+  type DispColorChangeFun[M[_]] = (Point, Point, Img[M]) => ColorVector
 }
 
 /**

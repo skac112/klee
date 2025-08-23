@@ -30,7 +30,7 @@ object Main extends App {
 //    painter.paint()
 
     // Przykład serializacji i deserializacji BlackHole
-    val bh: ImgTrans.Simple[ColorVector, Id] = com.github.skac112.klee.transforms.displacers.BlackHole[ColorVector, Id](
+    val bh: ImgTrans.Simple[Id] = com.github.skac112.klee.transforms.displacers.BlackHole[Id](
       com.github.skac112.vgutils.Point(0.1, 0.2),
       rotation = 1.5,
       rotationDecay = 0.1,
@@ -42,6 +42,6 @@ object Main extends App {
     val bhJson = write(bh)
     println(s"BlackHole jako JSON: $bhJson")
 
-    val bhDeserialized = read[ImgTrans.Simple[ColorVector, Id]](bhJson)
+    val bhDeserialized = read[ImgTrans.Simple[Id]](bhJson)
     println(s"Deserializowany BlackHole: $bhDeserialized")
 }

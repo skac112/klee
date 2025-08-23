@@ -14,7 +14,7 @@ object ImgPointArea {
 }
 
 abstract class ImgPtArea[M[_]: Monad] {
-  lazy val m = implicitly[Monad[M]]
+  lazy val m = summon[Monad[M]]
   import ImgPointArea._
 //  type ThisPartFunRes[O] = PartFunRes[O, M]
   type ThisPartFunRes= M[(ImgPtArea[M], ImgPtArea[M], ImgPtArea[M], JoinFun[M])]
@@ -53,7 +53,7 @@ abstract class ImgPtArea[M[_]: Monad] {
     * Fourth element of tuple is a merging function - it's application to three processed sequences of elements
     * returns sequence of all elements with proper order matching order of corresponding points in imgArea
     */
-  def partByIntersect[O](imgArea: ImgArea): ThisPartFunRes =
+  def partByIntersect(imgArea: ImgArea): ThisPartFunRes =
     println("partByIntersect")
     area.containedIn(imgArea) match {
       // area of points inside a given area

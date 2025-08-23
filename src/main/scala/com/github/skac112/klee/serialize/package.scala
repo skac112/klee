@@ -9,24 +9,25 @@ import com.github.skac112.vgutils.{ColorVector, Point}
 
 package object serialize {
   given PointRW: ReadWriter[Point] = macroRW[Point]
-  given BlackHoleRW: ReadWriter[BlackHole[ColorVector, Id]] = macroRW[BlackHole[ColorVector, Id]]
-  given FillRW: ReadWriter[Fill[ColorVector, Id]] = macroRW[Fill[ColorVector, Id]]
+  given BlackHoleRW: ReadWriter[BlackHole[Id]] = macroRW[BlackHole[Id]]
+  given ColorVectorRW: ReadWriter[ColorVector] = macroRW[ColorVector]
+  given FillRW: ReadWriter[Fill[Id]] = macroRW[Fill[Id]]
   
-  given imgTransRW: ReadWriter[ImgTrans.Simple[ColorVector, Id]] =
-    readwriter[ujson.Obj].bimap[ImgTrans.Simple[ColorVector, Id]](
+  given imgTransRW: ReadWriter[ImgTrans.Simple[Id]] =
+    readwriter[ujson.Obj].bimap[ImgTrans.Simple[Id]](
       img_trans => img_trans match
-        case t @ BlackHole[ColorVector, Id] (c, rotation, rotationDecay, scaling, scalingDecay, areaRadius) =>
-          Map("type" -> "transforms.displacers.BlackHole", "data" -> write[BlackHole[ColorVector, Id]](t))
+        case t @ BlackHole[Id] (c, rotation, rotationDecay, scaling, scalingDecay, areaRadius) =>
+          Map("type" -> "transforms.displacers.BlackHole", "data" -> write[BlackHole[Id]](t))
         case _ =>
           Map() // Placeholder for other ImgTrans types, can be extended later
   ,
-  //      if (img_trans.isInstanceOf[BlackHole[ColorVector, Id]]) {
-  //      write[BlackHole[ColorVector, Id]](img_trans.asInstanceOf[BlackHole[ColorVector, Id]])
+  //      if (img_trans.isInstanceOf[BlackHole[Id]]) {
+  //      write[BlackHole[Id]](img_trans.asInstanceOf[BlackHole[Id]])
 
       json_obj => json_obj("type").toString match
           case "transforms.displacers.BlackHole" =>
-            read[BlackHole[ColorVector, Id]](json_obj("data"))
-          case _ => ImgTrans.id[ColorVector, Id] // Default case, can be extended later
+            read[BlackHole[Id]](json_obj("data"))
+          case _ => ImgTrans.id[Id] // Default case, can be extended later
     )
 
   implicit def MonadRW[M[_]](implicit m: Monad[M]): ReadWriter[Monad[M]] = readwriter[ujson.Value].bimap[Monad[M]](

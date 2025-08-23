@@ -141,7 +141,7 @@ abstract class VectorMap[M[_]] {
     * @param points
     * @return
     */
-  override def applyBatchArea(imgPts: ImgPoints[M])(implicit m: Monad[M]): Values[M[Point]] = imgPts map { (ip: ImgPoint[M]) =>
+  def applyBatchArea(imgPts: ImgPoints[M])(using m: Monad[M]): Values[M[Point]] = imgPts map { (ip: ImgPoint[M]) =>
     if (ip.land) {
       applyM(ip.point)
     } else {

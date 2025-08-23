@@ -17,10 +17,10 @@ trait Bundle[M[_]: Monad](rasterXResolution: Int,
                           rasterYResolution: Int,
                           // It determines the ratio of raster pixel size / band sample pixel size 
                           bandSampleFactor: Double
-                         ) extends LocalImgTrans[ColorVector, M]:
+                         ) extends LocalImgTrans[M]:
   def bundle(pt: Point)(using m: Monad[M]): (M[Point], BlendFun[M])
 
-  override def apply(img: Img[ColorVector, M])(using m: Monad[M]): Img[ColorVector, M] = new Img[ColorVector, M] {
+  override def apply(img: Img[M])(using m: Monad[M]): Img[M] = new Img[M] {
     val raster_img = createRasterImg()
     override def apply(p: Point)(implicit m: Monad[M]): M[ColorVector] = if (area.contains(p)) {
       raster_img(p)
@@ -33,9 +33,9 @@ trait Bundle[M[_]: Monad](rasterXResolution: Int,
 
   override def area(using m: Monad[M]): ImgArea = ???
 
-//  override def applyInArea(img: Img[ColorVector, M], ip: ImgPoint[ColorVector, M])(using m: Monad[M]): ImgPoint[ColorVector, M] = ???
+//  override def applyInArea(img: Img[M], ip: ImgPoint[ColorVector, M])(using m: Monad[M]): ImgPoint[ColorVector, M] = ???
 
-//  override def applyBatchInArea(img: Img[ColorVector, M], imgPoints: ImgPoints[ColorVector, M])(using m: Monad[M]): M[PureImgPoints[ColorVector]] = ???
+//  override def applyBatchInArea(img: Img[M], imgPoints: ImgPoints[ColorVector, M])(using m: Monad[M]): M[PureImgPoints[ColorVector]] = ???
   //  lazy val bitMap: Seq[Seq] = createBitmap
 
 //  def createBitmap: Seq[Seq] =

@@ -29,12 +29,12 @@ case class Painter2(params: Painter2Params, renderParams: Painter.RenderParams) 
 
   override lazy val img = fun(initImg)
 
-  lazy val initImg = Fill[ColorVector, Id](Color.white)
+  lazy val initImg = Fill[Id](Color.white)
 
   lazy val fun = {
-    val circle = Circle[ColorVector, Id](ori, .1, Color.black)
+    val circle = Circle[Id](ori, .1, Color.black)
 
-    val finger = Finger[ColorVector, Id](
+    val finger = Finger[Id](
       params.from,
       params.to,
       params.frontDecay,
@@ -44,6 +44,6 @@ case class Painter2(params: Painter2Params, renderParams: Painter.RenderParams) 
       params.backDecayType,
       params.sideDecayType)
 
-    Composition[ColorVector, Id](circle :: finger :: Nil)
+    Composition[Id](circle :: finger :: Nil)
   }
 }

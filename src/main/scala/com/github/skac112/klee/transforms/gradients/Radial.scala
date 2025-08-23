@@ -2,8 +2,8 @@ package com.github.skac112.klee.transforms.gradients
 
 import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, LocalImgTrans}
 import cats.Monad
-import cats.implicits._
-import com.github.skac112.vgutils.Point
+import cats.implicits.*
+import com.github.skac112.vgutils.{ColorVector, Point}
 import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.klee.area.img.Circle
 
@@ -21,7 +21,7 @@ import com.github.skac112.klee.area.img.Circle
 case class Radial[ M[_]](
                                     c: Point,
                                     r: Double,
-                                    radialColorFun: (Double, I) => M,
+                                    radialColorFun: (Double, ColorVector) => M[ColorVector],
                                     applyToAir: Boolean = false) extends LocalImgTrans[M] {
   override def area(implicit m: Monad[M]): ImgArea = Circle(c, r)
 
@@ -31,7 +31,7 @@ case class Radial[ M[_]](
     ip
   }
 
-  def newColorM(img: Img[M], ptM: M[Point])(implicit m: Monad[M]) = for {
+  def newColorM(img: Img[M], ptM: M[Point])(using m: Monad[M]): M[ColorVector] = for {
     pt <- ptM
     color <- img.apply(pt)
     d = (pt - c).modulus

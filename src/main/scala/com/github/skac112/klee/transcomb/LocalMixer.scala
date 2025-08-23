@@ -1,9 +1,9 @@
 package com.github.skac112.klee.transcomb
 
 import cats.Monad
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, LandImgPoint, LocalImgTrans}
-import com.github.skac112.vgutils.Point
+import com.github.skac112.vgutils.{ColorVector, Point}
 
 /**
   * Local image transform with additional "mixing" step - for points in image trans area a resulting color is calculated
@@ -17,7 +17,7 @@ import com.github.skac112.vgutils.Point
   */
 case class LocalMixer[M[_]](
                                        baseTrans: LocalImgTrans[M],
-                                       mixingFun: (I, I) => M) extends LocalImgTrans[M] {
+                                       mixingFun: (ColorVector, ColorVector) => M[ColorVector]) extends LocalImgTrans[M] {
 
   override def area(implicit m: Monad[M]) = baseTrans.area
 

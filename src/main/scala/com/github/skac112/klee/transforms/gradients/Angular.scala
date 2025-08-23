@@ -1,10 +1,10 @@
 package com.github.skac112.klee.transforms.gradients
 
 import cats.Monad
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, LocalImgTrans}
 import com.github.skac112.klee.area.img.{Circle, ImgArea}
-import com.github.skac112.vgutils.{Angle, Point}
+import com.github.skac112.vgutils.{Angle, ColorVector, Point}
 
 /**
   * Transformation operates in a circle area. "Color" (i. e. value of an I type) in this circle depends on a current
@@ -20,7 +20,7 @@ import com.github.skac112.vgutils.{Angle, Point}
 case class Angular[ M[_]](
                                      c: Point,
                                      r: Double,
-                                     angleColorFun: (Angle, I) => M,
+                                     angleColorFun: (Angle, ColorVector) => M[ColorVector],
                                      applyToAir: Boolean = false) extends LocalImgTrans[M] {
   def area(implicit m: Monad[M]): ImgArea = Circle(c, r)
 

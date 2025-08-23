@@ -65,7 +65,7 @@ abstract class LocalImgTrans[M[_]] extends ImgTrans[M] {
 
   def applyToAir(img: Img[M])(using m: Monad[M]): M[PureImgPoints] = img.air
 
-  def applyInArea(img: Img[M], p: Point)(using m: Monad[M]): M = applyInArea(img, LandImgPoint(img, p)).color
+  def applyInArea(img: Img[M], p: Point)(using m: Monad[M]): M[ColorVector] = applyInArea(img, LandImgPoint(img, p)).color
 
   def applyInArea(img: Img[M], ip: ImgPoint[M])(using m: Monad[M]): ImgPoint[M]
 

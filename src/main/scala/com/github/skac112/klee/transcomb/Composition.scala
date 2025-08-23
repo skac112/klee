@@ -17,7 +17,7 @@ object Composition {
   */
 case class Composition[M[_]](elements: scala.collection.Seq[ImgTrans[M]]) extends ImgTrans[M] {
 
-  lazy val fun: ImgTrans[I, M] = elements.reduce { (acc, element) => new ImgTrans[I, M] {
+  lazy val fun: ImgTrans[M] = elements.reduce { (acc, element) => new ImgTrans[M] {
       override def apply(img: Img[M])(implicit m: Monad[M]): Img[M] = element(acc(img))}}
 
   def apply(img: Img[M])(implicit m: Monad[M]): Img[M] = fun(img)

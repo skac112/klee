@@ -1,9 +1,9 @@
 package com.github.skac112.klee
 
 import cats.Monad
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.area.img.{ImgArea, WholeArea}
-import com.github.skac112.vgutils.Point
+import com.github.skac112.vgutils.{ColorVector, Point}
 
 /**
   * Colorizer - value of a point (it's "color" - though exact type is not necesarilly a color) depends only on a "color"
@@ -20,7 +20,7 @@ abstract class Colorizer[M[_]] extends LocalImgTrans[M] {
     ip
   }
 
-  protected def newColorM(img: Img[M], ptM: M[Point])(implicit m: Monad[M]): M = for {
+  protected def newColorM(img: Img[M], ptM: M[Point])(implicit m: Monad[M]): M[ColorVector] = for {
     pt <- ptM
     color <- img(pt)
     new_color <- colorFun(color)

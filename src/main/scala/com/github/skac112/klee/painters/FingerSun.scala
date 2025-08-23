@@ -29,10 +29,10 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
 
   lazy val rand = new scala.util.Random(params.randSeed)
   override lazy val img = fun(initImg)
-  lazy val initImg = Fill[ColorVector, Id](Color.white)
+  lazy val initImg = Fill[Id](Color.white)
 
   lazy val fun = {
-    val circle = Circle[ColorVector, Id](ori, params.circleRadius, Color.black)
+    val circle = Circle[Id](ori, params.circleRadius, Color.black)
 
     val fingers_seq = (0 until params.numFinger) map {i =>
       val angle = Angle(rand.nextDouble() * 2*Pi)
@@ -41,7 +41,7 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
       val to = Point.withAngle(angle, params.circleRadius + nextGaussBounded(rand, .1*params.averageLen,
         2.5*params.averageLen, params.averageLen, 1.5*params.averageLen))
 
-      Finger[ColorVector, Id](
+      Finger[Id](
         from,
         to,
         params.frontDecayFactor,
@@ -52,7 +52,7 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
         Finger.DECAY_GAUSS)
     }
 
-    val fingers = MultiLocalMixer[ColorVector, Id](
+    val fingers = MultiLocalMixer[Id](
       fingers_seq,
       (color1, color2) => if (color1.l > color2.l) color2 else color1)
 
@@ -65,10 +65,10 @@ case class FingerSun(params: FingerSunParams, renderParams: Painter.RenderParams
       angle = i * 2.0 * Pi / bhc + 1
       rot1 = 3*Pi
       rot = if (i % 2 == 1) rot1 else -rot1
-    } yield BlackHole[ColorVector, Id](Point.withAngle(Angle(angle), rbh), rot, 30.0, 1, 0, .1)
+    } yield BlackHole[Id](Point.withAngle(Angle(angle), rbh), rot, 30.0, 1, 0, .1)
 
 //    val elem_tfs = circle :: fingers :: bhs.toList
     val elem_tfs = Seq(circle, fingers)
-    Composition[ColorVector, Id](elem_tfs)
+    Composition[Id](elem_tfs)
   }
 }

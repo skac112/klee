@@ -29,5 +29,5 @@ case class BlackHoles(params: Params, renderParams: Painter.RenderParams)
     // rot = if (i % 2 == 1) rot1 else -rot1
   } yield BlackHole[Id](Point.withAngle(Angle(angle), r), params.rotAngle, 15.0, 1, 0, .5)
 
-  val fun = Composition[ColorVector, Id](circle :: bhs.toList)
+  val fun = Composition[Id](circle :: bhs.toList)
 }

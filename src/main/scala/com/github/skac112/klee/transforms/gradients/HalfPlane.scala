@@ -1,17 +1,17 @@
 package com.github.skac112.klee.transforms.gradients
 
 import cats.Monad
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.{Img, ImgPoint, InstantImgPoint, LocalImgTrans}
 import com.github.skac112.klee.area.img.ImgArea
-import com.github.skac112.vgutils.{Angle, Point}
+import com.github.skac112.vgutils.{Angle, ColorVector, Point}
 
 case class HalfPlane[ M[_]](
                                        // some point on a line limiting halfplane
                                        linePoint: Point,
                                        // angle of vector pointing toward a halfplane and perpendicular to limiting line
                                        normalDir: Angle,
-                                       colorFun: (Double, I) => M,
+                                       colorFun: (Double, ColorVector) => M[ColorVector],
                                        applyToAir: Boolean = false) extends LocalImgTrans[M] {
 
   lazy val normalVersor = normalDir.versor
