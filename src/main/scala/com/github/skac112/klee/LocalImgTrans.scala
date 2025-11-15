@@ -1,16 +1,18 @@
 package com.github.skac112.klee
 
-import cats._
+import cats.*
 import cats.Monad
-import cats.implicits._
+import cats.implicits.*
 import com.github.skac112.klee.ImgTrans.imgToImgTrans
 import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.klee.area.imgpt.ImgPointArea.JoinFun
 import com.github.skac112.klee.area.pt.PtArea
-import com.github.skac112.vgutils._
+import com.github.skac112.vgutils.*
+
 import scala.collection.parallel.immutable.ParVector
-import scala.collection.parallel.CollectionConverters._
+import scala.collection.parallel.CollectionConverters.*
 import com.github.skac112.klee.area.imgpt.ImgPtArea
+import com.github.skac112.klee.images.MutableRaster
 
 /**
   * ImgTrans which changes only a part of an image leaving the rest unmodified.
@@ -21,17 +23,29 @@ abstract class LocalImgTrans[M[_]] extends ImgTrans[M] {
 
 //  lazy val m: Monad[M] = implicitly[Monad[M]]
 
-  override def apply(img: Img[M])(using m: Monad[M]) = new Img[M] {
-    override def apply(p: Point)(using m: Monad[M]) = if (area contains p) {
-      applyInArea(img, p) }
-    else {
-      // point outside ImgTrans area - bypassing
-      img(p)
-    }
+  override def apply(img: Img[M])(using m: Monad[M]) = img match
+    case mutable_raster @ MutableRaster(width, height, initImg, interpolation) =>
+      val img_pts = mutable_raster.imgPoints
+      applyBatchInArea(mutable_raster, img_pts).map { new_img_pts =>
+        new_img_pts.foreach { ip =>
+          mutable_raster.updatePixel(ip.point.x.floor.toInt, ip.point.y.floor.toInt, ip.color)
+        }
+      }
+      mutable_raster
+      
+    case _ => new Img[M] {
+      override def apply(p: Point)(using m: Monad[M]) = if (area contains p) {
+        applyInArea(img, p)
+      }
+      else {
+        // point outside ImgTrans area - bypassing
+        img(p)
+      }
 
-    override def applyBatchArea(ptArea: ImgPtArea[M])(using m: Monad[M]) = applyToImgPtArea(img, ptArea)
-    override def air(using m: Monad[M]) = applyToAir(img)
-  }
+      override def applyBatchArea(ptArea: ImgPtArea[M])(using m: Monad[M]) = applyToImgPtArea(img, ptArea)
+
+      override def points(using m: Monad[M]) = applyToAir(img)
+    }
 
 //  protected def makeImgPoints(points: Points, colors: (Int) => () => M, land: Boolean = true): ImgPoints[M] =
 //    points.zipWithIndex map { kv => LazyImgPoint(kv._1, colors(kv._2), land) }
@@ -56,14 +70,14 @@ abstract class LocalImgTrans[M[_]] extends ImgTrans[M] {
       // point taken from input image - outside trans area
       out_colors <- img.applyBatchArea(out)
       // colors for unknown area (colors themselves are 'known')
-      unknown_colors <- (unknown.imgPoints.toVector.par map { (ip: ImgPoint[M]) => (for {
+      unknown_colors <- (unknown.imgPoints.toVector.par map { (ip: ImgPoint[M]) => for {
         pt <- ip.point
         new_ip = if (area contains pt) applyInArea(img, ip) else img.applyToImgPt(ip)
         pure_img_pt <- new_ip.bubbleUpMonad
-      } yield pure_img_pt)}).toVector.sequence
+      } yield pure_img_pt}).toVector.sequence
     } yield join_fun(in_colors, out_colors, unknown_colors)
 
-  def applyToAir(img: Img[M])(using m: Monad[M]): M[PureImgPoints] = img.air
+  def applyToAir(img: Img[M])(using m: Monad[M]): M[PureImgPoints] = img.points
 
   def applyInArea(img: Img[M], p: Point)(using m: Monad[M]): M[ColorVector] = applyInArea(img, LandImgPoint(img, p)).color
 

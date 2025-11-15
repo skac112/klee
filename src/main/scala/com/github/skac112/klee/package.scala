@@ -44,7 +44,7 @@ package object klee {
     
     for {
       land_colors <- img.applyBatchArea(pts_area)
-      air_colors <- img.air
+      air_colors <- img.points
     } yield {
       for (y <- 0 until pixelSizeY) {
         for (x <- 0 until pixelSizeX) {

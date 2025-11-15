@@ -13,6 +13,9 @@ object ImgPointArea {
     type PartFunRes[M[_]] = M[(ImgPtArea[M], ImgPtArea[M], ImgPtArea[M], JoinFun[M])]
 }
 
+/**
+  * Area + image points (points with colors or transformations in some monad M).
+  */
 abstract class ImgPtArea[M[_]: Monad] {
   lazy val m = summon[Monad[M]]
   import ImgPointArea._

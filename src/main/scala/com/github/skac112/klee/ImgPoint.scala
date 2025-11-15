@@ -9,13 +9,14 @@ sealed trait ImgPoint[M[_]] {
   implicit val m: Monad[M]
   def point: M[Point]
   def colorO: Option[M[ColorVector]]
+//  def transO: Option[ImgTrans[M]]
   def color = colorO.get
   def land: Boolean = true
 
   def bubbleUpMonad: M[PureImgPoint] = for {
     col <- colorO.get
     pt <- point
-  } yield new InstantPureImgPoint(pt, col, land)
+  } yield InstantPureImgPoint(pt, col, land)
 }
 
 final case class LandImgPoint[M[_]: Monad](img: Img[M], purePoint: Point) extends ImgPoint[M] {

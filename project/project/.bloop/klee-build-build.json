@@ -261,7 +261,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
+                "home": "/usr/lib/jvm/java-21-openjdk-amd64",
                 "options": [
                     "-Duser.dir=/home/skac/Dokumenty/projekty/klee/project/project"
                 ]
@@ -270,7 +270,7 @@
                 
             ],
             "runtimeConfig": {
-                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
+                "home": "/usr/lib/jvm/java-21-openjdk-amd64",
                 "options": [
                     "-Duser.dir=/home/skac/Dokumenty/projekty/klee/project/project"
                 ]

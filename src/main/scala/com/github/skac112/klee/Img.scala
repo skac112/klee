@@ -10,7 +10,7 @@ import com.github.skac112.klee.area.imgpt.ImgPtArea
 
 trait Img[M[_]] {
   def apply(p: Point)(using m: Monad[M]): M[ColorVector]
-  def air(implicit m: Monad[M]): M[PureImgPoints] = m.pure(Seq())
+  def points(implicit m: Monad[M]): M[PureImgPoints] = m.pure(Seq())
 
   /**
     * Base implementation just evaluates each point independently.

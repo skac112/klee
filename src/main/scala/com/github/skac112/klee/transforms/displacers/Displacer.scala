@@ -73,7 +73,7 @@ abstract class Displacer[M[_]] extends LocalImgTrans[M] {
   def invDisplacement: VectorMap[M] = ???
 
   override def applyToAir(img: Img[M])(implicit m: Monad[M]): M[PureImgPoints] = for {
-    air_pts <- img.air
+    air_pts <- img.points
     img_pts <- applyToImgPtArea(img, QuickPtArea[M](air_pts map { (pip: PureImgPoint) =>
       InstantImgPoint(m.pure(pip.point), m.pure(pip.color), false) }, WholeArea()))
   } yield img_pts

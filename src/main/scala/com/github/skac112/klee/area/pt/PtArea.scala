@@ -4,6 +4,9 @@ import com.github.skac112.klee.Points
 import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.vgutils.{Bounds, Point}
 
+/**
+  * Area + points.
+  */
 trait PtArea {
   def points: Points
 
