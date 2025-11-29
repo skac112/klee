@@ -21,7 +21,7 @@ trait PixelImg[M[_]] extends LocalImgTrans[M] {
   def height: Int
   def pixelValue(x: Int, y: Int): M[ColorVector]
   
-  override def area(implicit m: Monad[M]) = AxisRect(Point(0, 0), width, height)
+  override def area = AxisRect(Point(0, 0), width, height)
 
   def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] =
     InstantImgPoint(ip.point, newColorM(ip.point), ip.land)

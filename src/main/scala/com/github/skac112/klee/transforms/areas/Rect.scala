@@ -12,7 +12,7 @@ case class Rect[M[_]](middle: Point,
                                 color: ColorVector,
                                 xAngle: Angle = .0,
                                 applyToAir: Boolean = false) extends LocalImgTrans[M] {
-  override def area(implicit m: Monad[M]): ImgArea = com.github.skac112.klee.area.img.Rect(middle, xSize, ySize, xAngle)
+  override def area: ImgArea = com.github.skac112.klee.area.img.Rect(middle, xSize, ySize, xAngle)
 
   override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, valueM(img, ip.point), ip.land)

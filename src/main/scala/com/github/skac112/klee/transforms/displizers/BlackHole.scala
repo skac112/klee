@@ -14,8 +14,8 @@ final case class BlackHole[M[_]](
   rotationDecay: Double,
   override val colorDispFun: (ColorVector, Point) => M[ColorVector],
   areaRadius: Double = .0) extends Displizer[M] {
-    def dispBh(implicit m: Monad[M]) = com.github.skac112.klee.transforms.displacers.BlackHole[M](c, rotation, rotationDecay, 1.0, 0.0, areaRadius)
-    override def area(implicit m: Monad[M]) = dispBh.area
+    def dispBh = com.github.skac112.klee.transforms.displacers.BlackHole[M](c, rotation, rotationDecay, 1.0, 0.0, areaRadius)
+    override def area = dispBh.area
     override def displacement(implicit m: Monad[M]) = dispBh.displacement
 
     override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = ???

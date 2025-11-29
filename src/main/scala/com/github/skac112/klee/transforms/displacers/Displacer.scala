@@ -37,7 +37,7 @@ abstract class Displacer[M[_]] extends LocalImgTrans[M] {
     * Default area is the whole area.
     * @return
     */
-  override def area(implicit m: Monad[M]): ImgArea = WholeArea()
+  override def area: ImgArea = WholeArea()
 
   protected def dispVectFor(imgPt: ImgPoint[M])(implicit m: Monad[M]) = if (imgPt.land) displacement else invDisplacement
 

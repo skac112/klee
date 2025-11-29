@@ -20,8 +20,6 @@
             "/home/skac/.sbt/boot/scala-2.12.20/lib/scala-library.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.17/sbt-bloop-1.5.17.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/sbt-assembly_2.12_1.0/1.2.0/sbt-assembly-1.2.0.jar",
-            "/home/skac/.local/share/JetBrains/IdeaIC2025.2/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.3/2025.3.1/sbt-structure-extractor_2.12_1.3-2025.3.1.jar",
-            "/home/skac/.local/share/JetBrains/IdeaIC2025.2/Scala/repo/org/jetbrains/scala/sbt-idea-shell_2.12_1.0/2025.2.0/sbt-idea-shell_2.12_1.0-2025.2.0.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/main_2.12/1.11.4/main_2.12-1.11.4.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/io_2.12/1.10.5/io_2.12-1.10.5.jar",
             "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/sbt/sbt-pgp_2.12_1.0/2.3.1/sbt-pgp_2.12_1.0-2.3.1.jar",
@@ -218,8 +216,8 @@
                 "import _root_.sbt._",
                 "import _root_.sbt.Keys._",
                 "import _root_.sbt.nio.Keys._",
-                "import _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.JUnitXmlReportPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.bloop.integrations.sbt.BloopPlugin.autoImport._, _root_.com.jsuereth.sbtpgp.SbtPgp.autoImport._, _root_.xerial.sbt.Sonatype.autoImport._, _root_.sbtassembly.AssemblyPlugin.autoImport._, _root_.org.jetbrains.sbt.GenerateAllManagedSourcesPlugin.autoImport._, _root_.org.jetbrains.sbt.IdeaShellPlugin.autoImport._",
-                "import _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.bloop.integrations.sbt.BloopPlugin, _root_.com.jsuereth.sbtpgp.SbtPgp, _root_.xerial.sbt.Sonatype, _root_.sbtassembly.AssemblyPlugin, _root_.org.jetbrains.sbt.GenerateAllManagedSourcesPlugin, _root_.org.jetbrains.sbt.StructurePlugin, _root_.org.jetbrains.sbt.IdeaShellPlugin"
+                "import _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.JUnitXmlReportPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.bloop.integrations.sbt.BloopPlugin.autoImport._, _root_.com.jsuereth.sbtpgp.SbtPgp.autoImport._, _root_.xerial.sbt.Sonatype.autoImport._, _root_.sbtassembly.AssemblyPlugin.autoImport._",
+                "import _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.bloop.integrations.sbt.BloopPlugin, _root_.com.jsuereth.sbtpgp.SbtPgp, _root_.xerial.sbt.Sonatype, _root_.sbtassembly.AssemblyPlugin"
             ]
         },
         "test": {
@@ -284,7 +282,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/usr/lib/jvm/java-21-openjdk-amd64",
+                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
                 "options": [
                     "-Duser.dir=/home/skac/Dokumenty/projekty/klee/project"
                 ]
@@ -293,7 +291,7 @@
                 
             ],
             "runtimeConfig": {
-                "home": "/usr/lib/jvm/java-21-openjdk-amd64",
+                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
                 "options": [
                     "-Duser.dir=/home/skac/Dokumenty/projekty/klee/project"
                 ]
@@ -302,8 +300,6 @@
                 "/home/skac/Dokumenty/projekty/klee/project/.bloop/klee-build/scala-2.12/sbt-1.0/classes",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/sbt-bloop_2.12_1.0/1.5.17/sbt-bloop-1.5.17.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/sbt-assembly_2.12_1.0/1.2.0/sbt-assembly-1.2.0.jar",
-                "/home/skac/.local/share/JetBrains/IdeaIC2025.2/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.3/2025.3.1/sbt-structure-extractor_2.12_1.3-2025.3.1.jar",
-                "/home/skac/.local/share/JetBrains/IdeaIC2025.2/Scala/repo/org/jetbrains/scala/sbt-idea-shell_2.12_1.0/2025.2.0/sbt-idea-shell_2.12_1.0-2025.2.0.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/github/sbt/sbt-pgp_2.12_1.0/2.3.1/sbt-pgp_2.12_1.0-2.3.1.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/org/xerial/sbt/sbt-sonatype_2.12_1.0/3.12.2/sbt-sonatype_2.12_1.0-3.12.2.jar",
                 "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/ch/epfl/scala/bloop-config_2.12/1.5.5/bloop-config_2.12-1.5.5.jar",
@@ -419,30 +415,6 @@
                             "name": "sbt-assembly",
                             "classifier": "sources",
                             "path": "/home/skac/.cache/coursier/v1/https/repo1.maven.org/maven2/com/eed3si9n/sbt-assembly_2.12_1.0/1.2.0/sbt-assembly-1.2.0-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.jetbrains.scala",
-                    "name": "sbt-structure-extractor",
-                    "version": "2025.3.1",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "sbt-structure-extractor",
-                            "path": "/home/skac/.local/share/JetBrains/IdeaIC2025.2/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.3/2025.3.1/sbt-structure-extractor_2.12_1.3-2025.3.1.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.jetbrains.scala",
-                    "name": "sbt-idea-shell",
-                    "version": "2025.2.0",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "sbt-idea-shell",
-                            "path": "/home/skac/.local/share/JetBrains/IdeaIC2025.2/Scala/repo/org/jetbrains/scala/sbt-idea-shell_2.12_1.0/2025.2.0/sbt-idea-shell_2.12_1.0-2025.2.0.jar"
                         }
                     ]
                 },

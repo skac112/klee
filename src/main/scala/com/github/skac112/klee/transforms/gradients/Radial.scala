@@ -23,7 +23,7 @@ case class Radial[ M[_]](
                                     r: Double,
                                     radialColorFun: (Double, ColorVector) => M[ColorVector],
                                     applyToAir: Boolean = false) extends LocalImgTrans[M] {
-  override def area(implicit m: Monad[M]): ImgArea = Circle(c, r)
+  override def area: ImgArea = Circle(c, r)
 
   override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, newColorM(img, ip.point), ip.land)

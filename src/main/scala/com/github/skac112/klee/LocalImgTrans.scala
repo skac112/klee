@@ -19,7 +19,7 @@ import com.github.skac112.klee.images.MutableRaster
   */
 abstract class LocalImgTrans[M[_]] extends ImgTrans[M] {
   self =>
-  def area(using m: Monad[M]): ImgArea
+  def area: ImgArea
 
 //  lazy val m: Monad[M] = implicitly[Monad[M]]
 
@@ -59,7 +59,7 @@ abstract class LocalImgTrans[M[_]] extends ImgTrans[M] {
   protected def applyToImgPtArea(img: Img[M], ptArea: ImgPtArea[M])(using m: Monad[M]): M[PureImgPoints] =
     println("applyToImgPtArea")
     for {
-      part <- ptArea.partByIntersect(area): M[(ImgPtArea[M], ImgPtArea[M], ImgPtArea[M], JoinFun[M])]
+      part <- ptArea.partByIntersect(self.area): M[(ImgPtArea[M], ImgPtArea[M], ImgPtArea[M], JoinFun[M])]
       in = part._1
       out = part._2
       unknown = part._3
@@ -72,7 +72,7 @@ abstract class LocalImgTrans[M[_]] extends ImgTrans[M] {
       // colors for unknown area (colors themselves are 'known')
       unknown_colors <- (unknown.imgPoints.toVector.par map { (ip: ImgPoint[M]) => for {
         pt <- ip.point
-        new_ip = if (area contains pt) applyInArea(img, ip) else img.applyToImgPt(ip)
+        new_ip = if (self.area contains pt) applyInArea(img, ip) else img.applyToImgPt(ip)
         pure_img_pt <- new_ip.bubbleUpMonad
       } yield pure_img_pt}).toVector.sequence
     } yield join_fun(in_colors, out_colors, unknown_colors)

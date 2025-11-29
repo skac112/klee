@@ -10,7 +10,7 @@ import com.github.skac112.klee.transforms.displacers.Displacer._
 import com.github.skac112.vgutils.{Color, Point}
 
 case class FlowDisplacer[M[_]](flow: Flow[M], time: Double, argArea: ImgArea = WholeArea()) extends Displacer[M] {
-  override def area(implicit m: Monad[M]) = argArea
+  override def area = argArea
 
 //  override val m = implicitly[Monad[M]]
   def timeMap(implicit m: Monad[M]) = flow.timeMap(-time)

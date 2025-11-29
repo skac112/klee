@@ -19,7 +19,7 @@ case class LocalMixer[M[_]](
                                        baseTrans: LocalImgTrans[M],
                                        mixingFun: (ColorVector, ColorVector) => M[ColorVector]) extends LocalImgTrans[M] {
 
-  override def area(implicit m: Monad[M]) = baseTrans.area
+  override def area = baseTrans.area
 
   override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (ip.land) {
       val color_m = for {

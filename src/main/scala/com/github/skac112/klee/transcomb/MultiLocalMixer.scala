@@ -13,7 +13,7 @@ import scala.language.postfixOps
 case class MultiLocalMixer[M[_]](
                                              localTransforms: Seq[LocalImgTrans[M]],
                                              mixingFun: (ColorVector, ColorVector) => M[ColorVector]) extends LocalImgTrans[M] {
-  override def area(implicit m: Monad[M]) = MultiPartArea(localTransforms map (_.area) toSet)
+  override def area = MultiPartArea(localTransforms map (_.area) toSet)
   
 //override def area = WholeArea()
 
@@ -26,7 +26,7 @@ case class MultiLocalMixer[M[_]](
   }
 
   private def colorMFor(img: Img[M], transforms: Seq[LocalImgTrans[M]], pt: Point)(implicit m: Monad[M]): M[ColorVector] =
-    transforms.foldLeft(img(pt))((color_m, transform) => if (transform.area.contains(pt)) { 
+    transforms.foldLeft(img(pt))((color_m, transform) => if (transform.area.contains(pt)) {
       // point in area of current local transform - mixing
       for {
         color1 <- color_m

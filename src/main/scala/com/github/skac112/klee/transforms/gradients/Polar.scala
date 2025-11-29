@@ -21,7 +21,7 @@ case class Polar[ M[_]](c: Point,
                         r: Double,
                         colorFun: (Double, Angle, ColorVector) => M[ColorVector],
                         applyToAir: Boolean = false) extends LocalImgTrans[M] {
-  def area(implicit m: Monad[M]): ImgArea = Circle(c, r)
+  def area: ImgArea = Circle(c, r)
 
   override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
       InstantImgPoint(ip.point, newColorM(img, ip.point), ip.land)

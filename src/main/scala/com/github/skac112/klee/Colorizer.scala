@@ -10,7 +10,7 @@ import com.github.skac112.vgutils.{ColorVector, Point}
   * of a point in input image, so the function in it's application area is wholly determined by the colorFun.
   */
 abstract class Colorizer[M[_]] extends LocalImgTrans[M] {
-  override def area(implicit m: Monad[M]): ImgArea = WholeArea()
+  override def area: ImgArea = WholeArea()
   def colorFun: ColorVector => M[ColorVector]
   def applyToAir: Boolean = true
 

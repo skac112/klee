@@ -122,7 +122,7 @@ case class Finger[M[_]](from: Point,
   lazy val frontTreshDist = treshDistance(frontDecayType, frontDecayFactor)
   lazy val backTreshDist = treshDistance(backDecayType, backDecayFactor)
 
-  override def area(implicit m: Monad[M]): ImgArea = Rect(to + (frontVersor * (frontTreshDist - backTreshDist) * .5),
+  override def area: ImgArea = Rect(to + (frontVersor * (frontTreshDist - backTreshDist) * .5),
     frontTreshDist + backTreshDist, 2*treshDistance(sideDecayType, sideDecayFactor), frontVector.angle)
 
 //  override lazy val area: ImgArea = Circle(to, .45)

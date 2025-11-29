@@ -26,7 +26,7 @@ case class Ring[M[_]](
                                   areaWidth: Double,
                                   radialColorFun: (Double, ColorVector) => M[ColorVector],
                                   applyToAir: Boolean = false) extends LocalImgTrans[M] {
-  override def area(implicit m: Monad[M]): ImgArea = com.github.skac112.klee.area.img.Ring(c, max(r - .5*areaWidth, 0.0), r + .5*areaWidth)
+  override def area: ImgArea = com.github.skac112.klee.area.img.Ring(c, max(r - .5*areaWidth, 0.0), r + .5*areaWidth)
   
   override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, newColorM(img, ip.point), ip.land)

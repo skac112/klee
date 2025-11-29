@@ -31,7 +31,7 @@ trait Bundle[M[_]: Monad](rasterXResolution: Int,
     def createRasterImg(): MutableRaster[M] = ???
   }
 
-  override def area(using m: Monad[M]): ImgArea = ???
+  override def area: ImgArea = ???
 
 //  override def applyInArea(img: Img[M], ip: ImgPoint[ColorVector, M])(using m: Monad[M]): ImgPoint[ColorVector, M] = ???
 

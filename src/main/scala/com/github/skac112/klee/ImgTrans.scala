@@ -14,13 +14,6 @@ object ImgTrans:
     override def apply(img: Img[M])(implicit m: Monad[M]) = img
   }
 
-  /**
-    * Image transformation where input and output images are of the same type.
-    * @tparam I
-    * @tparam M
-    */
-  type Simple[M[_]] = ImgTrans[M]
-
   def widen[N, W, M[_]: Monad](ma: M[N])(implicit ev: N <:< W): M[W] = ma.flatMap[W](img_val => implicitly[Monad[M]].pure(img_val))
 
 abstract class ImgTrans[M[_]]:

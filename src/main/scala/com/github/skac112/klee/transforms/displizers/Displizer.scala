@@ -10,7 +10,7 @@ import com.github.skac112.vgutils.{Color, ColorVector, Point}
 abstract class Displizer[M[_]] extends LocalImgTrans[M] {
 //  override val m =
 //  override val m = implicitly[Monad[M]]
-  override def area(implicit m: Monad[M]): ImgArea = WholeArea()
+  override def area: ImgArea = WholeArea()
   def displacement(implicit m: Monad[M]): VectorMap[M]
   def colorDispFun: (ColorVector, Point) => M[ColorVector]
 

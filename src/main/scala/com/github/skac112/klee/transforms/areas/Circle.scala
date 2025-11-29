@@ -11,7 +11,7 @@ case class Circle[M[_]](
                                    r: Double,
                                    color: ColorVector,
                                    applyToAir: Boolean = false) extends LocalImgTrans[M] {
-  override def area(implicit m: Monad[M]): ImgArea = com.github.skac112.klee.area.img.Circle(c, r)
+  override def area: ImgArea = com.github.skac112.klee.area.img.Circle(c, r)
   override def applyInArea(img: Img[M], ip: ImgPoint[M])(implicit m: Monad[M]): ImgPoint[M] = if (applyToAir || ip.land) {
     InstantImgPoint(ip.point, valueM(img, ip.point), ip.land)
   } else {

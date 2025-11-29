@@ -31,25 +31,25 @@ package object klee {
   def drawToFile[M[_]: Monad](img: Img[M],
                               fileName: String,
                               bounds: Bounds,
-                              pixelSizeX: Int,
-                              pixelSizeY: Int,
+                              pixelNumX: Int,
+                              pixelNumY: Int,
                               airForceFactor: Double = 1.0,
                               colorFun: ColorFun[ColorVector] = defColorFun): M[Unit] = {
-    val dx = bounds.w / pixelSizeX
-    val dy = bounds.h / pixelSizeY
-    val raster_img = new BufferedImage(pixelSizeX, pixelSizeY, BufferedImage.TYPE_INT_ARGB)
+    val dx = bounds.w / pixelNumX
+    val dy = bounds.h / pixelNumY
+    val raster_img = new BufferedImage(pixelNumX, pixelNumY, BufferedImage.TYPE_INT_ARGB)
     val axisGridLeftTop = bounds.tl - Point(.5*dx, .5*dy)
-    val pts_area = AxisGrid.forLand[M](img, axisGridLeftTop, pixelSizeX + 1, pixelSizeY + 1, dx, dy)
+    val pts_area = AxisGrid.forLand[M](img, axisGridLeftTop, pixelNumX + 1, pixelNumY + 1, dx, dy)
     val air_col_factor = airForceFactor / (dx * dy)
     
     for {
       land_colors <- img.applyBatchArea(pts_area)
       air_colors <- img.points
     } yield {
-      for (y <- 0 until pixelSizeY) {
-        for (x <- 0 until pixelSizeX) {
-          val shift1 = y * (pixelSizeX + 1)
-          val shift2 = (y + 1) * (pixelSizeX + 1)
+      for (y <- 0 until pixelNumY) {
+        for (x <- 0 until pixelNumX) {
+          val shift1 = y * (pixelNumX + 1)
+          val shift2 = (y + 1) * (pixelNumX + 1)
           // each pixel value is an average of colors of four nearest points from 'colors' sequence
           val land_cv = (land_colors(shift1 + x).color  + land_colors(shift1 + x + 1).color +
             land_colors(shift2 + x).color + land_colors(shift2 + x + 1).color) * .25
