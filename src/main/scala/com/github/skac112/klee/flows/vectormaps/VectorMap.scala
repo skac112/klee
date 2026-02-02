@@ -10,8 +10,15 @@ import com.github.skac112.klee.flows.*
 
 object VectorMap {
   def from[M[_]: Monad](fun: Point => Point) = new VectorMap[M] {
-//    override val m = implicitly[Monad[M]]
     override def apply(p: Point)(implicit m: Monad[M]) = m.pure(fun(p))
+  }
+
+  def fromM[M[_]: Monad](fun: Point => M[Point]) = new VectorMap[M] {
+    override def apply(p: Point)(implicit m: Monad[M]) = fun(p)
+  }
+  
+  def fromMM[M[_]: Monad](fun: M[Point] => M[Point]) = new VectorMap[M] {
+    override def apply(p: Point)(implicit m: Monad[M]) = fun(m.pure(p))
   }
 
   def identity[M[_]]: VectorMap[M] = new VectorMap[M] {

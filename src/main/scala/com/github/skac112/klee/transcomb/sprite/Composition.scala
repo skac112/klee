@@ -1,8 +1,7 @@
 package com.github.skac112.klee.transcomb.sprite
 
 import cats.Monad
-import com.github.skac112.klee.transcomb.sprite.CompositeSprite.Sprite
-import com.github.skac112.klee.transforms.SimpleSprite
+import com.github.skac112.klee.transforms.sprite.{SimpleSprite, Sprite}
 import com.github.skac112.klee.{Img, ImgPoint, ImgTrans}
 
 case class Composition[M[_]](elements: scala.collection.Seq[Sprite[M]]) extends CompositeSprite[M](elements) {
