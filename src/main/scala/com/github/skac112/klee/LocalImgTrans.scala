@@ -8,11 +8,11 @@ import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.klee.area.imgpt.ImgPointArea.JoinFun
 import com.github.skac112.klee.area.pt.PtArea
 import com.github.skac112.vgutils.*
-
+import com.github.skac112.klee.images.raster.*
 import scala.collection.parallel.immutable.ParVector
 import scala.collection.parallel.CollectionConverters.*
 import com.github.skac112.klee.area.imgpt.ImgPtArea
-import com.github.skac112.klee.images.MutableRaster
+import com.github.skac112.klee.images.raster.MutableRaster
 
 /**
   * ImgTrans which changes only a part of an image leaving the rest unmodified.

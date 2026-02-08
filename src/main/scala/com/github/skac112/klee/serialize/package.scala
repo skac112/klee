@@ -3,7 +3,9 @@ package com.github.skac112.klee
 import upickle.default.*
 import cats.{Id, Monad}
 import cats.implicits.*
-import com.github.skac112.vgutils.{ColorVector, Point, Bounds}
+import com.github.skac112.vgutils.{Bounds, ColorVector, Point}
+import com.github.skac112.klee.images.raster.*
+import com.github.skac112.klee.images.raster.Raster.Interpolation
 
 package object serialize {
   given PointRW: ReadWriter[Point] = macroRW[Point]
@@ -42,8 +44,7 @@ package object serialize {
         com.github.skac112.klee.transforms.displacers.BlackHole[Id](c, rotation, rotationDecay, scaling, scalingDecay, areaRadius)
     )
 
-  // Definiujemy ReadWriter dla AxisGrid jako lazy given, aby uniknąć cykli inicjalizacji
-  lazy given AxisGridRW: ReadWriter[com.github.skac112.klee.area.imgpt.AxisGrid[Id]] =
+  given AxisGridRW: ReadWriter[com.github.skac112.klee.area.imgpt.AxisGrid[Id]] =
     readwriter[ujson.Value].bimap[com.github.skac112.klee.area.imgpt.AxisGrid[Id]](
       axisGrid => ujson.Obj(
         "leftTop" -> ujson.Obj(
@@ -70,8 +71,8 @@ package object serialize {
       }
     )
 
-  // ReadWritery dla ImgPoint i PureImgPoint (Id) - lazy, żeby uniknąć cykli
-  lazy given PureImgPointRW: ReadWriter[com.github.skac112.klee.PureImgPoint] = readwriter[ujson.Value].bimap[com.github.skac112.klee.PureImgPoint](
+  // ReadWritery dla ImgPoint i PureImgPoint (Id) - usunąłem 'lazy' gdzie występowało
+  given PureImgPointRW: ReadWriter[com.github.skac112.klee.PureImgPoint] = readwriter[ujson.Value].bimap[com.github.skac112.klee.PureImgPoint](
     pp => pp match
       case com.github.skac112.klee.InstantPureImgPoint(point, color, land) =>
         ujson.Obj("type" -> ujson.Str("InstantPureImgPoint"), "point" -> writeJs(point), "color" -> writeJs(color), "land" -> ujson.Bool(land))
@@ -85,7 +86,7 @@ package object serialize {
         com.github.skac112.klee.InstantPureImgPoint(p, c, l)
   )
 
-  lazy given ImgPointIdRW: ReadWriter[com.github.skac112.klee.ImgPoint[Id]] = readwriter[ujson.Value].bimap[com.github.skac112.klee.ImgPoint[Id]](
+  given ImgPointIdRW: ReadWriter[com.github.skac112.klee.ImgPoint[Id]] = readwriter[ujson.Value].bimap[com.github.skac112.klee.ImgPoint[Id]](
     ip => ip match
       case com.github.skac112.klee.InstantImgPoint(pointM, colorM, land) =>
         val p = pointM.asInstanceOf[Id[com.github.skac112.vgutils.Point]]
@@ -118,12 +119,12 @@ package object serialize {
         com.github.skac112.klee.LandImgPoint[Id](stubImg, p)
   )
 
-  lazy given ImgPointsIdRW: ReadWriter[com.github.skac112.klee.ImgPoints[Id]] = readwriter[ujson.Value].bimap[com.github.skac112.klee.ImgPoints[Id]](
+  given ImgPointsIdRW: ReadWriter[com.github.skac112.klee.ImgPoints[Id]] = readwriter[ujson.Value].bimap[com.github.skac112.klee.ImgPoints[Id]](
     seq => ujson.Arr(seq.map(ip => writeJs(ip)).toArray: _*),
     json => json.arr.toSeq.map(elem => read[com.github.skac112.klee.ImgPoint[Id]](elem))
   )
 
-  lazy given ImgAreaRW: ReadWriter[com.github.skac112.klee.area.img.ImgArea] = readwriter[ujson.Value].bimap[
+  given ImgAreaRW: ReadWriter[com.github.skac112.klee.area.img.ImgArea] = readwriter[ujson.Value].bimap[
     com.github.skac112.klee.area.img.ImgArea](
     area => area match
       case com.github.skac112.klee.area.img.EmptyArea() => ujson.Obj("type" -> ujson.Str("EmptyArea"))
@@ -180,7 +181,7 @@ package object serialize {
     )
 
   // ReadWriter dla ImgTrans[Id] - obsługujemy tylko transforms.displacers.BlackHole
-  lazy given imgTransRW: ReadWriter[com.github.skac112.klee.ImgTrans[Id]] =
+  given imgTransRW: ReadWriter[com.github.skac112.klee.ImgTrans[Id]] = {
     readwriter[ujson.Value].bimap[com.github.skac112.klee.ImgTrans[Id]](
       img_trans => img_trans match
         case bh: com.github.skac112.klee.transforms.displacers.BlackHole[Id] =>
@@ -191,8 +192,62 @@ package object serialize {
         case "transforms.displacers.BlackHole" => read[com.github.skac112.klee.transforms.displacers.BlackHole[Id]](json("data"))
         case _ => com.github.skac112.klee.ImgTrans.id[Id]
     )
+  }
 
-//  // Minimalny ReadWriter dla ImgPtArea[Id] — tylko tag typu (można rozbudować później)
+  // ReadWriter dla enumu Interpolation (serializujemy jako string)
+  given InterpolationRW: ReadWriter[com.github.skac112.klee.images.raster.Raster.Interpolation] =
+    readwriter[ujson.Value].bimap[com.github.skac112.klee.images.raster.Raster.Interpolation](
+      interp => ujson.Str(interp.toString),
+      json => json.str match
+        case "Nearest" => com.github.skac112.klee.images.raster.Raster.Interpolation.Nearest
+        case "Bilinear" => com.github.skac112.klee.images.raster.Raster.Interpolation.Bilinear
+        case "Bicubic" => com.github.skac112.klee.images.raster.Raster.Interpolation.Bicubic
+        case _ => com.github.skac112.klee.images.raster.Raster.Interpolation.Bilinear
+    )
+
+  given imgRW: ReadWriter[com.github.skac112.klee.Img[Id]] = readwriter[ujson.Value].bimap[com.github.skac112.klee.Img[Id]](
+    img => img match {
+      case MutableRaster(width, height, initImg, interpolation) =>
+        ujson.Obj(
+          "type" -> ujson.Str("images.rasterMutableRaster"),
+          "width" -> ujson.Num(width),
+          "height" -> ujson.Num(height),
+          "initImg" -> writeJs(initImg),
+          "interpolation" -> ujson.Str(interpolation.toString)
+        )
+
+      case ImmutableRaster(width, height, interpolation, pixels) =>
+        ujson.Obj(
+          "type" -> ujson.Str("images.rasterImmutableRaster"),
+          "width" -> ujson.Num(width),
+          "height" -> ujson.Num(height),
+          "pixels" -> ujson.Arr(pixels.map(row => ujson.Arr(row.map(pixel => writeJs(pixel)).toArray: _*)).toArray: _*),
+          "interpolation" -> ujson.Str(interpolation.toString)
+        )
+    },
+    json => json("type").str match
+      case "images.rasterMutableRaster" =>
+        val obj = json.obj
+        val width = obj("width").num.toInt
+        val height = obj("height").num.toInt
+        val initImg = read[com.github.skac112.klee.Img[Id]](obj("initImg"))
+        val interpolation = obj("interpolation").str match
+          case "Nearest" => com.github.skac112.klee.images.raster.Raster.Interpolation.Nearest
+          case "Bilinear" => com.github.skac112.klee.images.raster.Raster.Interpolation.Bilinear
+          case "Bicubic" => com.github.skac112.klee.images.raster.Raster.Interpolation.Bicubic
+          case _ => com.github.skac112.klee.images.raster.Raster.Interpolation.Bilinear
+        MutableRaster(width, height, interpolation, initImg)
+        
+      case "images.rasterImmutableRaster" =>
+        val obj = json.obj
+        val width = obj("width").num.toInt
+        val height = obj("height").num.toInt
+        val interpolation = read[Interpolation](obj("interpolation"))
+        val pixels = obj("pixels").arr.toSeq.map(row => row.arr.toSeq.map(pixel => read[Id[com.github.skac112.vgutils.ColorVector]](pixel)))
+        ImmutableRaster(width, height, interpolation, pixels)
+  )
+
+  //  // Minimalny ReadWriter dla ImgPtArea[Id] — tylko tag typu (można rozbudować później)
 //  given imgPtAreaRW: ReadWriter[com.github.skac112.klee.area.imgpt.ImgPtArea[Id]] =
 //    readwriter[String].bimap[com.github.skac112.klee.area.imgpt.ImgPtArea[Id]](
 //      area => area match

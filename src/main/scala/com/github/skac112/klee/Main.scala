@@ -38,10 +38,12 @@ object Main extends App {
       scalingDecay = 0.05,
       areaRadius = 0.3
     )
-
+  
     val bhJson = write(bh)
     println(s"BlackHole jako JSON: $bhJson")
 
     val bhDeserialized = read[ImgTrans[Id]](bhJson)
     println(s"Deserializowany BlackHole: $bhDeserialized")
+    
+    
 }

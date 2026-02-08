@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="244661e5-20ec-4d2c-9eaa-528c8d14e2f2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/TransTransApp.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/SpriteArea.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/sprite/QuickSimpleSprite.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/sprite/QuickUnitSprite.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/sprite/Sprite.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/sprite/UnitSprite.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transtrans/AffineSprite.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transtrans/ImgTransTrans.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/klee.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/klee.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/BaseParallelogram.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/BaseParallelogram.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Parallelograms.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Parallelograms.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/QuickParallelogram.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/QuickParallelogram.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Rect.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/area/img/Rect.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/flows/vectormaps/VectorMap.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/flows/vectormaps/VectorMap.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transcomb/sprite/CompositeSprite.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transcomb/sprite/CompositeSprite.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transcomb/sprite/Composition.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transcomb/sprite/Composition.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/SimpleSprite.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/github/skac112/klee/transforms/sprite/SimpleSprite.scala" afterDir="false" />
-    </list>
+    <list default="true" id="244661e5-20ec-4d2c-9eaa-528c8d14e2f2" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -3,7 +3,7 @@ package com.github.skac112.klee.transforms.bundles
 import cats.Monad
 import com.github.skac112.klee.area.img.ImgArea
 import com.github.skac112.klee.area.imgpt.ImgPtArea
-import com.github.skac112.klee.images.MutableRaster
+import com.github.skac112.klee.images.raster.MutableRaster
 import com.github.skac112.klee.{Img, ImgPoint, ImgPoints, LocalImgTrans, PureImgPoints}
 import com.github.skac112.klee.transforms.PixelImg
 import com.github.skac112.vgutils.{*, given}
